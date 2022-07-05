@@ -12,4 +12,10 @@ class Subject extends Model{
         'subject',
     ];
 
+    public function users(){
+        return $this->belongsToMany(User::class, 'user_subject')
+        ->as('user_subject')
+        ->withTimestamps();
+    }
+
 }
