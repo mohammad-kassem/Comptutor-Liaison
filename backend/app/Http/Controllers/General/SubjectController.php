@@ -21,4 +21,16 @@ class SubjectController extends Controller{
         ], 200);
     }
 
+    
+    public function getUserSubjects(){
+        $user= auth()->user();
+
+        $subjects = $user->subjects()->get();
+
+        return response()->json([
+            'status' => 'Success',
+            'subjects' => $subjects,
+        ], 200);
+    }
+
 }

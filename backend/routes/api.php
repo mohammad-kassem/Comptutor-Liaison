@@ -19,6 +19,7 @@ Route::group(['prefix' => 'v1'], function(){
         });
     });
     Route::group(['prefix' => 'subject'], function(){
+        Route::get('/get_user_subjects', [SubjectController::class, 'getUserSubjects']); 
         Route::post('/add', [SubjectController::class, 'add']); 
     });
 });
