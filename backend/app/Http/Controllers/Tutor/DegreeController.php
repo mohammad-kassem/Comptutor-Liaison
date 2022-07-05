@@ -54,4 +54,19 @@ class DegreeController extends Controller{
             'message' => 'Degree successfully deleted'
         ], 200);
     }
+    
+    public function update(Request $request, $id){
+        $user = auth()->user();
+        echo($request->university);
+        $degree = Degree::find($id)->update([
+            'university' => $request->university,
+            'degree' => $request->degree,
+            'tutor_id' => $user->id
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Degree successfully updated'
+        ], 200);
+    }
 }
