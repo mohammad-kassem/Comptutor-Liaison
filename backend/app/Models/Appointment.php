@@ -15,5 +15,11 @@ class Appointment extends Model{
         'zoom_url',
 
     ];
+    public function schedule(){
+        return $this->belongsTo(Schedule::class);
+    }
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
