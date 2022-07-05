@@ -15,4 +15,11 @@ class Schedule extends Model{
         'tutor_id'
     ];
 
+    public function appointment(){
+        return $this->hasOne(Appointment::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
