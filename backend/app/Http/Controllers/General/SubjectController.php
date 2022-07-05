@@ -42,4 +42,15 @@ class SubjectController extends Controller{
         ], 200);
     }
 
+    public function delete($id){
+        $user= auth()->user();
+
+        $subjects = $user->subjects()->detach($id);
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'User subject successfully deleted'
+        ], 200);
+    }
+
 }
