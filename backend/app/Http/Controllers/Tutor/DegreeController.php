@@ -57,7 +57,16 @@ class DegreeController extends Controller{
     
     public function update(Request $request, $id){
         $user = auth()->user();
-        echo($request->university);
+
+        $validator = Validator::make($request->all(), [
+            'university' => 'required|university',
+            'degree' => 'required|degree',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $degree = Degree::find($id)->update([
             'university' => $request->university,
             'degree' => $request->degree,
