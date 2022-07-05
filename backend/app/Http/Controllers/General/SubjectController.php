@@ -33,4 +33,13 @@ class SubjectController extends Controller{
         ], 200);
     }
 
+    public function get(){
+        $subjects = Subject::get();
+
+        return response()->json([
+            'status' => 'Success',
+            'subjects' => $subjects,
+        ], 200);
+    }
+
 }
