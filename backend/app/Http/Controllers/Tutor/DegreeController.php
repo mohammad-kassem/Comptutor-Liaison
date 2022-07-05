@@ -20,4 +20,19 @@ class DegreeController extends Controller{
             'degrees' => $degrees,
         ], 200);
     }
+
+    public function add(Request $request){
+        $user = auth()->user();
+
+        $degree = Degree::create([
+            'university' => $request->university,
+            'degree' => $request->degree,
+            'tutor_id' => $user->id
+        ]);
+
+        return response()->json([
+            'status' => 'Success',
+            'degree' => $degree,
+        ], 200);
+    }
 }

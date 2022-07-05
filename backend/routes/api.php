@@ -12,4 +12,8 @@ Route::group(['prefix' => 'v1'], function(){
     Route::group(['prefix' => 'tutor'], function(){
         Route::group(['prefix' => 'degree'], function(){
             Route::get('/get', [DegreeController::class, 'get']);
+            Route::post('/add', [DegreeController::class, 'add']);
+
+        });
+    });
 });
