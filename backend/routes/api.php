@@ -7,4 +7,5 @@ use App\Http\Controllers\General\JWTController;
 
 Route::group(['prefix' => 'v1'], function(){
     Route::post('/register', [JWTController::class, 'register']);
+    Route::post('/login', [JWTController::class, 'login']);
 });
