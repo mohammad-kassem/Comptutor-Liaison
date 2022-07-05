@@ -33,6 +33,8 @@ class JWTController extends Controller{
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role_id' => 2,
+                'rate_chat' => 0,
+                'rate_zoom' => 0,
                 'firebase_n' => 0
             ]); 
         }
@@ -43,6 +45,8 @@ class JWTController extends Controller{
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role_id' => 1,
+                'rate_chat' => 0,
+                'rate_zoom' => 0,
                 'firebase_n' => 0
             ]);
         }
