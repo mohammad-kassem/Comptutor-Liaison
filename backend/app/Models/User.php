@@ -33,4 +33,26 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function schedules(){
+        return $this->hasMany(Schedule::class);
+    }
+
+    public function degrees(){
+        return $this->hasMany(Degree::class);
+    }
+
+    public function appointments(){
+        return $this->hasMany(Appointment::class);
+    }
+
+    
+    public function role(){
+        return $this->belongsTo(Role::class);
+    }
+
+    public function subjects(){
+        return $this->belongsToMany(Subject::class, 'user_subject')
+        ->as('user_subject')
+        ->withTimestamps();
+    }
 }
