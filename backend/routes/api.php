@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\General\JWTController;
+use App\Http\Controllers\General\SubjectController;
 use App\Http\Controllers\Tutor\DegreeController;
 
 
@@ -16,5 +17,8 @@ Route::group(['prefix' => 'v1'], function(){
             Route::delete('/delete/{id?}', [DegreeController::class, 'delete']);
             Route::put('/update/{id?}', [DegreeController::class, 'update']);
         });
+    });
+    Route::group(['prefix' => 'subject'], function(){
+        Route::post('/add', [SubjectController::class, 'add']); 
     });
 });
