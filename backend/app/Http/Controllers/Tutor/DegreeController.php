@@ -22,6 +22,15 @@ class DegreeController extends Controller{
     }
 
     public function add(Request $request){
+        $validator = Validator::make($request->all(), [
+            'university' => 'required|university',
+            'degree' => 'required|degree',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $user = auth()->user();
 
         $degree = Degree::create([

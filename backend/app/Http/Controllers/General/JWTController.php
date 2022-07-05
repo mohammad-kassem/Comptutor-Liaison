@@ -66,7 +66,7 @@ class JWTController extends Controller{
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors(), 422);
+            return response()->json($validator->errors(), 400);
         }
 
         if (!$token = auth()->attempt($validator->validated())) {
