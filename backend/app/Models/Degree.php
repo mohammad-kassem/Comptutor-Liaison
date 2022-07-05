@@ -14,4 +14,7 @@ class Degree extends Model{
         'tutor_id'
     ];
 
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
