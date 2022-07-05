@@ -13,7 +13,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['prefix' => 'degree'], function(){
             Route::get('/get', [DegreeController::class, 'get']);
             Route::post('/add', [DegreeController::class, 'add']);
-
+            Route::delete('/delete/{id?}', [DegreeController::class, 'delete']);
         });
     });
 });

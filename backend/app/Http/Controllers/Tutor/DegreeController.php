@@ -41,7 +41,17 @@ class DegreeController extends Controller{
 
         return response()->json([
             'status' => 'Success',
+            'message' => 'Degree successfully added',
             'degree' => $degree,
+        ], 200);
+    }
+
+    public function delete($id){
+        $degree = Degree::find($id)->delete();
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Degree successfully deleted'
         ], 200);
     }
 }
