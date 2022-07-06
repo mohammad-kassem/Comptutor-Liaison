@@ -47,7 +47,10 @@ class DegreeController extends Controller{
     }
 
     public function delete($id){
-        $degree = Degree::find($id)->delete();
+        $degree = $degree = Degree::find($id);
+        if ($degree === null) return response()->json(['error' => 'Not found'], 404);
+        
+        $degree->delete();
 
         return response()->json([
             'status' => 'Success',
