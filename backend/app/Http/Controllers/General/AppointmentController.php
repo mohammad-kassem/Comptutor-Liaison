@@ -11,6 +11,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller{
+    public function getStudentAppointments(){
+        $student = auth()->user();
+
+        $student_appointments = Appointment::where('student_id', $student->id)->get();
+
+        return response()->json([
+            'status' => 'Success',
+            'appointments' => $student_appointments
+        ]);
+    }
+
     public function add(Request $request){
         $student = auth()->user();
 
