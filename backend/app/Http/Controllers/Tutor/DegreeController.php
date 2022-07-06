@@ -70,7 +70,10 @@ class DegreeController extends Controller{
             return response()->json($validator->errors(), 400);
         }
 
-        $degree = Degree::find($id)->update([
+        $degree = Degree::find($id);
+        if ($degree === null) return response()->json(['error' => 'Not found'], 404);
+
+        $degree->update([
             'university' => $request->university,
             'degree' => $request->degree,
             'tutor_id' => $user->id
