@@ -13,12 +13,12 @@ class TutorController extends Controller{
     public function get($id = null){
         if ($id){
             $tutors = User::where('id', $id)->with('subjects')->with(['schedules'=>function($querry){
-                $querry->with('appointments');}])->first();
+                $querry->with('appointments');}])->with('degrees')->first();
         }
 
         else{
             $tutors = User::with('subjects')->with(['schedules'=>function($querry){
-                $querry->with('appointments');}])->where('role_id', 2)->get();
+                $querry->with('appointments');}])->with('degrees')->where('role_id', 2)->get();
         }
 
         return response()->json([
