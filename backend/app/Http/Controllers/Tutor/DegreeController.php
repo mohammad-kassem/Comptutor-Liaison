@@ -23,8 +23,8 @@ class DegreeController extends Controller{
 
     public function add(Request $request){
         $validator = Validator::make($request->all(), [
-            'university' => 'required|university',
-            'degree' => 'required|degree',
+            'university' => 'required|string|min:2|max:255',
+            'degree' => 'required|string|min:2|max:255',
         ]);
 
         if ($validator->fails()) {
