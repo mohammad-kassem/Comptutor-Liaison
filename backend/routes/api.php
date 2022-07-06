@@ -14,6 +14,11 @@ Route::group(['prefix' => 'v1'], function(){
     Route::post('/login', [JWTController::class, 'login']);
     Route::group(['prefix' => 'tutor'], function(){
         Route::get('/get/{id?}', [TutorController::class, 'get']);
+        Route::group(['prefix' => 'schedule'], function(){
+            Route::get('/get', [ScheduleController::class, 'get']); 
+            Route::post('/add', [ScheduleController::class, 'add']);
+            Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']); 
+        }); 
         Route::group(['prefix' => 'degree'], function(){
             Route::get('/get', [DegreeController::class, 'get']);
             Route::post('/add', [DegreeController::class, 'add']);
@@ -27,9 +32,6 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/add', [SubjectController::class, 'add']);
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
     });
-    Route::group(['prefix' => 'schedule'], function(){
-        Route::get('/get', [ScheduleController::class, 'get']); 
-        Route::post('/add', [ScheduleController::class, 'add']);
-        Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']); 
-    }); 
+
+
 });
