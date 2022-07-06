@@ -10,6 +10,17 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ScheduleController extends Controller{
+    public function get(){
+        $user= auth()->user();
+
+        $schedules = Schedule::where('tutor_id', $user->id)->get();
+
+        return response()->json([
+            'status' => 'Success',
+            'schedules' => $schedules,
+        ], 200);
+    }
+
     public function add(Request $request){
         $hours = $request->hours;
         $user = auth()->user();

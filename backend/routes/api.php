@@ -28,6 +28,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
     });
     Route::group(['prefix' => 'schedule'], function(){
+        Route::get('/get', [ScheduleController::class, 'get']); 
         Route::post('/add', [ScheduleController::class, 'add']);
         Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']); 
     }); 
