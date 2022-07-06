@@ -6,6 +6,7 @@ use App\Http\Controllers\General\JWTController;
 use App\Http\Controllers\General\SubjectController;
 use App\Http\Controllers\Tutor\DegreeController;
 use App\Http\Controllers\Tutor\TutorController;
+use App\Http\Controllers\Tutor\ScheduleController;
 
 
 Route::group(['prefix' => 'v1'], function(){
@@ -26,4 +27,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/add', [SubjectController::class, 'add']);
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
     });
+    Route::group(['prefix' => 'schedule'], function(){
+        Route::post('/add', [ScheduleController::class, 'add']);
+    }); 
 });
