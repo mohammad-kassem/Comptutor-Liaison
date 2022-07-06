@@ -12,6 +12,9 @@ use Illuminate\Http\Request;
 class SubjectController extends Controller{
     public function add(Request $request){
         $user = auth()->user();
+        $subject = $user->subjects()->where('id', $request->id)->first();
+
+        if ($subject) return response()->json(['error' => 'This subject has already been enetered'], 409);
 
         $user->subjects()->attach($request->id);
 
