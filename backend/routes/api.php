@@ -32,6 +32,8 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/add', [SubjectController::class, 'add']);
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
     });
-
+    Route::group(['prefix' => 'appointment'], function(){
+        Route::post('/add', [AppointmentController::class, 'add']);
+    }); 
 
 });
