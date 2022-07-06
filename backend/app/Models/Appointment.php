@@ -9,7 +9,7 @@ class Appointment extends Model{
     use HasFactory;
 
     protected $fillable = [
-        'schdeule_id',
+        'schedule_id',
         'student_id',
         'type',
         'zoom_url',
