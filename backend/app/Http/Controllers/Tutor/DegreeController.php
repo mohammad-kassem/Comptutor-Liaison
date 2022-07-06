@@ -59,8 +59,8 @@ class DegreeController extends Controller{
         $user = auth()->user();
 
         $validator = Validator::make($request->all(), [
-            'university' => 'required|university',
-            'degree' => 'required|degree',
+            'university' => 'required|string|min:2|max:255',
+            'degree' => 'required|string|min:2|max:255',
         ]);
 
         if ($validator->fails()) {
