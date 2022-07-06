@@ -33,4 +33,17 @@ class AppointmentController extends Controller{
             'appointment' => $appointment
         ]);
     }
+    public function delete($id){
+        $appointment = Appointment::where('schedule_id', $id)->first();
+
+        if ($appointment === null) return response()->json(['error' => 'Not found'], 404);
+        
+        $appointment->delete();
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Appointment successfully deleted',
+        ]);
+    }
+
 }
