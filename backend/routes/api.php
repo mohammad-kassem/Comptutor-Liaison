@@ -5,12 +5,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\General\JWTController;
 use App\Http\Controllers\General\SubjectController;
 use App\Http\Controllers\Tutor\DegreeController;
+use App\Http\Controllers\Tutor\TutorController;
 
 
 Route::group(['prefix' => 'v1'], function(){
     Route::post('/register', [JWTController::class, 'register']);
     Route::post('/login', [JWTController::class, 'login']);
     Route::group(['prefix' => 'tutor'], function(){
+        Route::get('/get/{id?}', [TutorController::class, 'get']);
         Route::group(['prefix' => 'degree'], function(){
             Route::get('/get', [DegreeController::class, 'get']);
             Route::post('/add', [DegreeController::class, 'add']);
