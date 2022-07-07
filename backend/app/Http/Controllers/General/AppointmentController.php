@@ -10,7 +10,7 @@ use App\Models\Appointment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AppointmentController extends Controller{
+class AppointmentController extends Controller{ 
     public function getStudentAppointments(){
         $student = auth()->user();
 
@@ -54,9 +54,11 @@ class AppointmentController extends Controller{
 
         return response()->json([
             'status' => 'Success',
+            'message' => 'Appointment successfully added',
             'appointment' => $appointment
         ]);
     }
+
     public function delete($id){
         $appointment = Appointment::where('schedule_id', $id)->first();
 
