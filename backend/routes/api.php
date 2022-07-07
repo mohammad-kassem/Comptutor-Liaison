@@ -7,38 +7,44 @@ use App\Http\Controllers\General\SubjectController;
 use App\Http\Controllers\Tutor\DegreeController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\ScheduleController;
+use App\Http\Controllers\General\AppointmentController;
 
 
 Route::group(['prefix' => 'v1'], function(){
     Route::group(['prefix' => 'auth'], function(){
-    Route::post('/register', [JWTController::class, 'register']);
-    Route::post('/login', [JWTController::class, 'login']);
+        Route::post('/register', [JWTController::class, 'register']);
+        Route::post('/login', [JWTController::class, 'login']);
     });
     Route::group(['prefix' => 'tutor'], function(){
-        Route::get('/get/{id?}', [TutorController::class, 'get']);
+        Route::get('/get', [TutorController::class, 'get']);
         Route::group(['prefix' => 'schedule'], function(){
-            Route::get('/get', [ScheduleController::class, 'get']); 
-            Route::post('/add', [ScheduleController::class, 'add']);
-            Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']); 
+            Route::group(['middleware' => 'tutor'], function($router) {
+                Route::get('/get', [ScheduleController::class, 'get']); 
+                Route::post('/add', [ScheduleController::class, 'add']);
+                Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']);
+            });
         }); 
         Route::group(['prefix' => 'degree'], function(){
-            Route::get('/get', [DegreeController::class, 'get']);
-            Route::post('/add', [DegreeController::class, 'add']);
-            Route::delete('/delete/{id?}', [DegreeController::class, 'delete']);
-            Route::put('/update/{id?}', [DegreeController::class, 'update']);
+            Route::group(['middleware' => 'tutor'], function($router) {
+                Route::get('/get', [DegreeController::class, 'get']);
+                Route::post('/add', [DegreeController::class, 'add']);
+                Route::delete('/delete/{id?}', [DegreeController::class, 'delete']);
+                Route::put('/update/{id?}', [DegreeController::class, 'update']);
+            });
         });
     });
     Route::group(['prefix' => 'subject'], function(){
         Route::get('/user', [SubjectController::class, 'getUserSubjects']); 
         Route::get('/', [SubjectController::class, 'get']); 
         Route::post('/add', [SubjectController::class, 'add']);
-        Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
+        Route::delete('/delete/{id?}', [SubjectController::class, 'delete']);
     });
     Route::group(['prefix' => 'appointment'], function(){
         Route::get('/student', [AppointmentController::class, 'getStudentAppointments']);
-        Route::get('/tutor', [AppointmentController::class, 'getTutorAppointments']);
         Route::post('/add', [AppointmentController::class, 'add']);
+        Route::group(['middleware' => 'tutor'], function($router) {
+            Route::get('/tutor', [AppointmentController::class, 'getTutorAppointments']);
+        });
         Route::delete('/delete/{id?}', [AppointmentController::class, 'delete']);
-    }); 
-
+    });
 });
