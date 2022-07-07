@@ -22,6 +22,19 @@ class AppointmentController extends Controller{
         ]);
     }
 
+    public function getTutorAppointments(){
+        $tutor = auth()->user();
+
+        $tutor_appointments = User::with(['schedules'=>function($querry){
+            $querry->with('appointment');
+        }])->where('id', $tutor->id)->get();
+        
+        return response()->json([
+            'status' => 'Success',
+            'appointments' => $tutor_appointments
+        ]);
+    }
+
     public function add(Request $request){
         $student = auth()->user();
 
