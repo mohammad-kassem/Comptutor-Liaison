@@ -36,19 +36,23 @@ Route::group(['prefix' => 'v1'], function(){
         });
     });
     Route::group(['prefix' => 'subject'], function(){
-        Route::get('/user', [SubjectController::class, 'getUserSubjects']); 
-        Route::get('/', [SubjectController::class, 'get']); 
-        Route::post('/add', [SubjectController::class, 'add']);
-        Route::delete('/delete/{id?}', [SubjectController::class, 'delete']);
+        Route::group(['middleware' => 'auth'], function($router) {
+            Route::get('/user', [SubjectController::class, 'getUserSubjects']); 
+            Route::get('/', [SubjectController::class, 'get']); 
+            Route::post('/add', [SubjectController::class, 'add']);
+            Route::delete('/delete/{id?}', [SubjectController::class, 'delete']);
+        });
     });
     Route::group(['prefix' => 'appointment'], function(){
-    Route::group(['middleware' => 'student'], function($router) {
-        Route::get('/student', [AppointmentController::class, 'getStudentAppointments']);
-        Route::post('/add', [AppointmentController::class, 'add']);
-    });
+        Route::group(['middleware' => 'student'], function($router) {
+            Route::get('/student', [AppointmentController::class, 'getStudentAppointments']);
+            Route::post('/add', [AppointmentController::class, 'add']);
+        });
         Route::group(['middleware' => 'tutor'], function($router) {
             Route::get('/tutor', [AppointmentController::class, 'getTutorAppointments']);
         });
-        Route::delete('/delete/{id?}', [AppointmentController::class, 'delete']);
+        Route::group(['middleware' => 'auth'], function($router) {
+            Route::delete('/delete/{id?}', [AppointmentController::class, 'delete']);
+        }); 
     });
 });
