@@ -14,7 +14,7 @@ class SubjectController extends Controller{
         $user = auth()->user();
         $subject = $user->subjects()->where('id', $request->id)->first();
 
-        if ($subject) return response()->json(['error' => 'This subject has already been enetered'], 409);
+        if ($subject) return response()->json(['error' => 'This subject has already been entered'], 409);
 
         $user->subjects()->attach($request->id);
 
