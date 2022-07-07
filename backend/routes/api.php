@@ -16,7 +16,9 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/login', [JWTController::class, 'login']);
     });
     Route::group(['prefix' => 'tutor'], function(){
-        Route::get('/get', [TutorController::class, 'get']);
+        Route::group(['middleware' => 'student'], function($router) {
+            Route::get('/get', [TutorController::class, 'get']);
+        });
         Route::group(['prefix' => 'schedule'], function(){
             Route::group(['middleware' => 'tutor'], function($router) {
                 Route::get('/get', [ScheduleController::class, 'get']); 
@@ -40,8 +42,10 @@ Route::group(['prefix' => 'v1'], function(){
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']);
     });
     Route::group(['prefix' => 'appointment'], function(){
+    Route::group(['middleware' => 'student'], function($router) {
         Route::get('/student', [AppointmentController::class, 'getStudentAppointments']);
         Route::post('/add', [AppointmentController::class, 'add']);
+    });
         Route::group(['middleware' => 'tutor'], function($router) {
             Route::get('/tutor', [AppointmentController::class, 'getTutorAppointments']);
         });
