@@ -10,8 +10,10 @@ use App\Http\Controllers\Tutor\ScheduleController;
 
 
 Route::group(['prefix' => 'v1'], function(){
+    Route::group(['prefix' => 'auth'], function(){
     Route::post('/register', [JWTController::class, 'register']);
     Route::post('/login', [JWTController::class, 'login']);
+    });
     Route::group(['prefix' => 'tutor'], function(){
         Route::get('/get/{id?}', [TutorController::class, 'get']);
         Route::group(['prefix' => 'schedule'], function(){
@@ -27,8 +29,8 @@ Route::group(['prefix' => 'v1'], function(){
         });
     });
     Route::group(['prefix' => 'subject'], function(){
-        Route::get('/get_user_subjects', [SubjectController::class, 'getUserSubjects']); 
-        Route::get('/get', [SubjectController::class, 'get']); 
+        Route::get('/user', [SubjectController::class, 'getUserSubjects']); 
+        Route::get('/', [SubjectController::class, 'get']); 
         Route::post('/add', [SubjectController::class, 'add']);
         Route::delete('/delete/{id?}', [SubjectController::class, 'delete']); 
     });
