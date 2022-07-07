@@ -15,6 +15,9 @@ class Appointment extends Model{
         'zoom_url',
 
     ];
+
+    protected $primaryKey = 'schedule_id';
+
     public function schedule(){
         return $this->belongsTo(Schedule::class);
     }
