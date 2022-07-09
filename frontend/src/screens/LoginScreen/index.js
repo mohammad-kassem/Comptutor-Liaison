@@ -1,4 +1,4 @@
-import React from 'react'
+import { useState } from 'react'
 import styles from './styles';
 import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
@@ -7,7 +7,10 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 
 export default function LoginScreen() {
   const navigation = useNavigation()
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
 
+  
   return (
     <>
     <View style={styles.container}>
@@ -16,9 +19,9 @@ export default function LoginScreen() {
         <Text style={styles.messageContent}>Welcome back you've been missed!</Text>
       </View>
       
-      <TextInput style={styles.input} placeholder="Email"/>
+      <TextInput style={styles.input} placeholder="Email" onChangeText={(enteredText)=>{setEmail(enteredText)}}/>
       
-      <TextInput style={styles.input} placeholder="Password" secureTextEntry={true}/>
+      <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} onChangeText={(enteredText)=>{setPassword(enteredText)}}/>
       <TouchableOpacity containerStyle={styles.fullWidthButton}>
         <Text style={styles.fullWidthButtonText}>Log in</Text>
       </TouchableOpacity>
