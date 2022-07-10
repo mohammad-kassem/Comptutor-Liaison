@@ -3,11 +3,16 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
     const [tutors, setTutors] = useState([])
 
+    useEffect(function(){
+        getTutors();
+      }, []);
+    
     const getData = async () => {
         let value;
         try {
@@ -19,6 +24,27 @@ export default function HomeScreen() {
         }
         return value
     }
+
+    async function getTutors(){
+        const token = await getData();
+        console.log(token);
+        axios({
+          method: "get",
+          url: "http://192.168.1.105:8000/api/v1/tutor/get",
+          headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`}
+        })
+        .then(function(response){
+            // console.log(response.data.tutors);
+          setTutors(response.data.tutors);
+        })
+        .catch(function(error){
+          let message = Object.values(error.response.data);
+          alert(message[0]);
+        })
+    };
+      
     return (
         <>
         <View style={styles.container}>
