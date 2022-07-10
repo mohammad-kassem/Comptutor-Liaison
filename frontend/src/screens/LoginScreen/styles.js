@@ -6,7 +6,7 @@ export default StyleSheet.create({
         justifyContent: "center",
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
-        marginVertical: "25%"
+        paddingVertical: "25%"
     },
 
     messageContainer:{
