@@ -94,4 +94,23 @@ export default StyleSheet.create({
         marginTop: 10
     },
 
+    tutorSubjects: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-evenly",
+        marginTop: 10,
+    },
+    
+    tutorSubject: {
+        width: 68,
+        height: 20,
+        backgroundColor: "#FF3142",
+        color: "white",
+        textAlign: "center",
+        textAlignVertical: "center",
+        borderRadius: 20,
+        fontSize: 12,
+        marginBottom: 10,
+    }
+
 })
