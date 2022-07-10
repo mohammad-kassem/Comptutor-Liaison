@@ -43,4 +43,55 @@ export default StyleSheet.create({
         textAlignVertical: "center",
     },
 
+    tutorCard: {
+        borderColor: "black",
+        borderWidth: 1,
+        padding: 20,
+        paddingBottom: 10,
+        margin: 25,
+        borderRadius: 20,
+        backgroundColor: "white",
+        elevation: 20
+    },
+
+    
+    cardContent:{
+        flexDirection: "row",
+        // borderColor: "black",
+        // borderWidth: 1,
+    },
+
+    imageContainer: {
+        width: 62,
+        height: 62, 
+        marginRight: 15    
+    },
+
+    tutorProfile: {
+        flex: 1,
+        width: undefined,
+        height: undefined,
+        borderRadius: 50
+    },
+
+    tutorInfo: {
+        flex: 1,
+    },
+
+    tutorName: {
+        fontSize: 14,
+        includeFontPadding:false
+    },
+
+    tutorRates: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+    },
+
+    tutorDetail: {
+        fontSize: 12,
+        color: "#656565",
+        marginTop: 10
+    },
+
 })
