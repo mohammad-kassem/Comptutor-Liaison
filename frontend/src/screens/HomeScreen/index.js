@@ -10,6 +10,10 @@ export default function HomeScreen() {
         <View style={styles.title}>
             <Text style={styles.titleText}>Home</Text>
         </View>
+        <View style={styles.searchBar}>
+            <Icon name="search" style={styles.searchIcon}/>
+            <TextInput style={styles.searchInput} placeholder="Search"/>
+        </View>
     </View>
     </>
   )
