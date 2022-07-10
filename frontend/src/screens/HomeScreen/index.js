@@ -14,6 +14,21 @@ export default function HomeScreen() {
             <Icon name="search" style={styles.searchIcon}/>
             <TextInput style={styles.searchInput} placeholder="Search"/>
         </View>
+        <TouchableOpacity style={styles.tutorCard}>
+            <View style={styles.cardContent}>
+                <View style={styles.imageContainer}>
+                    <Image style={styles.tutorProfile} source={require('../../../assets/22024531._SY540_.jpg')}/>
+                </View>
+                <View style={styles.tutorInfo}>
+                    <Text style={styles.tutorName}>Jane Doe</Text>
+                    <View style={styles.tutorRates}>
+                        <Text style={styles.tutorDetail}>Chatting: 10</Text>
+                        <Text style={styles.tutorDetail}>Zoom: 20</Text>
+                    </View>
+                    <Text style={styles.tutorDetail}>Teaching since 2016</Text>
+                </View>
+            </View>
+        </TouchableOpacity>
     </View>
     </>
   )
