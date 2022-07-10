@@ -5,9 +5,12 @@ import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useUser } from '../../Context/User';
 
 export default function HomeScreen() {
-    const [tutors, setTutors] = useState([])
+    let [tutors, setTutors] = useState([])
+    const {user, setUser} = useUser()
+
 
     useEffect(function(){
         getTutors();
@@ -44,6 +47,13 @@ export default function HomeScreen() {
           alert(message[0]);
         })
     };
+
+    tutors = tutors.filter((tutor)=>{
+        for (var userSubjects of user.subjects){
+            let tutorSubjects = Object.values(tutor.subjects).map((tutorSubject)=> tutorSubject.subject);
+            if ((tutorSubjects).includes(userSubjects.subject)) return true
+        }
+    })
       
     return (
         <>
