@@ -10,6 +10,7 @@ import  SearchBar  from '../../components/SearchBar';
 
 export default function HomeScreen() {
     let [tutors, setTutors] = useState([])
+    const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
 
 
@@ -42,6 +43,7 @@ export default function HomeScreen() {
         .then(function(response){
             // console.log(response.data.tutors);
           setTutors(response.data.tutors);
+          setOriginal(response.data.tutors);
         })
         .catch(function(error){
           let message = Object.values(error.response.data);
@@ -62,7 +64,7 @@ export default function HomeScreen() {
             <View style={styles.title}>
                 <Text style={styles.titleText}>Home</Text>
             </View>
-            <SearchBar/>
+            <SearchBar original={original} setTutors={setTutors}/>
             <FlatList data={tutors} renderItem={(tutorData) =>{
                 return(
                     <TouchableOpacity style={styles.tutorCard}>
