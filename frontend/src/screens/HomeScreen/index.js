@@ -2,6 +2,7 @@ import { View, Text ,Image } from 'react-native'
 import React from 'react'
 import styles from './styles'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default function HomeScreen() {
   return (
@@ -27,6 +28,14 @@ export default function HomeScreen() {
                     </View>
                     <Text style={styles.tutorDetail}>Teaching since 2016</Text>
                 </View>
+            </View>
+            <View style={styles.tutorSubjects}>
+                <Text style={styles.tutorSubject}>PHP</Text>
+                <Text style={styles.tutorSubject}>Java</Text>
+                <Text style={styles.tutorSubject}>Javascript</Text>
+                <Text style={styles.tutorSubject}>Javascript</Text>
+                <Text style={styles.tutorSubject}>Javascript</Text>
+                <Text style={styles.tutorSubject}>Javascript</Text>
             </View>
         </TouchableOpacity>
     </View>
