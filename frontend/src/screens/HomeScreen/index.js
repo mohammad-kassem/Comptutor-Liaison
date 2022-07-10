@@ -18,7 +18,7 @@ export default function HomeScreen() {
         <TouchableOpacity style={styles.tutorCard}>
             <View style={styles.cardContent}>
                 <View style={styles.imageContainer}>
-                    <Image style={styles.tutorProfile} source={require('../../../assets/22024531._SY540_.jpg')}/>
+                    <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
                 </View>
                 <View style={styles.tutorInfo}>
                     <Text style={styles.tutorName}>Jane Doe</Text>
