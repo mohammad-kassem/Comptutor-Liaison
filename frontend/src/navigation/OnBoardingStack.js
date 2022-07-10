@@ -5,6 +5,7 @@ import LoginScreen from "../screens/LoginScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 
 import React from 'react'
+import HomeScreen from "../screens/HomeScreen";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
@@ -19,6 +20,10 @@ export default function OnBoardingStack() {
             <RootStackNav.Screen
             name="RegisterScreen"
             component={RegisterScreen}
+            />
+            <RootStackNav.Screen
+            name="HomeScreen"
+            component={HomeScreen}
             />
         </RootStackNav.Navigator>
     </NavigationContainer>
