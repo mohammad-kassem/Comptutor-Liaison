@@ -3,10 +3,22 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/FontAwesome';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function HomeScreen() {
     const [tutors, setTutors] = useState([])
 
+    const getData = async () => {
+        let value;
+        try {
+          value = await AsyncStorage.getItem('storage_Key');
+          if(value !== null) {
+          }
+        } catch(e) {
+            alert("Error getting token")
+        }
+        return value
+    }
     return (
         <>
         <View style={styles.container}>
