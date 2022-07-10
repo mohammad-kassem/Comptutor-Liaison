@@ -19,7 +19,7 @@ export default function LoginScreen() {
   function login(cridentials){
     axios({
       method: "post",
-      url: "http://192.168.1.11:8000/api/v1/auth/login",
+      url: "http://192.168.1.105:8000/api/v1/auth/login",
       headers: {
         "Content-type": "application/json",
       },
@@ -35,7 +35,7 @@ export default function LoginScreen() {
       }
       storeData(response);
       setUser(response.data.user);
-      console.log(user);
+      navigation.navigate("HomeScreen");
     })
     .catch(function(error){
       let message = Object.values(error.response.data);
