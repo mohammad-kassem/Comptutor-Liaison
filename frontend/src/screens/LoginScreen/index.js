@@ -5,6 +5,7 @@ import { useNavigation } from '@react-navigation/core';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
 import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from 'axios';
+import { useUser } from '../../Context/User';
 
 
 
@@ -13,6 +14,7 @@ export default function LoginScreen() {
   const navigation = useNavigation()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const {user, setUser} = useUser()
   
   function login(cridentials){
     axios({
@@ -32,7 +34,8 @@ export default function LoginScreen() {
         }
       }
       storeData(response);
-      console.log("success");
+      setUser(response.data.user);
+      console.log(user);
     })
     .catch(function(error){
       let message = Object.values(error.response.data);
