@@ -3,7 +3,9 @@ import styles from './styles';
 import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from "@react-native-async-storage/async-storage"
 import axios from 'axios';
+
 
 
 
@@ -22,6 +24,14 @@ export default function LoginScreen() {
       data: JSON.stringify(cridentials),
     })
     .then(function(response){
+      const storeData = async (response) => {
+        try {
+          await AsyncStorage.setItem('storage_Key', response.data.access_token);
+        } catch (e) {
+          alert("Error setting token")
+        }
+      }
+      storeData(response);
       console.log("success");
     })
     .catch(function(error){
