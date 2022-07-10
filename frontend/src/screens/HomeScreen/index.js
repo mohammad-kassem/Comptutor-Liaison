@@ -6,6 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../Context/User';
+import  SearchBar  from '../../components/SearchBar';
 
 export default function HomeScreen() {
     let [tutors, setTutors] = useState([])
@@ -61,10 +62,7 @@ export default function HomeScreen() {
             <View style={styles.title}>
                 <Text style={styles.titleText}>Home</Text>
             </View>
-            <View style={styles.searchBar}>
-                <Icon name="search" style={styles.searchIcon}/>
-                <TextInput style={styles.searchInput} placeholder="Search"/>
-            </View>
+            <SearchBar/>
             <FlatList data={tutors} renderItem={(tutorData) =>{
                 return(
                     <TouchableOpacity style={styles.tutorCard}>
