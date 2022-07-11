@@ -70,7 +70,7 @@ class JWTController extends Controller{
         }
 
         if (!$token = auth()->attempt($validator->validated())) {
-            return response()->json(['error' => 'Invalid cridentials'], 403);
+            return response()->json(['error' => 'Invalid cridentials'], 401);
         }
 
         $user = auth()->user();
