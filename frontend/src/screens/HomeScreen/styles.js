@@ -12,8 +12,6 @@ export default StyleSheet.create({
     title:{
         justifyContent: "center",
         alignItems: "center",
-        borderColor: "black",
-        borderWidth: 1,
     },
 
     titleText: {
