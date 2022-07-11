@@ -33,9 +33,9 @@ export default function LoginScreen() {
           alert("Error setting token")
         }
       }
+
       storeData(response);
       setUser(response.data.user);
-      navigation.navigate("HomeScreen");
     })
     .catch(function(error){
       let message = Object.values(error.response.data);
