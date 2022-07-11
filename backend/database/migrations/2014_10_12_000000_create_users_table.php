@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration{
             $table->integer('rate_chat');
             $table->integer('rate_zoom');
             $table->string('profile_image')->nullable();
+            $table->string('about')->nullable();
             $table->timestamps();
         });
     }
