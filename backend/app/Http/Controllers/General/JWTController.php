@@ -74,7 +74,7 @@ class JWTController extends Controller{
         }
 
         $user = auth()->user();
-        $user->role;
+        $user = $user->with('role')->with('subjects')->first();
 
         return response()->json([
             'status' => 'Success',
