@@ -28,6 +28,14 @@ export default function TutorScreen( {route} ) {
                             <Text style={styles.infoText}>{tutor.about}</Text>
                         </View>
                     </View>
+                    <View style={styles.infoCard}>
+                        <Text style={styles.infoTitle}>Education</Text>
+                        <View style={styles.infoMain}>
+                            {tutor.degrees.map((degree) =>(
+                            <Text style={styles.infoText}>{degree.university} - {degree.degree}</Text>
+                            ))}
+                        </View>
+                    </View>
 
                 </View>
             </View>
