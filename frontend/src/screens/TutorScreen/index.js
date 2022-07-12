@@ -36,6 +36,14 @@ export default function TutorScreen( {route} ) {
                             ))}
                         </View>
                     </View>
+                    <View style={styles.infoCard}>
+                        <Text style={styles.infoTitle}>Subjects</Text>
+                        <View style={styles.infoMain}>
+                            {tutor.subjects.map((subject) =>(
+                            <Text style={styles.infoText}>{subject.subject}</Text>
+                            ))}
+                        </View>
+                    </View>
 
                 </View>
             </View>
