@@ -17,6 +17,10 @@ export default function TutorScreen( {route} ) {
                     <Text style={styles.tutorName}>{tutor.fname} {tutor.lname}</Text>
                     <Text style={styles.tutorExperince}>Teaching since {}</Text>
                 </View>
+                <View style={styles.ratesContainer}>
+                    <Text style={styles.zoomRate}>${tutor.rate_zoom} /H for Zoom</Text>
+                    <Text style={styles.chatRate}>${tutor.rate_chat} /H for Chat</Text>
+                </View>
 
             </View>
         </ScrollView>
