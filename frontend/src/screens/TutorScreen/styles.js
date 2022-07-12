@@ -45,4 +45,35 @@ export default StyleSheet.create({
         fontSize: 18,
         color: "#656565"
     },
+
+    ratesContainer: {
+        width: "100%",
+        height: 60,
+        backgroundColor: "white",
+        flexDirection: "row",
+        alignItems: "stretch"
+    },
+
+    zoomRate: {
+        borderRightColor: "black",
+        borderRightWidth: 1,
+        textAlignVertical: "center",
+        width: "50%",
+        textAlign: "center",
+        fontSize: 18,
+        color: "#1877F2",
+        paddingHorizontal: 60,
+        lineHeight: 22
+    },
+
+    chatRate: {
+        textAlignVertical: "center",
+        width: "50%",
+        textAlign: "center",
+        fontSize: 18,
+        color: "#1877F2",
+        paddingHorizontal: 60,
+        lineHeight: 22
+    },
+
 })
