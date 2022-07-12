@@ -3,9 +3,13 @@ import React from 'react'
 import styles from './styles'
 import FullWidthButton from '../../components/FullWidthButton'
 import { ScrollView } from 'react-native-gesture-handler'
+import { useNavigation } from '@react-navigation/native'
+import { onHandlePress } from './controller'
 
 export default function TutorScreen( {route} ) {
     const tutor = route.params.tutor
+    const navigation = useNavigation() 
+
     return (
         <>
         <View style={styles.container}>
@@ -52,7 +56,7 @@ export default function TutorScreen( {route} ) {
             </View>
         </ScrollView>
         <View style={styles.buttonContainer}>
-            <FullWidthButton/>
+            <FullWidthButton onHandlePress={()=>onHandlePress(tutor, navigation)}/>
         </View>
         </View>
         </>
