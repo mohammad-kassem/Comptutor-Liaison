@@ -1,6 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
 import styles from './styles'
+import FullWidthButton from '../../components/FullWidthButton'
 import { ScrollView } from 'react-native-gesture-handler'
 
 export default function TutorScreen( {route} ) {
@@ -44,10 +45,15 @@ export default function TutorScreen( {route} ) {
                             ))}
                         </View>
                     </View>
+                    <View style={styles.blank}>
 
+                    </View>
                 </View>
             </View>
         </ScrollView>
+        <View style={styles.buttonContainer}>
+            <FullWidthButton/>
+        </View>
         </View>
         </>
     )
