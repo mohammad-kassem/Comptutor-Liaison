@@ -76,4 +76,28 @@ export default StyleSheet.create({
         lineHeight: 22
     },
 
+    infoCard: {
+        margin: 15,
+        padding: 15,
+        backgroundColor: "white",
+        borderRadius: 20,
+        elevation: 10,  
+    },
+
+    infoTitle: {
+        fontSize: 18,
+        lineHeight: 22,
+        color: "#FF3142",
+        paddingBottom: 10,
+    },
+
+    infoMain: {
+        paddingBottom: 10,
+    },
+
+    infoText: {
+        fontSize: 18,
+        lineHeight: 30,
+        textAlign: "justify"
+    },
 })
