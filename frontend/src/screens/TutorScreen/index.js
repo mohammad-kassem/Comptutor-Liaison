@@ -21,7 +21,15 @@ export default function TutorScreen( {route} ) {
                     <Text style={styles.zoomRate}>${tutor.rate_zoom} /H for Zoom</Text>
                     <Text style={styles.chatRate}>${tutor.rate_chat} /H for Chat</Text>
                 </View>
+                <View style={styles.tutorDetails}>
+                    <View style={styles.infoCard}>
+                        <Text style={styles.infoTitle}>About</Text>
+                        <View style={styles.infoMain}>
+                            <Text style={styles.infoText}>{tutor.about}</Text>
+                        </View>
+                    </View>
 
+                </View>
             </View>
         </ScrollView>
         </View>
