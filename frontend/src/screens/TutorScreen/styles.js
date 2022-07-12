@@ -25,4 +25,24 @@ export default StyleSheet.create({
         resizeMode: "stretch",
     },
 
+    infoContainer: {
+        backgroundColor: "#f5f5f5",
+        elevation: 1,
+        width: "100%"
+    },
+
+    title: {
+        paddingVertical: 15,
+        paddingHorizontal: 15
+    },
+
+    tutorName: {
+        fontWeight: "600",
+        fontSize: 24
+    },
+
+    tutorExperince: {
+        fontSize: 18,
+        color: "#656565"
+    },
 })
