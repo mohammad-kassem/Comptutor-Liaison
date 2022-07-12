@@ -100,4 +100,16 @@ export default StyleSheet.create({
         lineHeight: 30,
         textAlign: "justify"
     },
+    
+    buttonContainer: {
+        position: "absolute",
+        right: 15,
+        left:15,
+        bottom: 30,
+    },
+
+    blank: {
+        marginTop: 45,
+        marginBottom: 45
+    }
 })
