@@ -30,3 +30,10 @@ export async function addAppointment(scheduleId, schedules, setSchedules) {
         ToastAndroid.show(message[0], ToastAndroid.SHORT);
       })
 };
+
+export function refreshAvailableTimes(scheduleId, schedules, setSchedules){
+  console.log(schedules)
+  setSchedules(schedules.filter((schedule)=>
+    schedule.id !== scheduleId
+  ))
+}
