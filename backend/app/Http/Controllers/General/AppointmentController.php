@@ -14,7 +14,7 @@ class AppointmentController extends Controller{
     public function getStudentAppointments(){
         $student = auth()->user();
 
-        $student_appointments = Appointment::where('student_id', $student->id)->get();
+        $student_appointments = Appointment::where('student_id', $student->id)->with('tutor')->get();
 
         return response()->json([
             'status' => 'Success',
