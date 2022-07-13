@@ -5,8 +5,10 @@ import { getAvailableTimes, groupSchedules } from './controller'
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function ScheduleScreen({ route }) {
+    const [modalIsVisable, setModalIsVisable] = useState(false);
     const tutor = route.params.tutor
     const [schedules, setSchedules] = useState([])
+    let [modalData, setModalData] = useState([])
     let groupedSchedules = groupSchedules(schedules);
     console.log("hello2")
 
