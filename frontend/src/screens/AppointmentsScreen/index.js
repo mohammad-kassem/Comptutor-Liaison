@@ -18,8 +18,8 @@ export default function AppointmentsScreen() {
                 return(
                 <View style={styles.appointmentCard}>
                     <View style={styles.cardContent}>
-                        <Text style={styles.date}>{appointmentData.item.date} {appointmentData.item.start_time} - {appointmentData.item.end_time}</Text>
-                        <Text style={styles.details}>Appointment with Jane</Text>
+                        <Text style={styles.date}>{appointmentData.item.schedule.date} {appointmentData.item.schedule.start_time} - {appointmentData.item.schedule.end_time}</Text>
+                        <Text style={styles.details}>Appointment with {appointmentData.item.tutor.fname} {appointmentData.item.tutor.fname}</Text>
                     </View>
                 </View>
                 )
