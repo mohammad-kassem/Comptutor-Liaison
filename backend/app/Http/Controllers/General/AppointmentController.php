@@ -38,18 +38,18 @@ class AppointmentController extends Controller{
     public function add(Request $request){
         $student = auth()->user();
 
-        $validator = Validator::make($request->all(), [
-            'type' => 'required|integer'
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'type' => 'required|integer'
+        // ]);
 
-        if($validator->fails()) {
-            return response()->json($validator->errors(), 400);
-        }
+        // if($validator->fails()) {
+        //     return response()->json($validator->errors(), 400);
+        // }
         
         $appointment = Appointment::create([
             'schedule_id' => $request->schedule_id,
             'student_id' => $student->id,
-            'type' => $request->type
+            'type' => 1
         ]);
 
         return response()->json([
