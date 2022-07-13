@@ -6,22 +6,25 @@ export default StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
-        paddingVertical: 50,
-        paddingHorizontal: "10%"
+        marginTop: 50,
     },
 
     title: {
         fontSize: 24,
         fontWeight: "700",
-        lineHeight: 29
+        lineHeight: 29,
+        marginHorizontal: "10%",
+        marginBottom: 25,
     },
 
     appointmentCard: {
-        marginTop: 25,
+        marginBottom: 25,
         backgroundColor: "white",
         borderRadius: 10,
         elevation: 10,
         padding: 15,
+        marginHorizontal: "10%"
+
     },
 
     date:{
