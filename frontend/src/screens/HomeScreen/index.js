@@ -1,4 +1,4 @@
-import { View, Text ,Image, FlatList } from 'react-native'
+import { View, Text ,Image , FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
@@ -7,8 +7,10 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../Context/User';
 import  SearchBar  from '../../components/SearchBar';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen() {
+    const navigation = useNavigation()
     let [tutors, setTutors] = useState([])
     const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
@@ -32,7 +34,6 @@ export default function HomeScreen() {
 
     async function getTutors(){
         const token = await getData();
-        console.log(token);
         axios({
           method: "get",
           url: "http://192.168.1.105:8000/api/v1/tutor/get",
@@ -57,7 +58,7 @@ export default function HomeScreen() {
             if ((tutorSubjects).includes(userSubjects.subject)) return true
         }
     })
-      
+
     return (
         <>
         <View style={styles.container}>
@@ -67,7 +68,7 @@ export default function HomeScreen() {
             <SearchBar original={original} setTutors={setTutors}/>
             <FlatList data={tutors} renderItem={(tutorData) =>{
                 return(
-                    <TouchableOpacity style={styles.tutorCard}>
+                    <TouchableOpacity key={tutorData.item.lname} style={styles.tutorCard} onPress={()=>{navigation.navigate("TutorScreen", {"tutor": tutorData.item})}}>
                         <View style={styles.cardContent}>
                             <View style={styles.imageContainer}>
                                 <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
@@ -89,6 +90,7 @@ export default function HomeScreen() {
                     </TouchableOpacity>
                 )
             }}
+            // keyExtractor={(tutor) => tutor.id}
             />
         </View>
         </>
