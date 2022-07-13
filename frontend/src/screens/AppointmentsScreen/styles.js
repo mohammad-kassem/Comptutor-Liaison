@@ -31,4 +31,10 @@ export default StyleSheet.create({
         marginBottom: 5
     },
 
+    details: {
+        fontSize: 16,
+        lineHeight: 19,
+        color: "#0787F9"
+    }
+
 })
