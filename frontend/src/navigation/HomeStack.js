@@ -10,11 +10,9 @@ export default function HomeStack() {
     const RootStackNav = createStackNavigator();
 
     return (
-        <RootStackNav.Navigator >
-            <RootStackNav.Screen
-            name="HomeScreen"
-            component={HomeScreen}
-            />
+        // <NavigationContainer>
+        <RootStackNav.Navigator initialRouteName="TutorScreen">
+            
             <RootStackNav.Screen
             name="TutorScreen"
             component={TutorScreen}
@@ -24,5 +22,6 @@ export default function HomeStack() {
             component={ScheduleScreen}
             />
         </RootStackNav.Navigator>
+        // </NavigationContainer>
     )
 }
