@@ -5,6 +5,10 @@ import { getAppointments } from './controller';
 
 export default function AppointmentsScreen() {
     const [appointments, setAppointments] = useState([])
+    useEffect(function(){
+        getAppointments(setAppointments);
+      }, []);
+
   return (
         <View style={styles.container}>
             <Text style={styles.title}>Appointments</Text>
