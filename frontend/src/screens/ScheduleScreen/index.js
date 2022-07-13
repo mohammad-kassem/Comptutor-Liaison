@@ -20,6 +20,13 @@ export default function ScheduleScreen({ route }) {
         <ScrollView>
         <View style={styles.container}>
             <Text style={styles.title}>{tutor.fname} {tutor.lname}'s Schedule</Text>
+            {Object.keys(groupedSchedules).map((scheduleDate) => {
+                return (
+                <>
+                <Text style={styles.date}>{scheduleDate}</Text>
+                </View>
+                </>
+            )})}
         </View>
         </ScrollView>
         </>
