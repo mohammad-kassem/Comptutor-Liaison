@@ -52,4 +52,19 @@ export default StyleSheet.create({
         fontWeight: "500"
       },
 
+      rightButton:{
+        flexDirection: "row",
+        flex: 1,
+      },
+
+      cancelButton:{
+        flex: 1,
+        height: 46,
+        textAlign: "center",
+        textAlignVertical: "center",
+        color: "#1877F2",
+        fontSize: 16,
+        fontWeight: "500"
+      },
+
 });
