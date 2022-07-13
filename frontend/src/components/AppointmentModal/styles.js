@@ -28,4 +28,28 @@ export default StyleSheet.create({
         lineHeight: 19,
       },
 
+      buttonsContainer: {
+        marginTop: 15,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+      },
+
+      leftButton:{
+        flexDirection: "row",
+        flex: 1,
+        height: 46,
+      },
+
+      confirmButton:{
+        backgroundColor: "#1877F2",
+        flex: 1,
+        borderBottomLeftRadius: 20,
+        textAlign: "center",
+        textAlignVertical: "center",
+        color: "white",
+        fontSize: 16,
+        fontWeight: "500"
+      },
+
 });
