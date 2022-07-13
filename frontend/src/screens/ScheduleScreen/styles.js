@@ -16,5 +16,12 @@ export default StyleSheet.create({
         lineHeight: 29
     },
 
+    date: {
+        fontSize: 20,
+        lineHeight: 23,
+        fontWeight: "500",
+        borderBottomWidth: 1,
+        paddingTop: 5,
+    },
 
 })
