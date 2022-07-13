@@ -9,6 +9,7 @@ export default function AppointmentsScreen() {
             <View style={styles.appointmentCard}>
                 <View style={styles.cardContent}>
                     <Text style={styles.date}>6/15/22 3:00 PM - 4:00 PM</Text>
+                    <Text style={styles.details}>Appointment with Jane</Text>
                 </View>
             </View>
         </View>   
