@@ -23,6 +23,9 @@ export default function AppointmentModal({ modalIsVisable, setModalIsVisable, ti
               <TouchableOpacity style={styles.leftButton} onPress={()=>{setModalIsVisable(false); addAppointment(time.id, schedules, setSchedules)}}>
                 <Text style={styles.confirmButton}>Confirm</Text>
               </TouchableOpacity>
+              <TouchableOpacity style={styles.rightButton} onPress={()=>setModalIsVisable(false)}>
+                <Text style={styles.cancelButton}>Cancel</Text>
+              </TouchableOpacity>
             </View>
           </View>
           </Modal>
