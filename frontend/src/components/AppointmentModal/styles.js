@@ -21,5 +21,11 @@ export default StyleSheet.create({
         lineHeight: 24,
       },
 
+      content: {
+        marginTop: 15,
+        fontWeight: "500",
+        fontSize: 16,
+        lineHeight: 19,
+      },
 
 });
