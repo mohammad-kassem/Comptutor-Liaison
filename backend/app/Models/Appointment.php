@@ -11,6 +11,7 @@ class Appointment extends Model{
     protected $fillable = [
         'schedule_id',
         'student_id',
+        'tutor_id',
         'type',
         'zoom_url',
 
@@ -22,7 +23,11 @@ class Appointment extends Model{
         return $this->belongsTo(Schedule::class);
     }
 
-    public function user(){
+    public function student(){
         return $this->belongsTo(User::class, 'student_id');
+    }
+
+    public function tutor(){
+        return $this->belongsTo(User::class, 'tutor_id');
     }
 }
