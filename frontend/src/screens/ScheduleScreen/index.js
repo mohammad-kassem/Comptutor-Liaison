@@ -14,9 +14,14 @@ export default function ScheduleScreen({ route }) {
         getAvailableTimes(tutor.id, setSchedules);
       }, []);
 
-  return (
-    <View>
-      <Text>ScheduleScreen</Text>
-    </View>
+    return (
+        <>
+    
+        <ScrollView>
+        <View style={styles.container}>
+            <Text style={styles.title}>{tutor.fname} {tutor.lname}'s Schedule</Text>
+        </View>
+        </ScrollView>
+        </>
     )
 }
