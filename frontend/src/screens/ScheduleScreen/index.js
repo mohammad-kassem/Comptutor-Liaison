@@ -1,11 +1,13 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import styles from './styles'
 
-export default function ScheduleScreen() {
+export default function ScheduleScreen({ route }) {
+    const tutor = route.params.tutor
 
   return (
     <View>
       <Text>ScheduleScreen</Text>
     </View>
-  )
+    )
 }
