@@ -16,6 +16,6 @@ class CreateAppointmentsTable extends Migration{
     }
 
     public function down(){
-        Schema::dropIfExists('appoitments');
+        Schema::dropIfExists('appointments');
     }
 }
