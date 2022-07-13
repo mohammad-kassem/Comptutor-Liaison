@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import { getAvailableTimes, groupSchedules } from './controller'
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
+import AppointmentModal from '../../components/AppointmentModal'
 
 export default function ScheduleScreen({ route }) {
     const [modalIsVisable, setModalIsVisable] = useState(false);
@@ -48,6 +49,8 @@ export default function ScheduleScreen({ route }) {
                 </View>
                 </>
             )})}
+            <AppointmentModal modalIsVisable={modalIsVisable} setModalIsVisable={setModalIsVisable} time={modalData[0]} date={modalData[1]} tutor={tutor}
+                schedules={schedules} setSchedules={setSchedules}/>
         </View>
         </ScrollView>
         </>
