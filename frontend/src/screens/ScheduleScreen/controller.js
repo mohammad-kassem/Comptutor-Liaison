@@ -4,7 +4,7 @@ import { getToken } from '../../components/utility/Token';
 import axios from 'axios';
 
 export function groupSchedules(schedules) {
-  let result = []
+  let groupedSchedule = []
   if (schedules.length !== 0){
     groupedSchedule = schedules.reduce(function (r, a) {
         r[a.date] = r[a.date] || [];
