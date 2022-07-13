@@ -1,8 +1,10 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './styles'
+import { getAppointments } from './controller';
 
 export default function AppointmentsScreen() {
+    const [appointments, setAppointments] = useState([])
   return (
         <View style={styles.container}>
             <Text style={styles.title}>Appointments</Text>
