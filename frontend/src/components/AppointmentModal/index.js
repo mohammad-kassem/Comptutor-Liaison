@@ -17,6 +17,8 @@ export default function AppointmentModal({ modalIsVisable, setModalIsVisable, ti
          >
           <View style={styles.modal}>
             <Text style={styles.title}>Confirm appointment</Text>
+            <Text style={styles.content}>Confirm appointment with {tutor.fname}</Text>
+            <Text style={styles.content}>{date} {time && (time.start_time + "-" + time.end_time)}</Text>
           </View>
           </Modal>
       </View>
