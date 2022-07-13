@@ -19,6 +19,11 @@ export default function AppointmentModal({ modalIsVisable, setModalIsVisable, ti
             <Text style={styles.title}>Confirm appointment</Text>
             <Text style={styles.content}>Confirm appointment with {tutor.fname}</Text>
             <Text style={styles.content}>{date} {time && (time.start_time + "-" + time.end_time)}</Text>
+            <View style={styles.buttonsContainer}>
+              <TouchableOpacity style={styles.leftButton} onPress={()=>{setModalIsVisable(false); addAppointment(time.id, schedules, setSchedules)}}>
+                <Text style={styles.confirmButton}>Confirm</Text>
+              </TouchableOpacity>
+            </View>
           </View>
           </Modal>
       </View>
