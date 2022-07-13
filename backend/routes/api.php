@@ -25,6 +25,9 @@ Route::group(['prefix' => 'v1'], function(){
                 Route::post('/add', [ScheduleController::class, 'add']);
                 Route::delete('/delete/{id?}', [ScheduleController::class, 'delete']);
             });
+            Route::group(['middleware' => 'student'], function($router) {
+                Route::get('/available/{id?}', [ScheduleController::class, 'getAvailableTimes']);
+            });
         }); 
         Route::group(['prefix' => 'degree'], function(){
             Route::group(['middleware' => 'tutor'], function($router) {

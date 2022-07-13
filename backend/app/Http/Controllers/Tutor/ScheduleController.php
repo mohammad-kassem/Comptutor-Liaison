@@ -12,12 +12,26 @@ use Illuminate\Http\Request;
 class ScheduleController extends Controller{
     public function get(){
         $user= auth()->user();
-
+        
         $schedules = Schedule::where('tutor_id', $user->id)->get();
 
         return response()->json([
             'status' => 'Success',
             'schedules' => $schedules,
+        ], 200);
+    }
+
+    public function getAvailableTimes($id){
+        $schedules = Schedule::where('tutor_id', $id)->get();
+
+        $available_times = [];
+        foreach ($schedules as $schedule){
+            if (!$schedule->appointment) array_push($available_times, $schedule); 
+        }
+
+        return response()->json([
+            'status' => 'Success',
+            'available_times' => $available_times,
         ], 200);
     }
 
