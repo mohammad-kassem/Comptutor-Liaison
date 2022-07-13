@@ -16,5 +16,19 @@ export default StyleSheet.create({
         lineHeight: 29
     },
 
+    appointmentCard: {
+        marginTop: 25,
+        backgroundColor: "white",
+        borderRadius: 10,
+        elevation: 10,
+        padding: 15,
+    },
+
+    date:{
+        fontSize: 18,
+        fontWeight: "400",
+        lineHeight: 22,
+        marginBottom: 5
+    },
 
 })
