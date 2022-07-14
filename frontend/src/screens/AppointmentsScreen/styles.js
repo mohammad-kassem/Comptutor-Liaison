@@ -55,6 +55,15 @@ export default StyleSheet.create({
         margin: 30,
         
     },
+
+    go:{
+        backgroundColor: "#1877F2",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 15,
+        borderRadius: 10,
+        margin: 30,
+    },
     }
 
 })
