@@ -4,6 +4,7 @@ import styles from './styles'
 import { useNavigation } from '@react-navigation/core';
 import { useUser } from '../../Context/User';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import Checkbox from 'expo-checkbox';
 
 
 export default function CridentialsFrom({type, onPressHandler }) {
@@ -28,17 +29,38 @@ export default function CridentialsFrom({type, onPressHandler }) {
       </>
       }
       <TextInput style={styles.input} placeholder="Email" onChangeText={(enteredText)=>{setEmail(enteredText)}}/>
-      
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} onChangeText={(enteredText)=>{setPassword(enteredText)}}/>
-      <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>login({email, password})}>
+
+      {type === "login" ?
+      (<>
+      <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({email, password})}>
         <Text style={styles.fullWidthButtonText}>Log in</Text>
-      </TouchableOpacity>
-      <View style={styles.registerMessage}>
+      </TouchableOpacity> 
+      <View style={styles.navigationMessage}>
         <Text>Not a member?</Text>
         <TouchableOpacity>
-          <Text style={styles.registerLink} onPress={()=>navigation.navigate("RegisterScreen")}>Register</Text>
+          <Text style={styles.navigationLink} onPress={()=>navigation.navigate("RegisterScreen")}> Register</Text>
+        </TouchableOpacity> 
+        </View></>) : (
+        <>
+        <View style={styles.checkboxContainer}>
+          <Checkbox
+            disabled={false}
+            value={isTutor}
+            color={"#1877F2"}
+            onValueChange={(newValue) => setIsTutor(newValue)}
+          />
+          <Text style={styles.isTutorMessage}>Register as tutor</Text>
+        </View>
+        <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({fname, lname, email, password, is_tutor: isTutor})}>
+          <Text style={styles.fullWidthButtonText}>Register</Text>
         </TouchableOpacity>
-      </View>
+        <View style={styles.navigationMessage}>
+        <Text>Already a member?</Text>
+        <TouchableOpacity>
+          <Text style={styles.navigationLink} onPress={()=>navigation.navigate("LoginScreen")}> Login</Text>
+        </TouchableOpacity>
+        </View></>)}
     </View>
     </>
     )
