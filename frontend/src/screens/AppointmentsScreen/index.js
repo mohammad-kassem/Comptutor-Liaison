@@ -1,15 +1,12 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
-import { getAppointments } from './controller';
-import { FlatList } from 'react-native-gesture-handler';
+import { useAppointments } from '../../Context/Appointments';
 
 export default function AppointmentsScreen() {
-    const [appointments, setAppointments] = useState([])
+    const {appointments, setAppointments} = useAppointments()
 
-    useEffect(function(){
-        getAppointments(setAppointments);
-      }, []);
+
 
     return (
             <View style={styles.container}>
