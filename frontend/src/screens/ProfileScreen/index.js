@@ -10,6 +10,7 @@ export default function ProfileScreen() {
       <View style={styles.imageContainer}>
             <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
         </View>
+        <Text style={styles.name}>{user.fname} {user.lname}</Text>
     </View>
   )
 }
