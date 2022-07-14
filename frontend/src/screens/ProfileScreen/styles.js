@@ -61,4 +61,16 @@ export default StyleSheet.create({
         paddingHorizontal: 15,
         aspectRatio: 3,
     },
+
+    logoutButton :{
+        flex: 1,
+        flexDirection: "row",
+        backgroundColor: "#FF3142",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderRadius: 10,
+        paddingHorizontal: 15,
+        aspectRatio: 3,
+    },
+
 })
