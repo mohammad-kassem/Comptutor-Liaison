@@ -3,20 +3,25 @@ import React from 'react'
 import { getToken } from '../../components/utility/Token';
 import axios from 'axios';
 
-export async function getAppointments(setAppointments) {
+export async function deleteAppointment(id, appointments,  setAppointments) {
     const token = await getToken();
     axios({
-        method: "get",
-        url: "http://192.168.1.105:8000/api/v1/appointment/student",
+        method: "delete",
+        url: `http://192.168.1.105:8000/api/v1/appointment/delete/${id}`,
         headers: {
         "Content-type": "application/json",
+        "Accept": "application/json",
         "Authorization": `Bearer ${token}`}
     })
-    .then(function(response){
-        setAppointments(response.data.appointments);
+    .then(async function(response){
+        // ToastAndroid.show(response.data.messsage, ToastAndroid.SHORT)
+        console.log(id, appointments)
+        setAppointments(appointments.filter((appointment)=>
+        appointment.schedule_id !== id))
     })
     .catch(function(error){
-        let message = Object.values(error.response.data);
-        ToastAndroid(message[0], ToastAndroid.SHORT) 
+        // console.log("error")
+        // let message = Object.values(error.response.data);
+        // ToastAndroid(message[0], ToastAndroid.SHORT) 
     })
 };
