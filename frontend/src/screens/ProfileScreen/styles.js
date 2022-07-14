@@ -73,4 +73,10 @@ export default StyleSheet.create({
         aspectRatio: 3,
     },
 
+    butonText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: "white"
+    }
+
 })
