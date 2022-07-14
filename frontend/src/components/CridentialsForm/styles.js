@@ -66,5 +66,18 @@ export default StyleSheet.create({
 
     link: {
         backgroundColor: "white"
+    },
+
+    checkboxContainer:{
+        flexDirection: "row",
+        alignItems: "center",
+        marginHorizontal: 30,
+        marginVertical: 10,
+    },
+
+    isTutorMessage: {
+        fontSize: 16,
+        marginLeft: 15,
     }
+
 })
