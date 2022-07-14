@@ -9,4 +9,24 @@ export default StyleSheet.create({
         paddingVertical: 25,
         paddingHorizontal: "10%"
     },
+
+    subjectsContainer:{
+        justifyContent: "space-between",
+        marginTop: 30,
+    },
+
+    imageContainer: {
+        width: 120,
+        height: 120, 
+        marginRight: 15    
+    },
+
+    tutorProfile: {
+        flex: 1,
+        width: undefined,
+        height: undefined,
+        borderRadius: 20
+    },
+
+
 })
