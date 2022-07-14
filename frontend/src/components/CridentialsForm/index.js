@@ -21,7 +21,12 @@ export default function CridentialsFrom({type, onPressHandler }) {
         <Text style={styles.messageTitle}>{type === "login" ? "Hello Again!" : "Hello friend!"}</Text>
         <Text style={styles.messageContent}>{type === "login" ? "Welcome back you've been missed!" : "Welcome to Comptutor"}</Text>
       </View>
-      
+      {type === "register" && 
+      <>
+      <TextInput style={styles.input} placeholder="First name" onChangeText={(enteredText)=>{setFname(enteredText)}}/>
+      <TextInput style={styles.input} placeholder="Last name" onChangeText={(enteredText)=>{setLname(enteredText)}}/>
+      </>
+      }
       <TextInput style={styles.input} placeholder="Email" onChangeText={(enteredText)=>{setEmail(enteredText)}}/>
       
       <TextInput style={styles.input} placeholder="Password" secureTextEntry={true} onChangeText={(enteredText)=>{setPassword(enteredText)}}/>
