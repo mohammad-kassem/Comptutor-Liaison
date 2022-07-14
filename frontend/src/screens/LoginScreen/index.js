@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import styles from './styles';
 import { Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { TextInput, TouchableOpacity } from 'react-native-gesture-handler';
