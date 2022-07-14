@@ -1,7 +1,8 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import styles from './styles'
 import { useUser } from '../../Context/User'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default function ProfileScreen() {
    const { user, setUser } = useUser()
@@ -14,6 +15,12 @@ export default function ProfileScreen() {
         <View style={styles.balanceContainer}>
             <Text style={styles.balance}>Balance</Text>
             <Text style={styles.balance}>$50</Text>
+        </View>
+        <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.editButton}>
+                <Text style={styles.butonText}>Edit</Text>
+                <Icon name="account-edit" size={24} color="white"/>
+            </TouchableOpacity>
         </View>
     </View>
   )
