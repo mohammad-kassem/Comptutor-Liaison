@@ -1,7 +1,7 @@
-import { View, Text ,Image , FlatList } from 'react-native'
+import { View, Text ,Image , FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
-import { TextInput, TouchableOpacity } from 'react-native-gesture-handler'
+import { TextInput } from 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -9,8 +9,8 @@ import { useUser } from '../../Context/User';
 import  SearchBar  from '../../components/SearchBar';
 import { useNavigation } from '@react-navigation/native';
 
-export default function HomeScreen() {
-    const navigation = useNavigation()
+export default function HomeScreen({ navigation }) {
+    // const navigation = useNavigation()
     let [tutors, setTutors] = useState([])
     const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
@@ -31,7 +31,7 @@ export default function HomeScreen() {
         }
         return value
     }
-
+    
     async function getTutors(){
         const token = await getData();
         axios({
@@ -48,16 +48,19 @@ export default function HomeScreen() {
         })
         .catch(function(error){
           let message = Object.values(error.response.data);
-          alert(message[0]);
+          alert(error);
+          console.log("error", error)
         })
     };
 
-    tutors = tutors.filter((tutor)=>{
-        for (var userSubjects of user.subjects){
-            let tutorSubjects = Object.values(tutor.subjects).map((tutorSubject)=> tutorSubject.subject);
-            if ((tutorSubjects).includes(userSubjects.subject)) return true
-        }
-    })
+    if (tutors){
+        tutors = tutors.filter((tutor)=>{
+            for (var userSubjects of user.subjects){
+                let tutorSubjects = Object.values(tutor.subjects).map((tutorSubject)=> tutorSubject.subject);
+                if ((tutorSubjects).includes(userSubjects.subject)) return true
+            }
+        })
+    }
 
     return (
         <>
@@ -68,7 +71,7 @@ export default function HomeScreen() {
             <SearchBar original={original} setTutors={setTutors}/>
             <FlatList data={tutors} renderItem={(tutorData) =>{
                 return(
-                    <TouchableOpacity key={tutorData.item.lname} style={styles.tutorCard} onPress={()=>{navigation.navigate("TutorScreen", {"tutor": tutorData.item})}}>
+                    <TouchableOpacity key={tutorData.item.lname} style={styles.tutorCard} onPress={()=>{navigation.navigate("HomeStack", { screen: "TutorScreen",  params: { tutor: tutorData.item },})}}>
                         <View style={styles.cardContent}>
                             <View style={styles.imageContainer}>
                                 <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
