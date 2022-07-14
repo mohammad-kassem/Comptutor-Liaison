@@ -28,12 +28,6 @@ export default function RegisterScreen() {
 
 
   return (
-    <>
-    <View></View>
-    <Text>index</Text>
-    <TouchableOpacity>
-      <Text onPress={()=> navigation.navigate("LoginScreen")}>Login</Text>
-    </TouchableOpacity>
-    </>
+    <CridentialsFrom type="register" onPressHandler={register}/>
   )
 }
