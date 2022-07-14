@@ -48,6 +48,7 @@ export default StyleSheet.create({
 
     buttonContainer: {
         flexDirection: "row",
+        marginTop: 25,
     },
 
     editButton :{
