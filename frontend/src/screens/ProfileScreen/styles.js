@@ -26,6 +26,23 @@ export default StyleSheet.create({
         fontSize: 28,
         fontWeight: "600",
         lineHeight: 34,
-        marginTop: 25,
+        marginVertical: 25,
+    },
+
+    balanceContainer:{
+        flexDirection: "row",
+        backgroundColor: "white",
+        borderRadius: 20,
+        alignSelf: "stretch",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingHorizontal: 25,
+        aspectRatio: 4.75,
+        elevation: 10,
+    },
+
+    balance: {
+        fontSize: 16,
+        fontWeight: "700",
     },
 })
