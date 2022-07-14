@@ -1,7 +1,9 @@
 import React from 'react'
 import { Text, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
+import CridentialsFrom from '../../components/CridentialsForm';
 import axios from 'axios';
+import { setToken } from '../../components/utility/Token';
 
 
 export default function RegisterScreen() {
@@ -17,7 +19,7 @@ export default function RegisterScreen() {
       data: JSON.stringify(cridentials),
     })
     .then(function(response){
-      
+      setToken(response.data.access_token);
     })
     .catch(function(error){
       console.log(error)
