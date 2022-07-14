@@ -45,4 +45,20 @@ export default StyleSheet.create({
         fontSize: 16,
         fontWeight: "700",
     },
+
+    buttonContainer: {
+        flexDirection: "row",
+    },
+
+    editButton :{
+        flex: 1,
+        flexDirection: "row",
+        backgroundColor: "#1877F2",
+        justifyContent: "space-between",
+        alignItems: "center",
+        borderRadius: 10,
+        marginRight: 25,
+        paddingHorizontal: 15,
+        aspectRatio: 3,
+    },
 })
