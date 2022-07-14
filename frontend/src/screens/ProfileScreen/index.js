@@ -21,6 +21,10 @@ export default function ProfileScreen() {
                 <Text style={styles.butonText}>Edit</Text>
                 <Icon name="account-edit" size={24} color="white"/>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.logoutButton}>
+                <Text style={styles.butonText}>Logout</Text>
+                <Icon name="logout" size={24} color="white"/>
+            </TouchableOpacity>
         </View>
     </View>
   )
