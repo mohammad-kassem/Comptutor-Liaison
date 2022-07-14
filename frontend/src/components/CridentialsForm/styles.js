@@ -54,13 +54,13 @@ export default StyleSheet.create({
         color: "white",
     },
 
-    registerMessage:{
+    navigationMessage:{
         flexDirection:"row",
         justifyContent: "center",
         alignItems: "center"
     },
 
-    registerLink:{
+    navigationLink:{
         color: "#1877F2"
     },
 
