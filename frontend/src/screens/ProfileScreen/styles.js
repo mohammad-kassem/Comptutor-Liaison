@@ -10,7 +10,7 @@ export default StyleSheet.create({
     },
 
     imageContainer: {
-        marginVertical: 75,
+        marginTop: 75,
         width: 150,
         height: 150,
     },
@@ -19,7 +19,13 @@ export default StyleSheet.create({
         flex: 1,
         width: undefined,
         height: undefined,
-        borderRadius: 50
+        borderRadius: 150
     },
 
+    name: {
+        fontSize: 28,
+        fontWeight: "600",
+        lineHeight: 34,
+        marginTop: 25,
+    },
 })
