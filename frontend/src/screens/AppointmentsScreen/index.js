@@ -3,13 +3,15 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useAppointments } from '../../Context/Appointments';
+import { deleteAppointment } from './controller';
+
 
 export default function AppointmentsScreen() {
     const {appointments, setAppointments} = useAppointments()
     const refRBSheet  = useRef();
-
+    const [data, setData] = useState("")
     const [id, setId] = useState()    
-
+    
     return (
         <>  
         
@@ -29,16 +31,18 @@ export default function AppointmentsScreen() {
             <View style={styles.container}>
                 <Text style={styles.title}>Appointments</Text>
                 <FlatList data={appointments} renderItem={(appointmentData) =>{
+                    // console.log(appointmentData)
                 return(
-                <View style={styles.appointmentCard}>
+                <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); console.log(appointmentData.item.schedule_id); setId(appointmentData.item.schedule_id);}}>
                     <View style={styles.cardContent}>
                         <Text style={styles.date}>{appointmentData.item.schedule.date} {appointmentData.item.schedule.start_time} - {appointmentData.item.schedule.end_time}</Text>
-                        <Text style={styles.details}>Appointment with {appointmentData.item.tutor.fname} {appointmentData.item.tutor.fname}</Text>
+                        <Text style={styles.details}>Appointment with {appointmentData.item.tutor.fname} {appointmentData.item.tutor.lname}</Text>
                     </View>
-                </View>
+                </TouchableOpacity>
                 )
                 }}
                 />
-            </View>   
+            </View>
+        </>   
     )
 }
