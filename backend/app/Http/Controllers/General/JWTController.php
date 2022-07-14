@@ -52,10 +52,13 @@ class JWTController extends Controller{
             ]);
         }
 
+        $token = auth()->attempt($validator->validated());
+
         return response()->json([
             'status' => 'Success',
             'message' => 'User successfully registered',
-            'user' => $user
+            'access_token' => $token,
+            'user' => $user,
         ], 201);
     }
 
