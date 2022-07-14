@@ -18,3 +18,11 @@ export async function getToken() {
         }
 
 }
+
+export async function setToken(value) {
+  try {
+    await AsyncStorage.setItem('storage_Key', value)
+  } catch (e) {
+      alert("Error setting token")
+  }
+}
