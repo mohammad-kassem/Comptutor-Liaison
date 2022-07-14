@@ -11,16 +11,23 @@ use Illuminate\Http\Request;
 
 class SubjectController extends Controller{
     public function addUserSubjects(Request $request){
+        $subjects = $request->subjects;
         $user = auth()->user();
-        $subject = $user->subjects()->where('id', $request->id)->first();
+        $added_subjects = [];
+        foreach ($subjects as $subject) {
+            $subject = json_decode(json_encode($subject));
+            $added_subject = $user->subjects()->where('id', $subject->id)->first();
 
-        if ($subject) return response()->json(['error' => 'This subject has already been entered'], 409);
+            if ($added_subject) return response()->json(['error' => 'This subject has already been entered'], 409);
 
-        $user->subjects()->attach($request->id);
+            $user->subjects()->attach($subject->id);
 
+            array_push($added_subjects, $subject);
+        }
         return response()->json([
             'status' => 'Success',
-            'message' => 'User subject successfully added'
+            'message' => 'User subjects successfully added',
+            'add_subjects' => $added_subjects
         ], 200);
     }
 
