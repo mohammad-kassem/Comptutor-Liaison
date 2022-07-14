@@ -64,6 +64,11 @@ export default StyleSheet.create({
         borderRadius: 10,
         margin: 30,
     },
+
+    buttonText: {
+        fontSize: 16,
+        fontWeight: '500',
+        color: "white",
     }
 
 })
