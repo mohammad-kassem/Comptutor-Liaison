@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import React from 'react'
+import AppointmentsProvider from "../Context/Appointments";
 import HomeScreen from "../screens/HomeScreen";
 import ScheduleScreen from "../screens/ScheduleScreen";
 import TutorScreen from "../screens/TutorScreen";
@@ -12,11 +13,12 @@ export default function AppStack() {
     const RootStackNav = createStackNavigator();
 
     return (
+        <AppointmentsProvider>
         <NavigationContainer>
         <RootStackNav.Navigator 
         screenOptions={{headerShown: false
         }}
-        >
+        >   
             {/* <RootStackNav.Screen
             name="HomeScreen"
             component={HomeScreen}
@@ -31,5 +33,6 @@ export default function AppStack() {
             />
         </RootStackNav.Navigator>
         </NavigationContainer>
+        </AppointmentsProvider>
         )
     }
