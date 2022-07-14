@@ -6,8 +6,10 @@ import { useUser } from '../../Context/User';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 
-export default function CridentialsFrom({login }) {
+export default function CridentialsFrom({type, onPressHandler }) {
     const navigation = useNavigation()
+    const [fname, setFname] = useState("")
+    const [lname, setLname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const {user, setUser} = useUser()
