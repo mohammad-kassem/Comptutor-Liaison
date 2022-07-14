@@ -12,7 +12,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
     const [lname, setLname] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const {user, setUser} = useUser()
+    const [isTutor, setIsTutor] = useState(false)
 
     return (
       <>
