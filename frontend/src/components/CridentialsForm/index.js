@@ -16,8 +16,8 @@ export default function CridentialsFrom({login }) {
       <>
     <View style={styles.container}>
       <View style={styles.messageContainer}>
-        <Text style={styles.messageTitle}>Hello Again!</Text>
-        <Text style={styles.messageContent}>Welcome back you've been missed!</Text>
+        <Text style={styles.messageTitle}>{type === "login" ? "Hello Again!" : "Hello friend!"}</Text>
+        <Text style={styles.messageContent}>{type === "login" ? "Welcome back you've been missed!" : "Welcome to Comptutor"}</Text>
       </View>
       
       <TextInput style={styles.input} placeholder="Email" onChangeText={(enteredText)=>{setEmail(enteredText)}}/>
