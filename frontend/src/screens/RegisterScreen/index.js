@@ -20,6 +20,7 @@ export default function RegisterScreen() {
     })
     .then(function(response){
       setToken(response.data.access_token);
+      navigation.navigate('AddSubjectsScreen', {user: response.data.user})
     })
     .catch(function(error){
       console.log(error)
