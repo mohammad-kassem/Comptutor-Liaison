@@ -38,6 +38,23 @@ export default StyleSheet.create({
         fontSize: 16,
         lineHeight: 19,
         color: "#0787F9"
+    },
+
+    sheetText:{
+        fontSize: 24,
+        fontWeight: "500",
+        textAlign: "center"
+    },
+
+    cancel:{
+        backgroundColor: "#FF3142",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 15,
+        borderRadius: 10,
+        margin: 30,
+        
+    },
     }
 
 })
