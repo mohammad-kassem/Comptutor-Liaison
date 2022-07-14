@@ -42,7 +42,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['middleware' => 'auth'], function($router) {
             Route::get('/user', [SubjectController::class, 'getUserSubjects']); 
             Route::get('/', [SubjectController::class, 'get']); 
-            Route::post('/add', [SubjectController::class, 'add']);
+            Route::post('/add', [SubjectController::class, 'addUserSubjects']);
             Route::delete('/delete/{id?}', [SubjectController::class, 'delete']);
         });
     });

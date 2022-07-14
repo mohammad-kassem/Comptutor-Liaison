@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class SubjectController extends Controller{
-    public function add(Request $request){
+    public function addUserSubjects(Request $request){
         $user = auth()->user();
         $subject = $user->subjects()->where('id', $request->id)->first();
 
