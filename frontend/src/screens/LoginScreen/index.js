@@ -45,6 +45,6 @@ export default function LoginScreen() {
   };
   
   return (
-    <CridentialsFrom login={login}/>
+    <CridentialsFrom type="login" onPressHandler={login}/>
   )
 }
