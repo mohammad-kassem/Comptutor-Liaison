@@ -38,3 +38,11 @@ export function handleSelect(id, selectedSubjects, setSelectedSubjects){
     selectedSubjects.some((selectedSubject) => selectedSubject.id === id) ? deselectedSubject(id, selectedSubjects, setSelectedSubjects)
     : selectedSubject(id, selectedSubjects, setSelectedSubjects)
 }
+
+export function isSelected(id, selectedSubjects){
+    let found = false;
+    selectedSubjects.forEach((selectedSubject) => {
+        if (selectedSubject.id === id) found = true
+    });
+    return found
+}
