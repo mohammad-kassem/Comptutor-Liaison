@@ -27,3 +27,9 @@ export function selectedSubject(id, selectedSubjects, setSelectedSubjects) {
     setSelectedSubjects([...selectedSubjects, selectedSubject])
 }
 
+export function deselectedSubject(id, selectedSubjects, setSelectedSubjects) {
+    setSelectedSubjects(selectedSubjects.filter((selectedSubject)=>(
+            selectedSubject.id !== id
+        ))
+    )
+}
