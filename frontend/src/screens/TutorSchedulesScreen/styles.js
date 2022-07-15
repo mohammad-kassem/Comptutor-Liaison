@@ -6,8 +6,9 @@ export default StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
-        paddingVertical: 25,
-        paddingHorizontal: "10%"
+        paddingTop: 25,
+        paddingHorizontal: "10%",
+        paddingBottom: 105,
     },
 
     title: {
@@ -61,4 +62,13 @@ export default StyleSheet.create({
         textAlign: "center",
         textAlignVertical: "center"
     },
+
+    addButton: {
+        backgroundColor: "#1877F2",
+        position: "absolute",
+        bottom: 30,
+        right: 30,
+        padding: 10,
+        borderRadius: 20,
+    }
 })
