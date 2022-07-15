@@ -2,6 +2,7 @@ import { View, Text } from 'react-native'
 import React from 'react'
 import { getToken } from '../../components/utility/Token';
 import axios from 'axios';
+import { useNavigation } from '@react-navigation/native';
 
 export async function getSubjects(setSubjects) {
     const token = await getToken()
@@ -47,7 +48,7 @@ export function isSelected(id, selectedSubjects){
     return found
 }
 
-export async function addSelectedSubjects(selectedSubjects){
+export async function addSelectedSubjects(selectedSubjects, navigation){
     const token = await getToken()
     console.log(selectedSubjects);
     axios({
@@ -60,6 +61,7 @@ export async function addSelectedSubjects(selectedSubjects){
         data: JSON.stringify({"subjects": selectedSubjects}) 
         })
         .then(function(response){
+            navigation.navigate('AddDegreeScreen')
         })
         .catch(function(error){
             console.log(error)
