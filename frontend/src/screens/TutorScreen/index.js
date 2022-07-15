@@ -55,9 +55,7 @@ export default function TutorScreen( {route} ) {
                 </View>
             </View>
         </ScrollView>
-        <View style={styles.buttonContainer}>
-            <FullWidthButton text="Book an appointment" onHandlePress={()=>onHandlePress(tutor, navigation)}/>
-        </View>
+        <FullWidthButton text="Book an appointment" onHandlePress={()=>onHandlePress(tutor, navigation)}/>
         </View>
         </>
     )
