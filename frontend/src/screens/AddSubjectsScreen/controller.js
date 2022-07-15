@@ -24,6 +24,6 @@ export async function getSubjects(setSubjects) {
 
 export function selectedSubject(id, selectedSubjects, setSelectedSubjects) {
     const selectedSubject = {"id": id}
-    setSelectedSubjects(...selectedSubjects, selectedSubject)
+    setSelectedSubjects([...selectedSubjects, selectedSubject])
 }
 
