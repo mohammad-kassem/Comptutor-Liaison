@@ -18,15 +18,20 @@ export default StyleSheet.create({
     imageContainer: {
         width: 120,
         height: 120, 
-        marginRight: 15    
+        marginRight: 15,
+        // position: "relative",   
     },
 
-    tutorProfile: {
+    subjectImage: {
         flex: 1,
         width: undefined,
         height: undefined,
         borderRadius: 20
     },
 
-
+    icon: {
+        position: "absolute",
+        top: "5%",
+        right: "5%",
+    }
 })
