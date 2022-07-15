@@ -20,7 +20,9 @@ export default function AddDegreeScreen() {
         <TextInput style={styles.input} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
         <Text style={styles.inputTitle}>Degree</Text>
         <TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
-        <FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree})}/> 
+        <View style={styles.buttonContainer}>
+            <FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree})}/> 
+        </View>
     </View>
   )
 }

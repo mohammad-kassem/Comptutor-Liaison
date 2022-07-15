@@ -28,5 +28,9 @@ export default StyleSheet.create({
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
         fontSize: 16,
+    },
+
+    buttonContainer: {
+        marginTop: 195,
     }
 })
