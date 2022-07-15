@@ -1,7 +1,7 @@
 import React from 'react';
 import { useUser } from '../Context/User';
 import AppStack from './AppStack';
-import BottomTabsStack from './BottomTabsStack';
+import BottomTabsStackTutor from './BottomTabsStackTutor';
 import OnBoardingStack from './OnBoardingStack';
 
 export default function NavigatorSwitcher() {
@@ -9,7 +9,7 @@ export default function NavigatorSwitcher() {
 
     return (
         <>
-            {Object.keys(user).length ? <AppStack /> : <OnBoardingStack />}
+            {Object.keys(user).length ? user.role_id === 1 ? <AppStack /> : <BottomTabsStackTutor/> : <OnBoardingStack />}
         </>
     )
 }
