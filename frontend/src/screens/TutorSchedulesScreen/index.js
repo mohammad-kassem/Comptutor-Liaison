@@ -4,6 +4,7 @@ import styles from './styles'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import getSchedules from './controller'
 import { groupSchedules } from '../ScheduleScreen/controller'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default function TutorSchedulesScreen() {
     const [schedules, setSchedules] = useState([])
@@ -48,6 +49,7 @@ export default function TutorSchedulesScreen() {
             )})}
         </View>
         </ScrollView>
+        <TouchableOpacity style={styles.addButton}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
         </>
     )
 }
