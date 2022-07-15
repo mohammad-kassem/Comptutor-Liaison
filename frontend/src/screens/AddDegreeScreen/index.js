@@ -4,6 +4,8 @@ import styles from './styles'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
 import { TextInput } from 'react-native-gesture-handler'
+import FullWidthButton from '../../components/FullWidthButton'
+import { addDegree } from './controller'
 
 export default function AddDegreeScreen() {
     const [university, setUniversity] = useState("")
@@ -17,7 +19,8 @@ export default function AddDegreeScreen() {
         <Text style={styles.inputTitle}>University</Text>
         <TextInput style={styles.input} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
         <Text style={styles.inputTitle}>Degree</Text>
-        <TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/> 
+        <TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
+        <FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree})}/> 
     </View>
   )
 }
