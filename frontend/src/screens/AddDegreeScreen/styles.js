@@ -9,4 +9,10 @@ export default StyleSheet.create({
         paddingVertical: 25,
         paddingHorizontal: "10%"
     },
+
+    sectionPrompt: {
+        fontSize: 20,
+        fontWeight: "500",
+        marginVertical: 30
+    },
 })
