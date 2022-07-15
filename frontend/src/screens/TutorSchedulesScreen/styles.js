@@ -70,5 +70,11 @@ export default StyleSheet.create({
         right: 30,
         padding: 10,
         borderRadius: 20,
-    }
+    },
+
+    sheetText:{
+        fontSize: 24,
+        fontWeight: "500",
+        textAlign: "center"
+    },
 })

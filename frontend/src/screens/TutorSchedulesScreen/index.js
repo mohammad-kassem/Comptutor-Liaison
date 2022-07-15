@@ -26,9 +26,13 @@ export default function TutorSchedulesScreen() {
           customStyles={{
             draggableIcon: {
               backgroundColor: "#000"
+            },
+            container: {
+                height: "50%" 
             }
           }}>
-        <Text style={styles.sheetText}>Appointment action</Text>
+        <Text style={styles.sheetText}>Add available hours
+        </Text>
         
         </RBSheet>
         <ScrollView>
