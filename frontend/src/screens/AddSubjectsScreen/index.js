@@ -7,6 +7,7 @@ import { addSelectedSubjects, getSubjects, handleSelect, isSelected } from './co
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import FullWidthButton from '../../components/FullWidthButton'
 import { useNavigation } from '@react-navigation/native'
+import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
 
 export default function AddSubjectsScreen() {
     const [subjects, setSubjects] = useState([])
@@ -35,7 +36,9 @@ export default function AddSubjectsScreen() {
             )}
         }
         />
-        <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation)}/>
+        <AbsolutePositionButtonContainer>
+            <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation)}/>
+        </AbsolutePositionButtonContainer>
         </View>
     )
 }
