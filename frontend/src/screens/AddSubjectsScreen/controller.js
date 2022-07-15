@@ -48,7 +48,7 @@ export function isSelected(id, selectedSubjects){
     return found
 }
 
-export async function addSelectedSubjects(selectedSubjects, navigation){
+export async function addSelectedSubjects(selectedSubjects, navigation, user){
     const token = await getToken()
     console.log(selectedSubjects);
     axios({
@@ -61,7 +61,7 @@ export async function addSelectedSubjects(selectedSubjects, navigation){
         data: JSON.stringify({"subjects": selectedSubjects}) 
         })
         .then(function(response){
-            navigation.navigate('AddDegreeScreen')
+            navigation.navigate('AddDegreeScreen', {user: user})
         })
         .catch(function(error){
             console.log(error)
