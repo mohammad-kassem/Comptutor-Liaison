@@ -3,8 +3,9 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
-import { getSubjects, handleSelect, isSelected } from './controller'
+import { addSelectedSubjects, getSubjects, handleSelect, isSelected } from './controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import FullWidthButton from '../../components/FullWidthButton'
 
 export default function AddSubjectsScreen() {
     const [subjects, setSubjects] = useState([])
@@ -32,6 +33,8 @@ export default function AddSubjectsScreen() {
             )}
         }
         />
+        <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects)}/>
+        
         </View>
     )
 }
