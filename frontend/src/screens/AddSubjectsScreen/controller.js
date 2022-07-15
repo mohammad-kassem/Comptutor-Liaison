@@ -33,3 +33,8 @@ export function deselectedSubject(id, selectedSubjects, setSelectedSubjects) {
         ))
     )
 }
+
+export function handleSelect(id, selectedSubjects, setSelectedSubjects){
+    selectedSubjects.some((selectedSubject) => selectedSubject.id === id) ? deselectedSubject(id, selectedSubjects, setSelectedSubjects)
+    : selectedSubject(id, selectedSubjects, setSelectedSubjects)
+}
