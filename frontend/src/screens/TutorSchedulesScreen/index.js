@@ -1,15 +1,16 @@
 import { View, Text, TouchableOpacity } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import getSchedules from './controller'
 import { groupSchedules } from '../ScheduleScreen/controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import RBSheet from 'react-native-raw-bottom-sheet'
 
 export default function TutorSchedulesScreen() {
     const [schedules, setSchedules] = useState([])
     let groupedSchedules = groupSchedules(schedules);
-    console.log("hello2")
+    const refRBSheet  = useRef();
 
 
     useEffect(function(){
@@ -18,7 +19,18 @@ export default function TutorSchedulesScreen() {
 
     return (
         <>
-    
+        <RBSheet
+          ref={refRBSheet}
+          closeOnDragDown={true}
+          closeOnPressMask={false}
+          customStyles={{
+            draggableIcon: {
+              backgroundColor: "#000"
+            }
+          }}>
+        <Text style={styles.sheetText}>Appointment action</Text>
+        
+        </RBSheet>
         <ScrollView>
         <View style={styles.container}>
             <Text style={styles.title}>Schedule</Text>
@@ -49,7 +61,7 @@ export default function TutorSchedulesScreen() {
             )})}
         </View>
         </ScrollView>
-        <TouchableOpacity style={styles.addButton}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
+        <TouchableOpacity style={styles.addButton} onPress={()=>{refRBSheet.current.open(); console.log("hello")}}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
         </>
     )
 }
