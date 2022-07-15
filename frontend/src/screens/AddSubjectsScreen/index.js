@@ -3,13 +3,15 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
-import { getSubjects } from './controller'
+import { getSubjects, handleSelect } from './controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 export default function AddSubjectsScreen() {
     const [subjects, setSubjects] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])
     const numColumns = 2
+    console.log(selectedSubjects)
+
     useEffect(function(){
         getSubjects(setSubjects);
       }, []);
@@ -20,7 +22,7 @@ export default function AddSubjectsScreen() {
         <OnBoardingPrompt message="Pick your subjects"/>
         <FlatList data={subjects} numColumns={numColumns} columnWrapperStyle={styles.subjectsContainer} renderItem={(subjectData) =>{
                return(
-                <TouchableOpacity style={styles.imageContainer}>
+                <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, selectedSubjects, setSelectedSubjects)}>
                     <Image style={styles.subjectImage} source={{uri:subjectData.item.image,}}/>
                     <View style={styles.icon}>
                         <Icon name="checkbox-marked-circle" size={24} color="#1877F2"/>
