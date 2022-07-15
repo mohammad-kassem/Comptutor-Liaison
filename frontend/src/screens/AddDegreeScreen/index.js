@@ -9,6 +9,7 @@ export default function AddDegreeScreen() {
     <View style={styles.container}>
         <OnBoardingTitle/>
         <OnBoardingPrompt message="Complete your info"/>
+        <Text style={styles.sectionPrompt}>Add your degree to improve your opportunities</Text>
     </View>
   )
 }
