@@ -5,8 +5,10 @@ import styles from './styles'
 
 export default function FullWidthButton({ text, onHandlePress }) {
   return (
-    <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={onHandlePress}>
-      <Text style={styles.fullWidthButtonText}>{text}</Text>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={onHandlePress}>
+        <Text style={styles.fullWidthButtonText}>{text}</Text>
+      </TouchableOpacity>
+    </View>
   )
 }
