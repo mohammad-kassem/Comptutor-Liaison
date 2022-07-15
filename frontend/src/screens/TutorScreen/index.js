@@ -5,6 +5,7 @@ import FullWidthButton from '../../components/FullWidthButton'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 import { onHandlePress } from './controller'
+import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
 
 export default function TutorScreen( {route} ) {
     const tutor = route.params.tutor
@@ -55,7 +56,9 @@ export default function TutorScreen( {route} ) {
                 </View>
             </View>
         </ScrollView>
-        <FullWidthButton text="Book an appointment" onHandlePress={()=>onHandlePress(tutor, navigation)}/>
+        <AbsolutePositionButtonContainer>
+            <FullWidthButton text="Book an appointment" onHandlePress={()=>onHandlePress(tutor, navigation)}/>
+        </AbsolutePositionButtonContainer>
         </View>
         </>
     )
