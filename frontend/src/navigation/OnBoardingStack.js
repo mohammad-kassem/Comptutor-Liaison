@@ -6,13 +6,14 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 import React from 'react'
 import AddSubjectsScreen from "../screens/AddSubjectsScreen";
+import AddDegreeScreen from "../screens/AddDegreeScreen";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
 
     return (
     <NavigationContainer>
-        <RootStackNav.Navigator >
+        <RootStackNav.Navigator initialRouteName="AddSubjectsScreen" >
             <RootStackNav.Screen
             name="LoginScreen"
             component={LoginScreen}
@@ -21,9 +22,13 @@ export default function OnBoardingStack() {
             name="RegisterScreen"
             component={RegisterScreen}
             />
-            <RootStackNav.Screen
+            <RootStackNav.Screen 
             name="AddSubjectsScreen"
             component={AddSubjectsScreen}
+            />
+            <RootStackNav.Screen 
+            name="AddDegreeScreen"
+            component={AddDegreeScreen}
             />
         </RootStackNav.Navigator>
     </NavigationContainer>
