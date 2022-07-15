@@ -21,3 +21,9 @@ export async function getSubjects(setSubjects) {
       })
       .catch(error=>console.log(error))
 }
+
+export function selectedSubject(id, selectedSubjects, setSelectedSubjects) {
+    const selectedSubject = {"id": id}
+    setSelectedSubjects(...selectedSubjects, selectedSubject)
+}
+
