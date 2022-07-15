@@ -9,7 +9,8 @@ import FullWidthButton from '../../components/FullWidthButton'
 import { useNavigation } from '@react-navigation/native'
 import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
 
-export default function AddSubjectsScreen() {
+export default function AddSubjectsScreen( {route} ){
+    const user = route.params.user
     const [subjects, setSubjects] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])
     const navigation = useNavigation()
@@ -37,7 +38,7 @@ export default function AddSubjectsScreen() {
         }
         />
         <AbsolutePositionButtonContainer>
-            <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation)}/>
+            <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, user)}/>
         </AbsolutePositionButtonContainer>
         </View>
     )
