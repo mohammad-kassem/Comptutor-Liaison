@@ -10,6 +10,7 @@ export default function UpdateInfoScreen() {
     <View style={styles.container}>
         <OnBoardingTitle/>
         <OnBoardingPrompt message="Complete your info"/>
+        <Text style={styles.sectionPrompt}>Fill your profile</Text>
     </View>
   )
 }
