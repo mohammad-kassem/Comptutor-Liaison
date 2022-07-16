@@ -1,15 +1,22 @@
 import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles'
 import FullWidthButton from '../../components/FullWidthButton'
 import { ScrollView } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
-import { onHandlePress } from './controller'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { getTutor, onHandlePress } from './controller'
 import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
 
 export default function TutorScreen( {route} ) {
-    const tutor = route.params.tutor
+    const [tutor, setTutor] = useState({"degrees": [], "subjects": []})
+    const tutorId = route.params.tutor.id
     const navigation = useNavigation() 
+
+    useFocusEffect(
+        React.useCallback(()=>{
+            getTutor(tutorId, setTutor)
+        }, [])
+    )
 
     return (
         <>
