@@ -29,7 +29,7 @@ export default function AddScheduleScreen( {route} ) {
                 <Text style={styles.fieldText}>{toTimeString(time)}</Text>
             </TouchableOpacity>
             <View style={styles.buttonContainer}>
-                <FullWidthButton text="Confirm" onHandlePress={()=>addSchedule(date, time)}/>
+                <FullWidthButton text="Confirm" onHandlePress={()=>addSchedule(date, time, schedules, setSchedules)}/>
             </View>
         </View>
     )

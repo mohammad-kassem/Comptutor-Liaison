@@ -11,10 +11,9 @@ export function toTimeString(date) {
     return `${date.getHours() < 10 ? "0" + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes()}`
 }
 
-export async function addSchedule(date, time, duration = 1){
+export async function addSchedule(date, time, schedules, setSchedules, duration = 1){
     const token = await getToken()
-    let end_time = time;
-    end_time = new Date(time.getTime() + (duration * 60 * 60 * 1000))
+    const end_time = new Date(time.getTime() + (duration * 60 * 60 * 1000))
     console.log(toTimeString(time), toTimeString(end_time), toDateString(date))
     const schedule = [{"date": toDateString(date), "start_time": toTimeString(time), "end_time": toTimeString(end_time)}]
     let hours = {"hours": schedule}
@@ -28,7 +27,9 @@ export async function addSchedule(date, time, duration = 1){
         data: JSON.stringify(hours) 
         })
         .then(function(response){
-            console.log(response.data.message)
+            console.log(response.data.schedule)
+            console.log(schedules)
+            setSchedules([...schedules, ...response.data.schedule])
         })
         .catch(function(error){
             console.log(error)
