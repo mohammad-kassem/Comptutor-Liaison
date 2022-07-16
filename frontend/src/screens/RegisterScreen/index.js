@@ -1,33 +1,10 @@
 import React from 'react'
-import { Text, TouchableOpacity, View } from 'react-native';
-import { useNavigation } from '@react-navigation/core';
+import { Text, View } from 'react-native';
 import CridentialsFrom from '../../components/CridentialsForm';
-import axios from 'axios';
-import { setToken } from '../../components/utility/Token';
+import { register } from './controller';
 
 
 export default function RegisterScreen() {
-	const navigation = useNavigation()
-
-	function register(cridentials){
-		axios({
-			method: "post",
-			url: "http://192.168.1.105:8000/api/v1/auth/register",
-			headers: {
-				"Content-type": "application/json",
-			},
-			data: JSON.stringify(cridentials),
-		})
-		.then(function(response){
-			setToken(response.data.access_token);
-			navigation.navigate('AddSubjectsScreen', {user: response.data.user})
-		})
-		.catch(function(error){
-			let message = Object.values(error.response.data);
-			alert(message[0]);
-		})
-	};
-
 
 	return (
 		<CridentialsFrom type="register" onPressHandler={register}/>
