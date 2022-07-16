@@ -1,54 +1,21 @@
 import { View, Text ,Image , FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
-import axios from 'axios';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../Context/User';
 import  SearchBar  from '../../components/SearchBar';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import { getTutors } from './controller';
 
 export default function HomeScreen({ navigation }) {
     let [tutors, setTutors] = useState([])
     const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
 
-
     useFocusEffect(
         React.useCallback(()=>{
-            getTutors()
+            getTutors(setTutors, setOriginal)
         }, [])
     )
-    
-    const getData = async () => {
-        let value;
-        try {
-          value = await AsyncStorage.getItem('storage_Key');
-          if(value !== null) {
-          }
-        } catch(e) {
-            alert("Error getting token")
-        }
-        return value
-    }
-    
-    async function getTutors(){
-        const token = await getData();
-        axios({
-          method: "get",
-          url: "http://192.168.1.105:8000/api/v1/tutor/get",
-          headers: {
-            "Content-type": "application/json",
-            "Authorization": `Bearer ${token}`}
-        })
-        .then(function(response){
-          setTutors(response.data.tutors);
-          setOriginal(response.data.tutors);
-        })
-        .catch(function(error){
-          let message = Object.values(error.response.data);
-          alert(error);
-        })
-    };
 
     if (tutors){
         tutors = tutors.filter((tutor)=>{
