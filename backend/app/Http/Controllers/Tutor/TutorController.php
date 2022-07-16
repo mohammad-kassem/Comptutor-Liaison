@@ -14,10 +14,10 @@ use Illuminate\Http\Request;
 class TutorController extends Controller{
     public function get($id = null){
         if ($id){
-            $tutors = User::with('subjects')->with('degrees')->where('id', $id)->first();
+            $tutors = User::with('subjects')->with('degrees')->where('role_id', 2)->where('id', $id)->first();
         }
         else{
-            $tutors = User::with('subjects')->with('degrees')->where('role_id', 2)->get();
+            $tutors = User::with('subjects')->where('role_id', 2)->get();
         }
 
         return response()->json([
