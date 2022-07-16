@@ -6,7 +6,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 
 import React from 'react'
 import AddSubjectsScreen from "../screens/AddSubjectsScreen";
-import AddDegreeScreen from "../screens/AddDegreeScreen";
+import OnBoardingStackTutor from "./OnBoardingStackTutor";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
@@ -26,9 +26,12 @@ export default function OnBoardingStack() {
             name="AddSubjectsScreen"
             component={AddSubjectsScreen}
             />
-            <RootStackNav.Screen 
-            name="AddDegreeScreen"
-            component={AddDegreeScreen}
+            <RootStackNav.Screen
+            options={{
+            headerShown: false
+            }}
+            name="OnBoardingStackTutor"
+            component={OnBoardingStackTutor}
             />
         </RootStackNav.Navigator>
     </NavigationContainer>
