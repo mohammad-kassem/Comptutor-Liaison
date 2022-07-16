@@ -13,7 +13,7 @@ export default function OnBoardingStack() {
 
     return (
     <NavigationContainer>
-        <RootStackNav.Navigator initialRouteName="AddSubjectsScreen" >
+        <RootStackNav.Navigator>
             <RootStackNav.Screen
             name="LoginScreen"
             component={LoginScreen}
