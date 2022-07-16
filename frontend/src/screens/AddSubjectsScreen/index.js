@@ -8,11 +8,13 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import FullWidthButton from '../../components/FullWidthButton'
 import { useNavigation } from '@react-navigation/native'
 import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
+import { useUser } from '../../Context/User'
 
 export default function AddSubjectsScreen( {route} ){
-    const user = route.params.user
+    let user = route.params.user
     const [subjects, setSubjects] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])
+    const {setUser} = useUser()
     const navigation = useNavigation()
     const numColumns = 2
     console.log(selectedSubjects)
@@ -38,7 +40,7 @@ export default function AddSubjectsScreen( {route} ){
         }
         />
         <AbsolutePositionButtonContainer>
-            <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, user)}/>
+            <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, user, setUser)}/>
         </AbsolutePositionButtonContainer>
         </View>
     )

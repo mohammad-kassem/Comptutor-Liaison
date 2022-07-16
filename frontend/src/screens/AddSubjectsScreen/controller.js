@@ -48,9 +48,9 @@ export function isSelected(id, selectedSubjects){
     return found
 }
 
-export async function addSelectedSubjects(selectedSubjects, navigation, user){
+export async function addSelectedSubjects(selectedSubjects, navigation, user, setUser){
     const token = await getToken()
-    console.log(selectedSubjects);
+    // console.log(selectedSubjects);
     axios({
         method: "post",
         url: "http://192.168.1.105:8000/api/v1/subject/add",
@@ -61,7 +61,8 @@ export async function addSelectedSubjects(selectedSubjects, navigation, user){
         data: JSON.stringify({"subjects": selectedSubjects}) 
         })
         .then(function(response){
-            navigation.navigate('AddDegreeScreen', {user: user})
+            user = {...user, "subjects": selectedSubjects}
+            user.role_id === 1 ? setUser(user) : navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen",  params: { user: user },})
         })
         .catch(function(error){
             console.log(error)
