@@ -40,3 +40,9 @@ export default StyleSheet.create({
         fontSize: 16,
         height: 60,
     },
+
+    buttonContainer: {
+        marginTop: 110,
+        marginHorizontal: "-8%",
+    }
+})
