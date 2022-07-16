@@ -13,6 +13,8 @@ export default function UpdateInfoScreen() {
         <Text style={styles.sectionPrompt}>Fill your profile</Text>
         <Text style={styles.inputTitle}>Zoom rate</Text>
         <TextInput style={styles.input} placeholder="Zoom rate" keyboardType='decimal-pad'/>
+        <Text style={styles.inputTitle}>Chat rate</Text>
+        <TextInput style={styles.input} placeholder="Chat rate" keyboardType='decimal-pad'/>
     </View>
   )
 }
