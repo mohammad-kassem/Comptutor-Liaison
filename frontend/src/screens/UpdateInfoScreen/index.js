@@ -11,6 +11,8 @@ export default function UpdateInfoScreen() {
         <OnBoardingTitle/>
         <OnBoardingPrompt message="Complete your info"/>
         <Text style={styles.sectionPrompt}>Fill your profile</Text>
+        <Text style={styles.inputTitle}>Zoom rate</Text>
+        <TextInput style={styles.input} placeholder="Zoom rate" keyboardType='decimal-pad'/>
     </View>
   )
 }
