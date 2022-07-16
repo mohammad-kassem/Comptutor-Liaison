@@ -4,7 +4,6 @@ import styles from './styles'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
 import { TextInput } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
 import { useUser } from '../../Context/User'
 import FullWidthButton from '../../components/FullWidthButton'
 import { addInfo } from './controller'
@@ -14,7 +13,6 @@ export default function UpdateInfoScreen( {route} ) {
     const [zoomRate, setZoomRate] = useState()
     const [chatRate, setChatRate] = useState()
     const [about, setAbout] = useState("")
-    const navigation = useNavigation()
     const {setUser} = useUser()
 
   return (
