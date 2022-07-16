@@ -14,10 +14,8 @@ export async function addDegree(inputDegree, user, navigation){
         })
         .then(function(response){
             navigation.navigate("UpdateInfoScreen", {user: user})
-            console.log(user)
         })
         .catch(function(error){
-            console.log(error)
             let message = Object.values(error.response.data);
             alert(message[0]);
         })
