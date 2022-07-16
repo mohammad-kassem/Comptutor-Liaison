@@ -15,9 +15,9 @@ class AppointmentController extends Controller{
         $student = auth()->user();
 
         $student_appointments = Appointment::where('student_id', $student->id)->with('tutor')->with('schedule')->get();
-
+        
         return response()->json([
-            'status' => 'Success',
+            'status' => 'Success', 
             'appointments' => $student_appointments
         ]);
     }
@@ -25,9 +25,10 @@ class AppointmentController extends Controller{
     public function getTutorAppointments(){
         $tutor = auth()->user();
 
-        $tutor_appointments = User::with(['schedules'=>function($querry){
-            $querry->with('appointment');
-        }])->where('id', $tutor->id)->get();
+        $tutor_appointments = Appointment::where('tutor_id', $tutor->id)->with('student')->with('schedule')->get();
+        // User::with(['schedules'=>function($querry){
+        //     $querry->with('appointment');
+        // }])->where('id', $tutor->id)->get();
         
         return response()->json([
             'status' => 'Success',
@@ -49,7 +50,8 @@ class AppointmentController extends Controller{
         $appointment = Appointment::create([
             'schedule_id' => $request->schedule_id,
             'student_id' => $student->id,
-            'type' => 1
+            'type' => 1,
+            'tutor_id' => $request->tutor_id,
         ]);
 
         return response()->json([
