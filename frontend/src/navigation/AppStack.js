@@ -13,7 +13,7 @@ export default function AppStack() {
     const RootStackNav = createStackNavigator();
 
     return (
-        <AppointmentsProvider>
+        <AppointmentsProvider stackType="student">
         <NavigationContainer>
         <RootStackNav.Navigator 
         screenOptions={{headerShown: false
