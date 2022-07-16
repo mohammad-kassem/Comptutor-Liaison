@@ -7,14 +7,12 @@ import { TextInput } from 'react-native-gesture-handler'
 import FullWidthButton from '../../components/FullWidthButton'
 import { addDegree } from './controller'
 import { useNavigation } from '@react-navigation/native'
-import { useUser } from '../../Context/User'
 
 export default function AddDegreeScreen( {route} ) {
     const user = route.params.user
     const [university, setUniversity] = useState("")
     const [degree, setDegree] = useState("")
     const navigation = useNavigation()
-    const {setUser} = useUser()
 
   return (
     <View style={styles.container}>
