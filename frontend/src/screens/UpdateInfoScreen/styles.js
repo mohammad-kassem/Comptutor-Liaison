@@ -15,3 +15,17 @@ export default StyleSheet.create({
         fontWeight: "500",
         marginVertical: 30
     },
+
+    inputTitle: {
+        fontSize: 18,
+        marginBottom: 5
+    },
+
+    input: {
+        borderBottomWidth: 1,
+        marginBottom: 20,
+        padding: 0,
+        textAlignVertical: 'bottom',
+        alignItems:"flex-start",
+        fontSize: 16,
+    },
