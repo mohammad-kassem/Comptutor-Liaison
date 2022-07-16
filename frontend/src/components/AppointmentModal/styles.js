@@ -1,47 +1,47 @@
-import { StyleSheet } from "react-native";
+    import { StyleSheet } from "react-native";
 
-export default StyleSheet.create({
+    export default StyleSheet.create({
     container: {
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-      },
-      
-      modal: {
+        },
+        
+        modal: {
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: 'center',
         borderRadius: 20,
-      },
+        },
 
-      title: {
+        title: {
         marginTop: 30,
         fontWeight: "bold",
         fontSize: 20,
         lineHeight: 24,
-      },
+        },
 
-      content: {
+        content: {
         marginTop: 15,
         fontWeight: "500",
         fontSize: 16,
         lineHeight: 19,
-      },
+        },
 
-      buttonsContainer: {
+        buttonsContainer: {
         marginTop: 15,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-      },
+        },
 
-      leftButton:{
+        leftButton:{
         flexDirection: "row",
         flex: 1,
         height: 46,
-      },
+        },
 
-      confirmButton:{
+        confirmButton:{
         backgroundColor: "#1877F2",
         flex: 1,
         borderBottomLeftRadius: 20,
@@ -50,14 +50,14 @@ export default StyleSheet.create({
         color: "white",
         fontSize: 16,
         fontWeight: "500"
-      },
+        },
 
-      rightButton:{
+        rightButton:{
         flexDirection: "row",
         flex: 1,
-      },
+        },
 
-      cancelButton:{
+        cancelButton:{
         flex: 1,
         height: 46,
         textAlign: "center",
@@ -65,6 +65,6 @@ export default StyleSheet.create({
         color: "#1877F2",
         fontSize: 16,
         fontWeight: "500"
-      },
+        },
 
 });
