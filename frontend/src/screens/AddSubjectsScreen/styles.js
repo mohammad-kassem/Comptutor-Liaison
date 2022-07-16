@@ -19,7 +19,6 @@ export default StyleSheet.create({
         width: 120,
         height: 120, 
         marginRight: 15,
-        // position: "relative",   
     },
 
     subjectImage: {
