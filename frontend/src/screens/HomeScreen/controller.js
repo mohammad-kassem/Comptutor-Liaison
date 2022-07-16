@@ -21,3 +21,14 @@ export async function getTutors(setTutors, setOriginal){
         alert(error);
     })
 };
+
+export function filterTutors(tutors, user){
+    if (tutors){
+        return tutors.filter((tutor)=>{
+            for (var userSubjects of user.subjects){
+                let tutorSubjects = Object.values(tutor.subjects).map((tutorSubject)=> tutorSubject.subject);
+                    if ((tutorSubjects).includes(userSubjects.subject)) return true
+            }
+        })
+    }
+}

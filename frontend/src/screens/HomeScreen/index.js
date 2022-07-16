@@ -4,7 +4,7 @@ import styles from './styles'
 import { useUser } from '../../Context/User';
 import  SearchBar  from '../../components/SearchBar';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import { getTutors } from './controller';
+import { filterTutors, getTutors } from './controller';
 
 export default function HomeScreen({ navigation }) {
     let [tutors, setTutors] = useState([])
@@ -17,15 +17,8 @@ export default function HomeScreen({ navigation }) {
         }, [])
     )
 
-    if (tutors){
-        tutors = tutors.filter((tutor)=>{
-            for (var userSubjects of user.subjects){
-                let tutorSubjects = Object.values(tutor.subjects).map((tutorSubject)=> tutorSubject.subject);
-                if ((tutorSubjects).includes(userSubjects.subject)) return true
-            }
-        })
-    }
-
+    tutors = filterTutors(tutors, user)
+        
     return (
         <>
         <View style={styles.container}>
