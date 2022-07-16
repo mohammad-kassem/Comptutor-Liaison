@@ -29,3 +29,14 @@ export default StyleSheet.create({
         alignItems:"flex-start",
         fontSize: 16,
     },
+
+    aboutInput: {
+        backgroundColor: "white",
+        borderWidth: 1,
+        marginBottom: 20,
+        padding: 0,
+        textAlignVertical: 'top',
+        alignItems:"flex-start",
+        fontSize: 16,
+        height: 60,
+    },
