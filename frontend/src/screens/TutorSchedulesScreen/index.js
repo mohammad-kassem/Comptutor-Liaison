@@ -5,7 +5,6 @@ import { FlatList, ScrollView } from 'react-native-gesture-handler'
 import getSchedules from './controller'
 import { groupSchedules } from '../ScheduleScreen/controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import RBSheet from 'react-native-raw-bottom-sheet'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 
 
@@ -19,7 +18,7 @@ export default function TutorSchedulesScreen() {
         getSchedules(setSchedules);
       }, [])
     )
-    
+
     return (
         <>
         <ScrollView>
