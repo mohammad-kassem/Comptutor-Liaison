@@ -1,13 +1,14 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import styles from './styles'
-import { toDateString } from './controller'
+import { toDateString, toTimeString } from './controller'
 
 export default function AddScheduleScreen() {
     let [date, setDate] = useState(new Date())
     let [time, setTime] = useState(new Date())
 
     date = toDateString(date)
+    time = toTimeString(time)   
 
     return (
         <View style={styles.container}>
@@ -20,7 +21,7 @@ export default function AddScheduleScreen() {
             </TouchableOpacity>
             <Text style={styles.title}>Start time</Text>
             <TouchableOpacity style={styles.field}>
-                <Text></Text>
+                <Text>{time}</Text>
             </TouchableOpacity>
         </View>
     )
