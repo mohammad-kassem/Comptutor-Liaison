@@ -1,10 +1,15 @@
 import { View, Text } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
+import styles from './styles'
+import OnBoardingTitle from '../../components/OnBoardingTitle'
+import OnBoardingPrompt from '../../components/OnBoardingPrompt'
+import { TextInput } from 'react-native-gesture-handler'
 
 export default function UpdateInfoScreen() {
   return (
-    <View>
-      <Text>UpdateInfoScreen</Text>
+    <View style={styles.container}>
+        <OnBoardingTitle/>
+        <OnBoardingPrompt message="Complete your info"/>
     </View>
   )
 }
