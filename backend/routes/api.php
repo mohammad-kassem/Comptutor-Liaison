@@ -19,6 +19,9 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['middleware' => 'student'], function($router) {
             Route::get('/get', [TutorController::class, 'get']);
         });
+        Route::group(['middleware' => 'tutor'], function($router) {
+            Route::put('/update', [TutorController::class, 'update']);
+        });
         Route::group(['prefix' => 'schedule'], function(){
             Route::group(['middleware' => 'tutor'], function($router) {
                 Route::get('/get', [ScheduleController::class, 'get']); 
