@@ -2,8 +2,9 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
-import { deleteAppointment } from './controller';
+import { deleteAppointment, getAppointments } from './controller';
 import { UserContext, useUser } from '../../Context/User';
+import { useFocusEffect } from '@react-navigation/native';
 
 
 export default function AppointmentsScreen() {
@@ -13,6 +14,15 @@ export default function AppointmentsScreen() {
     const [id, setId] = useState() 
     const {user, setUser} = useUser()   
     const appointmentWith = user.role_id === 1 ? "tutor" : "student"
+    const stackType = user.role_id === 1 ? "student" : "tutor"
+
+
+    useFocusEffect(
+        React.useCallback(() => {
+            getAppointments(setAppointments, stackType)
+        },[])
+    )
+
 
     return (
         <>  
