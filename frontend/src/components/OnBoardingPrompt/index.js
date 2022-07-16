@@ -3,9 +3,9 @@ import React from 'react'
 import styles from './styles'
 
 export default function OnBoardingPrompt({ message }) {
-  return (
-    <>
-      <Text style={styles.title}>{message}</Text>
-    </>
-  )
+  	return (
+		<>
+		<Text style={styles.title}>{message}</Text>
+		</>
+  	)
 }
