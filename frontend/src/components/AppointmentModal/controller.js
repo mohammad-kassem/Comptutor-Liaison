@@ -3,9 +3,9 @@ import React from 'react'
 import axios from 'axios';
 import { getToken } from '../utility/Token';
 
-export async function addAppointment(scheduleId, schedules, setSchedules) {
+export async function addAppointment(scheduleId, schedules, setSchedules, tutorId) {
     console.log(scheduleId);
-    let data = {"schedule_id": scheduleId}
+    let data = {"schedule_id": scheduleId, "tutor_id": tutorId}
     // data = new FormData()
     // data.append("schedule_id", 28)
     const token = await getToken()
@@ -32,7 +32,7 @@ export async function addAppointment(scheduleId, schedules, setSchedules) {
 };
 
 export function refreshAvailableTimes(scheduleId, schedules, setSchedules){
-  console.log(schedules)
+  // console.log(schedules)
   setSchedules(schedules.filter((schedule)=>
     schedule.id !== scheduleId
   ))
