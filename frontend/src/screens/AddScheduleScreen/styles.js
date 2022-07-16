@@ -17,7 +17,7 @@ export default StyleSheet.create({
     },
 
     title: {
-        fontSize: 18,
+        fontSize: 20,
         marginBottom: 5
     },
 
@@ -27,6 +27,10 @@ export default StyleSheet.create({
         padding: 0,
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
-        fontSize: 16,
+        fontSize: 20
     },
+
+    fieldText: {
+        fontSize: 20
+    }
 })

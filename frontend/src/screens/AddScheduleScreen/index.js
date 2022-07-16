@@ -17,11 +17,11 @@ export default function AddScheduleScreen() {
             <Text style={styles.field}>1 hour</Text>
             <Text style={styles.title}>Date</Text>
             <TouchableOpacity style={styles.field}>
-                <Text>{date}</Text>
+                <Text style={styles.fieldText}>{date}</Text>
             </TouchableOpacity>
             <Text style={styles.title}>Start time</Text>
             <TouchableOpacity style={styles.field}>
-                <Text>{time}</Text>
+                <Text style={styles.fieldText}>{time}</Text>
             </TouchableOpacity>
         </View>
     )
