@@ -4,6 +4,7 @@ import styles from './styles'
 import { useNavigation } from '@react-navigation/core';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import Checkbox from 'expo-checkbox';
+import { useUser } from '../../Context/User';
 
 
 export default function CridentialsFrom({type, onPressHandler }) {
@@ -13,6 +14,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [isTutor, setIsTutor] = useState(false)
+    const {user, setUser} = useUser()
 
     return (
     <>
@@ -32,7 +34,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
 
         {type === "login" ?
         (<>
-        <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({email, password})}>
+        <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({email, password}, setUser)}>
             <Text style={styles.fullWidthButtonText}>Log in</Text>
         </TouchableOpacity> 
         <View style={styles.navigationMessage}>
@@ -51,7 +53,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
             />
             <Text style={styles.isTutorMessage}>Register as tutor</Text>
             </View>
-            <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({fname, lname, email, password, is_tutor: isTutor})}>
+            <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({fname, lname, email, password, is_tutor: isTutor}, navigation)}>
             <Text style={styles.fullWidthButtonText}>Register</Text>
             </TouchableOpacity>
             <View style={styles.navigationMessage}>
