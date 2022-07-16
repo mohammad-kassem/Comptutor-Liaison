@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
 import { deleteAppointment, getAppointments } from './controller';
-import { UserContext, useUser } from '../../Context/User';
+import { useUser } from '../../Context/User';
 import { useFocusEffect } from '@react-navigation/native';
 
 
@@ -44,7 +44,6 @@ export default function AppointmentsScreen() {
             <View style={styles.container}>
                 <Text style={styles.title}>Appointments</Text>
                 <FlatList data={appointments} renderItem={(appointmentData) =>{
-                    // console.log(appointmentData)
                 return(
                 <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); console.log(appointmentData.item.schedule_id); setId(appointmentData.item.schedule_id);}}>
                     <View style={styles.cardContent}>
