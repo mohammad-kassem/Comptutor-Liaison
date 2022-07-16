@@ -6,7 +6,7 @@ import getSchedules from './controller'
 import { groupSchedules } from '../ScheduleScreen/controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import RBSheet from 'react-native-raw-bottom-sheet'
-import { useNavigation } from '@react-navigation/native'
+import { useFocusEffect, useNavigation } from '@react-navigation/native'
 
 
 export default function TutorSchedulesScreen() {
@@ -14,10 +14,12 @@ export default function TutorSchedulesScreen() {
     let groupedSchedules = groupSchedules(schedules);
     const navigation = useNavigation()
 
-    useEffect(function(){
+    useFocusEffect(
+        React.useCallback(()=>{
         getSchedules(setSchedules);
-      }, []);
-
+      }, [])
+    )
+    
     return (
         <>
         <ScrollView>
