@@ -12,9 +12,13 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TutorController extends Controller{
-    public function get(){
-        $tutors = User::with('subjects')->with(['schedules'=>function($querry){
-            $querry->with('appointment');}])->with('degrees')->where('role_id', 2)->get();
+    public function get($id = null){
+        if ($id){
+            $tutors = User::with('subjects')->with('degrees')->where('id', $id)->first();
+        }
+        else{
+            $tutors = User::with('subjects')->with('degrees')->where('role_id', 2)->get();
+        }
 
         return response()->json([
             'status' => 'Success',
