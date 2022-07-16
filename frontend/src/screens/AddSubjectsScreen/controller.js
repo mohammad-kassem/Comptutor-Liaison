@@ -23,21 +23,21 @@ export async function getSubjects(setSubjects) {
       .catch(error=>console.log(error))
 }
 
-export function selectedSubject(id, selectedSubjects, setSelectedSubjects) {
-    const selectedSubject = {"id": id}
+export function selectedSubject(id, subject, selectedSubjects, setSelectedSubjects) {
+    const selectedSubject = {"id": id, "subject": subject}
     setSelectedSubjects([...selectedSubjects, selectedSubject])
 }
 
-export function deselectedSubject(id, selectedSubjects, setSelectedSubjects) {
+export function deselectedSubject(id, subject, selectedSubjects, setSelectedSubjects) {
     setSelectedSubjects(selectedSubjects.filter((selectedSubject)=>(
             selectedSubject.id !== id
         ))
     )
 }
 
-export function handleSelect(id, selectedSubjects, setSelectedSubjects){
-    selectedSubjects.some((selectedSubject) => selectedSubject.id === id) ? deselectedSubject(id, selectedSubjects, setSelectedSubjects)
-    : selectedSubject(id, selectedSubjects, setSelectedSubjects)
+export function handleSelect(id, subject, selectedSubjects, setSelectedSubjects){
+    selectedSubjects.some((selectedSubject) => selectedSubject.id === id) ? deselectedSubject(id, subject, selectedSubjects, setSelectedSubjects)
+    : selectedSubject(id, subject, selectedSubjects, setSelectedSubjects)
 }
 
 export function isSelected(id, selectedSubjects){

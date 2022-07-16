@@ -27,7 +27,7 @@ export default function AddSubjectsScreen( {route} ){
         <OnBoardingPrompt message="Pick your subjects"/>
         <FlatList data={subjects} numColumns={numColumns} columnWrapperStyle={styles.subjectsContainer} renderItem={(subjectData) =>{
                return(
-                <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, selectedSubjects, setSelectedSubjects)}>
+                <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, subjectData.item.subject, selectedSubjects, setSelectedSubjects)}>
                     <Image style={styles.subjectImage} source={{uri:subjectData.item.image,}}/>
                     {isSelected(subjectData.item.id, selectedSubjects) &&
                     <View style={styles.icon}>
