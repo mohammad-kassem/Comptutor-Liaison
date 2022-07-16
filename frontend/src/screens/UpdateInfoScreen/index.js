@@ -15,6 +15,8 @@ export default function UpdateInfoScreen() {
         <TextInput style={styles.input} placeholder="Zoom rate" keyboardType='decimal-pad'/>
         <Text style={styles.inputTitle}>Chat rate</Text>
         <TextInput style={styles.input} placeholder="Chat rate" keyboardType='decimal-pad'/>
+        <Text style={styles.inputTitle}>About me</Text>
+        <TextInput style={styles.input} placeholder="About me" multiline={true}/>
     </View>
   )
 }
