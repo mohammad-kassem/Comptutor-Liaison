@@ -4,14 +4,17 @@ import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
 import { useAppointments } from '../../Context/Appointments';
 import { deleteAppointment } from './controller';
+import { UserContext, useUser } from '../../Context/User';
 
 
 export default function AppointmentsScreen() {
     const {appointments, setAppointments} = useAppointments()
     const refRBSheet  = useRef();
     const [data, setData] = useState("")
-    const [id, setId] = useState()    
-    
+    const [id, setId] = useState() 
+    const {user, setUser} = useUser()   
+    const appointmentWith = user.role_id === 1 ? "tutor" : "student"
+
     return (
         <>  
         
@@ -23,8 +26,9 @@ export default function AppointmentsScreen() {
             draggableIcon: {
               backgroundColor: "#000"
             }
-          }}
-        ><Text style={styles.sheetText}>Appointment action</Text>
+          }}>
+            
+        <Text style={styles.sheetText}>Appointment action</Text>
         <TouchableOpacity style={styles.cancel} onPress={()=>{deleteAppointment(id,appointments, setAppointments); refRBSheet.current.close();}}><Text style={styles.buttonText}>Cancel appointment</Text></TouchableOpacity>
         <TouchableOpacity style={styles.go}><Text style={styles.buttonText}>Go to appointment</Text></TouchableOpacity>
         </RBSheet>
@@ -36,7 +40,7 @@ export default function AppointmentsScreen() {
                 <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); console.log(appointmentData.item.schedule_id); setId(appointmentData.item.schedule_id);}}>
                     <View style={styles.cardContent}>
                         <Text style={styles.date}>{appointmentData.item.schedule.date} {appointmentData.item.schedule.start_time} - {appointmentData.item.schedule.end_time}</Text>
-                        <Text style={styles.details}>Appointment with {appointmentData.item.tutor.fname} {appointmentData.item.tutor.lname}</Text>
+                        <Text style={styles.details}>Appointment with {appointmentData.item[appointmentWith].fname} {appointmentData.item[appointmentWith].lname}</Text>
                     </View>
                 </TouchableOpacity>
                 )
