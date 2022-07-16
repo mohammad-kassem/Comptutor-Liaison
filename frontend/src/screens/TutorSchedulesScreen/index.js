@@ -6,12 +6,13 @@ import getSchedules from './controller'
 import { groupSchedules } from '../ScheduleScreen/controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import RBSheet from 'react-native-raw-bottom-sheet'
+import { useNavigation } from '@react-navigation/native'
+
 
 export default function TutorSchedulesScreen() {
     const [schedules, setSchedules] = useState([])
     let groupedSchedules = groupSchedules(schedules);
-    const refRBSheet  = useRef();
-
+    const navigation = useNavigation()
 
     useEffect(function(){
         getSchedules(setSchedules);
@@ -19,22 +20,6 @@ export default function TutorSchedulesScreen() {
 
     return (
         <>
-        <RBSheet
-          ref={refRBSheet}
-          closeOnDragDown={true}
-          closeOnPressMask={false}
-          customStyles={{
-            draggableIcon: {
-              backgroundColor: "#000"
-            },
-            container: {
-                height: "50%" 
-            }
-          }}>
-        <Text style={styles.sheetText}>Add available hours
-        </Text>
-        
-        </RBSheet>
         <ScrollView>
         <View style={styles.container}>
             <Text style={styles.title}>Schedule</Text>
@@ -65,7 +50,7 @@ export default function TutorSchedulesScreen() {
             )})}
         </View>
         </ScrollView>
-        <TouchableOpacity style={styles.addButton} onPress={()=>{refRBSheet.current.open(); console.log("hello")}}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
+        <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
         </>
     )
 }
