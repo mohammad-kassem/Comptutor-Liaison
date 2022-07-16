@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import styles from './styles'
 import { toDateString, toTimeString } from './controller'
 import DateTimePicker from 'react-native-modal-datetime-picker';
+import FullWidthButton from '../../components/FullWidthButton';
 
 export default function AddScheduleScreen() {
     const [date, setDate] = useState(new Date())
@@ -25,6 +26,9 @@ export default function AddScheduleScreen() {
             <TouchableOpacity style={styles.field} onPress={()=>setTimePickerIsVisable(true)}>
                 <Text style={styles.fieldText}>{toTimeString(time)}</Text>
             </TouchableOpacity>
+            <View style={styles.buttonContainer}>
+                <FullWidthButton text="Confirm"/>
+            </View>
         </View>
     )
 }

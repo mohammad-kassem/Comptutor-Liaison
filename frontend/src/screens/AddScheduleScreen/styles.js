@@ -32,5 +32,11 @@ export default StyleSheet.create({
 
     fieldText: {
         fontSize: 20
+    },
+
+    buttonContainer: {
+        marginTop: 245,
+        marginHorizontal: "-8%",
+
     }
 })
