@@ -26,7 +26,7 @@ export default function AddDegreeScreen( {route} ) {
         <Text style={styles.inputTitle}>Degree</Text>
         <TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
         <View style={styles.buttonContainer}>
-            <FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, user, setUser)}/> 
+            <FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, user, navigation)}/> 
         </View>
     </View>
   )

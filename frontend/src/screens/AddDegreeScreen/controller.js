@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "../../components/utility/Token";
 
-export async function addDegree(inputDegree, user, setUser){
+export async function addDegree(inputDegree, user, navigation){
     const token = await getToken()
     axios({
         method: "post",
@@ -13,7 +13,7 @@ export async function addDegree(inputDegree, user, setUser){
         data: JSON.stringify(inputDegree) 
         })
         .then(function(response){
-            setUser(user)
+            navigation.navigate("UpdateInfoScreen", {user: user})
             console.log(user)
         })
         .catch(function(error){
