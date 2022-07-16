@@ -2,7 +2,6 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import React from 'react'
-import AppointmentsProvider from "../Context/Appointments";
 import BottomTabsStackTutor from "./BottomTabsStackTutor";
 import HomeStackTutor from "./HomeStackTutor";
 
@@ -11,7 +10,6 @@ export default function AppStackTutor() {
     const RootStackNav = createStackNavigator();
 
     return (
-        <AppointmentsProvider stackType="tutor">
         <NavigationContainer>
         <RootStackNav.Navigator 
         screenOptions={{headerShown: false
@@ -31,6 +29,5 @@ export default function AppStackTutor() {
             />
         </RootStackNav.Navigator>
         </NavigationContainer>
-        </AppointmentsProvider>
         )
     }

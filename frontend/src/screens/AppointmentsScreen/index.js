@@ -2,13 +2,12 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
-import { useAppointments } from '../../Context/Appointments';
 import { deleteAppointment } from './controller';
 import { UserContext, useUser } from '../../Context/User';
 
 
 export default function AppointmentsScreen() {
-    const {appointments, setAppointments} = useAppointments()
+    const [appointments,setAppointments] = useState([])
     const refRBSheet  = useRef();
     const [data, setData] = useState("")
     const [id, setId] = useState() 

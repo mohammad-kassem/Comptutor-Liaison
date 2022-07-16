@@ -4,11 +4,9 @@ import Modal from "react-native-modal";
 
 import styles from './styles'
 import { addAppointment } from './controller';
-import { useAppointments } from '../../Context/Appointments';
 
 export default function AppointmentModal({ modalIsVisable, setModalIsVisable, time, date, tutor, schedules, setSchedules }) {
   console.log(date, time)
-  const {appointments, setAppointments} = useAppointments()
 
   return (
       <View style={styles.container}>
@@ -23,7 +21,7 @@ export default function AppointmentModal({ modalIsVisable, setModalIsVisable, ti
             <Text style={styles.content}>Confirm appointment with {tutor.fname} {tutor.lname}</Text>
             <Text style={styles.content}>{date} {time && (time.start_time + "-" + time.end_time)}</Text>
             <View style={styles.buttonsContainer}>
-              <TouchableOpacity style={styles.leftButton} onPress={()=>{setModalIsVisable(false); addAppointment(time.id, schedules, setSchedules, tutor.id); console.log("testing", appointments, {"schedule": time, "tutor": tutor}); setAppointments([...appointments, {"schedule": time, "tutor": tutor, "schedule_id": time.id}])}}>
+              <TouchableOpacity style={styles.leftButton} onPress={()=>{setModalIsVisable(false); addAppointment(time.id, schedules, setSchedules, tutor.id)}}>
                 <Text style={styles.confirmButton}>Confirm</Text>
               </TouchableOpacity>
               <TouchableOpacity style={styles.rightButton} onPress={()=>setModalIsVisable(false)}>
