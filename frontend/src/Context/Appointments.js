@@ -5,15 +5,16 @@ import { useUser } from './User';
 
 export const AppointmentsContext = React.createContext()
 
-export default function AppointmentsProvider({children}) {
+export default function AppointmentsProvider({children, stackType}) {
     const [appointments,setAppointments] = useState({})
 
     useEffect(function(){
-        getAppointments(setAppointments)
+        getAppointments()
       }, []);
 
       async function getAppointments() {
         const token = await getToken();
+        console.log("tutor")
     //     // console.log(token)
     //     //     try {
     //     //       const res = await fetch("http://192.168.1.105:8000/api/v1/appointment/student",{
@@ -31,7 +32,7 @@ export default function AppointmentsProvider({children}) {
     //     //   };
         axios({
             method: "get",
-            url: "http://192.168.1.105:8000/api/v1/appointment/student",
+            url: `http://192.168.1.105:8000/api/v1/appointment/${stackType}`,
             headers: {
             "Authorization": `Bearer ${token}`,
             "Accept": "application/json"}
@@ -41,12 +42,12 @@ export default function AppointmentsProvider({children}) {
             console.log("jshjsh")
             let json = response.data;
             console.log(response.data)
-            if (typeof response.data === "string") json = JSON.parse(response.data)
+            // json = JSON.parse(response.data)
             console.log(typeof response.data)
             setAppointments(json.appointments)
         })
         .catch(function(error){
-            console.log("error")
+            console.log(error)
             let message = Object.values(error.response.data);
             ToastAndroid(message[0], ToastAndroid.SHORT) 
         })
