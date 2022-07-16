@@ -7,7 +7,7 @@ import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../Context/User';
 import  SearchBar  from '../../components/SearchBar';
-import { useNavigation } from '@react-navigation/native';
+import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
     // const navigation = useNavigation()
@@ -16,9 +16,11 @@ export default function HomeScreen({ navigation }) {
     const {user, setUser} = useUser()
 
 
-    useEffect(function(){
-        getTutors();
-      }, []);
+    useFocusEffect(
+        React.useCallback(()=>{
+            getTutors()
+        }, [])
+    )
     
     const getData = async () => {
         let value;
