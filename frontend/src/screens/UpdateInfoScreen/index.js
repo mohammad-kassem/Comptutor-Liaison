@@ -4,6 +4,7 @@ import styles from './styles'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
 import { TextInput } from 'react-native-gesture-handler'
+import FullWidthButton from '../../components/FullWidthButton'
 
 export default function UpdateInfoScreen() {
   return (
@@ -17,6 +18,9 @@ export default function UpdateInfoScreen() {
         <TextInput style={styles.input} placeholder="Chat rate" keyboardType='decimal-pad'/>
         <Text style={styles.inputTitle}>About me</Text>
         <TextInput style={styles.aboutInput} placeholder="About me" multiline={true}/>
+        <View style={styles.buttonContainer}>
+            <FullWidthButton text="Next"/>
+        </View>
     </View>
   )
 }
