@@ -32,8 +32,6 @@ export default StyleSheet.create({
     
     cardContent:{
         flexDirection: "row",
-        // borderColor: "black",
-        // borderWidth: 1,
     },
 
     imageContainer: {
