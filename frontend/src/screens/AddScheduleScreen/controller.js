@@ -14,7 +14,6 @@ export function toTimeString(date) {
 export async function addSchedule(date, time, schedules, setSchedules, duration = 1){
     const token = await getToken()
     const end_time = new Date(time.getTime() + (duration * 60 * 60 * 1000))
-    console.log(toTimeString(time), toTimeString(end_time), toDateString(date))
     const schedule = {"date": toDateString(date), "start_time": toTimeString(time), "end_time": toTimeString(end_time)}
     if (scheduleIsClashing(schedule, schedules)) {alert("Schedule intervals are clashing"); return}
     let hours = {"hours": [schedule]}
@@ -33,7 +32,6 @@ export async function addSchedule(date, time, schedules, setSchedules, duration 
             setSchedules([...schedules, ...response.data.schedule])
         })
         .catch(function(error){
-            console.log(error)
             let message = Object.values(error.response.data);
             alert(message[0]);
     })
