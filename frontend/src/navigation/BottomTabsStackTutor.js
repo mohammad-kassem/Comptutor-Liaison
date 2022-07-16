@@ -11,7 +11,6 @@ import ProfileScreen from '../screens/ProfileScreen';
 export default function BottomTabsStackTutor() {
     const Tab = createBottomTabNavigator();
     return (
-      <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen options={{
           tabBarIcon: () => {
@@ -30,6 +29,5 @@ export default function BottomTabsStackTutor() {
           headerShown: false
         }} name="Profile" component={ProfileScreen} />
       </Tab.Navigator>
-    </NavigationContainer>
       );
 }
