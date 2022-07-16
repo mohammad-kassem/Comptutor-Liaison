@@ -4,7 +4,8 @@ import styles from './styles'
 import { getAvailableTimes, groupSchedules } from './controller'
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import AppointmentModal from '../../components/AppointmentModal'
-import { useAppointments } from '../../Context/Appointments'
+import { useFocusEffect } from '@react-navigation/native'
+// import { useAppointments } from '../../Context/Appointments'
 
 export default function ScheduleScreen({ route }) {
     const [modalIsVisable, setModalIsVisable] = useState(false);
@@ -12,13 +13,14 @@ export default function ScheduleScreen({ route }) {
     const [schedules, setSchedules] = useState([])
     let [modalData, setModalData] = useState([])
     let groupedSchedules = groupSchedules(schedules);
-    const {appointments, setAppointments} = useAppointments()
-    console.log("hello2")
+    // const {appointments, setAppointments} = useAppointments()
 
 
-    useEffect(function(){
-        getAvailableTimes(tutor.id, setSchedules);
-      }, []);
+    useFocusEffect(
+        React.useCallback(()=>{
+            getAvailableTimes(tutor.id, setSchedules);
+        }, [])
+    )
 
     return (
         <>
