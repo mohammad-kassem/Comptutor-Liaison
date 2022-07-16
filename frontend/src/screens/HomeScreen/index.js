@@ -1,8 +1,6 @@
 import { View, Text ,Image , FlatList, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import styles from './styles'
-import { TextInput } from 'react-native-gesture-handler'
-import Icon from 'react-native-vector-icons/FontAwesome';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useUser } from '../../Context/User';
@@ -10,7 +8,6 @@ import  SearchBar  from '../../components/SearchBar';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 
 export default function HomeScreen({ navigation }) {
-    // const navigation = useNavigation()
     let [tutors, setTutors] = useState([])
     const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
@@ -44,14 +41,12 @@ export default function HomeScreen({ navigation }) {
             "Authorization": `Bearer ${token}`}
         })
         .then(function(response){
-            // console.log(response.data.tutors);
           setTutors(response.data.tutors);
           setOriginal(response.data.tutors);
         })
         .catch(function(error){
           let message = Object.values(error.response.data);
           alert(error);
-          console.log("error", error)
         })
     };
 
