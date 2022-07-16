@@ -1,15 +1,17 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import styles from './styles'
-import { toDateString, toTimeString } from './controller'
+import { addSchedule, toDateString, toTimeString } from './controller'
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import FullWidthButton from '../../components/FullWidthButton';
 
-export default function AddScheduleScreen() {
+export default function AddScheduleScreen( {route} ) {
     const [date, setDate] = useState(new Date())
     const [time, setTime] = useState(new Date())
     const [datePickerIsVisable, setDatePickerIsVisable] = useState(false)
     const [timePickerIsVisable, setTimePickerIsVisable] = useState(false)
+    const schedules = route.params.schedules
+    const setSchedules = route.params.setSchedules
 
     return (
         <View style={styles.container}>
@@ -27,7 +29,7 @@ export default function AddScheduleScreen() {
                 <Text style={styles.fieldText}>{toTimeString(time)}</Text>
             </TouchableOpacity>
             <View style={styles.buttonContainer}>
-                <FullWidthButton text="Confirm"/>
+                <FullWidthButton text="Confirm" onHandlePress={()=>addSchedule(date, time)}/>
             </View>
         </View>
     )
