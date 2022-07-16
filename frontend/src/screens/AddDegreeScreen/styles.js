@@ -32,5 +32,6 @@ export default StyleSheet.create({
 
     buttonContainer: {
         marginTop: 195,
+        marginHorizontal: "-8%",
     }
 })
