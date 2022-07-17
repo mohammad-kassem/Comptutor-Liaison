@@ -33,7 +33,7 @@ export default StyleSheet.create({
 
     title: {
         paddingVertical: 15,
-        paddingHorizontal: 15
+        paddingHorizontal: 25
     },
 
     tutorName: {
@@ -78,6 +78,7 @@ export default StyleSheet.create({
 
     infoCard: {
         margin: 15,
+        marginHorizontal: 25,
         padding: 15,
         backgroundColor: "white",
         borderRadius: 20,

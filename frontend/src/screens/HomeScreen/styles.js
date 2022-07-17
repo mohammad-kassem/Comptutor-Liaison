@@ -12,6 +12,7 @@ export default StyleSheet.create({
     title:{
         justifyContent: "center",
         alignItems: "center",
+        marginTop: 25,
     },
 
     titleText: {
@@ -23,10 +24,11 @@ export default StyleSheet.create({
         borderWidth: 1,
         padding: 20,
         paddingBottom: 10,
-        margin: 25,
+        marginHorizontal: 25,
+        marginVertical: 15,
         borderRadius: 20,
         backgroundColor: "white",
-        elevation: 20
+        elevation: 10
     },
 
     

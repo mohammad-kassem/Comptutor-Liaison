@@ -6,8 +6,8 @@ export default StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
-        paddingTop: 25,
-        paddingHorizontal: "10%",
+        marginTop: 50,
+        marginHorizontal: 25,
         paddingBottom: 105,
     },
 

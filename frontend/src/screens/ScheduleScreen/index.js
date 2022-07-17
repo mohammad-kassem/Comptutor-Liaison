@@ -5,6 +5,7 @@ import { getAvailableTimes, groupSchedules } from './controller'
 import { FlatList, ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import AppointmentModal from '../../components/AppointmentModal'
 import { useFocusEffect } from '@react-navigation/native'
+import Container from '../../components/Container'
 
 export default function ScheduleScreen({ route }) {
     const [modalIsVisable, setModalIsVisable] = useState(false);
@@ -24,7 +25,7 @@ export default function ScheduleScreen({ route }) {
         <>
     
         <ScrollView>
-        <View style={styles.container}>
+        <Container>
             <Text style={styles.title}>{tutor.fname} {tutor.lname}'s Schedule</Text>
             {Object.keys(groupedSchedules).map((scheduleDate) => {
                 return (
@@ -53,7 +54,7 @@ export default function ScheduleScreen({ route }) {
             )})}
             <AppointmentModal modalIsVisable={modalIsVisable} setModalIsVisable={setModalIsVisable} time={modalData[0]} date={modalData[1]} tutor={tutor}
                 schedules={schedules} setSchedules={setSchedules}/>
-        </View>
+        </Container>
         </ScrollView>
         </>
     )

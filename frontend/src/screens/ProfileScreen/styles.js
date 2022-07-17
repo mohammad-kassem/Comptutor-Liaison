@@ -6,7 +6,7 @@ export default StyleSheet.create({
         justifyContent: "flex-start",
         alignItems: "center",
         backgroundColor: "#f5f5f5",
-        margin: 30,
+        margin: 35,
     },
 
     imageContainer: {

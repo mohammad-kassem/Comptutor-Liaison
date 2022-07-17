@@ -7,13 +7,13 @@ export default StyleSheet.create({
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
         marginTop: 50,
+        marginHorizontal: 25
     },
 
     title: {
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginHorizontal: "10%",
         marginBottom: 25,
     },
 
@@ -23,7 +23,6 @@ export default StyleSheet.create({
         borderRadius: 10,
         elevation: 10,
         padding: 15,
-        marginHorizontal: "10%"
 
     },
 
