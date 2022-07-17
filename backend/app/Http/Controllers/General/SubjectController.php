@@ -24,10 +24,10 @@ class SubjectController extends Controller{
 
             array_push($added_subjects, $subject);
         }
+
         return response()->json([
-            'status' => 'Success',
             'message' => 'User subjects successfully added',
-            'add_subjects' => $added_subjects
+            'subjects' => $added_subjects
         ], 200);
     }
 
@@ -38,7 +38,6 @@ class SubjectController extends Controller{
         $subjects = $user->subjects()->get();
 
         return response()->json([
-            'status' => 'Success',
             'subjects' => $subjects,
         ], 200);
     }
@@ -47,7 +46,6 @@ class SubjectController extends Controller{
         $subjects = Subject::get();
 
         return response()->json([
-            'status' => 'Success',
             'subjects' => $subjects,
         ], 200);
     }
@@ -57,11 +55,11 @@ class SubjectController extends Controller{
         
         $subject = $user->subjects()->where('subject_id', $id)->first();
 
-        if ($subject === null) return response()->json(['error' => 'Not found'], 404);
+        if ($subject === null) return response()->json(['message' => 'User subject does not exist'], 204);
+        
         $user->subjects()->detach($id);
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'User subject successfully deleted',
         ], 200);
     }
