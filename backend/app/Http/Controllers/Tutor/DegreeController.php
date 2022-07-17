@@ -68,7 +68,7 @@ class DegreeController extends Controller{
         }
 
         $degree = Degree::find($id);
-        if ($degree === null) return response()->json(['error' => 'Not found'], 404);
+        if ($degree === null) return response()->json(['error' => ['Not found']], 404);
 
         $degree->update([
             'university' => $request->university,

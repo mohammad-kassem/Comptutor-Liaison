@@ -18,7 +18,7 @@ class SubjectController extends Controller{
             $subject = json_decode(json_encode($subject));
             $added_subject = $user->subjects()->where('id', $subject->id)->first();
 
-            if ($added_subject) return response()->json(['error' => 'This subject has already been entered'], 409);
+            if ($added_subject) return response()->json(['error' => ['This subject has already been entered']], 409);
 
             $user->subjects()->attach($subject->id);
 
