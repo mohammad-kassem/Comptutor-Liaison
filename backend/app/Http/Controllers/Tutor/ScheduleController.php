@@ -16,7 +16,6 @@ class ScheduleController extends Controller{
         $schedules = Schedule::where('tutor_id', $user->id)->get();
 
         return response()->json([
-            'status' => 'Success',
             'schedules' => $schedules,
         ], 200);
     }
@@ -30,7 +29,6 @@ class ScheduleController extends Controller{
         }
 
         return response()->json([
-            'status' => 'Success',
             'available_times' => $available_times,
         ], 200);
     }
@@ -38,7 +36,7 @@ class ScheduleController extends Controller{
     public function add(Request $request){
         $hours = $request->hours;
         $user = auth()->user();
-        $schedule = [];
+        $schedules = [];
         foreach($hours as $hour){
             $hour = json_decode(json_encode($hour));
 
@@ -63,21 +61,19 @@ class ScheduleController extends Controller{
         }
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Schedule successfully added',
-            'schedule' => $schedule
-        ]);
+            'schedule' => $schedules
+        ], 201);
     }
 
     public function delete($id){
         $schedule = $schedule = Schedule::find($id);
-        if ($schedule === null) return response()->json(['error' => 'Not found'], 404);
+        if ($schedule === null) return response()->json(['message' => 'Schedule does not exist'], 204);
 
         $schedule->delete();
 
         return response()->json([
-            'status' => 'Success',
-            'mesasage' => 'Schedule deleted successfully'
-        ]);
+            'mesasage' => 'Schedule successfully deleted'
+        ], 200);
     }
 }
