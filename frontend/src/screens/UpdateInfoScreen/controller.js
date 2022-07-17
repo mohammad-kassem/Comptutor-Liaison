@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ToastAndroid } from "react-native";
 import { getToken } from "../../components/utility/Token";
 
 export async function addInfo(input, user, setUser){
