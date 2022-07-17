@@ -16,7 +16,6 @@ class DegreeController extends Controller{
         $degrees = Degree::where('tutor_id', $user->id)->get();
 
         return response()->json([
-            'status' => 'Success',
             'degrees' => $degrees,
         ], 200);
     }
@@ -40,20 +39,18 @@ class DegreeController extends Controller{
         ]);
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Degree successfully added',
             'degree' => $degree,
-        ], 200);
+        ], 201);
     }
 
     public function delete($id){
         $degree = $degree = Degree::find($id);
-        if ($degree === null) return response()->json(['error' => 'Not found'], 404);
+        if ($degree === null) return response()->json(['message' => 'User degree does not exist'], 204);
         
         $degree->delete();
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Degree successfully deleted'
         ], 200);
     }
@@ -80,8 +77,8 @@ class DegreeController extends Controller{
         ]);
 
         return response()->json([
-            'status' => 'Success',
-            'message' => 'Degree successfully updated'
+            'message' => 'Degree successfully updated',
+            'degree' => $degree
         ], 200);
     }
 }
