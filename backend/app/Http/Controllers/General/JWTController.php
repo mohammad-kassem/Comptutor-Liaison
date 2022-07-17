@@ -12,10 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use App\HTTP\Controllers\Controller;
 
 class JWTController extends Controller{
-    
-
-    //Register User
-    public function register(Request $request){
+        public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'fname' => 'required|string|min:2|max:255',
             'lname' => 'required|string|min:2|max:255',
@@ -55,14 +52,12 @@ class JWTController extends Controller{
         $token = auth()->attempt($validator->validated());
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'User successfully registered',
             'access_token' => $token,
             'user' => $user,
         ], 201);
     }
 
-    //login user
     public function login(Request $request){
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
@@ -82,7 +77,6 @@ class JWTController extends Controller{
         $user->subjects;
 
         return response()->json([
-            'status' => 'Success',
             'access_token' => $token,
             'user' => $user,
         ], 200);
