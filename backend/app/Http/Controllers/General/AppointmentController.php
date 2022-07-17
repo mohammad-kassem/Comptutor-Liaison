@@ -17,35 +17,22 @@ class AppointmentController extends Controller{
         $student_appointments = Appointment::where('student_id', $student->id)->with('tutor')->with('schedule')->get();
         
         return response()->json([
-            'status' => 'Success', 
             'appointments' => $student_appointments
-        ]);
+        ], 200);
     }
 
     public function getTutorAppointments(){
         $tutor = auth()->user();
 
         $tutor_appointments = Appointment::where('tutor_id', $tutor->id)->with('student')->with('schedule')->get();
-        // User::with(['schedules'=>function($querry){
-        //     $querry->with('appointment');
-        // }])->where('id', $tutor->id)->get();
         
         return response()->json([
-            'status' => 'Success',
             'appointments' => $tutor_appointments
-        ]);
+        ], 200);
     }
 
     public function add(Request $request){
         $student = auth()->user();
-
-        // $validator = Validator::make($request->all(), [
-        //     'type' => 'required|integer'
-        // ]);
-
-        // if($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
         
         $appointment = Appointment::create([
             'schedule_id' => $request->schedule_id,
@@ -55,23 +42,21 @@ class AppointmentController extends Controller{
         ]);
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Appointment successfully added',
             'appointment' => $appointment
-        ]);
+        ], 201);
     }
 
     public function delete($id){
         $appointment = Appointment::where('schedule_id', $id)->first();
 
-        if ($appointment === null) return response()->json(['error' => 'Not found'], 404);
+        if ($appointment === null) return response()->json(['message' => 'Appointment does not exist'], 204);
         
         $appointment->delete();
 
         return response()->json([
-            'status' => 'Success',
             'message' => 'Appointment successfully deleted',
-        ]);
+        ], 200);
     }
 
 }
