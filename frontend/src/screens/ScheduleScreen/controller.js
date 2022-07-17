@@ -26,10 +26,11 @@ export async function getAvailableTimes(tutorId, setSchedules) {
 		},
 	})
 	.then(function(response){
-		setSchedules(response.data.available_times)
+		const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
+		setSchedules(json.available_times)
 	})
-	.catch(error=>console.log(error))
-		// let message = Object.values( await error.response.data);
-		// alert(message[0]);
-	
+	.catch(function(error){
+		let message = Object.values(error.response.data);
+		ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+	})
 };

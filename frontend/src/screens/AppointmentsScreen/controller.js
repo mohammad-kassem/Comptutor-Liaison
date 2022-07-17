@@ -14,13 +14,12 @@ export async function deleteAppointment(id, appointments,  setAppointments) {
         "Authorization": `Bearer ${token}`}
     })
     .then(async function(response){
-        // ToastAndroid.show(response.data.messsage, ToastAndroid.SHORT)
         setAppointments(appointments.filter((appointment)=>
         appointment.schedule_id !== id))
     })
     .catch(function(error){
-        // let message = Object.values(error.response.data);
-        // ToastAndroid(message[0], ToastAndroid.SHORT) 
+        let message = Object.values(error.response.data);
+        ToastAndroid(message[0][0], ToastAndroid.SHORT) 
     })
 };
 
@@ -34,11 +33,11 @@ export async function getAppointments(setAppointments, stackType) {
         "Accept": "application/json"}
     })
     .then(function(response){
-        let json = response.data;
+        const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
         setAppointments(json.appointments)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
-        ToastAndroid(message[0], ToastAndroid.SHORT) 
+        ToastAndroid(message[0][0], ToastAndroid.SHORT) 
     })
 };

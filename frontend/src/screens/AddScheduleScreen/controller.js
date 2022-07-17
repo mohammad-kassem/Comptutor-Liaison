@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native'
+import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { getToken } from '../../components/utility/Token'
 import axios from 'axios'
@@ -15,7 +15,7 @@ export async function addSchedule(date, time, schedules, setSchedules, duration 
     const token = await getToken()
     const end_time = new Date(time.getTime() + (duration * 60 * 60 * 1000))
     const schedule = {"date": toDateString(date), "start_time": toTimeString(time), "end_time": toTimeString(end_time)}
-    if (scheduleIsClashing(schedule, schedules)) {alert("Schedule intervals are clashing"); return}
+    if (scheduleIsClashing(schedule, schedules)) {ToastAndroid.show("Schedule intervals are clashing", ToastAndroid.SHORT); return}
     let hours = {"hours": [schedule]}
     axios({
         method: "post",
@@ -23,17 +23,16 @@ export async function addSchedule(date, time, schedules, setSchedules, duration 
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`
-        },
+            },
         data: JSON.stringify(hours) 
         })
-        .then(function(response){
-            console.log(response.data.schedule)
-            console.log(schedules)
-            setSchedules([...schedules, ...response.data.schedule])
-        })
-        .catch(function(error){
-            let message = Object.values(error.response.data);
-            alert(message[0]);
+    .then(function(response){
+        setSchedules([...schedules, ...response.data.schedule])
+        ToastAndroid.show(response.data.message, ToastAndroid.SHORT)
+    })
+    .catch(function(error){
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 }
 

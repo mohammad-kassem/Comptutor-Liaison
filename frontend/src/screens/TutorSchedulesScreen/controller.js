@@ -14,7 +14,11 @@ export default async function getSchedules(setSchedules) {
 			},
 		})
 	.then(function(response){
-		setSchedules(response.data.schedules)
-		})
-	.catch(error=>console.log(error))
+		const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
+		setSchedules(json.schedules)
+	})
+	.catch(function(error){
+		let message = Object.values(error.response.data);
+		ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+	})
 }

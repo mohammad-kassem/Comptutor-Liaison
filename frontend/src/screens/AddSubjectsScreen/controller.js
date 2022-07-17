@@ -13,10 +13,13 @@ export async function getSubjects(setSubjects) {
           "Authorization": `Bearer ${token}`
         },
       })
-      .then(function(response){
+    .then(function(response){
         setSubjects(response.data.subjects)
-      })
-      .catch(error=>console.log(error))
+    })
+    .catch(function(error){
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+    })
 }
 
 export function selectedSubject(id, subject, selectedSubjects, setSelectedSubjects) {
@@ -55,12 +58,12 @@ export async function addSelectedSubjects(selectedSubjects, navigation, user, se
         },
         data: JSON.stringify({"subjects": selectedSubjects}) 
         })
-        .then(function(response){
-            user = {...user, "subjects": selectedSubjects}
-            user.role_id === 1 ? setUser(user) : navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen",  params: { user: user },})
-        })
-        .catch(function(error){
-            let message = Object.values(error.response.data);
-            alert(message[0]);
-        })
-    }
+    .then(function(response){
+        user = {...user, "subjects": selectedSubjects}
+        user.role_id === 1 ? setUser(user) : navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen",  params: { user: user },})
+    })
+    .catch(function(error){
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+    })
+}

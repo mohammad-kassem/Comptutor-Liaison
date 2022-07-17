@@ -14,20 +14,19 @@ export async function addAppointment(scheduleId, schedules, setSchedules, tutorI
 			"Authorization": `Bearer ${token}`
 		},
 		data: data,
-		})
-		.then(async function(response){
-		console.log("hello")
+	})
+	.then(async function(response){
 		refreshAvailableTimes(scheduleId, schedules, setSchedules)
 		ToastAndroid.show(response.data.message, ToastAndroid.SHORT)
-		})
-		.catch(function(error){
+	})
+	.catch(function(error){
 		let message = Object.values(error.response.data);
-		ToastAndroid.show(message[0], ToastAndroid.SHORT);
-		})
-	};
+		ToastAndroid.show(message[0][0], ToastAndroid.SHORT);
+	})
+};
 
-	export function refreshAvailableTimes(scheduleId, schedules, setSchedules){
+export function refreshAvailableTimes(scheduleId, schedules, setSchedules){
 	setSchedules(schedules.filter((schedule)=>
 	schedule.id !== scheduleId
 	))
-	}
+}

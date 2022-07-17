@@ -22,7 +22,7 @@ export async function getTutor(id, setTutor){
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
-        alert(error);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 }
 

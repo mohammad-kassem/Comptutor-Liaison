@@ -17,6 +17,6 @@ export async function addInfo(input, user, setUser){
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
-        alert(message[0]);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 }

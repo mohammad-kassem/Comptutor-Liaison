@@ -1,4 +1,5 @@
 import axios from "axios";
+import { ToastAndroid } from "react-native";
 import { getToken } from "../../components/utility/Token";
 
 export async function addDegree(inputDegree, user, navigation){
@@ -12,11 +13,11 @@ export async function addDegree(inputDegree, user, navigation){
         },
         data: JSON.stringify(inputDegree) 
         })
-        .then(function(response){
-            navigation.navigate("UpdateInfoScreen", {user: user})
-        })
-        .catch(function(error){
-            let message = Object.values(error.response.data);
-            alert(message[0]);
-        })
-    }
+    .then(function(response){
+        navigation.navigate("UpdateInfoScreen", {user: user})
+    })
+    .catch(function(error){
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+    })
+}

@@ -13,12 +13,13 @@ export async function getTutors(setTutors, setOriginal){
         "Authorization": `Bearer ${token}`}
     })
     .then(function(response){
-        setTutors(response.data.tutors);
-        setOriginal(response.data.tutors);
+        const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
+        setTutors(json.tutors);
+        setOriginal(json.tutors);
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
-        alert(error);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 };
 

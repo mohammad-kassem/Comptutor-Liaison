@@ -1,6 +1,6 @@
 
 
-import { View, Text } from 'react-native'
+import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -10,15 +10,15 @@ export async function getToken(){
 		value = await AsyncStorage.getItem('storage_Key');
 		return value
 	} catch(e) {
-		alert("Error getting token")
+		ToastAndroid.show("Error getting token", ToastAndroid.SHORT)
 		return undefined
 	}
-	}
+}
 
-	export async function setToken(value){
+export async function setToken(value){
 	try {
 		await AsyncStorage.setItem('storage_Key', value)
 	} catch (e) {
-		alert("Error setting token")
+		ToastAndroid.show("Error setting token", ToastAndroid.SHORT)
 	}
-	}
+}
