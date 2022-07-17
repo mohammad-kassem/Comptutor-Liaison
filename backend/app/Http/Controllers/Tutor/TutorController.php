@@ -17,17 +17,7 @@ class TutorController extends Controller{
             $tutors = User::with('subjects')->with('degrees')->where('role_id', 2)->where('id', $id)->first();
         }
         else{
-            $user_id = auth()->user()->id;
-            $subjects = Subject::with(['users' => function($query) use ($user_id){
-                $query->where('user_id', $user_id);
-            }])->get();
-            $subjects_ids = [];
-            foreach($subjects as $subject) {
-                array_push($subjects_ids, $subject->id);
-            }
-            $tutors = User::with('subjects')->whereHas('subjects', function($query) use ($subjects_ids){
-                $query->where('id', 2);
-            })->where('role_id', 2)->get();
+            $tutors = User::with('subjects')->where('role_id', 2)->get();
         }
 
         return response()->json([
