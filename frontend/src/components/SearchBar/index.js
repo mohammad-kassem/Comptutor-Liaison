@@ -8,9 +8,8 @@ import { TextInput } from 'react-native-gesture-handler'
 export default function SearchBar({original, setTutors}) {
     function filter(searchText){
         setTutors(original.filter((tutor)=> {
-            if (tutor.fname.toLowerCase().includes(searchText) || tutor.lname.toLowerCase().includes(searchText)) return true;
+            if ((tutor.fname.toLowerCase() + " " + tutor.lname.toLowerCase()).includes(searchText)) return true;
             for (let tutorSubject of Object.values(tutor.subjects)){
-                console.log(tutorSubject.subject);
                 if (tutorSubject.subject.toLowerCase().includes(searchText)) return true
             }
         }))
