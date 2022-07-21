@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from 'react'
 import BottomTabsStackTutor from "./BottomTabsStackTutor";
+import ChatStack from "./ChatStack";
 import HomeStackTutor from "./HomeStackTutor";
 
 
@@ -21,6 +22,10 @@ export default function AppStackTutor() {
             <RootStackNav.Screen
             name="HomeStackTutor"
             component={HomeStackTutor}
+            />
+            <RootStackNav.Screen
+            name="ChatStack"
+            component={ChatStack}
             />
         </RootStackNav.Navigator>
         </NavigationContainer>
