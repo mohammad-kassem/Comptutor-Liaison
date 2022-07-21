@@ -31,6 +31,12 @@ export default StyleSheet.create({
         width: "100%"
     },
 
+    titleContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between"
+    },
+
     title: {
         paddingVertical: 15,
         paddingHorizontal: 25
@@ -46,35 +52,39 @@ export default StyleSheet.create({
         color: "#656565"
     },
 
+    chatting: {
+        flexDirection: "row",
+        marginHorizontal: 25,
+        backgroundColor: "#1877F2",
+        padding: 15,
+        borderRadius: 15,
+    },
+
+    chattingText: {
+        paddingLeft: 5,
+        fontSize: 14,
+        color: "white",
+    },
+
     ratesContainer: {
         width: "100%",
         height: 60,
         backgroundColor: "white",
         flexDirection: "row",
-        alignItems: "stretch"
+        alignItems: "stretch",
+        justifyContent: "center",
     },
 
-    zoomRate: {
-        borderRightColor: "black",
-        borderRightWidth: 1,
+    videoRate: {
         textAlignVertical: "center",
-        width: "50%",
         textAlign: "center",
         fontSize: 18,
         color: "#1877F2",
+        alignSelf: "stretch",
         paddingHorizontal: 60,
-        lineHeight: 22
+        lineHeight: 22,
     },
 
-    chatRate: {
-        textAlignVertical: "center",
-        width: "50%",
-        textAlign: "center",
-        fontSize: 18,
-        color: "#1877F2",
-        paddingHorizontal: 60,
-        lineHeight: 22
-    },
 
     infoCard: {
         margin: 15,
