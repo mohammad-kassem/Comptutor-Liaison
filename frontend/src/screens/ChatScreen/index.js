@@ -27,6 +27,22 @@ export default function ChatScreen() {
 		});
 	}, [])
 
+	const onSend = useCallback((messages = []) => {
+		messages[0] = {...messages[0], createdAt: messages[0].createdAt.toString()}
+		messages[0].user._id = 3
+		console.log(messages[0].createdAt)
+		console.log("new message", messages)
+		database()
+			.ref(`room1/messages/${messages[0]._id}`)
+			.set(
+			// ...messages
+			messages[0]
+			)
+		.then(() => console.log('Data set.'));
+	}, [])
+	
+
+
 	return (
 		<>
 		<GiftedChat
