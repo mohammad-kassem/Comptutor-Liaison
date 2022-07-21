@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import styles from './styles'
 import FullWidthButton from '../../components/FullWidthButton'
@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import { getTutor, onHandlePress } from './controller'
 import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 export default function TutorScreen( {route} ) {
     const [tutor, setTutor] = useState({"degrees": [], "subjects": []})
@@ -26,13 +27,18 @@ export default function TutorScreen( {route} ) {
                 <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
             </View>
             <View style={styles.infoContainer}>
-                <View style={styles.title}>
-                    <Text style={styles.tutorName}>{tutor.fname} {tutor.lname}</Text>
-                    <Text style={styles.tutorExperince}>Teaching since {}</Text>
+                <View style={styles.titleContainer}>
+                    <View style={styles.title}>
+                        <Text style={styles.tutorName}>{tutor.fname} {tutor.lname}</Text>
+                        <Text style={styles.tutorExperince}>Teaching since {}</Text>
+                    </View>
+                    <TouchableOpacity style={styles.chatting}>
+                        <Icon name="comments" size={24} color="white"/>
+                        <Text style={styles.chattingText}>Chat with {tutor.fname}</Text>
+                    </TouchableOpacity>
                 </View>
                 <View style={styles.ratesContainer}>
-                    <Text style={styles.zoomRate}>${tutor.rate_zoom} /H for Zoom</Text>
-                    <Text style={styles.chatRate}>${tutor.rate_chat} /H for Chat</Text>
+                    <Text style={styles.videoRate}>${tutor.rate_video} /H for Video</Text>
                 </View>
                 <View style={styles.tutorDetails}>
                     <View style={styles.infoCard}>
