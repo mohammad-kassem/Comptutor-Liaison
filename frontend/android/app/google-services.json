@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "864576442806",
+    "firebase_url": "https://comptutor-baf6e-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "comptutor-baf6e",
+    "storage_bucket": "comptutor-baf6e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:864576442806:android:a77752a87a519c9f6f7117",
+        "android_client_info": {
+          "package_name": "comptutor.test"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "864576442806-rroetigptqertaeth62jsqrcp3u89oiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxEeFZx5DssV5fWZWnVVETR_-f1tCxZ_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "864576442806-rroetigptqertaeth62jsqrcp3u89oiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
