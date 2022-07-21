@@ -30,6 +30,14 @@ export default function BottomTabsStackTutor() {
 			}} name="Appointments" component={AppointmentsScreen} />
 			<Tab.Screen options={{
 			tabBarIcon: () => {
+				return <Icon name="comments" size={24} color={"#1877F2"}/>;
+			},
+			tabBarShowLabel: false,
+			tabBarStyle: { height: 56 },
+			headerShown: false
+			}} name="Chat" component={ChatRoomScreen} />
+			<Tab.Screen options={{
+			tabBarIcon: () => {
 				return <Icon name="user" size={24} color={"#1877F2"}/>;
 			},
 			tabBarShowLabel: false,
