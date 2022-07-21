@@ -4,7 +4,7 @@ import HomeScreen from "../screens/HomeScreen";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AppointmentsScreen from '../screens/AppointmentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
-import ChatRoomScreen from '../screens/ChatRoomScreen';
+import ChatRoomsScreen from '../screens/ChatRoomsScreen';
 
 
 
@@ -36,7 +36,7 @@ export default function BottomTabsStack() {
 			tabBarShowLabel: false,
 			tabBarStyle: { height: 56 },
 			headerShown: false
-			}} name="Chat" component={ChatRoomScreen} />
+			}} name="Chat" component={ChatRoomsScreen} />
 			<Tab.Screen options={{
 			tabBarIcon: () => {
 				return <Icon name="user" size={24} color={"#1877F2"}/>;
