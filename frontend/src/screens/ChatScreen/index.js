@@ -39,7 +39,7 @@ export default function ChatScreen( {route} ) {
 		try{
 			database()
 				.ref(`rooms/${roomId}`)
-				.set(
+				.update(
 					{studentName: `${user.fname} ${user.lname}`,
 					tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
 					image1: avatar,
