@@ -3,10 +3,14 @@ import { View, Text } from 'react-native'
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import database from '@react-native-firebase/database';
+import { useUser } from '../../Context/User';
 
 
-export default function ChatScreen() {
+export default function ChatScreen( {route} ) {
 	const [messages, setMessages] = useState([]);
+	const {user} = useUser()
+	const isStudent = route.params.isStudent
+	const roomId = isStudent ? `${user.id}-${route.params.recieverId}` : `${route.params.recieverId}-${user.id}`
 
 	const WIDTH = 200 
 	const HEIGHT = 2000

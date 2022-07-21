@@ -32,7 +32,7 @@ export default function TutorScreen( {route} ) {
                         <Text style={styles.tutorName}>{tutor.fname} {tutor.lname}</Text>
                         <Text style={styles.tutorExperince}>Teaching since {}</Text>
                     </View>
-                    <TouchableOpacity style={styles.chatting} onPress={() => navigation.navigate("ChatStack", { screen: "ChatScreen",  params: { tutor: tutor },})}>
+                    <TouchableOpacity style={styles.chatting} onPress={() => navigation.navigate("ChatStack", { screen: "ChatScreen",  params: { recieverId: tutorId, isStudent: true },})}>
                         <Icon name="comments" size={24} color="white"/>
                         <Text style={styles.chattingText}>Chat with {tutor.fname}</Text>
                     </TouchableOpacity>
