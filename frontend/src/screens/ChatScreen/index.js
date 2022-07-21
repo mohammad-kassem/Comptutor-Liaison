@@ -10,7 +10,7 @@ export default function ChatScreen( {route} ) {
 	const [messages, setMessages] = useState([]);
 	const {user} = useUser()
 	const isStudent = route.params.isStudent
-	const roomId = isStudent ? `${user.id}-${route.params.recieverId}` : `${route.params.recieverId}-${user.id}`
+	const roomId = isStudent ? `${user.id}-${route.params.reciever.id}` : `${route.params.reciever.id}-${user.id}`
 	const avatar = user.profile_image || '../../../assets/logo.png'
 
 	const WIDTH = 200 
@@ -36,6 +36,17 @@ export default function ChatScreen( {route} ) {
 		const createdAt = messages[0].createdAt
 		messages[0] = {...messages[0], createdAt: createdAt.toString(), }
 		messages[0].user = {_id: user.id, name: `${user.fname} ${user.lname}`, avatar: avatar}
+		try{
+			database()
+				.ref(`rooms/${roomId}`)
+				.set(
+					{studentName: `${user.fname} ${user.lname}`,
+					tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
+					image1: avatar,
+					image2: route.params.reciever.profile_image || '../../../assets/logo.png'
+				})
+			}
+		catch{}
 		database()
 			.ref(`rooms/${roomId}/messages/${createdAt.getTime()}`)
 			.set(
