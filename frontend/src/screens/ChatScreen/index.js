@@ -31,19 +31,16 @@ export default function ChatScreen( {route} ) {
 		});
 	}, [])
 
-	const onSend = useCallback((messages = []) => {
-		messages[0] = {...messages[0], createdAt: messages[0].createdAt.toString()}
-		messages[0].user._id = 3
-		console.log(messages[0].createdAt)
-		console.log("new message", messages)
+	function onSend(messages = []) {
+		const createdAt = messages[0].createdAt
+		messages[0] = {...messages[0], createdAt: createdAt.toString(), }
+		messages[0].user = {_id: user.id, name: `${user.fname} ${user.lname}`, image: user.profile_image}
 		database()
-			.ref(`room1/messages/${messages[0]._id}`)
+			.ref(`rooms/${roomId}/messages/${createdAt.getTime()}`)
 			.set(
-			// ...messages
 			messages[0]
 			)
-		.then(() => console.log('Data set.'));
-	}, [])
+		}
 	
 
 
@@ -52,9 +49,9 @@ export default function ChatScreen( {route} ) {
 		<GiftedChat
 			messages={messages}
 			onSend={messages => onSend(messages)}
-			created = {new Date}
 			user={{
-			_id: 1,
+			_id: user.id,
+
 			}}
 		/>
 		</>
