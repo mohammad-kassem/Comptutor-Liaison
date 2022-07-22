@@ -8,6 +8,7 @@ use App\Http\Controllers\Tutor\DegreeController;
 use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\ScheduleController;
 use App\Http\Controllers\General\AppointmentController;
+use App\Http\Controllers\General\UserController;
 
 
 Route::group(['prefix' => 'v1'], function(){
@@ -15,6 +16,7 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/register', [JWTController::class, 'register']);
         Route::post('/login', [JWTController::class, 'login']);
     });
+    Route::put('/FCM/set', [UserController::class, 'setFCM']);
     Route::group(['prefix' => 'tutor'], function(){
         Route::group(['middleware' => 'student'], function($router) {
             Route::get('/get/{id?}', [TutorController::class, 'get']);
