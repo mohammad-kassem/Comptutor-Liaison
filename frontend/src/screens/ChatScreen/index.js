@@ -36,26 +36,28 @@ export default function ChatScreen( {route} ) {
 		const createdAt = messages[0].createdAt
 		messages[0] = {...messages[0], createdAt: createdAt.toString(), }
 		messages[0].user = {_id: user.id, name: `${user.fname} ${user.lname}`, avatar: avatar}
-		try{
+		if(route.params.reciever.fname) {
 			database()
 				.ref(`rooms/${roomId}`)
 				.update(
 					{studentName: `${user.fname} ${user.lname}`,
 					tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
-					image1: avatar,
-					image2: route.params.reciever.profile_image || '../../../assets/logo.png'
+					studentImage: avatar,
+					tutorImage: route.params.reciever.profile_image || '../../../assets/logo.png'
 				})
 			}
-		catch{}
 		database()
 			.ref(`rooms/${roomId}/messages/${createdAt.getTime()}`)
 			.set(
 			messages[0]
 			)
-		}
+		database()
+		.ref(`rooms/${roomId}`)
+		.update(
+			{lastMessage: messages[0].text}
+		)
+	}
 	
-
-
 	return (
 		<>
 		<GiftedChat
