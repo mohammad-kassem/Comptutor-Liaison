@@ -13,9 +13,8 @@ class CreateUsersTable extends Migration{
             $table->string('email')->unique();
             $table->string('password');
             $table->integer('role_id');
-            $table->integer('firebase_n');
-            $table->integer('rate_chat');
-            $table->integer('rate_zoom');
+            $table->integer('rate');
+            $table->string('FCM_token')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('about')->nullable();
             $table->timestamps();

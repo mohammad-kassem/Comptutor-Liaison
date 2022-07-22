@@ -27,8 +27,7 @@ class TutorController extends Controller{
 
     public function update(Request $request){
         $validator = Validator::make($request->all(), [
-            'rate_chat' => 'required|integer|min:1|max:100',
-            'rate_zoom' => 'required|integer|min:1|max:100',
+            'rate' => 'required|integer|min:1|max:100',
             'about_me' => 'required|string|min:6',
         ]);
 
@@ -42,8 +41,7 @@ class TutorController extends Controller{
             'fname' => $user->fname,
             'lname' => $user->lname,
             'role_id' => $user->role_id,
-            'rate_chat' => $request->rate_chat,
-            'rate_zoom' => $request->rate_zoom,
+            'rate' => $request->rate,
             'about' => $request->about_me
         ]);
 
@@ -51,4 +49,5 @@ class TutorController extends Controller{
             'tutor' => $tutor,
         ], 200);
     }
+
 }

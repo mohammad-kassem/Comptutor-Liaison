@@ -10,6 +10,8 @@ use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\HTTP\Controllers\Controller;
+use Illuminate\Support\Facades\Http;
+
 
 class JWTController extends Controller{
         public function register(Request $request){
@@ -31,9 +33,7 @@ class JWTController extends Controller{
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role_id' => 2,
-                'rate_chat' => 0,
-                'rate_zoom' => 0,
-                'firebase_n' => 0
+                'rate' => 0,
             ]); 
         }
         else {
@@ -43,9 +43,7 @@ class JWTController extends Controller{
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
                 'role_id' => 1,
-                'rate_chat' => 0,
-                'rate_zoom' => 0,
-                'firebase_n' => 0
+                'rate' => 0,
             ]);
         }
 

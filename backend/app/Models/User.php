@@ -18,11 +18,10 @@ class User extends Authenticatable implements JWTSubject{
         'email',
         'password',
         'role_id',
-        'firebase_n',
-        'rate_chat',
-        'rate_zoom',
+        'rate',
         'profile_image',
-        'about'
+        'about',
+        'FCM_token'
         
     ];
 
