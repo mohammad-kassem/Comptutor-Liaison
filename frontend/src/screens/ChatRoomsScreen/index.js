@@ -15,8 +15,9 @@ export default function ChatRoomsScreen() {
         database()
 		.ref("rooms")
 		.on('value', snapshot => {
-			arr = [Object.values(snapshot.val())]
-			console.log(arr[0][0])
+			arr = []
+			setRooms(arr)
+			arr = [Object.entries(snapshot._snapshot.value)]
 			setRooms(arr[0])
 		})
       }, []);
