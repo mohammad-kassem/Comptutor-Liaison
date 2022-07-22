@@ -59,4 +59,38 @@ class AppointmentController extends Controller{
         ], 200);
     }
 
+    
+    public function sendNotification($FCM_token){
+        $user = auth()->user();
+        $url = 'https://fcm.googleapis.com/fcm/send';
+        $api_key='AAAAyUzFkbY:APA91bHi9O4P9J7zIlSi5L5ein8OxVcVI40aEFNn8bATBruombexZOC9a0uaP5y6sYndPJ9dthvu5JHfCzgpfcYj_EhfKQP8CUxaYUOuVIJ59voHNETiXRoiScFoNgZiXT4fz7l9MLkd';
+        $fields =([
+        'to' => $FCM_token,
+        'notification' => array (
+            "title" => "Appointment booked",
+            "body" => $user->fname." ".$user->lname." booked an appointment"
+        )
+        ]);  
+        $headers = array(
+            'Content-Type:application/json',
+            'Authorization:key='.$api_key
+        );
+            
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
+        $result = curl_exec($ch);
+        if ($result === FALSE) {
+            die('FCM Send Error: ' . curl_error($ch));
+        }
+        // echo($result);
+        curl_close($ch);
+        return ($result);
+
+    }
 }
