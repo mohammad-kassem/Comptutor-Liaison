@@ -3,11 +3,12 @@ import React, { useEffect, useState } from 'react'
 import styles from './styles'
 import database from '@react-native-firebase/database'
 import { useUser } from '../../Context/User'
+import { filterRooms } from './controller'
 
 
 export default function ChatRoomsScreen() {
 	const {user} = useUser()
-	const [rooms, setRooms] = useState([])
+	let [rooms, setRooms] = useState([])
 	
 
 	useEffect(function(){
@@ -21,6 +22,8 @@ export default function ChatRoomsScreen() {
 			setRooms(arr[0])
 		})
       }, []);
+
+	rooms = filterRooms(rooms, user)
 
 	return (
 		<>
