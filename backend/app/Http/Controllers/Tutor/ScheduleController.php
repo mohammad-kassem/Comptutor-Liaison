@@ -57,12 +57,12 @@ class ScheduleController extends Controller{
                 'end_time' => $hour->end_time,
             ]);
 
-            array_push($schedule, $available_hour);
+            array_push($schedules, $available_hour);
         }
 
         return response()->json([
             'message' => 'Schedule successfully added',
-            'schedule' => $schedules
+            'schedules' => $schedules
         ], 201);
     }
 
