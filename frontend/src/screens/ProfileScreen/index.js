@@ -12,10 +12,10 @@ export default function ProfileScreen() {
                 <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
             </View>
             <Text style={styles.name}>{user.fname} {user.lname}</Text>
-            <View style={styles.balanceContainer}>
+            {user.role_id === 1 && <View style={styles.balanceContainer}>
                 <Text style={styles.balance}>Balance</Text>
                 <Text style={styles.balance}>$50</Text>
-            </View>
+            </View>}
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.editButton}>
                     <Text style={styles.butonText}>Edit</Text>
