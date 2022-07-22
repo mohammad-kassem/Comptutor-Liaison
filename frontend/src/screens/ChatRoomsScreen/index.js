@@ -1,11 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import styles from './styles'
 
 export default function ChatRoomsScreen() {
 
-  return (
-    <View>
-      <Text>ChatRoomScreen</Text>
-    </View>
-  )
+	return (
+		<>
+		<Text style={styles.title}>Chat Rooms</Text>
+		</>
+	)
 }
