@@ -40,6 +40,9 @@ class AppointmentController extends Controller{
             'type' => 1,
             'tutor_id' => $request->tutor_id,
         ]);
+        
+        $FCM_token = User::where('id', $request->tutor_id)->first();
+        $this -> sendNotification($FCM_token->FCM_token);
 
         return response()->json([
             'message' => 'Appointment successfully added',
