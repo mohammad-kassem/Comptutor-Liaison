@@ -27,7 +27,7 @@ export async function addSchedule(date, time, schedules, setSchedules, duration 
         data: JSON.stringify(hours) 
         })
     .then(function(response){
-        setSchedules([...schedules, ...response.data.schedule])
+        setSchedules([...schedules, ...response.data.schedules])
         ToastAndroid.show(response.data.message, ToastAndroid.SHORT)
     })
     .catch(function(error){
