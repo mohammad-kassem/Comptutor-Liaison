@@ -2,6 +2,8 @@ import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { setToken } from '../../components/utility/Token';
 import axios from 'axios';
+import messaging from '@react-native-firebase/messaging';
+
 
 export function login(cridentials, setUser){
     axios({
@@ -15,6 +17,7 @@ export function login(cridentials, setUser){
     .then(async function(response){
         await setToken(response.data.access_token);
         setUser(response.data.user);
+        getFCM(response.data.user)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
@@ -22,6 +25,15 @@ export function login(cridentials, setUser){
         ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 };
+
+export function getFCM(user){
+    messaging().registerDeviceForRemoteMessages().then(
+        async function(){
+            const FCM_token = await messaging().getToken();
+            setFCM(user, FCM_token)
+    })
+}
+
 export function setFCM(user, FCM_token){
     axios({
         method: "put",
