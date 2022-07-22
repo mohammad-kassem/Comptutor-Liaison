@@ -36,7 +36,7 @@ class ScheduleController extends Controller{
     public function add(Request $request){
         $hours = $request->hours;
         $user = auth()->user();
-        $schedules = [];
+        $schedule = [];
         foreach($hours as $hour){
             $hour = json_decode(json_encode($hour));
 
@@ -57,12 +57,12 @@ class ScheduleController extends Controller{
                 'end_time' => $hour->end_time,
             ]);
 
-            array_push($schedules, $available_hour);
+            array_push($schedule, $available_hour);
         }
 
         return response()->json([
             'message' => 'Schedule successfully added',
-            'schedules' => $schedules
+            'schedule' => $schedule
         ], 201);
     }
 
