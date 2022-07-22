@@ -9,28 +9,32 @@ import { useUser } from '../../Context/User';
 export default function ChatScreen( {route} ) {
 	const [messages, setMessages] = useState([]);
 	const {user} = useUser()
-	const isStudent = route.params.isStudent
-	const roomId = isStudent ? `${user.id}-${route.params.reciever.id}` : `${route.params.reciever.id}-${user.id}`
+	// const isStudent = route.params.isStudent
+	const roomId = user.role_id === 1 ? `${user.id}-${route.params.reciever.id}` : `${route.params.reciever.id}-${user.id}`
 	const avatar = user.profile_image || '../../../assets/logo.png'
 
 	const WIDTH = 200 
 	const HEIGHT = 2000
 
 	useEffect(() => {
-		console.log("error")
 		var arr = []
 		database()
-		.ref('room1')
-		.on('value', snapshot => {
+		.ref(`rooms/${roomId}/messages`)
+		.orderByChild('createdAt')
+		.on('value', async snapshot => {
 			if (snapshot.val()){
 				arr = []
-				for (const item in (snapshot.val().messages)) {
-				arr = [...arr, snapshot.val().messages[item]]
+				snapshot.forEach((message) => {
+					console.log(message._snapshot.value._id)
+					console.log(Object.keys(message))
+					arr.push(message._snapshot.value)
+				})
+				setMessages([...(arr || [] )].reverse())		
+	
 			}
+		})		
 		}
-		setMessages(arr)
-		});
-	}, [])
+	, [])
 
 	function onSend(messages = []) {
 		const createdAt = messages[0].createdAt
