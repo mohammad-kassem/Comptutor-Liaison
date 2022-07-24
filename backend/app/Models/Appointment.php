@@ -13,7 +13,7 @@ class Appointment extends Model{
         'student_id',
         'tutor_id',
         'type',
-        'zoom_url',
+        'url',
 
     ];
 

@@ -10,7 +10,6 @@ class CreateAppointmentsTable extends Migration{
             $table->integer('schedule_id')->primary();
             $table->integer('student_id');
             $table->tinyInteger('type');
-            $table->string('zoom_url')->nullable();
             $table->timestamps();
         });
     }

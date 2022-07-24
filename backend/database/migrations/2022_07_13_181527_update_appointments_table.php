@@ -8,6 +8,7 @@ class UpdateAppointmentsTable extends Migration{
     public function up(){
         Schema::table('appointments', function (Blueprint $table) {
             $table->integer('tutor_id')->after("student_id");
+            $table->string('url')->nullable();
         });
     }
 }
