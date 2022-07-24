@@ -39,7 +39,7 @@ export default function AppointmentsScreen() {
             
         <Text style={styles.sheetText}>Appointment action</Text>
         <TouchableOpacity style={styles.cancel} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}><Text style={styles.buttonText}>Cancel appointment</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.go} onPress={()=>navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },})}><Text style={styles.buttonText}>Go to appointment</Text></TouchableOpacity>
+        <TouchableOpacity style={styles.go} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}><Text style={styles.buttonText}>Go to appointment</Text></TouchableOpacity>
         </RBSheet>
             <View style={styles.container}>
                 <Text style={styles.title}>Appointments</Text>
