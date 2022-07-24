@@ -1,20 +1,17 @@
-import { View, Text } from 'react-native'
+import { View, Text, ImageBackground } from 'react-native'
 
 import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import database from '@react-native-firebase/database';
 import { useUser } from '../../Context/User';
+import { renderBubble, renderSend } from './controller';
 
 
 export default function ChatScreen( {route} ) {
 	const [messages, setMessages] = useState([]);
 	const {user} = useUser()
-	// const isStudent = route.params.isStudent
 	const roomId = user.role_id === 1 ? `${user.id}-${route.params.reciever.id}` : `${route.params.reciever.id}-${user.id}`
 	const avatar = user.profile_image || '../../../assets/logo.png'
-
-	const WIDTH = 200 
-	const HEIGHT = 2000
 
 	useEffect(() => {
 		var arr = []
@@ -25,8 +22,6 @@ export default function ChatScreen( {route} ) {
 			if (snapshot.val()){
 				arr = []
 				snapshot.forEach((message) => {
-					console.log(message._snapshot.value._id)
-					console.log(Object.keys(message))
 					arr.push(message._snapshot.value)
 				})
 				setMessages([...(arr || [] )].reverse())		
@@ -47,7 +42,7 @@ export default function ChatScreen( {route} ) {
 					{studentName: `${user.fname} ${user.lname}`,
 					tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
 					studentImage: avatar,
-					tutorImage: route.params.reciever.profile_image || '../../../assets/logo.png'
+					tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
 				})
 			}
 		database()
@@ -58,7 +53,9 @@ export default function ChatScreen( {route} ) {
 		database()
 		.ref(`rooms/${roomId}`)
 		.update(
-			{lastMessage: messages[0].text}
+			{lastMessage: messages[0].text,
+			lastSent: createdAt.toLocaleTimeString()
+		}
 		)
 	}
 	
@@ -69,8 +66,15 @@ export default function ChatScreen( {route} ) {
 			onSend={messages => onSend(messages)}
 			user={{
 			_id: user.id,
-
 			}}
+			renderAvatar={null}
+			alwaysShowSend={true}
+			keyboardShouldPersistTaps="never"
+			minComposerHeight={50}
+			minInputToolbarHeight={55}
+			renderBubble={renderBubble}
+			renderSend={renderSend}
+			timeFormat="HH:mm"
 		/>
 		</>
 	)
