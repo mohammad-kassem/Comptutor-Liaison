@@ -9,6 +9,8 @@ use App\Http\Controllers\Tutor\TutorController;
 use App\Http\Controllers\Tutor\ScheduleController;
 use App\Http\Controllers\General\AppointmentController;
 use App\Http\Controllers\General\UserController;
+use App\Http\Controllers\General\SessionController;
+
 
 
 Route::group(['prefix' => 'v1'], function(){
@@ -62,5 +64,11 @@ Route::group(['prefix' => 'v1'], function(){
         Route::group(['middleware' => 'auth'], function($router) {
             Route::delete('/delete/{id?}', [AppointmentController::class, 'delete']);
         }); 
+    });
+    Route::group(['prefix' => 'session'], function(){
+        Route::group(['middleware' => 'auth'], function($router) {
+            Route::get('/{id?}', [SessionController::class, 'get']); 
+            Route::put('/', [SessionController::class, 'create']); 
+        });
     });
 });
