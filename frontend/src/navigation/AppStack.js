@@ -1,6 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from 'react'
+import AppointmentStack from "./AppointmentStack";
 import BottomTabsStack from "./BottomTabsStack";
 import ChatStack from "./ChatStack";
 import HomeStack from "./HomeStack";
@@ -25,6 +26,10 @@ export default function AppStack() {
             <RootStackNav.Screen
             name="ChatStack"
             component={ChatStack}
+            />
+            <RootStackNav.Screen
+            name="AppointmentStack"
+            component={AppointmentStack}
             />
         </RootStackNav.Navigator>
         </NavigationContainer>
