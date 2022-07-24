@@ -44,7 +44,7 @@ const CallScreen = ({route}: any) => {
   const orientation = useOrientation();
   console.log(route)
   const appointmentId = route.params.appointmentId
-  
+  const navigation = useNavigation()
   //Attach lifecycle event handlers.
   useEffect(() => {
     if (!callObject) {
@@ -142,6 +142,7 @@ const CallScreen = ({route}: any) => {
     } else {
       setAppState(AppState.Leaving);
       callObject.leave();
+      navigation.goBack();
     }
   }, [callObject, appState]);
 
