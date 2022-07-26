@@ -25,29 +25,13 @@ export default StyleSheet.create({
         paddingTop: 5,
     },
 
-    timesContainer: {
-        justifyContent: "flex-start",
-        alignItems: "center",
-        flexDirection: "row",
-        flexWrap: "wrap",
+    timesContainer:{
+        flex: 1,
+        justifyContent: "space-between",
+        margin: 15,
     },
 
-    timeCardLeft: {
-        marginTop: 30,
-        width: "50%",
-        height: 50,
-        justifyContent: "center",
-        alignItems: "flex-start",
-    },
 
-    timeCardRight: {
-        marginTop: 30,
-        width: "50%",
-        height: 50,
-        justifyContent: "center",
-        alignItems: "flex-end",
-
-    },
 
     timeContainer :{
         backgroundColor: "white",
