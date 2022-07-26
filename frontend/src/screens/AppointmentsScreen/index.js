@@ -2,20 +2,21 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
-import { deleteAppointment, getAppointments } from './controller';
+import { deleteAppointment, filterAppointments, getAppointments, groupAppointments } from './controller';
 import { useUser } from '../../Context/User';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import DropdownComponent from '../../components/Dropdown';
 
 
 export default function AppointmentsScreen() {
-    const [appointments,setAppointments] = useState([])
+    let [appointments,setAppointments] = useState([])
     const refRBSheet  = useRef();
-    const [data, setData] = useState("")
+    const [date, setDate] = useState("")
     const [id, setId] = useState() 
     const {user, setUser} = useUser()   
     const appointmentWith = user.role_id === 1 ? "tutor" : "student"
     const stackType = user.role_id === 1 ? "student" : "tutor"
-    navigation = useNavigation()
+    const navigation = useNavigation()
 
     useFocusEffect(
         React.useCallback(() => {
@@ -23,10 +24,11 @@ export default function AppointmentsScreen() {
         },[])
     )
 
+    appointments = filterAppointments(appointments)
+    const groupedAppointments = groupAppointments(appointments);
 
     return (
         <>  
-        
         <RBSheet
           ref={refRBSheet}
           closeOnDragDown={true}
@@ -43,16 +45,20 @@ export default function AppointmentsScreen() {
         </RBSheet>
             <View style={styles.container}>
                 <Text style={styles.title}>Appointments</Text>
-                <FlatList data={appointments} renderItem={(appointmentData) =>{
-                return(
-                <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); console.log(appointmentData.item.schedule_id); setId(appointmentData.item.schedule_id);}}>
-                    <View style={styles.cardContent}>
-                        <Text style={styles.date}>{appointmentData.item.schedule.date} {appointmentData.item.schedule.start_time} - {appointmentData.item.schedule.end_time}</Text>
-                        <Text style={styles.details}>Appointment with {appointmentData.item[appointmentWith].fname} {appointmentData.item[appointmentWith].lname}</Text>
-                    </View>
-                </TouchableOpacity>
-                )
-                }}
+                <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
+                <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
+                    return(
+                        <>
+                        <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); setId(dateData.item.schedule_id);}}>
+                            <View style={styles.cardContent}>
+                                <Text style={styles.date}>{dateData.item.schedule.date} {dateData.item.schedule.start_time} - {dateData.item.schedule.end_time}</Text>
+                                <Text style={styles.details}>Appointment with {dateData.item[appointmentWith].fname} {dateData.item[appointmentWith].lname}</Text>
+                            </View>
+                        </TouchableOpacity>
+                        </>
+                        
+                    )}
+                }
                 />
             </View>
         </>   
