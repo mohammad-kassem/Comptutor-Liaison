@@ -35,6 +35,7 @@ export async function getAppointments(setAppointments, stackType) {
     .then(function(response){
         const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
         setAppointments(json.appointments)
+        console.log(json.appointments)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
@@ -53,4 +54,12 @@ export function groupAppointments(appointments) {
 	}
     console.log("output", groupedAppointments)
 	return groupedAppointments
+}
+
+export function filterAppointments(appointments) {
+	return (appointments.filter((appointment)=>{
+		const appointmentTime = new Date(appointment.schedule.date + "T" + appointment.schedule.end_time).getTime()
+		return (appointmentTime > new Date().getTime())
+	})
+	)
 }
