@@ -44,6 +44,7 @@ class JWTController extends Controller{
                 'password' => Hash::make($request->password),
                 'role_id' => 1,
                 'rate' => 0,
+                'since' => (int)date('Y'),
             ]);
         }
 
@@ -73,6 +74,7 @@ class JWTController extends Controller{
         $user = auth()->user();
         $user->role;
         $user->subjects;
+        $user->degrees;
 
         return response()->json([
             'access_token' => $token,
