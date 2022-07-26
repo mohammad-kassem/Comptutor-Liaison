@@ -38,7 +38,7 @@ export default function ScheduleScreen({ route }) {
                     <>
                     <TouchableOpacity style={styles.timeContainer} onPress={()=>{setModalIsVisable(true); setModalData([dateData.item, date])}}>
                         <Text style={styles.time}>{dateData.item.start_time}</Text>
-                        <Text style={styles.time}>{dateData.item.start_time}</Text>
+                        <Text style={styles.time}>{dateData.item.end_time}</Text>
                     </TouchableOpacity>
                     </>
                     
