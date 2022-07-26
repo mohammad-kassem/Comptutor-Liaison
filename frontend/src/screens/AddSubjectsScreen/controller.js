@@ -59,7 +59,8 @@ export async function addSelectedSubjects(selectedSubjects, navigation, user, se
         data: JSON.stringify({"subjects": selectedSubjects}) 
         })
     .then(function(response){
-        user = {...user, "subjects": selectedSubjects}
+        const newSubjects = response.data.subjects
+        user = {...user, "subjects": newSubjects}
         user.role_id === 1 ? setUser(user) : navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen",  params: { user: user },})
     })
     .catch(function(error){
