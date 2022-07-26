@@ -60,8 +60,10 @@ export function groupAppointments(appointments) {
 
 export function filterAppointments(appointments) {
 	return (appointments.filter((appointment)=>{
+        let d = new Date()
+        d = d.getTime() - d.getTimezoneOffset() * 60 * 1000
 		const appointmentTime = new Date(appointment.schedule.date + "T" + appointment.schedule.end_time).getTime()
-		return (appointmentTime > new Date().getTime())
+		return (appointmentTime > d)
 	})
 	)
 }
