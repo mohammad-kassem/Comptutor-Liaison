@@ -35,19 +35,18 @@ class TutorController extends Controller{
             return response()->json($validator->errors(), 400);
         }
 
-        $tutor = auth()->user();
+        $tutor = User::find($request->id);
 
-        $tutor = $user->update([
-            'fname' => $user->fname,
-            'lname' => $user->lname,
-            'role_id' => $user->role_id,
+        $tutor->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
             'rate' => $request->rate,
-            'about' => $request->about_me
+            'about' => $request->about_me,
+            'since' => $request->years,
         ]);
 
         return response()->json([
             'tutor' => $tutor,
         ], 200);
     }
-
 }
