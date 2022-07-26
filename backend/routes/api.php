@@ -21,6 +21,9 @@ Route::group(['prefix' => 'v1'], function(){
         Route::post('/login', [JWTController::class, 'login']);
     });
     Route::put('/FCM/set', [UserController::class, 'setFCM']);
+    Route::group(['middleware' => 'auth'], function($router) {
+        Route::put('/image', [UserController::class, 'updateImage']); 
+    });
     Route::group(['prefix' => 'tutor'], function(){
         Route::group(['middleware' => 'student'], function($router) {
             Route::get('/get/{id?}', [TutorController::class, 'get']);

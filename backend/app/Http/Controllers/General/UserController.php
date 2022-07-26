@@ -26,4 +26,28 @@ class UserController extends Controller{
             'message' => 'Account info successfully updated',
         ], 200);
     }
+
+    public function updateImage(Request $request){   
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|string',
+        ]);
+        
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $user = auth()->user();
+        $image = $request->image;
+        $image = explode( ',', $image);
+        $image = base64_decode($image[1]);
+
+        $user->update([
+            'profile_image' => $request->image
+        ]);
+
+        return response()->json([
+            'user' => $user,
+        ], 200);
+    }
 }
