@@ -24,7 +24,11 @@ export default function TutorScreen( {route} ) {
         <View style={styles.container}>
         <ScrollView contentContainerStyle={styles.scrollContainer}>
             <View style={styles.imageContainer}>
-                <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
+            {tutor.profile_image ? 
+            (<Image style={styles.tutorProfile} source={{uri: tutor.profile_image}}/>
+            ) : (
+            <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
+            )}
             </View>
             <View style={styles.infoContainer}>
                 <View style={styles.titleContainer}>
