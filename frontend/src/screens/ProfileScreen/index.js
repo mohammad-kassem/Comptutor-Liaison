@@ -4,6 +4,7 @@ import styles from './styles'
 import { useUser } from '../../Context/User'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
+import { setToken } from '../../components/utility/Token'
 
 export default function ProfileScreen() {
     const { user, setUser } = useUser()
@@ -23,7 +24,7 @@ export default function ProfileScreen() {
                     <Text style={styles.butonText}>Edit</Text>
                     <Icon name="account-edit" size={24} color="white"/>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.logoutButton} onPress={()=>setUser({})}>
+                <TouchableOpacity style={styles.logoutButton} onPress={async ()=>{setUser({}); await setToken("")}}>
                     <Text style={styles.butonText}>Logout</Text>
                     <Icon name="logout" size={24} color="white"/>
                 </TouchableOpacity>
