@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\DB;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -13,9 +15,18 @@ class Kernel extends ConsoleKernel
      * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
      * @return void
      */
-    protected function schedule(Schedule $schedule)
-    {
-        // $schedule->command('inspire')->hourly();
+    protected function schedule(Schedule $schedule){
+        $schedule->call(function () {
+            $current_date = date("Y-m-d");
+            $current_time = date("H:i");
+            $schedules = DB::table('schedules')->get();
+
+            foreach ($schedules as $schedule) {
+                if($schedule->date < $current_date and $schedule->end_time < $current_time) {
+                    $schedule->delete();
+                }
+            }
+        })->everyMinute();
     }
 
     /**
@@ -29,4 +40,6 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
+
+
 }
