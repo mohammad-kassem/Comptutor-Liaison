@@ -31,7 +31,11 @@ export default function HomeScreen({ navigation }) {
                     <TouchableOpacity key={tutorData.item.lname} style={styles.tutorCard} onPress={()=>{navigation.navigate("HomeStack", { screen: "TutorScreen",  params: { tutor: tutorData.item },})}}>
                         <View style={styles.cardContent}>
                             <View style={styles.imageContainer}>
+                                {tutorData.item.profile_image ? 
+                                (<Image style={styles.tutorProfile} source={{uri: tutorData.item.profile_image}}/>
+                                ) : (
                                 <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
+                                )}
                             </View>
                             <View style={styles.tutorInfo}>
                                 <Text style={styles.tutorName}>{tutorData.item.fname} {tutorData.item.lname}</Text>
