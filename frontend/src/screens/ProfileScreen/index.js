@@ -3,9 +3,11 @@ import React from 'react'
 import styles from './styles'
 import { useUser } from '../../Context/User'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ProfileScreen() {
     const { user, setUser } = useUser()
+    const navigation = useNavigation()
     return (
         <View style={styles.container}>
         <View style={styles.imageContainer}>
@@ -17,7 +19,7 @@ export default function ProfileScreen() {
                 <Text style={styles.balance}>$50</Text>
             </View>}
             <View style={styles.buttonContainer}>
-                <TouchableOpacity style={styles.editButton}>
+                <TouchableOpacity style={styles.editButton} onPress={()=>navigation.navigate("EditProfileStack")}>
                     <Text style={styles.butonText}>Edit</Text>
                     <Icon name="account-edit" size={24} color="white"/>
                 </TouchableOpacity>

@@ -36,8 +36,7 @@ export default function HomeScreen({ navigation }) {
                             <View style={styles.tutorInfo}>
                                 <Text style={styles.tutorName}>{tutorData.item.fname} {tutorData.item.lname}</Text>
                                 <View style={styles.tutorRates}>
-                                    <Text style={styles.tutorDetail}>Chatting: {tutorData.item.rate_chat}</Text>
-                                    <Text style={styles.tutorDetail}>Zoom: {tutorData.item.rate_zoom}</Text>
+                                    <Text style={styles.tutorDetail}>Rate: {tutorData.item.rate}</Text>
                                 </View>
                                 <Text style={styles.tutorDetail}>Teaching since {tutorData.item.experience}</Text>
                             </View>

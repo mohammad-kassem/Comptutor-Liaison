@@ -38,7 +38,7 @@ export default function TutorScreen( {route} ) {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.ratesContainer}>
-                    <Text style={styles.videoRate}>${tutor.rate_video} /H for Video</Text>
+                    <Text style={styles.videoRate}>${tutor.rate} /H for Live Session</Text>
                 </View>
                 <View style={styles.tutorDetails}>
                     <View style={styles.infoCard}>
