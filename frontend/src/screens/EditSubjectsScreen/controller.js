@@ -47,3 +47,32 @@ export function isSelected(id, selectedSubjects){
     });
     return found
 }
+
+export async function addSelectedSubjects(setUserSubjects, selectedSubjects, navigation, user, setUser){
+    const token = await getToken()
+    axios({
+        method: "post",
+        url: "http://192.168.1.105:8000/api/v1/subject/add",
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
+        },
+        data: JSON.stringify({"subjects": selectedSubjects}) 
+        })
+    .then(function(response){
+        const newSubjects = response.data.subjects
+        user.subjects = newSubjects
+        setUser(user)
+        setUserSubjects(newSubjects)
+        navigation.goBack()
+    })
+    .catch(function(error){
+        console.log(error)
+        try{
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+        }
+        catch(error){}
+    })
+}
+
