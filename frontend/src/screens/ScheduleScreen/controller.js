@@ -12,6 +12,7 @@ export function groupSchedules(schedules) {
 			return r;
 		}, Object.create(null));
 	}
+    console.log("output", groupedSchedule)
 	return groupedSchedule
 }
 
@@ -34,3 +35,12 @@ export async function getAvailableTimes(tutorId, setSchedules) {
 		ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
 	})
 };
+
+export function filterAvailableTimes(schedules) {
+	return (schedules.filter((schedule)=>{
+		const scheduleTime = new Date(schedule.date + "T" + schedule.end_time).getTime()
+		console.log(scheduleTime)
+		return (scheduleTime > new Date().getTime())
+	})
+	)
+}
