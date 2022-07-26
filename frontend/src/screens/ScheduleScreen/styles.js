@@ -7,7 +7,7 @@ export default StyleSheet.create({
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
         paddingVertical: 25,
-        paddingHorizontal: 35
+        paddingHorizontal: 35,
     },
 
     title: {
@@ -24,29 +24,20 @@ export default StyleSheet.create({
         paddingTop: 5,
     },
 
-    timesContainer: {
-        justifyContent: "flex-start",
-        alignItems: "center",
-        flexDirection: "row",
-        flexWrap: "wrap",
+    
+    timesContainer:{
+        flex: 1,
+        justifyContent: "space-between",
+        margin: 15,
     },
 
     timeCardLeft: {
-        marginTop: 30,
+        margin: 30,
         width: "50%",
         height: 50,
         justifyContent: "center",
-        alignItems: "flex-start",
     },
 
-    timeCardRight: {
-        marginTop: 30,
-        width: "50%",
-        height: 50,
-        justifyContent: "center",
-        alignItems: "flex-end",
-
-    },
 
     timeContainer :{
         backgroundColor: "white",
