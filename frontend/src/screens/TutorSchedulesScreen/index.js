@@ -35,7 +35,7 @@ export default function TutorSchedulesScreen() {
                     <>
                     <TouchableOpacity style={styles.timeContainer}>
                         <Text style={styles.time}>{dateData.item.start_time}</Text>
-                        <Text style={styles.time}>{dateData.item.start_time}</Text>
+                        <Text style={styles.time}>{dateData.item.end_time}</Text>
                     </TouchableOpacity>
                     </>
                     

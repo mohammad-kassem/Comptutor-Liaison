@@ -27,9 +27,10 @@ export default async function getSchedules(setSchedules) {
 
 export function filterAllTimes(schedules) {
 	return (schedules.filter((schedule)=>{
+		let d = new Date()
+    	d = d.getTime() - d.getTimezoneOffset() * 60 * 1000
 		const scheduleTime = new Date(schedule.date + "T" + schedule.end_time).getTime()
-		console.log(scheduleTime)
-		return (scheduleTime > new Date().getTime())
+		return (scheduleTime > d)
 	})
 	)
 }
