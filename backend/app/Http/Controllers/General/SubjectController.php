@@ -13,7 +13,6 @@ class SubjectController extends Controller{
     public function addUserSubjects(Request $request){
         $subjects = $request->subjects;
         $user = auth()->user();
-        $added_subjects = [];
         foreach ($subjects as $subject) {
             $subject = json_decode(json_encode($subject));
             $added_subject = $user->subjects()->where('id', $subject->id)->first();
@@ -21,13 +20,11 @@ class SubjectController extends Controller{
             if ($added_subject) return response()->json(['error' => ['This subject has already been entered']], 409);
 
             $user->subjects()->attach($subject->id);
-
-            array_push($added_subjects, $subject);
         }
 
         return response()->json([
             'message' => 'User subjects successfully added',
-            'subjects' => $added_subjects
+            'subjects' => $user->subjects
         ], 200);
     }
 
