@@ -4,6 +4,7 @@ import React from 'react'
 import AppointmentStack from "./AppointmentStack";
 import BottomTabsStack from "./BottomTabsStack";
 import ChatStack from "./ChatStack";
+import EditProfileStack from "./EditProfileStack";
 import HomeStack from "./HomeStack";
 
 export default function AppStack() {
@@ -30,6 +31,10 @@ export default function AppStack() {
             <RootStackNav.Screen
             name="AppointmentStack"
             component={AppointmentStack}
+            />
+            <RootStackNav.Screen
+            name="EditProfileStack"
+            component={EditProfileStack}
             />
         </RootStackNav.Navigator>
         </NavigationContainer>

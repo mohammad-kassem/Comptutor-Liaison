@@ -4,6 +4,7 @@ import React from 'react'
 import AppointmentStack from "./AppointmentStack";
 import BottomTabsStackTutor from "./BottomTabsStackTutor";
 import ChatStack from "./ChatStack";
+import EditProfileStack from "./EditProfileStack";
 import HomeStackTutor from "./HomeStackTutor";
 
 
@@ -31,6 +32,10 @@ export default function AppStackTutor() {
             <RootStackNav.Screen
             name="AppointmentStack"
             component={AppointmentStack}
+            />
+            <RootStackNav.Screen
+            name="EditProfileStack"
+            component={EditProfileStack}
             />
         </RootStackNav.Navigator>
         </NavigationContainer>

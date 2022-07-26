@@ -7,13 +7,18 @@ import RegisterScreen from "../screens/RegisterScreen";
 import React from 'react'
 import AddSubjectsScreen from "../screens/AddSubjectsScreen";
 import OnBoardingStackTutor from "./OnBoardingStackTutor";
+import EditProfileScreen from "../screens/EditProfileScreen";
+import EditProfileStack from "./EditProfileStack";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
 
     return (
     <NavigationContainer>
-        <RootStackNav.Navigator>
+        <RootStackNav.Navigator
+        screenOptions={{
+            headerShown: false
+          }}>
             <RootStackNav.Screen
             name="LoginScreen"
             component={LoginScreen}

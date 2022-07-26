@@ -8,7 +8,10 @@ export default function OnBoardingStackTutor() {
     const RootStackNav = createStackNavigator();
 
     return (
-        <RootStackNav.Navigator>
+        <RootStackNav.Navigator
+        screenOptions={{
+            headerShown: false
+          }}>
             <RootStackNav.Screen 
             name="AddDegreeScreen"
             component={AddDegreeScreen}
