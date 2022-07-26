@@ -10,6 +10,8 @@ use App\Http\Controllers\Tutor\ScheduleController;
 use App\Http\Controllers\General\AppointmentController;
 use App\Http\Controllers\General\UserController;
 use App\Http\Controllers\General\SessionController;
+use App\Http\Controllers\Student\StudentController;
+
 
 
 
@@ -43,6 +45,11 @@ Route::group(['prefix' => 'v1'], function(){
                 Route::delete('/delete/{id?}', [DegreeController::class, 'delete']);
                 Route::put('/update/{id?}', [DegreeController::class, 'update']);
             });
+        });
+    });
+    Route::group(['prefix' => 'student'], function(){
+        Route::group(['middleware' => 'student'], function($router) {
+            Route::put('/update', [StudentController::class, 'update']);
         });
     });
     Route::group(['prefix' => 'subject'], function(){
