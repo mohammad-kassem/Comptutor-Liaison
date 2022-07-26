@@ -1,12 +1,13 @@
 import axios from "axios";
 import { ToastAndroid } from "react-native";
 import { getToken } from "../../components/utility/Token";
+import { localHostV1 } from "../../contsants/constants";
 
 export async function addDegree(inputDegree, user, navigation){
     const token = await getToken()
     axios({
         method: "post",
-        url: "http://192.168.1.105:8000/api/v1/tutor/degree/add",
+        url: `${localHostV1}/tutor/degree/add`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`

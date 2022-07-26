@@ -2,13 +2,15 @@ import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { getToken } from '../../components/utility/Token'
 import axios from 'axios'
+import { localHostV1 } from "../../contsants/constants";
+
 
 
 export async function deleteDegree(id, degrees, setDegrees, user, setUser){
     const token = await getToken()
     axios({
         method: "delete",
-        url: `http://192.168.1.105:8000/api/v1/tutor/degree/delete/${id}`,
+        url: `${localHostV1}/tutor/degree/delete/${id}`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -32,7 +34,7 @@ export async function deleteSubject(id, subjects, setSubjects, user, setUser){
     const token = await getToken()
     axios({
         method: "delete",
-        url: `http://192.168.1.105:8000/api/v1/subject/delete/${id}`,
+        url: `${localHostV1}/subject/delete/${id}`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`

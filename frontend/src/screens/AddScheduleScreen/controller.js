@@ -2,6 +2,8 @@ import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { getToken } from '../../components/utility/Token'
 import axios from 'axios'
+import { localHostV1 } from "../../contsants/constants";
+
 
 export function toDateString(date) {
     return `${date.getFullYear()}-${date.getMonth() < 9 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1}-${date.getDate() < 10 ? "0" + date.getDate() : date.getDate()}`
@@ -19,7 +21,7 @@ export async function addSchedule(date, time, schedules, setSchedules, duration 
     let hours = {"hours": [schedule]}
     axios({
         method: "post",
-        url: "http://192.168.1.105:8000/api/v1/tutor/schedule/add",
+        url: `${localHostV1}/tutor/schedule/add`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`

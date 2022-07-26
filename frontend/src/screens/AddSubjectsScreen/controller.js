@@ -2,12 +2,14 @@ import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { getToken } from '../../components/utility/Token';
 import axios from 'axios';
+import { localHostV1 } from "../../contsants/constants";
+
 
 export async function getSubjects(setSubjects) {
     const token = await getToken()
     axios({
         method: "get",
-        url: "http://192.168.1.105:8000/api/v1/subject",
+        url: `${localHostV1}/subject`,
         headers: {
           "Content-type": "application/json",
           "Authorization": `Bearer ${token}`
@@ -51,7 +53,7 @@ export async function addSelectedSubjects(selectedSubjects, navigation, user, se
     const token = await getToken()
     axios({
         method: "post",
-        url: "http://192.168.1.105:8000/api/v1/subject/add",
+        url: `${localHostV1}/subject/add`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`

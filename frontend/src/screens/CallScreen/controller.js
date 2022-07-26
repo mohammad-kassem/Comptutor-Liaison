@@ -3,6 +3,8 @@ import React from 'react'
 import api from '../../components/utility/api';
 import axios from 'axios';
 import { getToken } from '../../components/utility/Token';
+import { localHostV1 } from "../../contsants/constants";
+
 
 
 export default function createRoom( setAppState, AppState, setRoomUrl, appointmentId ) {
@@ -18,10 +20,9 @@ export default function createRoom( setAppState, AppState, setRoomUrl, appointme
 
 export async function setUrlInDB(appointmentId, roomUrl){
   const token = await getToken();
-  // console.log("hello",appointmentId, roomUrl)
     axios({
         method: "put",
-        url:`http://192.168.1.105:8000/api/v1/session`,
+        url:`${localHostV1}/session`,
         headers: {
         "Content-type": "application/json",
         "Authorization": `Bearer ${token}`
@@ -42,7 +43,7 @@ export async function getUrlFromDB(appointmentId, setRoomUrl){
   const token = await getToken();
     try{ const response = await axios({
         method: "get",
-        url:`http://192.168.1.105:8000/api/v1/session/${appointmentId}`,
+        url:`${localHostV1}/session/${appointmentId}`,
         headers: {
         "Content-type": "application/json",
         "Authorization": `Bearer ${token}`

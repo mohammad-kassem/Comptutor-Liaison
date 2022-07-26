@@ -2,12 +2,14 @@ import { View, Text, ToastAndroid } from 'react-native'
 import React from 'react'
 import { setToken } from '../../components/utility/Token';
 import axios from 'axios';
+import { localHostV1 } from "../../contsants/constants";
+
 
 
 export function register(cridentials, navigation){
     axios({
         method: "post",
-        url: "http://192.168.1.105:8000/api/v1/auth/register",
+        url: `${localHostV1}/auth/register`,
         headers: {
             "Content-type": "application/json",
         },

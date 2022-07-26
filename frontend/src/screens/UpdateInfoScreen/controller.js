@@ -2,6 +2,8 @@ import axios from "axios";
 import { ToastAndroid } from "react-native";
 import { getToken } from "../../components/utility/Token";
 import messaging from '@react-native-firebase/messaging';
+import { localHostV1 } from "../../contsants/constants";
+
 
 
 export async function addInfo(input, user, setUser){
@@ -9,7 +11,7 @@ export async function addInfo(input, user, setUser){
     console.log(typeof input.rate)
     axios({
         method: "put",
-        url: "http://192.168.1.105:8000/api/v1/tutor/update",
+        url: `${localHostV1}/tutor/update`,
         headers: {
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`
@@ -39,7 +41,7 @@ export function getFCM(user){
 export function setFCM(user, FCM_token){
     axios({
         method: "put",
-        url: "http://192.168.1.17:8000/api/v1/FCM/set",
+        url: `${localHostV1}/FCM/set`,
         headers: {
             "Content-type": "application/json",
             },
