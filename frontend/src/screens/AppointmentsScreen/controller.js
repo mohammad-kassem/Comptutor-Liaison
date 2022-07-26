@@ -41,3 +41,16 @@ export async function getAppointments(setAppointments, stackType) {
         ToastAndroid(message[0][0], ToastAndroid.SHORT) 
     })
 };
+
+export function groupAppointments(appointments) {
+	let groupedAppointments = []
+	if (appointments.length !== 0){
+		groupedAppointments = appointments.reduce(function (r, a) {
+			r[a.schedule.date] = r[a.schedule.date] || [];
+			r[a.schedule.date].push(a);
+			return r;
+		}, Object.create(null));
+	}
+    console.log("output", groupedAppointments)
+	return groupedAppointments
+}
