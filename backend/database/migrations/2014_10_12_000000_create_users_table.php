@@ -17,6 +17,8 @@ class CreateUsersTable extends Migration{
             $table->string('FCM_token')->nullable();
             $table->string('profile_image')->nullable();
             $table->string('about')->nullable();
+            $table->integer('since')->nullable();
+            $table->integer('balance')->nullable();
             $table->timestamps();
         });
     }

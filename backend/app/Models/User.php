@@ -21,7 +21,9 @@ class User extends Authenticatable implements JWTSubject{
         'rate',
         'profile_image',
         'about',
-        'FCM_token'
+        'FCM_token',
+        'since',
+        'balance'
         
     ];
 
