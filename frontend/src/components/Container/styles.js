@@ -7,6 +7,6 @@ export default StyleSheet.create({
         alignItems: "stretch",
         backgroundColor: "#f5f5f5",
         paddingVertical: 25,
-        paddingHorizontal: 25
+        paddingHorizontal: 25,
     },
 })
