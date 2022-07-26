@@ -11,9 +11,9 @@ import Container from '../../components/Container'
 
 export default function UpdateInfoScreen( {route} ) {
     const user = route.params.user
-    const [zoomRate, setZoomRate] = useState()
-    const [chatRate, setChatRate] = useState()
-    const [about, setAbout] = useState("")
+    const [rate, setRate] = useState()
+    const [years, setYears] = useState()
+    const [about, setAbout] = useState()
     const {setUser} = useUser()
 
 	return (
@@ -23,14 +23,14 @@ export default function UpdateInfoScreen( {route} ) {
 					<OnBoardingTitle/>
 					<OnBoardingPrompt message="Complete your info"/>
 					<Text style={styles.sectionPrompt}>Fill your profile</Text>
-					<Text style={styles.inputTitle}>Zoom rate</Text>
-					<TextInput style={styles.input} placeholder="Zoom rate" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setZoomRate(enteredText)}}/>
-					<Text style={styles.inputTitle}>Chat rate</Text>
-					<TextInput style={styles.input} placeholder="Chat rate" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setChatRate(enteredText)}}/>
-					<Text style={styles.inputTitle}>About me</Text>
-					<TextInput style={styles.aboutInput} placeholder="About me" multiline={true} onChangeText={(enteredText)=>{setAbout(enteredText)}}/>
+					<Text style={styles.inputTitle}>Rate</Text>
+                <TextInput style={styles.input} placeholder="Rate" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setRate(enteredText)}}/>
+                <Text style={styles.inputTitle}>Teaching since</Text>
+                <TextInput style={styles.input} placeholder="Teaching since" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setYears(enteredText)}}/>
+                <Text style={styles.inputTitle} multiline={true}>About</Text>
+                <TextInput style={styles.aboutInput} placeholder="About" multiline={true} onChangeText={(enteredText)=>{setAbout(enteredText)}}/>
 					<View style={styles.buttonContainer}>
-						<FullWidthButton text="Next" onHandlePress={()=>addInfo({"rate_zoom": zoomRate, "rate_chat": chatRate, "about_me": about}, user, setUser)}/>
+						<FullWidthButton text="Next" onHandlePress={()=>addInfo({"years": parseInt(years), "rate": parseInt(rate),"about_me": about}, user, setUser)}/>
 					</View>
 				</Container>
 			</ScrollView>
