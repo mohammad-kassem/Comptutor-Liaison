@@ -76,3 +76,12 @@ export async function addSelectedSubjects(setUserSubjects, selectedSubjects, nav
     })
 }
 
+export function filterSubjects(subjects, user) {
+    return subjects.filter((subject)=>{
+        for (userSubject of user.subjects){
+            console.log(userSubject)
+            if (subject.id === userSubject.id) return false
+        }
+        return true
+    })
+}
