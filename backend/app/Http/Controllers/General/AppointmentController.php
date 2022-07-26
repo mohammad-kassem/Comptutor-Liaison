@@ -37,7 +37,6 @@ class AppointmentController extends Controller{
         $appointment = Appointment::create([
             'schedule_id' => $request->schedule_id,
             'student_id' => $student->id,
-            'type' => 1,
             'tutor_id' => $request->tutor_id,
         ]);
         

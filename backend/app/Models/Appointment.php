@@ -12,7 +12,6 @@ class Appointment extends Model{
         'schedule_id',
         'student_id',
         'tutor_id',
-        'type',
         'url',
 
     ];
