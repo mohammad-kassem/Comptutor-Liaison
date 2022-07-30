@@ -34,6 +34,7 @@ class JWTController extends Controller{
                 'password' => Hash::make($request->password),
                 'role_id' => 2,
                 'rate' => 0,
+                'profile_image' => $request->image
             ]); 
         }
         else {
@@ -45,6 +46,7 @@ class JWTController extends Controller{
                 'role_id' => 1,
                 'rate' => 0,
                 'since' => (int)date('Y'),
+                'profile_image' => $request->image
             ]);
         }
 
