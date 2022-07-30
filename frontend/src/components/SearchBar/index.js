@@ -16,9 +16,11 @@ export default function SearchBar({original, setTutors}) {
     }
 
     return (
+        <View style={styles.searchContainer}>
         <View style={styles.searchBar}>
             <Icon name="search" style={styles.searchIcon}/>
             <TextInput style={styles.searchInput} placeholder="Search" onChangeText={(searchText)=>filter(searchText.toLowerCase())}/>
+        </View>
         </View>
     )
 }

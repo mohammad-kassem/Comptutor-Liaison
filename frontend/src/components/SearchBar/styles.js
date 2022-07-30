@@ -4,12 +4,11 @@ export default StyleSheet.create({
     searchBar: {
         backgroundColor: "#ffff",
         flexDirection: "row",
-        height: 44,
-        marginHorizontal: 25,
-        marginTop: 25,
+        height: 45,
         padding: 15,
-        borderRadius: 20,
-        elevation: 20,
+        borderRadius: 30,
+        elevation: 10,
+        marginHorizontal: 25,
     },
 
     searchIcon: {
