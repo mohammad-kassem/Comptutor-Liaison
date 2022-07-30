@@ -27,9 +27,14 @@ export default function EditSubjectsScreen( {route} ){
         }, [])
     )
 
-    return (
-        <Container>
-			<Text style={styles.title}>Add subject</Text>
+    return (<>
+			<View style={styles.titleContainer}>
+                <Icon name="close" size={32} color="#efefef"/>
+                <Text style={styles.title}>Add your Subjects</Text>
+                <Icon name="close" size={32} color="#efefef"/>
+
+            </View>
+            <Container>
             <FlatList data={subjects} numColumns={numColumns} columnWrapperStyle={styles.subjectsContainer} renderItem={(subjectData) =>{
                 return(
                     <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, subjectData.item.subject, subjectData.item.image, selectedSubjects, setSelectedSubjects)}>
@@ -42,11 +47,13 @@ export default function EditSubjectsScreen( {route} ){
                 )}
             }
             />
+            </Container>
+
             <>
-            <View style={styles.buttonsContainer}>
-				<SaveCancelButtons onHandlePress={()=>addSelectedSubjects(setUserSubjects, selectedSubjects, navigation, user, setUser)}/>
-            </View>	
+            <AbsolutePositionButtonContainer>
+				<FullWidthButton text="Save Changes" onHandlePress={()=>addSelectedSubjects(setUserSubjects, selectedSubjects, navigation, user, setUser)}/>
+            </AbsolutePositionButtonContainer>	
             </>
-        </Container>
+        </>
     )
 }
