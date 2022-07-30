@@ -17,7 +17,7 @@ export default function ChatScreen( {route} ) {
 		var arr = []
 		database()
 		.ref(`rooms/${roomId}/messages`)
-		.orderByChild('createdAt')
+		.orderByValue('createdAt')
 		.on('value', async snapshot => {
 			if (snapshot.val()){
 				arr = []
@@ -25,7 +25,6 @@ export default function ChatScreen( {route} ) {
 					arr.push(message._snapshot.value)
 				})
 				setMessages([...(arr || [] )].reverse())		
-	
 			}
 		})		
 		}
@@ -54,7 +53,7 @@ export default function ChatScreen( {route} ) {
 		.ref(`rooms/${roomId}`)
 		.update(
 			{lastMessage: messages[0].text,
-			lastSent: createdAt.toLocaleTimeString()
+			lastSent: createdAt.getTime()
 		}
 		)
 	}
@@ -67,7 +66,6 @@ export default function ChatScreen( {route} ) {
 			user={{
 			_id: user.id,
 			}}
-			renderAvatar={null}
 			alwaysShowSend={true}
 			keyboardShouldPersistTaps="never"
 			minComposerHeight={50}
