@@ -5,23 +5,19 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginBottom: 25,
-        marginTop: 50,
-        marginHorizontal: 25
+        alignSelf: "center",
+        margin: 25
     },
-
-    roomContainer: {
-        backgroundColor: "white",
-    },
-
 
     room: {
+        backgroundColor: "white",
         flexDirection: "row",
-        paddingVertical: 10,
-        paddingHorizontal: 25,
+        marginBottom: 20,
+        marginHorizontal: 25,
+        padding: 15,
         alignItems: "center",
-        borderBottomWidth: 1,
-        borderColor: "#656565",
+        borderRadius: 20,
+        elevation: 10
     },
 
     imageContainer: {
@@ -37,14 +33,36 @@ export default StyleSheet.create({
         borderRadius: 50
     },
 
+    content:{
+        width: "70%"
+    },
 
+    time: {
+        color: "#E8A624",
+        fontSize: 12,
+        textAlignVertical: "center",
+        alignSelf: "flex-end",
+        fontWeight: "500"
+
+    },
+
+    header:{
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+    },
+
+    
     contact: {
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: "600",
-        color: "#1877F2",
+        marginBottom: 10,
+        includeFontPadding: false
     },
 
     message: {
-        color: "#656565",
-    }
+        color: "#919090",
+        fontSize: 16,
+        marginBottom: 15
+    },
 })
