@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 export default styles = StyleSheet.create({
     dropdown: {
-      marginVertical: 16,
+      marginBottom: 15,
       height: 50,
       backgroundColor: 'white',
       borderRadius: 12,
@@ -14,7 +14,9 @@ export default styles = StyleSheet.create({
       },
       shadowOpacity: 0.2,
       shadowRadius: 1.41,
-      elevation: 2,
+      elevation: 10,
+      marginHorizontal: 100,
+
     },
   
     item: {
@@ -27,6 +29,7 @@ export default styles = StyleSheet.create({
     textItem: {
       flex: 1,
       fontSize: 16,
+      textAlign: "center"
     },
   
     selectedTextStyle: {
