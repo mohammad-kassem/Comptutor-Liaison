@@ -7,7 +7,16 @@ export default function ChatStack() {
     const RootStackNav = createStackNavigator();
 
     return (
-        <RootStackNav.Navigator>
+        <RootStackNav.Navigator screenOptions={{
+            headerStyle: {
+              backgroundColor: '#4FC7E6',
+            },
+            title: 'Go Back',
+            headerTintColor: 'white',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}>
             <RootStackNav.Screen
             name="ChatScreen"
             component={ChatScreen}

@@ -12,8 +12,15 @@ export default function EditProfileStack() {
     return (
         <RootStackNav.Navigator
         screenOptions={{
-            headerShown: false
-          }}>
+          headerStyle: {
+            backgroundColor: '#4FC7E6',
+          },
+          title: 'Go Back',
+          headerTintColor: 'white',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}>
             <RootStackNav.Screen
             name="EditProfileScreen"
             component={EditProfileScreen}
