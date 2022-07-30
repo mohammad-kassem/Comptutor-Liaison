@@ -25,7 +25,8 @@ export default function AddSubjectsScreen( {route} ){
       }, []);
 
     return (
-        <Container>
+            <>
+            <Container>
             <OnBoardingTitle/>
             <OnBoardingPrompt message="Pick your subjects"/>
             <FlatList data={subjects} numColumns={numColumns} columnWrapperStyle={styles.subjectsContainer} renderItem={(subjectData) =>{
@@ -40,9 +41,12 @@ export default function AddSubjectsScreen( {route} ){
                 )}
             }
             />
+            </Container>
+            <>
             <AbsolutePositionButtonContainer>
                 <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, user, setUser)}/>
             </AbsolutePositionButtonContainer>
-        </Container>
+            </>
+            </>
     )
 }

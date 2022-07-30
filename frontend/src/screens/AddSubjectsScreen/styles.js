@@ -1,24 +1,14 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        paddingVertical: 25,
-        paddingHorizontal: 35
-    },
-
     subjectsContainer:{
         justifyContent: "space-between",
-        marginTop: 30,
+        marginTop: 25,
     },
 
     imageContainer: {
         width: 120,
         height: 120, 
-        marginRight: 15,
     },
 
     subjectImage: {
@@ -32,5 +22,5 @@ export default StyleSheet.create({
         position: "absolute",
         top: "5%",
         right: "5%",
-    }
+    },
 })
