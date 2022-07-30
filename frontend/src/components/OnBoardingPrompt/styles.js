@@ -2,10 +2,11 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     title: {
-        color: "#656565",
+        color: "#919090",
         fontSize: 20,
         lineHeight: 23,
         borderBottomWidth: 1,
-        paddingTop: 5,
+        borderColor: "#919090",
+        marginTop: 25 
     },
 })
