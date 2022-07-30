@@ -25,7 +25,6 @@ export default function TutorSchedulesScreen() {
 
     return (
         <>
-        <View style={styles.container}>
             <Text style={styles.title}>Schedule</Text>
             <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedSchedules}/>
             <FlatList numColumns={2} columnWrapperStyle={styles.timesContainer} data={groupedSchedules[date]} renderItem={(dateData) =>{
@@ -42,8 +41,9 @@ export default function TutorSchedulesScreen() {
                 )}
             }
             />
-        </View>
-        <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}><Icon name="plus" size={45} color={"white"}/></TouchableOpacity>
+        <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}>
+            <Icon name="plus" size={40} color="#1877F2"/>
+        </TouchableOpacity>
         </>
     )
 }
