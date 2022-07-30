@@ -22,11 +22,11 @@ export default function AddDegreeScreen( {route} ) {
 					<OnBoardingTitle/>
 					<OnBoardingPrompt message="Complete your info"/>
 					<Text style={styles.sectionPrompt}>Add your degree to improve your opportunities</Text>
-					<Text style={styles.inputTitle}>University</Text>
-					<TextInput style={styles.input} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
-					<Text style={styles.inputTitle}>Degree</Text>
-					<TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
-					<View style={styles.buttonContainer}>
+					<Text style={styles.fieldTitle}>University</Text>
+					<TextInput style={styles.field} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
+					<Text style={styles.fieldTitle}>Degree</Text>
+					<TextInput style={styles.field} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
+					<View style={styles.buttonsContainer}>
 						<FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, user, navigation)}/> 
 					</View>
 				</Container>
