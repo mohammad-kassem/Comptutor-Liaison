@@ -1,31 +1,20 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        paddingVertical: 15
-    },
 
-    title:{
-        justifyContent: "center",
-        alignItems: "center",
-        marginTop: 25,
-    },
-
-    titleText: {
-        fontSize: 20
+    title: {
+        fontSize: 24,
+        fontWeight: "700",
+        lineHeight: 29,
+        marginVertical: 25,
+        alignSelf: "center"
     },
 
     tutorCard: {
-        borderColor: "black",
-        borderWidth: 1,
-        padding: 20,
+        padding: 15,
         paddingBottom: 10,
-        marginHorizontal: 25,
         marginVertical: 15,
+        marginHorizontal: 25,
         borderRadius: 20,
         backgroundColor: "white",
         elevation: 10
@@ -51,41 +40,56 @@ export default StyleSheet.create({
 
     tutorInfo: {
         flex: 1,
+        alignSelf: "center"
     },
 
     tutorName: {
-        fontSize: 14,
-        includeFontPadding:false
-    },
-
-    tutorRates: {
-        flexDirection: "row",
-        justifyContent: "space-between",
+        fontSize: 16,
+        fontWeight: "500",
+        includeFontPadding: false
     },
 
     tutorDetail: {
-        fontSize: 12,
-        color: "#656565",
-        marginTop: 10
+        fontSize: 14,
+        marginTop: 5,
+        color: "#919090"
     },
 
-    tutorSubjects: {
+    rateContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignSelf: "flex-start"
+    },
+
+    rate: {
+        fontSize: 12,
+        color: "#E8A624",
+        fontWeight: "500"
+    },
+
+
+    subjectsContainer: {
         flexDirection: "row",
         flexWrap: "wrap",
-        justifyContent: "space-evenly",
-        marginTop: 10,
+        alignItems: "center",
+        marginLeft: "27%",
+        marginTop: 15
     },
-    
-    tutorSubject: {
-        width: 68,
-        height: 20,
-        backgroundColor: "#FF3142",
-        color: "white",
-        textAlign: "center",
-        textAlignVertical: "center",
+
+    subjectContainer: {
+        padding: 5,
+        backgroundColor: "#C7E9F1",
         borderRadius: 20,
-        fontSize: 12,
-        marginBottom: 10,
-    }
+        width: "30%",
+        alignSelf: "center"
+    },
+
+    subjectName:{
+        textAlign: "center",
+        fontSize: 10,
+        fontWeight: "700",
+        color: "#1877F2"
+    },
+
 
 })
