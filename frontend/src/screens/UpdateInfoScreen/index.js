@@ -23,13 +23,13 @@ export default function UpdateInfoScreen( {route} ) {
 					<OnBoardingTitle/>
 					<OnBoardingPrompt message="Complete your info"/>
 					<Text style={styles.sectionPrompt}>Fill your profile</Text>
-					<Text style={styles.inputTitle}>Rate</Text>
-                <TextInput style={styles.input} placeholder="Rate" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setRate(enteredText)}}/>
-                <Text style={styles.inputTitle}>Teaching since</Text>
-                <TextInput style={styles.input} placeholder="Teaching since" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setYears(enteredText)}}/>
-                <Text style={styles.inputTitle} multiline={true}>About</Text>
-                <TextInput style={styles.aboutInput} placeholder="About" multiline={true} onChangeText={(enteredText)=>{setAbout(enteredText)}}/>
-					<View style={styles.buttonContainer}>
+					<Text style={styles.fieldTitle}>Rate</Text>
+					<TextInput style={styles.field} placeholder="Rate" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setRate(enteredText)}}/>
+					<Text style={styles.fieldTitle}>Teaching since</Text>
+					<TextInput style={styles.field} placeholder="Teaching since" keyboardType='decimal-pad' onChangeText={(enteredText)=>{setYears(enteredText)}}/>
+					<Text style={styles.fieldTitle} multiline={true}>About</Text>
+					<TextInput style={styles.about} placeholder="About" multiline={true} onChangeText={(enteredText)=>{setAbout(enteredText)}}/>
+					<View style={styles.buttonsContainer}>
 						<FullWidthButton text="Next" onHandlePress={()=>addInfo({"years": parseInt(years), "rate": parseInt(rate),"about_me": about}, user, setUser)}/>
 					</View>
 				</Container>
