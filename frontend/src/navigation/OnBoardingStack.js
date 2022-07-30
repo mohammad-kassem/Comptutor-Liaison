@@ -13,8 +13,17 @@ import EditProfileStack from "./EditProfileStack";
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
 
+    const MyTheme = {
+        ...DefaultTheme,
+        colors: {
+          ...DefaultTheme.colors,
+          primary: '#4FC7E6',
+          background:'#f5f5f5'
+        },
+      };
+
     return (
-    <NavigationContainer>
+    <NavigationContainer theme={MyTheme}>
         <RootStackNav.Navigator
         screenOptions={{
             headerShown: false
