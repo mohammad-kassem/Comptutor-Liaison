@@ -22,6 +22,17 @@ export default StyleSheet.create({
         borderRadius: 150
     },
 
+    icon: {
+        fontSize: 26,
+        color:"#4FC7E6",
+        position: "absolute",
+        right: 5,
+        bottom: 5,
+        backgroundColor: "white",
+        borderRadius: 25,
+        padding: 5
+    },
+
     name: {
         fontSize: 28,
         fontWeight: "600",
@@ -54,10 +65,10 @@ export default StyleSheet.create({
     editButton :{
         flex: 1,
         flexDirection: "row",
-        backgroundColor: "#1877F2",
+        backgroundColor: "#C7E9F1",
         justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: 10,
+        borderRadius: 20,
         marginRight: 25,
         paddingHorizontal: 15,
         aspectRatio: 3,
@@ -66,15 +77,21 @@ export default StyleSheet.create({
     logoutButton :{
         flex: 1,
         flexDirection: "row",
-        backgroundColor: "#FF3142",
+        backgroundColor: "#e0474c",
         justifyContent: "space-between",
         alignItems: "center",
-        borderRadius: 10,
+        borderRadius: 20,
         paddingHorizontal: 15,
         aspectRatio: 3,
     },
 
-    butonText: {
+    editButonText: {
+        fontSize: 16,
+        fontWeight: "500",
+        color: "#1877F2"
+    },
+
+    logoutButonText: {
         fontSize: 16,
         fontWeight: "500",
         color: "white"

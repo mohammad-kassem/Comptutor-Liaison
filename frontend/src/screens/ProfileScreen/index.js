@@ -41,19 +41,20 @@ export default function ProfileScreen() {
                 ) : (
                     <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
                 )}
+                <Icon name="camera" style={styles.icon}/>
             </TouchableOpacity>
             <Text style={styles.name}>{user.fname} {user.lname}</Text>
-            {user.role_id === 1 && <View style={styles.balanceContainer}>
+            {/* {user.role_id === 1 && <View style={styles.balanceContainer}>
                 <Text style={styles.balance}>Balance</Text>
                 <Text style={styles.balance}>$50</Text>
-            </View>}
+            </View>} */}
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.editButton} onPress={()=>navigation.navigate("EditProfileStack")}>
-                    <Text style={styles.butonText}>Edit</Text>
-                    <Icon name="account-edit" size={24} color="white"/>
+                    <Text style={styles.editButonText}>Edit</Text>
+                    <Icon name="account-edit" size={24} color="#1877F2"/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.logoutButton} onPress={async ()=>{setUser({}); await setToken("")}}>
-                    <Text style={styles.butonText}>Logout</Text>
+                    <Text style={styles.logoutButonText}>Logout</Text>
                     <Icon name="logout" size={24} color="white"/>
                 </TouchableOpacity>
             </View>
