@@ -5,6 +5,7 @@ import { useUser } from '../../Context/User';
 import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { deleteDegree, deleteSubject } from './controller';
+import Container from '../../components/Container';
 
 
 
@@ -17,12 +18,13 @@ export default function EditProfileScreen() {
     return (
         <>  
             <ScrollView>
-            <View style={styles.container}>
-                <Text style={styles.title}>Edit profile</Text>
+                <Text style={styles.title}>Edit Profile</Text>
+                <Container>
                 <View style={styles.infoContainer}>
-                    <Text style={styles.category}>Info</Text>
-                    <TouchableOpacity onPress={()=>navigation.navigate("EditProfileStack", { screen: "EditInfoScreen"},)}>
-                        <Icon name="pen" size={30} color="#1877F2"/>
+                    <Text style={styles.category}>Personal Info</Text>
+                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditProfileStack", { screen: "EditInfoScreen"},)}>
+                        <Text style={styles.editText}>Edit</Text>
+                        <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.fieldTitle}>First name</Text>
@@ -36,19 +38,20 @@ export default function EditProfileScreen() {
                 <Text style={styles.fieldTitle}>Teaching since</Text>
                 <Text style={styles.field}>{user.since}</Text>
                 <Text style={styles.fieldTitle}>About</Text>
-                <Text style={styles.about} multiline={true}>{user.about}</Text>  
+                <Text style={styles.about} multiline={true}>{user.about ? user.about : "-"}</Text>  
                 <View style={styles.infoContainer}>
                     <Text style={styles.category}>Degrees</Text>
-                    <TouchableOpacity onPress={()=>navigation.navigate( "EditDegreeScreen", { user: user, stackType: "EditProfile", setDegrees: setDegrees })}>
-                        <Icon name="pen" size={30} color="#1877F2"/>
+                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate( "EditDegreeScreen", { user: user, stackType: "EditProfile", setDegrees: setDegrees })}>
+                        <Text style={styles.editText}>Edit</Text>
+                        <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
                 </View>
                 </>}
                     {degrees.map((degree)=>{return(
                         <View style={styles.infoContainer}>
-                        <Text style={styles.category}>{degree.university} - {degree.degree}</Text>
+                        <Text style={styles.degree}>{degree.university} - {degree.degree}</Text>
                         <TouchableOpacity onPress={()=>deleteDegree(degree.id, degrees, setDegrees, user, setUser)}>
-                            <Icon name="delete" size={24} color="#1877F2"/>
+                            <Icon name="delete" size={20} color="#e0474c" style={styles.icon}/>
                         </TouchableOpacity>
                         </View>
                     )}
@@ -56,24 +59,26 @@ export default function EditProfileScreen() {
                 
                 <View style={styles.infoContainer}>
                     <Text style={styles.category}>Subjects</Text>
-                    <TouchableOpacity onPress={()=>navigation.navigate("EditSubjectsScreen", { user: user, stackType: "EditProfile", setUserSubjects: setSubjects })}>
-                        <Icon name="pen" size={30} color="#1877F2"/>
+                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditSubjectsScreen", { user: user, stackType: "EditProfile", setUserSubjects: setSubjects })}>
+                        <Text style={styles.editText}>Edit</Text>
+                        <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
                 </View>
+                <View style={styles.subjectsContainer}>
                     {subjects.map((subject)=>{return(
                         <>
-                        <View style={styles.subjectCard}>
+                        <View style={styles.subjectContainer}>
                             <View style={styles.imageContainer}>
-                                <Image style={styles.subjectImage} source={{uri:subject.image,}}/>
+                                <Image style={styles.subjectImage} source={{uri: subject.image}}/>
                             </View>
-                            <Text style={styles.name}>{subject.subject}</Text>
-                            <TouchableOpacity onPress={()=>deleteSubject(subject.id, subjects, setSubjects, user, setUser)}>
-                                <Icon name="delete" size={24} color="#1877F2"/>
+                            <TouchableOpacity style={styles.deleteButton} onPress={()=>deleteSubject(subject.id, subjects, setSubjects, user, setUser)}>
+                                <Text style={styles.deleteText}>Delete</Text>
                             </TouchableOpacity>
-                        </View> 
+                        </View>
                         </>                      
                     )})}
-                </View>
+                    </View>
+                    </Container>
             </ScrollView>
         </>   
     )

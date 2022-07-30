@@ -1,22 +1,16 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        marginTop: 25,
-        marginHorizontal: 25
-    },
 
     title: {
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginBottom: 25,
+        marginTop: 25,
+        alignSelf: "center"
     },
 
+    
     infoContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
@@ -26,84 +20,72 @@ export default StyleSheet.create({
     category: {
         fontSize: 20,
         fontWeight: "500",
-        marginBottom: 30
+        marginBottom: 15,
     },
 
+    edit: {
+        flexDirection: "row",
+        alignItems: "center"
+    },
+
+    editText:{
+        marginRight: 5,
+        color: "#4FC7E6"
+    },
+
+
     fieldTitle: {
-        fontSize: 18,
-        marginBottom: 5
+        fontSize: 16,
+        marginBottom: 5,
+        color: "#919090",
+        fontWeight: "500"
     },
 
     field: {
-        borderBottomWidth: 1,
         marginBottom: 20,
         paddingBottom: 5,
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
-        fontSize: 16,
+        fontSize: 18,
     },
 
     about: {
-        borderBottomWidth: 1,
         marginBottom: 20,
         paddingBottom: 5,
         textAlignVertical: 'top',
         alignItems:"flex-start",
-        fontSize: 16,
+        fontSize: 18,
         height: 60,
     },
 
-    details: {
-        fontSize: 16,
-        lineHeight: 19,
-        color: "#0787F9"
+    degree: {
+        marginBottom: 20,
+        paddingBottom: 5,
+        textAlignVertical: 'bottom',
+        alignItems:"flex-start",
+        fontSize: 18,
     },
 
-    sheetText:{
-        fontSize: 24,
-        fontWeight: "500",
-        textAlign: "center"
+    icon: {
+        alignSelf: "stretch",
+        textAlignVertical: "center",
+        // marginTop: 10,
     },
 
-    cancel:{
-        backgroundColor: "#FF3142",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 15,
-        borderRadius: 10,
-        margin: 30,
-        
-    },
-
-    go:{
-        backgroundColor: "#1877F2",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 15,
-        borderRadius: 10,
-        margin: 30,
-    },
-
-    buttonText: {
-        fontSize: 16,
-        fontWeight: '500',
-        color: "white",
-    },
-
-    subjectCard: {
+    subjectsContainer: {
         flexDirection: "row",
         flexWrap: "wrap",
         justifyContent: "space-between",
-        alignItems: "center",
-        marginBottom: 25,
-        borderWidth: 1,
-        backgroundColor: "white",
-        padding: 15,
+        marginTop: 5
+    },
+
+    subjectContainer:{
+        width: 120,
     },
 
     imageContainer: {
-        width: 35,
-        height: 35, 
+        width: 120,
+        height: 120, 
         marginRight: 15,
     },
 
@@ -111,11 +93,21 @@ export default StyleSheet.create({
         flex: 1,
         width: undefined,
         height: undefined,
-        borderRadius: 24
+        borderRadius: 20
     },
 
-    deleteButton: {
-        borderWidth: 1
-    }
+    deleteButton:{
+        backgroundColor: "#e0474c",
+        padding: 5,
+        borderRadius: 20,
+        marginVertical: 15
+    },
+
+    deleteText:{
+        color: "white",
+        textAlign: "center",
+        fontWeight: "500",
+        fontSize: 16
+    },
 
 })
