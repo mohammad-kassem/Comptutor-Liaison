@@ -17,14 +17,16 @@ export default function ChatRoomsScreen() {
 		let arr = []
         database()
 		.ref("rooms")
+		.orderByChild("lastSent")
 		.on('value', snapshot => {
 			arr = []
-			setRooms(arr)
-			arr = [Object.entries(snapshot._snapshot.value)]
-			setRooms(arr[0])
+				snapshot.forEach((room) => {
+					console.log(room._snapshot.key)
+					arr.push([room._snapshot.key, room._snapshot.value])
+				})
+			setRooms([...(arr || [] )].reverse())	
 		})
       }, []);
-
 	rooms = filterRooms(rooms, user)
 
 	return (
