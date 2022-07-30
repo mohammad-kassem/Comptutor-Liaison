@@ -11,6 +11,9 @@ export default function ChatRoomsScreen() {
 	const navigation = useNavigation()
 	const {user} = useUser()
 	let [rooms, setRooms] = useState([])
+	const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
+	"July", "Aug", "Sept", "Oct", "Nov", "Dec"
+  ];
 	
 
 	useEffect(function(){
@@ -44,8 +47,13 @@ export default function ChatRoomsScreen() {
 							:<Image style={styles.profile} source={{uri: roomData.item[1].tutorImage}}/>}
 						</View>
 						<View style={styles.content}>
+						<Text style={styles.time}>{monthNames[new Date(roomData.item[1].lastSent).getMonth()+1]} {new Date(roomData.item[1].lastSent).getDate()}, 
+							{new Date(roomData.item[1].lastSent).getHours()}:{new Date(roomData.item[1].lastSent).getMinutes() < 10 ? "0" : ""}{new Date(roomData.item[1].lastSent).getMinutes()}
+							</Text>
+							<View style={styles.header}>
 							<Text style={styles.contact}>{roomData.item[1].tutorName}</Text>
-							<Text style={styles.message}>{roomData.item[1].lastMessage}</Text>
+							</View>
+							<Text style={styles.message}>{roomData.item[1].lastMessage.substring(0, 25)}{roomData.item[1].lastMessage.length > 20 && "..."}</Text>
 						</View>
 						</>
 						:
@@ -56,7 +64,12 @@ export default function ChatRoomsScreen() {
 							:<Image style={styles.profile} source={{uri: roomData.item[1].studentImage}}/>}
 						</View>
 						<View style={styles.content}>
+						<Text style={styles.time}>{monthNames[new Date(roomData.item[1].lastSent).getMonth()+1]} {new Date(roomData.item[1].lastSent).getDate()}, 
+							{new Date(roomData.item[1].lastSent).getHours()}:{new Date(roomData.item[1].lastSent).getMinutes() < 10 ? "0" : ""}{new Date(roomData.item[1].lastSent).getMinutes()}
+							</Text>
+							<View style={styles.header}>
 							<Text style={styles.contact}>{roomData.item[1].studentName}</Text>
+							</View>
 							<Text style={styles.message}>{roomData.item[1].lastMessage}</Text>
 						</View>
 						</>
