@@ -15,7 +15,7 @@ export async function addDegree(inputDegree, user, navigation){
         data: JSON.stringify(inputDegree) 
         })
     .then(function(response){
-        const newDegrees = [...user.degrees, response.data.degree]
+        const newDegrees = [response.data.degree]
         user = {...user, "degrees": newDegrees}
 
         navigation.navigate("UpdateInfoScreen", {user: user})
