@@ -1,42 +1,38 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        paddingVertical: 25,
-        paddingHorizontal: 35
-    },
-
-    sectionPrompt: {
-        fontSize: 20,
-        fontWeight: "500",
-        marginBottom: 15
-    },
-
     title: {
-        fontSize: 20,
-        marginBottom: 5
+        fontSize: 24,
+        fontWeight: "700",
+        lineHeight: 29,
+        alignSelf: "center",
+        marginBottom: 25,
+    },
+
+    fieldTitle: {
+        fontSize: 16,
+        marginBottom: 5,
+        color: "#919090",
+        fontWeight: "500"
     },
 
     field: {
-        borderBottomWidth: 1,
         marginBottom: 20,
-        padding: 0,
+        paddingBottom: 5,
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
-        fontSize: 20
+        fontSize: 18,
+        borderBottomWidth: 1,
+        borderColor: "#919090"
     },
 
     fieldText: {
         fontSize: 20
     },
 
-    buttonContainer: {
-        marginTop: 245,
-        marginHorizontal: "-8%",
-
-    }
+    buttonsContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginTop: "80%",
+    },
 })
