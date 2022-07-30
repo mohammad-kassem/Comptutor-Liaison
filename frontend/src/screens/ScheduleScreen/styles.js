@@ -1,55 +1,40 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        paddingVertical: 25,
-        paddingHorizontal: 35,
-    },
 
     title: {
         fontSize: 24,
         fontWeight: "700",
-        lineHeight: 29
+        lineHeight: 29,
+        marginVertical: 25,
+        alignSelf: "center"
     },
-
-    date: {
-        fontSize: 20,
-        lineHeight: 23,
-        fontWeight: "500",
-        borderBottomWidth: 1,
-        paddingTop: 5,
-    },
-
     
     timesContainer:{
         flex: 1,
         justifyContent: "space-between",
-        margin: 15,
-    },
-
-    timeCardLeft: {
-        margin: 30,
-        width: "50%",
-        height: 50,
-        justifyContent: "center",
+        margin: 25,
     },
 
 
-    timeContainer :{
+    timeContainer: {
         backgroundColor: "white",
-        width: 100,
-        height: 50,
-        borderRadius: 10,
+        borderRadius: 15,
         elevation: 5,
         justifyContent: "center",
+        paddingVertical: 10,
+        paddingHorizontal: 25,
+        elevation: 10
     },
 
     time: {
         textAlign: "center",
-        textAlignVertical: "center"
+        textAlignVertical: "center",
+        fontSize: 18,
+        fontWeight: "500",
+        lineHeight: 22,
+        textAlign: "center",
+        letterSpacing: 2
     },
+
 })

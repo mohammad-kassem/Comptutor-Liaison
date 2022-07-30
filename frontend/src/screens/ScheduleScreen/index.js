@@ -28,7 +28,6 @@ export default function ScheduleScreen({ route }) {
 
     return (
         <>
-        <Container>
             <Text style={styles.title}>{tutor.fname} {tutor.lname}'s Schedule</Text>
             <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedSchedules}/>
             <FlatList numColumns={2} columnWrapperStyle={styles.timesContainer} data={groupedSchedules[date]} renderItem={(dateData) =>{
@@ -48,7 +47,6 @@ export default function ScheduleScreen({ route }) {
             
             <AppointmentModal modalIsVisable={modalIsVisable} setModalIsVisable={setModalIsVisable} time={modalData[0]} date={modalData[1]} tutor={tutor}
                 schedules={schedules} setSchedules={setSchedules}/>
-        </Container>
         </>
     )
 }
