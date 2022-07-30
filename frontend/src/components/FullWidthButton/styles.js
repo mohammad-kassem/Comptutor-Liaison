@@ -2,16 +2,31 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
     fullWidthButton:{
-        backgroundColor: "#1877F2",
+        backgroundColor: "#C7E9F1",
         justifyContent: "center",
         alignItems: "center",
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 20,
+        width: "100%",
+        elevation: 5,
+    },
+
+    buttonContent: {
+        flexDirection: "row",
     },
 
     fullWidthButtonText:{
-        fontSize: 16,
+        fontSize: 18,
         fontWeight: '500',
-        color: "white",
+        color: "#1877F2",
+        marginLeft: 5
     },
+
+    green: {
+        backgroundColor: "#A8D057"
+    },
+
+    white: {
+        color: "white"
+    }
 })
