@@ -1,12 +1,53 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
+    // container:{
+    //     flex: 1,
+    //     justifyContent: "center",
+    //     alignItems: "stretch",
+    //     backgroundColor: "#f5f5f5",
+    // },
+
+    imageContainer: {
+        width: 130,
+        height: 130, 
+        marginVertical: "10%",
+        alignSelf: "center"
+    },
+
+    logo: {
         flex: 1,
-        justifyContent: "center",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        marginVertical: "25%"
+        width: undefined,
+        height: undefined,
+        borderRadius: 100
+    },
+
+    profile:{
+        flex: 1,
+        width: undefined,
+        height: undefined,
+        borderRadius: 100
+    },
+
+    profileIcon:{
+        backgroundColor: "#bfbfbf",
+        height: "100%",
+        borderRadius: 100,
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontSize: 110,
+        color: "white"
+    },
+
+    icon: {
+        fontSize: 26,
+        color:"#4FC7E6",
+        position: "absolute",
+        right: 5,
+        bottom: 5,
+        backgroundColor: "white",
+        borderRadius: 25,
+        padding: 5
     },
 
     messageContainer:{
@@ -15,7 +56,8 @@ export default StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         paddingHorizontal: 60,
-        paddingBottom: 40,
+        marginTop: 30,
+        marginBottom: 20
     },
 
     messageTitle:{
@@ -25,17 +67,31 @@ export default StyleSheet.create({
     },
 
     messageContent:{
-        fontSize: 24,
+        fontSize: 18,
         textAlign: "center",
     },
 
     input:{
         backgroundColor: "#ffff",
         height: 55,
-        marginHorizontal: 30,
-        marginVertical: 10,
+        marginHorizontal: 25,
+        marginTop: 20,
         padding: 15,
-        borderRadius: 10
+        borderRadius: 50
+    },
+
+    loginButtonConatiner: {
+        marginHorizontal: 25,
+        marginTop: 90,
+        marginBottom: 20
+
+    },
+
+    registerButtonConatiner: {
+        marginHorizontal: 25,
+        marginTop: 50,
+        marginBottom: 20
+
     },
 
     fullWidthButton:{
@@ -61,7 +117,7 @@ export default StyleSheet.create({
     },
 
     navigationLink:{
-        color: "#1877F2"
+        color: "#4FC7E6"
     },
 
     link: {
@@ -72,7 +128,7 @@ export default StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         marginHorizontal: 30,
-        marginVertical: 10,
+        marginTop: 20,
     },
 
     isTutorMessage: {
