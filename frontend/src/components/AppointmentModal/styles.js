@@ -7,64 +7,64 @@
         justifyContent: 'center',
         },
         
-        modal: {
+    modal: {
         alignItems: 'center',
         backgroundColor: 'white',
         justifyContent: 'center',
         borderRadius: 20,
-        },
+    },
 
-        title: {
+    title: {
         marginTop: 30,
         fontWeight: "bold",
         fontSize: 20,
         lineHeight: 24,
-        },
+    },
 
-        content: {
+    content: {
         marginTop: 15,
         fontWeight: "500",
         fontSize: 16,
         lineHeight: 19,
-        },
+    },
 
-        buttonsContainer: {
+    buttonsContainer: {
         marginTop: 15,
         flexDirection: "row",
         justifyContent: "space-between",
         alignItems: "center",
-        },
+    },
 
-        leftButton:{
+    leftButton:{
         flexDirection: "row",
         flex: 1,
         height: 46,
-        },
+    },
 
-        confirmButton:{
-        backgroundColor: "#1877F2",
+    confirmButton:{
+        backgroundColor: "#C7E9F1",
         flex: 1,
         borderBottomLeftRadius: 20,
-        textAlign: "center",
-        textAlignVertical: "center",
-        color: "white",
-        fontSize: 16,
-        fontWeight: "500"
-        },
-
-        rightButton:{
-        flexDirection: "row",
-        flex: 1,
-        },
-
-        cancelButton:{
-        flex: 1,
-        height: 46,
         textAlign: "center",
         textAlignVertical: "center",
         color: "#1877F2",
         fontSize: 16,
         fontWeight: "500"
-        },
+    },
+
+    rightButton:{
+        flexDirection: "row",
+        flex: 1,
+    },
+
+    cancelButton:{
+        flex: 1,
+        height: 46,
+        textAlign: "center",
+        textAlignVertical: "center",
+        color: "#919090",
+        fontSize: 16,
+        fontWeight: "500"
+    },
 
 });
