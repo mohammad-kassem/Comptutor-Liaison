@@ -1,73 +1,111 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
-        alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        marginTop: 50,
-        marginHorizontal: 25
-    },
-
     title: {
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginBottom: 25,
+        marginVertical: 25,
+        alignSelf: "center"
     },
 
     appointmentCard: {
-        marginBottom: 25,
+        padding: 20,
+        marginVertical: 15,
+        marginHorizontal: 25,
+        borderRadius: 20,
         backgroundColor: "white",
-        borderRadius: 10,
         elevation: 10,
-        padding: 15,
-
+        alignSelf: "stretch",
+        height: 100,
+        justifyContent: "space-between",
+        alignItems: "center"
     },
 
     date:{
-        fontSize: 18,
-        fontWeight: "400",
+        fontSize: 20,
+        fontWeight: "500",
         lineHeight: 22,
-        marginBottom: 5
+        textAlign: "center",
+        letterSpacing: 5
+    },
+
+    appointmentWith:{
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center"
+    },
+
+    imageContainer: {
+        width: 24,
+        height: 24, 
+        marginHorizontal: 5    
+    },
+
+    profile: {
+        flex: 1,
+        width: undefined,
+        height: undefined,
+        borderRadius: 50
     },
 
     details: {
         fontSize: 16,
-        lineHeight: 19,
-        color: "#0787F9"
+        fontWeight: "500",
+        lineHeight: 22,
+        textAlign: "center"
     },
 
     sheetText:{
         fontSize: 24,
         fontWeight: "500",
-        textAlign: "center"
+        textAlign: "center",
+        marginTop: 15
     },
 
     cancel:{
-        backgroundColor: "#FF3142",
+        backgroundColor: "#e0474c",
         justifyContent: "center",
         alignItems: "center",
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 20,
         margin: 30,
+        marginTop: 0
         
     },
 
     go:{
-        backgroundColor: "#1877F2",
+        backgroundColor: "#C7E9F1",
         justifyContent: "center",
         alignItems: "center",
         padding: 15,
-        borderRadius: 10,
+        borderRadius: 20,
         margin: 30,
     },
 
-    buttonText: {
+    disabled:{
+        backgroundColor: "#bfbfbf",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 15,
+        borderRadius: 20,
+        margin: 30,
+    },
+
+    cancelText: {
         fontSize: 16,
         fontWeight: '500',
         color: "white",
-    }
+    },
+
+    goText: {
+        fontSize: 16,
+        fontWeight: '500',
+        color: "#1877F2",
+    },
+
+    disabledText:{
+        color: "white"
+    },
 
 })

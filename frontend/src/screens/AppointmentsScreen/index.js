@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, FlatList } from 'react-native'
+import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
@@ -6,6 +6,7 @@ import { deleteAppointment, filterAppointments, getAppointments, groupAppointmen
 import { useUser } from '../../Context/User';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import DropdownComponent from '../../components/Dropdown';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
 export default function AppointmentsScreen() {
@@ -35,32 +36,49 @@ export default function AppointmentsScreen() {
           closeOnDragDown={true}
           closeOnPressMask={false}
           customStyles={{
+            container:{
+                borderTopStartRadius: 35,
+                borderTopEndRadius: 35,
+                justifyContent: "space-between"
+            },
             draggableIcon: {
-              backgroundColor: "#000"
+              backgroundColor: "#919090"
             }
           }}>
-        <Text style={styles.sheetText}>Appointment action</Text>
-        <TouchableOpacity style={styles.cancel} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}><Text style={styles.buttonText}>Cancel appointment</Text></TouchableOpacity>
-        <TouchableOpacity style={styles.go} disabled={buttonDisabled} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}><Text style={styles.buttonText}>Go to appointment</Text></TouchableOpacity>
+        <Text style={styles.sheetText}>Appointment Action</Text>
+        
+        <TouchableOpacity style={buttonDisabled ? styles.disabled : styles.go} disabled={buttonDisabled} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}>
+            <Text style={[styles.goText, buttonDisabled && styles.disabledText]}>Go to Appointment</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.cancel} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}>
+            <Text style={styles.cancelText}>Cancel Appointment</Text>
+        </TouchableOpacity>
         </RBSheet>
-            <View style={styles.container}>
                 <Text style={styles.title}>Appointments</Text>
+                
                 <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
                 <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
                     return(
                         <>
                         <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); setId(dateData.item.schedule_id); setButtonDisabled(isAppointmentTime(dateData.item))}}>
-                            <View style={styles.cardContent}>
-                                <Text style={styles.date}>{dateData.item.schedule.date} {dateData.item.schedule.start_time} - {dateData.item.schedule.end_time}</Text>
-                                <Text style={styles.details}>Appointment with {dateData.item[appointmentWith].fname} {dateData.item[appointmentWith].lname}</Text>
-                            </View>
+                                <Text style={styles.date}>{dateData.item.schedule.start_time.slice(0, -3)} - {dateData.item.schedule.end_time.slice(0, -3)}</Text>
+                                <View style={styles.appointmentWith}>
+                                    <Icon name="account-multiple" size={20} color="#4FC7E6"/>
+                                    <View style={styles.imageContainer}>
+                                    {dateData.item[appointmentWith].profile_image ? 
+                                    (<Image style={styles.profile} source={{uri: dateData.item[appointmentWith].profile_image}}/>
+                                    ) : (
+                                    <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
+                                    )}
+                                    </View>
+                                    <Text style={styles.details}>{dateData.item[appointmentWith].fname} {dateData.item[appointmentWith].lname}</Text>
+                                </View>
                         </TouchableOpacity>
                         </>
                         
                     )}
                 }
                 />
-            </View>
         </>   
     )
 }
