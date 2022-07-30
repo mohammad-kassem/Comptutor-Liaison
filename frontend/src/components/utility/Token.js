@@ -9,7 +9,7 @@ export async function getToken(){
 	try {
 		value = await AsyncStorage.getItem('storage_Key');
 		return value
-	} catch(e) {
+	} catch(error) {
 		ToastAndroid.show("Error getting token", ToastAndroid.SHORT)
 		return undefined
 	}
@@ -18,7 +18,7 @@ export async function getToken(){
 export async function setToken(value){
 	try {
 		await AsyncStorage.setItem('storage_Key', value)
-	} catch (e) {
+	} catch (error) {
 		ToastAndroid.show("Error setting token", ToastAndroid.SHORT)
 	}
 }
