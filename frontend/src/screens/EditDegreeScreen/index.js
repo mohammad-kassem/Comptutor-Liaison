@@ -1,4 +1,4 @@
-import { View, Text, KeyboardAvoidingView, ScrollView } from 'react-native'
+import { View, Text, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import OnBoardingTitle from '../../components/OnBoardingTitle'
 import OnBoardingPrompt from '../../components/OnBoardingPrompt'
@@ -9,6 +9,8 @@ import { useNavigation } from '@react-navigation/native'
 import Container from '../../components/Container'
 import SaveCancelButtons from '../../components/SaveCancelButtons'
 import styles from './styles'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import { useUser } from '../../Context/User'
 
 export default function EditDegreeScreen( {route} ) {
@@ -21,16 +23,18 @@ export default function EditDegreeScreen( {route} ) {
 	return (
 		<KeyboardAvoidingView keyboardVerticalOffset={-250} behavior="padding">
 			<ScrollView>
-				<Container>
-					<Text style={styles.title}>Add degree</Text>
-					<Text style={styles.inputTitle}>University</Text>
-					<TextInput style={styles.input} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
-					<Text style={styles.inputTitle}>Degree</Text>
-					<TextInput style={styles.input} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
-					<View style={styles.buttonsContainer}>
-						<SaveCancelButtons onHandlePress={()=>addDegree({university, degree}, user, setUser, navigation, setDegrees)}/>
+					<View style={styles.titleContainer}>
+						<Text style={styles.title}>Add a Degree</Text>	
 					</View>
-				</Container>
+					<Container>
+					<Text style={styles.fieldTitle}>University</Text>
+					<TextInput style={styles.field} placeholder="University or school" onChangeText={(enteredText)=>{setUniversity(enteredText)}}/>
+					<Text style={styles.fieldTitle}>Degree</Text>
+					<TextInput style={styles.field} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
+					<View style={styles.buttonsContainer}>
+						<FullWidthButton text="Save Changes" onHandlePress={()=>addDegree({university, degree}, user, setUser, navigation, setDegrees)}/>
+					</View>
+					</Container>
 			</ScrollView>
 		</KeyboardAvoidingView>
 	)
