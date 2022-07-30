@@ -1,52 +1,58 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    container:{
-        flex: 1,
-        justifyContent: "flex-start",
+    titleContainer: {
+        flexDirection: "row",
+        justifyContent: "space-between",
         alignItems: "stretch",
-        backgroundColor: "#f5f5f5",
-        paddingVertical: 25,
-        paddingHorizontal: 35,
+        margin: 25,
+        marginBottom: 0
     },
 
     title: {
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginBottom: 25,
+        alignSelf: "center",
+        textAlign: "center",
     },
 
-    inputTitle: {
-        fontSize: 18,
-        marginBottom: 5
+
+    fieldTitle: {
+        fontSize: 16,
+        marginBottom: 5,
+        color: "#919090",
+        fontWeight: "500"
     },
 
-    input: {
-        borderBottomWidth: 1,
+    field: {
         marginBottom: 20,
-        padding: 0,
+        paddingBottom: 5,
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
-        fontSize: 16,
-        paddingBottom: 5,
+        fontSize: 18,
+        borderBottomWidth: 1,
+        borderColor: "#919090"
     },
 
-    aboutInput: {
-        borderBottomWidth: 1,
-        marginTop: 5,
+    about: {
         marginBottom: 20,
-        padding: 0,
+        paddingBottom: 5,
         textAlignVertical: 'top',
         alignItems:"flex-start",
-        fontSize: 16,
+        fontSize: 18,
         height: 60,
-        paddingBottom: 5,
+        borderBottomWidth: 1,
+        borderColor: "#919090"
     },
 
     buttonsContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: 90,
+        marginTop: "15%"
+    },
+
+    studentButton:{
+        marginTop: "98%",
     },
 })
