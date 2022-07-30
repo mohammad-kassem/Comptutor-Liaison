@@ -1,6 +1,12 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+    sectionPrompt: {
+        fontSize: 20,
+        fontWeight: "500",
+        marginVertical: 25
+    },
+
     fieldTitle: {
         fontSize: 16,
         marginBottom: 5,
