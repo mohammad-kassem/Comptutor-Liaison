@@ -5,5 +5,6 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
+        alignSelf: "center",
     },
 })
