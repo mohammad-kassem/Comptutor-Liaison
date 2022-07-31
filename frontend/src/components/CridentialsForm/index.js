@@ -57,10 +57,6 @@ export default function CridentialsFrom({type, onPressHandler }) {
         </>
         :
         <>
-        {/* <ImageBackground source={require('../../../assets/background.png')} style={{width: '100%', height: '90%'}} resizeMode="cover">
-        <View style={styles.imageContainer}>
-            <Image style={styles.logo} source={require('../../../assets/logo.png')} resizeMode="cover"/>
-        </View> */}
             <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
             {image ? 
                 (<Image style={styles.profile} source={{uri: image}}/>
@@ -82,9 +78,6 @@ export default function CridentialsFrom({type, onPressHandler }) {
 
             {type === "login" ?
             (<>
-            {/* <TouchableOpacity containerStyle={styles.fullWidthButton} onPress={()=>onPressHandler({email, password}, setUser)}>
-                <Text style={styles.fullWidthButtonText}>Log in</Text>
-            </TouchableOpacity> */}
             <View style={styles.loginButtonConatiner}>
             <FullWidthButton text="Log In" onHandlePress={()=>onPressHandler({email, password}, setUser)}/>
             </View>
