@@ -26,6 +26,16 @@ export async function addDegree(inputDegree, user, navigation){
     })
 }
 
+
+function refactorUniversityData(universities){
+    let data;
+    universities = (filterUniversities(universities))
+    data = universities.map(university => (
+        {label: university.name, value: university.domains[0]}
+    ))
+    return data
+}
+
 function filterUniversities(universities){
     return universities.filter((university, index)=>{
         if (index === universities.findIndex((uni) => (
