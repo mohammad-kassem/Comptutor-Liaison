@@ -87,7 +87,8 @@ export default StyleSheet.create({
     },
 
     navigationLink:{
-        color: "#4FC7E6"
+        color: "#1877F2",
+        fontWeight: "600"
     },
 
     
