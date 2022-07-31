@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
-import { deleteAppointment, filterAppointments, getAppointments, groupAppointments, isAppointmentTime } from './controller';
+import { deleteAppointment, filterAppointments, getAppointments, groupAppointments, isAppointmentTime, isCancelTime } from './controller';
 import { useUser } from '../../Context/User';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import DropdownComponent from '../../components/Dropdown';
@@ -14,7 +14,8 @@ export default function AppointmentsScreen() {
     const refRBSheet  = useRef();
     const [date, setDate] = useState("")
     const [id, setId] = useState() 
-    const [buttonDisabled, setButtonDisabled] = useState(false)
+    const [goButtonDisabled, setGoButtonDisabled] = useState(false)
+    const [cancelButtonDisabled, setCancelButtonDisabled] = useState(false)
     const {user, setUser} = useUser()   
     const appointmentWith = user.role_id === 1 ? "tutor" : "student"
     const stackType = user.role_id === 1 ? "student" : "tutor"
@@ -47,10 +48,10 @@ export default function AppointmentsScreen() {
           }}>
         <Text style={styles.sheetText}>Appointment Action</Text>
         
-        <TouchableOpacity style={buttonDisabled ? styles.disabled : styles.go} disabled={buttonDisabled} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}>
-            <Text style={[styles.goText, buttonDisabled && styles.disabledText]}>Go to Appointment</Text>
+        <TouchableOpacity style={goButtonDisabled ? [styles.go, styles.disabled] : styles.go} disabled={goButtonDisabled} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}>
+            <Text style={[styles.goText, goButtonDisabled && styles.disabledText]}>Go to Appointment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.cancel} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}>
+        <TouchableOpacity style={cancelButtonDisabled ? [styles.cancel, styles.disabled] : styles.cancel} disabled={cancelButtonDisabled} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}>
             <Text style={styles.cancelText}>Cancel Appointment</Text>
         </TouchableOpacity>
         </RBSheet>
@@ -60,7 +61,7 @@ export default function AppointmentsScreen() {
                 <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
                     return(
                         <>
-                        <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); setId(dateData.item.schedule_id); setButtonDisabled(isAppointmentTime(dateData.item))}}>
+                        <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); setId(dateData.item.schedule_id); setGoButtonDisabled(isAppointmentTime(dateData.item)); setCancelButtonDisabled(!isCancelTime(dateData.item))}}>
                                 <Text style={styles.date}>{dateData.item.schedule.start_time.slice(0, -3)} - {dateData.item.schedule.end_time.slice(0, -3)}</Text>
                                 <View style={styles.appointmentWith}>
                                     <Icon name="account-multiple" size={20} color="#4FC7E6"/>
