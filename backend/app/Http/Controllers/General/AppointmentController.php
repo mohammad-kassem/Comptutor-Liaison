@@ -4,6 +4,7 @@ namespace App\Http\Controllers\General;
 
 use Auth;
 use Validator;
+use DateTime;
 use App\Models\User;
 use App\Models\Schedule;
 use App\Models\Appointment;
@@ -56,6 +57,14 @@ class AppointmentController extends Controller{
 
         if ($appointment === null) return response()->json(['message' => 'Appointment does not exist'], 204);
         
+        $schedule = Schedule::where('id', $id)->first();
+
+        date_default_timezone_set('Asia/Beirut');
+        $current_time = strtotime(date('Y-m-d H:i'));
+        $start_time = strtotime($schedule->date." ".$schedule->start_time);
+        $diff = ($start_time - $current_time )/ 60;
+
+        if ($diff < 15) return response()->json(['message' => 'The appointment cancel time is over', 409]);
 
         if ($user->id == $appointment->student_id){
             $FCM_token = User::where('id', $appointment->tutor_id)->first();
@@ -63,7 +72,6 @@ class AppointmentController extends Controller{
         else {
             $FCM_token = User::where('id',  $appointment->student_id)->first();
         }
-        $schedule = Schedule::where('id', $id)->first();
 
         $this -> sendCancelNotification($FCM_token->FCM_token, $schedule);
         $appointment->delete();
