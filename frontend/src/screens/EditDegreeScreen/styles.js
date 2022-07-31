@@ -16,6 +16,30 @@ export default StyleSheet.create({
         alignSelf: "center",
     },
 
+    dropdown: {
+        marginTop: 10,
+        marginBottom: 20,
+        height: 62,
+        backgroundColor: 'white',
+        borderRadius: 12,
+        padding: 12,
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 1,
+        },
+  
+        shadowOpacity: 0.2,
+        shadowRadius: 1.4,
+        elevation: 10,
+    },
+
+    selectedTextStyle: {
+        fontSize: 18,
+        height: 50,
+        textAlignVertical: "center"
+    },
+
     fieldTitle: {
         fontSize: 16,
         marginBottom: 5,
@@ -36,6 +60,6 @@ export default StyleSheet.create({
     buttonsContainer: {
         flexDirection: "row",
         justifyContent: "space-between",
-        marginTop: "103%",
+        marginTop: "93%",
     },
 })
