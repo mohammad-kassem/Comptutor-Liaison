@@ -27,6 +27,22 @@ export async function addDegree(inputDegree, user, navigation){
 }
 
 
+export function getUniversities(setUniversities) {
+    axios({
+        method: "get",
+        url: "http://universities.hipolabs.com/search?country=lebanon",
+        headers: {
+            "Content-type": "application/json",
+        },
+    })
+    .then(function(response){
+        setUniversities(refactorUniversityData(response.data))
+    })
+    .catch(function(error){
+        ToastAndroid.show("Error getting university names", ToastAndroid.SHORT)
+    })
+}
+
 function refactorUniversityData(universities){
     let data;
     universities = (filterUniversities(universities))
