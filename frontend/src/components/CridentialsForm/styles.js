@@ -1,13 +1,6 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    // container:{
-    //     flex: 1,
-    //     justifyContent: "center",
-    //     alignItems: "stretch",
-    //     backgroundColor: "#f5f5f5",
-    // },
-
     imageContainer: {
         width: 130,
         height: 130, 
@@ -20,34 +13,6 @@ export default StyleSheet.create({
         width: undefined,
         height: undefined,
         borderRadius: 100
-    },
-
-    profile:{
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        borderRadius: 100
-    },
-
-    profileIcon:{
-        backgroundColor: "#bfbfbf",
-        height: "100%",
-        borderRadius: 100,
-        textAlign: "center",
-        textAlignVertical: "center",
-        fontSize: 110,
-        color: "white"
-    },
-
-    icon: {
-        fontSize: 26,
-        color:"#4FC7E6",
-        position: "absolute",
-        right: 5,
-        bottom: 5,
-        backgroundColor: "white",
-        borderRadius: 25,
-        padding: 5
     },
 
     messageContainer:{
@@ -71,6 +36,34 @@ export default StyleSheet.create({
         textAlign: "center",
     },
 
+    profile:{
+        flex: 1,
+        width: undefined,
+        height: undefined,
+        borderRadius: 100
+    },
+
+    profileIcon:{
+        backgroundColor: "#bfbfbf",
+        height: "100%",
+        borderRadius: 100,
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontSize: 110,
+        color: "white"
+    },
+
+    cameraIcon: {
+        fontSize: 26,
+        color:"#4FC7E6",
+        position: "absolute",
+        right: 5,
+        bottom: 5,
+        backgroundColor: "white",
+        borderRadius: 25,
+        padding: 5
+    },
+
     input:{
         backgroundColor: "#ffff",
         height: 55,
@@ -87,29 +80,6 @@ export default StyleSheet.create({
 
     },
 
-    registerButtonConatiner: {
-        marginHorizontal: 25,
-        marginTop: 50,
-        marginBottom: 20
-
-    },
-
-    fullWidthButton:{
-        backgroundColor: "#1877F2",
-        justifyContent: "center",
-        alignItems: "center",
-        marginHorizontal: 30,
-        marginVertical: 10,
-        padding: 15,
-        borderRadius: 10
-    },
-
-    fullWidthButtonText:{
-        fontSize: 16,
-        fontWeight: '500',
-        color: "white",
-    },
-
     navigationMessage:{
         flexDirection:"row",
         justifyContent: "center",
@@ -120,10 +90,7 @@ export default StyleSheet.create({
         color: "#4FC7E6"
     },
 
-    link: {
-        backgroundColor: "white"
-    },
-
+    
     checkboxContainer:{
         flexDirection: "row",
         alignItems: "center",
@@ -134,6 +101,11 @@ export default StyleSheet.create({
     isTutorMessage: {
         fontSize: 16,
         marginLeft: 15,
-    }
+    },
 
+    registerButtonConatiner: {
+        marginHorizontal: 25,
+        marginTop: 50,
+        marginBottom: 20
+    },
 })

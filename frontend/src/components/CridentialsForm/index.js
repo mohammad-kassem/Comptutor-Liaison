@@ -67,7 +67,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
                 ) : (
                     <Icon name="person" style={styles.profileIcon}/>
                 )}
-                <Icon name="camera-alt" style={styles.icon}/>
+                <Icon name="camera-alt" style={styles.cameraIcon}/>
             </TouchableOpacity>
         </>
         }
