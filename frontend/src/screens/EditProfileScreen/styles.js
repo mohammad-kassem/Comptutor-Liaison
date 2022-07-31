@@ -63,7 +63,7 @@ export default StyleSheet.create({
         paddingBottom: 5,
         textAlignVertical: 'bottom',
         alignItems:"flex-start",
-        fontSize: 18,
+        fontSize: 15,
     },
 
     icon: {
