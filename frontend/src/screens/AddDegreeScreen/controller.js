@@ -25,3 +25,12 @@ export async function addDegree(inputDegree, user, navigation){
         ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 }
+
+function filterUniversities(universities){
+    return universities.filter((university, index)=>{
+        if (index === universities.findIndex((uni) => (
+            university.domains[0] === uni.domains[0]
+        ))) return true
+    }
+    )
+}
