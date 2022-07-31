@@ -47,7 +47,7 @@ function refactorUniversityData(universities){
     let data;
     universities = (filterUniversities(universities))
     data = universities.map(university => (
-        {label: university.name, value: university.domains[0]}
+        {label: university.name, value: university.domains[0].split(".")[0].toUpperCase()}
     ))
     return data
 }
