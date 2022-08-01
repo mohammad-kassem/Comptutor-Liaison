@@ -36,14 +36,14 @@ export default function ChatScreen( {route} ) {
 		messages[0].user = {_id: user.id, name: `${user.fname} ${user.lname}`, avatar: avatar}
 		if(route.params.reciever.fname) {
 			database()
-				.ref(`rooms/${roomId}`)
-				.update(
-					{studentName: `${user.fname} ${user.lname}`,
-					tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
-					studentImage: avatar,
-					tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
-				})
-			}
+			.ref(`rooms/${roomId}`)
+			.update(
+				{studentName: `${user.fname} ${user.lname}`,
+				tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
+				studentImage: avatar,
+				tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
+			})
+		}
 		database()
 			.ref(`rooms/${roomId}/messages/${createdAt.getTime()}`)
 			.set(
@@ -51,9 +51,11 @@ export default function ChatScreen( {route} ) {
 			)
 		database()
 		.ref(`rooms/${roomId}`)
-		.update(
-			{lastMessage: messages[0].text,
-			lastSent: createdAt.getTime()
+		.update({
+			lastMessage: messages[0].text,
+			lastSent: createdAt.getTime(),
+			studentUnread: user.role_id === 1 ? false : true,
+			tutorUnread: user.role_id === 2 ? false : true
 		}
 		)
 	}
