@@ -6,7 +6,7 @@ import messaging from '@react-native-firebase/messaging';
 import { localHostV1 } from '../../contsants/constants';
 
 
-export function login(cridentials, setUser){
+export function login(cridentials, setUser, navigation){
     axios({
         method: "post",
         url: `${localHostV1}/auth/login`,
@@ -17,8 +17,13 @@ export function login(cridentials, setUser){
     })
     .then(async function(response){
         await setToken(response.data.access_token);
-        setUser(response.data.user);
-        getFCM(response.data.user)
+        const user = response.data.user;
+        if (user.is_verified === 1){
+            setUser(user);
+            getFCM(user)
+        }
+        else navigation.navigate('VerificationScreen', {user: response.data.user})
+
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
