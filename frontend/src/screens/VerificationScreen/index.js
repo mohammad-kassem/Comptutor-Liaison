@@ -29,7 +29,7 @@ export default function VerificationScreen({ route }) {
             ref={ref}
             {...props}
             value={value}
-            onChangeText={(e) => {setValue(e); verifyEmail(e, user, setUser, navigation)}}
+            onChangeText={(enteredText) => {setValue(enteredText); verifyEmail(enteredText, user, navigation)}}
             cellCount={4}
             rootStyle={styles.codeFieldRoot}
             keyboardType="number-pad"
