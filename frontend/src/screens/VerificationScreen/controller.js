@@ -26,3 +26,23 @@ export async function verifyEmail(code, user, navigation) {
         ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
 }
+
+export async function sendEmail() {
+    const token = await getToken()
+    axios({
+        method: "put",
+        url: `${localHostV1}/email/send`,
+        headers: {
+            "Content-type": "application/json",
+            "Authorization": `Bearer ${token}`
+            },
+    })
+    .then(function(response){
+        user = response.data.user
+    })
+    .catch(function(error){
+        console.log(error)
+        let message = Object.values(error.response.data);
+        ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
+    })
+}
