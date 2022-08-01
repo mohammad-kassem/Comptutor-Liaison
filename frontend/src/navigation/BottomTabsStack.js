@@ -38,7 +38,7 @@ export default function BottomTabsStack() {
 			tabBarIcon: ({ color }) => {
 				return <Icon name="chat" size={24} color={color}/>;
 			},
-			tabBarBadge: unreadRooms,
+			tabBarBadge: unreadRooms ? unreadRooms : undefined,
 			tabBarBadgeStyle: {
 				minWidth: 14,
             	maxHeight: 14,
