@@ -11,6 +11,8 @@ use App\Http\Controllers\General\AppointmentController;
 use App\Http\Controllers\General\UserController;
 use App\Http\Controllers\General\SessionController;
 use App\Http\Controllers\Student\StudentController;
+use App\Http\Controllers\General\EmailVerification;
+
 
 
 
@@ -81,4 +83,6 @@ Route::group(['prefix' => 'v1'], function(){
             Route::put('/', [SessionController::class, 'create']); 
         });
     });
+
+    Route::put('email/verify', [EmailVerification::class, 'verifyEmail']);
 });
