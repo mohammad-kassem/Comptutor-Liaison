@@ -11,9 +11,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\HTTP\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
+use App\Mail\VerificationMail;
+use Illuminate\Support\Facades\Mail;
 
 
-class JWTController extends Controller{
+
+
+class JWTController extends EmailVerification{
         public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'fname' => 'required|string|min:2|max:255',
@@ -26,6 +30,7 @@ class JWTController extends Controller{
             return response()->json($validator->errors(), 400);
         }
 
+
         if ($request->is_tutor){
             $user = User::create([
                 'fname' => $request->fname,
@@ -34,8 +39,9 @@ class JWTController extends Controller{
                 'password' => Hash::make($request->password),
                 'role_id' => 2,
                 'rate' => 0,
-                'profile_image' => $request->image
-            ]); 
+                'profile_image' => $request->image,
+                'is_verified' => 0
+            ]);
         }
         else {
             $user = User::create([
@@ -46,11 +52,14 @@ class JWTController extends Controller{
                 'role_id' => 1,
                 'rate' => 0,
                 'since' => (int)date('Y'),
-                'profile_image' => $request->image
+                'profile_image' => $request->image,
+                'is_verified' => 0
             ]);
         }
 
         $token = auth()->attempt($validator->validated());
+        
+        $this->sendEmail();
 
         return response()->json([
             'message' => 'User successfully registered',
