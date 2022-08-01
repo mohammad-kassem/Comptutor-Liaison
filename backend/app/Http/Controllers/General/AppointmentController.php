@@ -43,7 +43,7 @@ class AppointmentController extends Controller{
         
         $FCM_token = User::where('id', $request->tutor_id)->first();
         $schedule = Schedule::where('id', $request->schedule_id)->first();
-        $this -> sendNotification($FCM_token->FCM_token, $schedule);
+        $this -> sendRequestNotification($FCM_token->FCM_token, $schedule);
 
         return response()->json([
             'message' => 'Appointment successfully added',
@@ -96,15 +96,15 @@ class AppointmentController extends Controller{
     }
 
     
-    public function sendNotification($FCM_token, $schedule){
+    public function sendRequestNotification($FCM_token, $schedule){
         $user = auth()->user();
         $url = 'https://fcm.googleapis.com/fcm/send';
         $api_key='AAAAyUzFkbY:APA91bHi9O4P9J7zIlSi5L5ein8OxVcVI40aEFNn8bATBruombexZOC9a0uaP5y6sYndPJ9dthvu5JHfCzgpfcYj_EhfKQP8CUxaYUOuVIJ59voHNETiXRoiScFoNgZiXT4fz7l9MLkd';
         $fields =([
         'to' => $FCM_token,
         'notification' => array (
-            "title" => "Appointment booked",
-            "body" => $user->fname." ".$user->lname." booked an appointment at ".$schedule->date." ".$schedule->start_time
+            "title" => "Appointment requested",
+            "body" => $user->fname." ".$user->lname." requested an appointment at ".$schedule->date." ".$schedule->start_time
         )
         ]);  
         $headers = array(
