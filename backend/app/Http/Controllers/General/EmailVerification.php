@@ -28,4 +28,24 @@ class EmailVerification extends Controller{
         
     }
 
+
+    public function setCode(){    
+        $user = auth()->user();
+
+        $length = 4;
+        $characters = '0123456789';
+        $charactersLength = strlen($characters);
+        $code = '';
+        for ($i = 0; $i < $length; $i++) {
+            $code .= $characters[rand(0, $charactersLength - 1)];
+        }
+        
+        $user->update([
+            'activation_code' => $code
+        ]);
+
+        return response()->json([
+            'message' => 'Activation code successfully set',
+        ], 200); 
+    }
 }
