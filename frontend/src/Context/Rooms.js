@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useUser } from './User';
 import database from '@react-native-firebase/database'
+import { filterRooms } from '../screens/ChatRoomsScreen/controller';
 
 
 export const RoomsContext = React.createContext()
@@ -22,6 +23,8 @@ export default function RoomsProvider({children}) {
 			setRooms([...(arr || [] )].reverse())	
 		})
       }, []);
+
+    const filteredRooms = filterRooms(rooms, user)
 
 
     return (
