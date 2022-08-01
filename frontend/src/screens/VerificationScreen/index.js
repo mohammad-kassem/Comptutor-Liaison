@@ -24,10 +24,21 @@ export default function VerificationScreen() {
             <Image style={styles.logo} source={require('../../../assets/mail.png')} resizeMode="cover"/>
         </View>
         <Text style={styles.title}>Email Verification</Text>
-        <Text style={styles.message}>Please verify your email by entering the verification code sent to thexicon@gmail.com</Text>
-            </ScrollView>
-            </KeyboardAvoidingView>
-        </Container>
+        <CodeField
+            ref={ref}
+            {...props}
+            value={value}
+            onChangeText={(e) => {setValue(e); verifyEmail(e, user, setUser, navigation)}}
+            cellCount={4}
+            rootStyle={styles.codeFieldRoot}
+            keyboardType="number-pad"
+            textContentType="oneTimeCode"
+            renderCell={({index, symbol, isFocused}) => (
+            <Text key={index} style={[styles.cell, isFocused && styles.focusCell]} onLayout={getCellOnLayoutHandler(index)}>
+                {symbol || (isFocused ? <Cursor /> : null)}
+            </Text>
+            )}
+        />
       </>
   )
 }
