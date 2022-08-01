@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
 
-class User extends Authenticatable implements JWTSubject{
+class User extends Authenticatable implements JWTSubject, MustVerifyEmail{
     use HasFactory, Notifiable;
 
     protected $fillable = [
@@ -23,7 +23,8 @@ class User extends Authenticatable implements JWTSubject{
         'about',
         'FCM_token',
         'since',
-        'balance'
+        'activation_code',
+        'is_verified'
         
     ];
 
