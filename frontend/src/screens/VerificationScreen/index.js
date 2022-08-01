@@ -8,11 +8,11 @@ import { sendEmail, verifyEmail } from './controller';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function VerificationScreen() {
+export default function VerificationScreen({ route }) {
+    const user = route.params.user
     const [value, setValue] = useState("");
     const ref = useBlurOnFulfill({value, cellCount: 4});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({value,setValue});
-    const {user, setUser} = useUser()
     const navigation = useNavigation()
 
     return (
@@ -24,6 +24,7 @@ export default function VerificationScreen() {
             <Image style={styles.logo} source={require('../../../assets/mail.png')} resizeMode="cover"/>
         </View>
         <Text style={styles.title}>Email Verification</Text>
+        <Text style={styles.message}>Please verify your email by entering the verification code sent to {user.email}</Text>
         <CodeField
             ref={ref}
             {...props}
@@ -45,6 +46,9 @@ export default function VerificationScreen() {
                 <Text style={styles.resendLink} onPress={()=>sendEmail()}> Resend</Text>
             </TouchableOpacity> 
         </View>
+        </ScrollView>
+        </KeyboardAvoidingView>
+    </Container>
       </>
   )
 }
