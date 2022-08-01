@@ -81,6 +81,20 @@ class AppointmentController extends Controller{
         ], 200);
     }
 
+    public function approve(Request $request){
+        $appointment = Appointment::where('schedule_id', $request->schedule_id)->first();
+
+        if ($appointment === null) return response()->json(['message' => 'Appointment does not exist'], 204);
+
+        $appointment->update([
+            'status' => 1
+        ]);
+
+        return response()->json([
+            'message' => 'Appointment successfully accepted',
+        ], 200);
+    }
+
     
     public function sendNotification($FCM_token, $schedule){
         $user = auth()->user();
