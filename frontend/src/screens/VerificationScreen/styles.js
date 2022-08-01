@@ -51,4 +51,15 @@ export default styles = StyleSheet.create({
       borderColor: "black",
     },
 
+    resendMessage:{
+        flexDirection:"row",
+        justifyContent: "center",
+        alignItems: "center",
+        marginTop: 30
+    },
+
+    resendLink:{
+        color: "#1877F2",
+        fontWeight: "600"
+    },
   });

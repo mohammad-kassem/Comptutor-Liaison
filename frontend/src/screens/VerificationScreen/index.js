@@ -39,6 +39,12 @@ export default function VerificationScreen() {
             </Text>
             )}
         />
+        <View style={styles.resendMessage}>
+            <Text>Didn't recieve the email?</Text>
+            <TouchableOpacity>
+                <Text style={styles.resendLink} onPress={()=>sendEmail()}> Resend</Text>
+            </TouchableOpacity> 
+        </View>
       </>
   )
 }
