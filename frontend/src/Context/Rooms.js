@@ -26,16 +26,22 @@ export default function RoomsProvider({children}) {
 
     const filteredRooms = filterRooms(rooms, user)
 
+    let unreadRooms = 0
+    for (const room of filteredRooms){
+        console.log(room[1].studentUnread)
+        if ((user.role_id === 1 && room[1].studentUnread) || (user.role_id === 2 && room[1].tutorUnread)) 
+            unreadRooms += 1
+    }
 
     return (
-        <RoomsContext.Provider value={{rooms, setRooms}}>
+        <RoomsContext.Provider value={{rooms, setRooms, unreadRooms}}>
             {children}
         </RoomsContext.Provider>
     )
 }
 
 export const useRooms = () => {
-    const {rooms, setRooms} = React.useContext(RoomsContext)
+    const {rooms, setRooms, unreadRooms} = React.useContext(RoomsContext)
 
-    return {rooms, setRooms}
+    return {rooms, setRooms, unreadRooms}
 }
