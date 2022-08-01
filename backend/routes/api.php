@@ -85,4 +85,5 @@ Route::group(['prefix' => 'v1'], function(){
     });
 
     Route::put('email/verify', [EmailVerification::class, 'verifyEmail']);
+    Route::put('email/send', [EmailVerification::class, 'sendEmail']);
 });

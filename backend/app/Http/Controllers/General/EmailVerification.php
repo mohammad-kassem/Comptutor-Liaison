@@ -28,6 +28,18 @@ class EmailVerification extends Controller{
         
     }
 
+    public function sendEmail(){    
+        $user = auth()->user();
+
+        $this->setCode();
+
+        Mail::to($user->email)->send(new VerificationMail($user));
+
+        return response()->json([
+            'message' => 'Email successfully sent',
+        ], 200); 
+
+    }
 
     public function setCode(){    
         $user = auth()->user();
