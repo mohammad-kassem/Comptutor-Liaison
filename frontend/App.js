@@ -8,6 +8,7 @@ import { Alert, StatusBar, Text, View } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 import PushNotification from 'react-native-push-notification';
 import AnimatedSplash from 'react-native-animated-splash-screen'
+import RoomsProvider from './src/Context/Rooms';
 
 
 
@@ -55,7 +56,9 @@ export default function App() {
         barStyle="dark-content"
      />   
     <UserProvider>
-      <NavigatorSwitch/>
+      <RoomsProvider>
+        <NavigatorSwitch/>
+      </RoomsProvider>
     </UserProvider>
     </AnimatedSplash>
     </>
