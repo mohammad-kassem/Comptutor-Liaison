@@ -13,7 +13,7 @@ export default function ChatScreen( {route} ) {
 	const roomId = user.role_id === 1 ? `${user.id}-${route.params.reciever.id}` : `${route.params.reciever.id}-${user.id}`
 	const avatar = user.profile_image || '../../../assets/logo.png'
 
-	useEffect(() => {
+	useEffect(function(){
 		var arr = []
 		database()
 		.ref(`rooms/${roomId}/messages`)
@@ -30,6 +30,15 @@ export default function ChatScreen( {route} ) {
 		}
 	, [])
 
+	useEffect(function(){
+		database()
+		.ref(`rooms/${roomId}`)
+		.update({
+			studentUnread: user.role_id === 1 && false,
+			tutorUnread: user.role_id === 2 && false
+		})
+	})
+
 	function onSend(messages = []) {
 		const createdAt = messages[0].createdAt
 		messages[0] = {...messages[0], createdAt: createdAt.toString(), }
@@ -37,8 +46,8 @@ export default function ChatScreen( {route} ) {
 		if(route.params.reciever.fname) {
 			database()
 			.ref(`rooms/${roomId}`)
-			.update(
-				{studentName: `${user.fname} ${user.lname}`,
+			.update({
+				studentName: `${user.fname} ${user.lname}`,
 				tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
 				studentImage: avatar,
 				tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
