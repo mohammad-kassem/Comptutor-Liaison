@@ -23,6 +23,8 @@ export default function VerificationScreen() {
         <View style={styles.imageContainer}>
             <Image style={styles.logo} source={require('../../../assets/mail.png')} resizeMode="cover"/>
         </View>
+        <Text style={styles.title}>Email Verification</Text>
+        <Text style={styles.message}>Please verify your email by entering the verification code sent to thexicon@gmail.com</Text>
             </ScrollView>
             </KeyboardAvoidingView>
         </Container>

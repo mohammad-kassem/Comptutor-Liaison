@@ -18,4 +18,18 @@ export default styles = StyleSheet.create({
         height: undefined,
     },
 
+    title: {
+        fontSize: 30,
+        fontWeight: "bold",
+        paddingBottom: 15,
+        textAlign: "center",
+        marginTop: 60,
+    },
+
+    message:{
+        marginTop: 30,
+        marginBottom: 15,
+        // fontSize: 16,
+        textAlign: "center",
+    },
   });
