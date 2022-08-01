@@ -10,6 +10,7 @@ import ChatRoomsScreen from '../screens/ChatRoomsScreen';
 
 
 export default function BottomTabsStackTutor() {
+	const {unreadRooms} = useRooms()
     const Tab = createBottomTabNavigator();
     return (
 		<Tab.Navigator
@@ -36,6 +37,15 @@ export default function BottomTabsStackTutor() {
 			tabBarIcon: ({ color }) => {
 				return <Icon name="chat" size={24} color={color}/>;
 			},
+			tabBarBadge: unreadRooms,
+			tabBarBadgeStyle: {
+				minWidth: 14,
+            	maxHeight: 14,
+            	borderRadius: 7,
+            	fontSize: 10,
+           	 	lineHeight: 13,
+            	alignSelf: undefined,
+		   },
 			tabBarShowLabel: false,
 			tabBarStyle: { height: 56 },
 			headerShown: false
