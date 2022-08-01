@@ -7,6 +7,7 @@ import RegisterScreen from "../screens/RegisterScreen";
 import React from 'react'
 import AddSubjectsScreen from "../screens/AddSubjectsScreen";
 import OnBoardingStackTutor from "./OnBoardingStackTutor";
+import VerificationScreen from "../screens/VerificationScreen";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
@@ -33,6 +34,10 @@ export default function OnBoardingStack() {
             <RootStackNav.Screen
             name="RegisterScreen"
             component={RegisterScreen}
+            />
+            <RootStackNav.Screen
+            name="VerificationScreen"
+            component={VerificationScreen}
             />
             <RootStackNav.Screen 
             name="AddSubjectsScreen"
