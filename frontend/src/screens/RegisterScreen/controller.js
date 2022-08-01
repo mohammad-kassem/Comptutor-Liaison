@@ -17,7 +17,7 @@ export function register(cridentials, navigation){
     })
     .then(async function(response){
         await setToken(response.data.access_token);
-        navigation.navigate('AddSubjectsScreen', {user: response.data.user})
+        navigation.navigate('VerificationScreen', {user: response.data.user})
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
