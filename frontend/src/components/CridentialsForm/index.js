@@ -79,7 +79,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
             {type === "login" ?
             (<>
             <View style={styles.loginButtonConatiner}>
-            <FullWidthButton text="Log In" onHandlePress={()=>onPressHandler({email, password}, setUser)}/>
+            <FullWidthButton text="Log In" onHandlePress={()=>onPressHandler({email, password}, setUser, navigation)}/>
             </View>
             <View style={styles.navigationMessage}>
                 <Text>Not a member?</Text>
