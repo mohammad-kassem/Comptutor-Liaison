@@ -5,31 +5,17 @@ import { useNavigation } from '@react-navigation/native'
 import database from '@react-native-firebase/database'
 import { useUser } from '../../Context/User'
 import { filterRooms } from './controller'
+import { useRooms } from '../../Context/Rooms'
 
 
 export default function ChatRoomsScreen() {
 	const navigation = useNavigation()
 	const {user} = useUser()
-	let [rooms, setRooms] = useState([])
+	let {rooms, setRooms} = useRooms()
 	const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
-	"July", "Aug", "Sept", "Oct", "Nov", "Dec"
-  ];
+	"July", "Aug", "Sept", "Oct", "Nov", "Dec"];
+	console.log(rooms)
 	
-
-	useEffect(function(){
-		let arr = []
-        database()
-		.ref("rooms")
-		.orderByChild("lastSent")
-		.on('value', snapshot => {
-			arr = []
-				snapshot.forEach((room) => {
-					console.log(room._snapshot.key)
-					arr.push([room._snapshot.key, room._snapshot.value])
-				})
-			setRooms([...(arr || [] )].reverse())	
-		})
-      }, []);
 	rooms = filterRooms(rooms, user)
 
 	return (
