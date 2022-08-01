@@ -83,6 +83,10 @@ class JWTController extends EmailVerification{
         }
 
         $user = auth()->user();
+
+        if ($user->is_verified === 0)
+            $this->sendEmail();
+                        
         $user->role;
         $user->subjects;
         $user->degrees;
