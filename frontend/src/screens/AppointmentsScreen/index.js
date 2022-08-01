@@ -14,6 +14,7 @@ export default function AppointmentsScreen() {
     const refRBSheet  = useRef();
     const [date, setDate] = useState("")
     const [id, setId] = useState() 
+    const [type, setType] = useState("approved")
     const [goButtonDisabled, setGoButtonDisabled] = useState(false)
     const [cancelButtonDisabled, setCancelButtonDisabled] = useState(false)
     const {user, setUser} = useUser()   
@@ -55,6 +56,16 @@ export default function AppointmentsScreen() {
             <Text style={styles.cancelText}>Cancel Appointment</Text>
         </TouchableOpacity>
         </RBSheet>
+                <View style={styles.segmentsContainer}>
+                    <View style={styles.segments}>
+                    <TouchableOpacity style={styles.approvedButton} onPress={()=>setType("approved")}>
+                        <Text style={styles.approved}>Approved</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity style={styles.pendingButton} onPress={()=>setType("pending")}>
+                        <Text style={styles.pending}>Pending</Text>
+                    </TouchableOpacity>
+                    </View>
+                </View>
                 <Text style={styles.title}>Appointments</Text>
                 
                 <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
