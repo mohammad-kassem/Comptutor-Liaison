@@ -15,28 +15,28 @@ export default StyleSheet.create({
         borderColor: "#1877F2",
     },
 
-    approvedButton: {
+    activeButton: {
         backgroundColor: "#1877F2",
         padding: 10,
         alignSelf: "stretch",
         flex: 1,
     },
 
-    approved: {
+    active: {
         fontSize: 18,
         fontWeight: "600",
         color: "white",
         textAlign: "center",
     },
 
-    pendingButton: {
+    inactiveButton: {
         backgroundColor: "white",
         padding: 10,
         flex: 1,
         borderRadius: 10
     },
 
-    pending: {
+    inactive: {
         fontSize: 18,
         fontWeight: "600",
         color: "#1877F2",
