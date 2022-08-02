@@ -6,12 +6,12 @@ import  SearchBar  from '../../components/SearchBar';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import { filterTutors, getTutors } from './controller';
 import Container from '../../components/Container';
+import TutorCard from '../../components/TutorCard';
 
 export default function HomeScreen({ navigation }) {
     let [tutors, setTutors] = useState([])
     const [original, setOriginal] = useState([])
     const {user, setUser} = useUser()
-    const flexDirection = [{marginRight: "5%"}, {alignSelf: "center"}, {marginLeft: "5%"}]
 
     useFocusEffect(
         React.useCallback(()=>{
@@ -29,31 +29,7 @@ export default function HomeScreen({ navigation }) {
 
             <FlatList data={tutors} renderItem={(tutorData) =>{
                 return(
-                    <TouchableOpacity key={tutorData.item.lname} style={styles.tutorCard} onPress={()=>{navigation.navigate("HomeStack", { screen: "TutorScreen",  params: { tutor: tutorData.item },})}}>
-                        <View style={styles.cardContent}>
-                            <View style={styles.imageContainer}>
-                                {tutorData.item.profile_image ? 
-                                (<Image style={styles.tutorProfile} source={{uri: tutorData.item.profile_image}}/>
-                                ) : (
-                                <Image style={styles.tutorProfile} source={require('../../../assets/logo.png')}/>
-                                )}
-                            </View>
-                            <View style={styles.tutorInfo}>
-                                <Text style={styles.tutorName}>{tutorData.item.fname} {tutorData.item.lname}</Text>
-                                <Text style={styles.tutorDetail}>Teaching since {tutorData.item.since}</Text>
-                            </View>
-                            <View style={styles.rateContainer}>
-                                <Text style={styles.rate}>{tutorData.item.rate}$ / H</Text>
-                            </View>
-                        </View>
-                        <View style={styles.subjectsContainer}>
-                            {tutorData.item.subjects.map((subject, index) =>(
-                            <View style={[styles.subjectContainer, flexDirection[index % 3]]}>
-                            <Text style={styles.subjectName}>{subject.subject}</Text>
-                            </View>
-                            ))}
-                        </View>
-                    </TouchableOpacity>
+                    <TutorCard tutorData={tutorData}/>
                 )
             }}
             // keyExtractor={(tutor) => tutor.id}
