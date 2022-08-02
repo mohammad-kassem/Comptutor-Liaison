@@ -72,6 +72,7 @@ Route::group(['prefix' => 'v1'], function(){
         });
         Route::group(['middleware' => 'tutor'], function($router) {
             Route::get('/tutor', [AppointmentController::class, 'getTutorAppointments']);
+            Route::put('/approve', [AppointmentController::class, 'approve']);
         });
         Route::group(['middleware' => 'auth'], function($router) {
             Route::delete('/delete/{id?}', [AppointmentController::class, 'delete']);
