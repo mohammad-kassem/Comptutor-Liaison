@@ -6,7 +6,7 @@ import { localHostV1 } from "../../contsants/constants";
 
 
 
-export function register(cridentials, navigation){
+export function register(cridentials, navigation, setUserOnBoarding){
     axios({
         method: "post",
         url: `${localHostV1}/auth/register`,
@@ -17,7 +17,8 @@ export function register(cridentials, navigation){
     })
     .then(async function(response){
         await setToken(response.data.access_token);
-        navigation.navigate('VerificationScreen', {user: response.data.user})
+        navigation.navigate('VerificationScreen')
+        setUserOnBoarding(response.data.user)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);

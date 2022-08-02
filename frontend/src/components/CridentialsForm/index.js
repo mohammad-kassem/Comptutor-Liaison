@@ -8,6 +8,7 @@ import { useUser } from '../../Context/User';
 import FullWidthButton from '../FullWidthButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
+import { useUserOnBoarding } from '../../Context/UserOnBoarding';
 
 
 
@@ -20,6 +21,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
     const [isTutor, setIsTutor] = useState(false)
     const [image, setImage] = useState()
     const {user, setUser} = useUser()
+    const {setUserOnBoarding} = useUserOnBoarding()
     let size = "80%"
 
     size = type === 'register' ? "75%" : "90%"
@@ -98,7 +100,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
                 <Text style={styles.isTutorMessage}>Register as tutor</Text>
                 </View>
                 <View style={styles.registerButtonConatiner}>
-                <FullWidthButton text="Register" onHandlePress={()=>onPressHandler({fname, lname, email, password, image, is_tutor: isTutor}, navigation)}/>
+                <FullWidthButton text="Register" onHandlePress={()=>onPressHandler({fname, lname, email, password, image, is_tutor: isTutor}, navigation, setUserOnBoarding)}/>
                 </View>
                 <View style={styles.navigationMessage}>
                 <Text>Already a member?</Text>
