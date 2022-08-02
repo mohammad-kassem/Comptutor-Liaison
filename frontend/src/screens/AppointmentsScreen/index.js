@@ -56,41 +56,16 @@ export default function AppointmentsScreen() {
             <Text style={styles.cancelText}>Cancel Appointment</Text>
         </TouchableOpacity>
         </RBSheet>
-                <View style={styles.segmentsContainer}>
-                    <View style={styles.segments}>
-                    <TouchableOpacity style={styles.approvedButton} onPress={()=>setType("approved")}>
-                        <Text style={styles.approved}>Approved</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.pendingButton} onPress={()=>setType("pending")}>
-                        <Text style={styles.pending}>Pending</Text>
-                    </TouchableOpacity>
-                    </View>
-                </View>
-                <Text style={styles.title}>Appointments</Text>
-                
-                <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
-                <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
-                    return(
-                        <>
-                        <TouchableOpacity style={styles.appointmentCard} onPress={()=>{refRBSheet.current.open(); setId(dateData.item.schedule_id); setGoButtonDisabled(isAppointmentTime(dateData.item)); setCancelButtonDisabled(!isCancelTime(dateData.item))}}>
-                                <Text style={styles.date}>{dateData.item.schedule.start_time.slice(0, -3)} - {dateData.item.schedule.end_time.slice(0, -3)}</Text>
-                                <View style={styles.appointmentWith}>
-                                    <Icon name="account-multiple" size={20} color="#4FC7E6"/>
-                                    <View style={styles.imageContainer}>
-                                    {dateData.item[appointmentWith].profile_image ? 
-                                    (<Image style={styles.profile} source={{uri: dateData.item[appointmentWith].profile_image}}/>
-                                    ) : (
-                                    <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
-                                    )}
-                                    </View>
-                                    <Text style={styles.details}>{dateData.item[appointmentWith].fname} {dateData.item[appointmentWith].lname}</Text>
-                                </View>
-                        </TouchableOpacity>
-                        </>
-                        
-                    )}
-                }
-                />
+        <SegmenetdControl setType={setType}/>
+        <Text style={styles.title}>Appointments</Text>
+        
+        <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
+        <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
+            return(
+                <AppointmentCard refRBSheet={refRBSheet} setId={setId} dateData={dateData} setGoButtonDisabled={setGoButtonDisabled} setCancelButtonDisabled={setCancelButtonDisabled}/>
+            )}
+        }
+        />
         </>   
     )
 }
