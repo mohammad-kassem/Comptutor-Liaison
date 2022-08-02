@@ -8,6 +8,7 @@ import React from 'react'
 import AddSubjectsScreen from "../screens/AddSubjectsScreen";
 import OnBoardingStackTutor from "./OnBoardingStackTutor";
 import VerificationScreen from "../screens/VerificationScreen";
+import UserOnBoardingProvider from "../Context/UserOnBoarding";
 
 export default function OnBoardingStack() {
     const RootStackNav = createStackNavigator();
@@ -23,6 +24,7 @@ export default function OnBoardingStack() {
 
     return (
     <NavigationContainer theme={MyTheme}>
+        <UserOnBoardingProvider>
         <RootStackNav.Navigator
         screenOptions={{
             headerShown: false
@@ -51,6 +53,7 @@ export default function OnBoardingStack() {
             component={OnBoardingStackTutor}
             />
         </RootStackNav.Navigator>
+        </UserOnBoardingProvider>
     </NavigationContainer>
     )
 }
