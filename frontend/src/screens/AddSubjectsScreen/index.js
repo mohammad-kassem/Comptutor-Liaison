@@ -10,6 +10,7 @@ import { useNavigation } from '@react-navigation/native'
 import AbsolutePositionButtonContainer from '../../components/AbsolutePositionButtonContainer'
 import { useUser } from '../../Context/User'
 import Container from '../../components/Container'
+import Subjcets from '../../components/Subjects'
 
 export default function AddSubjectsScreen( {route} ){
     let user = route.params.user
@@ -17,7 +18,6 @@ export default function AddSubjectsScreen( {route} ){
     const [selectedSubjects, setSelectedSubjects] = useState([])
     const {setUser} = useUser()
     const navigation = useNavigation()
-    const numColumns = 2
     console.log(selectedSubjects)
 
     useEffect(function(){
@@ -29,18 +29,7 @@ export default function AddSubjectsScreen( {route} ){
             <Container>
             <OnBoardingTitle/>
             <OnBoardingPrompt message="Pick your subjects"/>
-            <FlatList data={subjects} numColumns={numColumns} columnWrapperStyle={styles.subjectsContainer} renderItem={(subjectData) =>{
-                return(
-                    <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, subjectData.item.subject, selectedSubjects, setSelectedSubjects)}>
-                        <Image style={styles.subjectImage} source={{uri:subjectData.item.image,}}/>
-                        {isSelected(subjectData.item.id, selectedSubjects) &&
-                        <View style={styles.icon}>
-                            <Icon name="checkbox-marked-circle" size={24} color="#1877F2"/>
-                        </View>}
-                    </TouchableOpacity>
-                )}
-            }
-            />
+            <Subjcets subjects={subjects} selectedSubjects={selectedSubjects} setSelectedSubjects={setSelectedSubjects}/>
             </Container>
             <>
             <AbsolutePositionButtonContainer>
