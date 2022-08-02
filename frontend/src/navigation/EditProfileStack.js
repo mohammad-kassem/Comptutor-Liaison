@@ -1,6 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
 import React from 'react'
+import DegreesProvider from "../Context/Degrees";
+import UserSubjectsProvider from "../Context/UserSubjects";
 import EditDegreeScreen from "../screens/EditDegreeScreen";
 import EditInfoScreen from "../screens/EditInfoScreen";
 import EditProfileScreen from "../screens/EditProfileScreen";
@@ -10,6 +12,8 @@ export default function EditProfileStack() {
     const RootStackNav = createStackNavigator();
 
     return (
+      <UserSubjectsProvider>
+        <DegreesProvider>
         <RootStackNav.Navigator
         screenOptions={{
           headerStyle: {
@@ -40,5 +44,7 @@ export default function EditProfileStack() {
             component={EditSubjectsScreen}
             />
         </RootStackNav.Navigator>
+        </DegreesProvider>
+      </UserSubjectsProvider>
     )
 }
