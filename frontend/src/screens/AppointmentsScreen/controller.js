@@ -27,6 +27,22 @@ export async function deleteAppointment(id, type, approvedAppointments, pendingA
         ToastAndroid(message[0][0], ToastAndroid.SHORT) 
     })
 };
+
+export async function approveAppointment(id, approvedAppointments, pendingAppointments, setApprovedAppointments, setPendingAppointments) {
+    const token = await getToken();
+    axios({
+        method: "put",
+        url: `${localHostV1}/appointment/approve`,
+        headers: {
+        "Accept": "application/json",
+        "Authorization": `Bearer ${token}`
+        },
+        data: {"schedule_id": id}
+    })
+    .then(function(response){
+        setApprovedAppointments([...approvedAppointments, response.data.appointment])
+        setPendingAppointments(pendingAppointments.filter((appointment)=>
+        appointment.schedule_id !== response.data.appointment.schedule_id))
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
