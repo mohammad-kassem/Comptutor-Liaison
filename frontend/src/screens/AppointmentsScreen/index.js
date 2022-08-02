@@ -22,7 +22,6 @@ export default function AppointmentsScreen() {
     const [goButtonDisabled, setGoButtonDisabled] = useState(false)
     const [cancelButtonDisabled, setCancelButtonDisabled] = useState(false)
     const {user, setUser} = useUser()   
-    const appointmentWith = user.role_id === 1 ? "tutor" : "student"
     const stackType = user.role_id === 1 ? "student" : "tutor"
     const navigation = useNavigation()
 
@@ -32,8 +31,15 @@ export default function AppointmentsScreen() {
         },[])
     )
 
-    appointments = filterAppointments(appointments)
-    const groupedAppointments = groupAppointments(appointments);
+    let groupedAppointments = []
+    if (type === "approved") {
+        appointments = filterAppointments(approvedAppointments);
+        groupedAppointments = groupAppointments(appointments)
+    }  
+    else {
+        appointments = filterAppointments(pendingAppointments);
+        groupedAppointments = groupAppointments(appointments)
+    }
 
     return (
         <>  
@@ -53,16 +59,28 @@ export default function AppointmentsScreen() {
           }}>
         <Text style={styles.sheetText}>Appointment Action</Text>
         
+        {type === "approved" ? 
         <TouchableOpacity style={goButtonDisabled ? [styles.go, styles.disabled] : styles.go} disabled={goButtonDisabled} onPress={()=>{navigation.navigate("AppointmentStack", { screen: "CallScreen", params: { appointmentId: id },}); refRBSheet.current.close();}}>
             <Text style={[styles.goText, goButtonDisabled && styles.disabledText]}>Go to Appointment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={cancelButtonDisabled ? [styles.cancel, styles.disabled] : styles.cancel} disabled={cancelButtonDisabled} onPress={()=>{deleteAppointment(id, appointments, setAppointments); refRBSheet.current.close();}}>
+        :
+        <TouchableOpacity style={styles.go} onPress={()=>{approveAppointment(id, approvedAppointments, pendingAppointments, setApprovedAppointments, setPendingAppointments); refRBSheet.current.close();}}>
+            <Text style={styles.goText}>Approve Appointment</Text>
+        </TouchableOpacity>
+        }
+        <TouchableOpacity style={cancelButtonDisabled ? [styles.cancel, styles.disabled] : styles.cancel} disabled={cancelButtonDisabled} onPress={()=>{deleteAppointment(id, type, approvedAppointments, pendingAppointments, setApprovedAppointments, setPendingAppointments); refRBSheet.current.close();}}>
             <Text style={styles.cancelText}>Cancel Appointment</Text>
         </TouchableOpacity>
         </RBSheet>
-        <SegmenetdControl setType={setType}/>
-        <Text style={styles.title}>Appointments</Text>
-        
+        {user.role_id === 2 ?
+        <>
+        <SegmenetdControl type={type} setType={setType}/>
+        </>
+        :
+        <>
+        <Text style={styles.title}>{type === "approved" ? "Appointments" : "Pending"}</Text>
+        </>}
+    
         <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedAppointments}/>
         <FlatList data={groupedAppointments[date]} renderItem={(dateData) =>{
             return(
