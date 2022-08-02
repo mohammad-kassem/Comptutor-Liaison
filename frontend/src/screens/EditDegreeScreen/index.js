@@ -14,10 +14,11 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useUser } from '../../Context/User'
 import { Dropdown } from 'react-native-element-dropdown'
 import DegreeFields from '../../components/DegreeFields'
+import { useDegrees } from '../../Context/Degrees'
 
 export default function EditDegreeScreen( {route} ) {
 	const {user, setUser} = useUser()
-	const setDegrees = route.params.setDegrees
+	const {setDegrees} = useDegrees()
     const [university, setUniversity] = useState("")
     const [degree, setDegree] = useState("")
 	const [universities, setUniversities] = useState([])

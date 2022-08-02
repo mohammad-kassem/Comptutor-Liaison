@@ -12,9 +12,10 @@ import { useUser } from '../../Context/User'
 import Container from '../../components/Container'
 import SaveCancelButtons from '../../components/SaveCancelButtons'
 import Subjcets from '../../components/Subjects'
+import { useUserSubjects } from '../../Context/UserSubjects'
 
 export default function EditSubjectsScreen( {route} ){
-    const setUserSubjects = route.params.setUserSubjects
+    const {setUserSubjects} = useUserSubjects()
     const stack = route.params.stackType
     const [subjects, setSubjects] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])

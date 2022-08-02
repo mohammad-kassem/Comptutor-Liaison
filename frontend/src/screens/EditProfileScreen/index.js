@@ -6,15 +6,17 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { deleteDegree, deleteSubject } from './controller';
 import Container from '../../components/Container';
+import { useDegrees } from '../../Context/Degrees';
+import { useUserSubjects } from '../../Context/UserSubjects';
 
 
 
 export default function EditProfileScreen() {
     const {user, setUser} = useUser()
-    const [degrees, setDegrees] = useState(user.degrees)
-    const [subjects, setSubjects] = useState(user.subjects)
+    const {degrees, setDegrees} = useDegrees()
+    const {userSubjects ,setUserSubjects} = useUserSubjects()
     navigation = useNavigation()
-
+    
     return (
         <>  
             <ScrollView>
@@ -41,7 +43,7 @@ export default function EditProfileScreen() {
                 <Text style={styles.about} multiline={true}>{user.about ? user.about : "-"}</Text>  
                 <View style={styles.infoContainer}>
                     <Text style={styles.category}>Degrees</Text>
-                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate( "EditDegreeScreen", { user: user, stackType: "EditProfile", setDegrees: setDegrees })}>
+                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate( "EditDegreeScreen", {stackType: "EditProfile" })}>
                         <Text style={styles.editText}>Edit</Text>
                         <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
@@ -59,19 +61,19 @@ export default function EditProfileScreen() {
                 
                 <View style={styles.infoContainer}>
                     <Text style={styles.category}>Subjects</Text>
-                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditSubjectsScreen", { user: user, stackType: "EditProfile", setUserSubjects: setSubjects })}>
+                    <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditSubjectsScreen", {stackType: "EditProfile"})}>
                         <Text style={styles.editText}>Edit</Text>
                         <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.subjectsContainer}>
-                    {subjects.map((subject)=>{return(
+                    {userSubjects.map((subject)=>{return(
                         <>
                         <View style={styles.subjectContainer}>
                             <View style={styles.imageContainer}>
                                 <Image style={styles.subjectImage} source={{uri: subject.image}}/>
                             </View>
-                            <TouchableOpacity style={styles.deleteButton} onPress={()=>deleteSubject(subject.id, subjects, setSubjects, user, setUser)}>
+                            <TouchableOpacity style={styles.deleteButton} onPress={()=>deleteSubject(subject.id, userSubjects, setUserSubjects, user, setUser)}>
                                 <Text style={styles.deleteText}>Delete</Text>
                             </TouchableOpacity>
                         </View>
