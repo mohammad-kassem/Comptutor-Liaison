@@ -46,7 +46,6 @@ export default function EditProfileScreen() {
                         <Icon name="pen" size={24} color="#4FC7E6"/>
                     </TouchableOpacity>
                 </View>
-                </>}
                     {degrees.map((degree)=>{return(
                         <View style={styles.infoContainer}>
                         <Text style={styles.degree}>{degree.university} - {degree.degree}</Text>
@@ -55,7 +54,8 @@ export default function EditProfileScreen() {
                         </TouchableOpacity>
                         </View>
                     )}
-                )} 
+                )}
+                </>}
                 
                 <View style={styles.infoContainer}>
                     <Text style={styles.category}>Subjects</Text>
