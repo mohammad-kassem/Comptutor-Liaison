@@ -25,7 +25,7 @@ export async function deleteAppointment(id, appointments,  setAppointments) {
     })
 };
 
-export async function getAppointments(setAppointments, stackType) {
+export async function getAppointments(setApprovedAppointments, setPendingAppointments, stackType) {
     const token = await getToken();
     axios({
         method: "get",
@@ -36,8 +36,13 @@ export async function getAppointments(setAppointments, stackType) {
     })
     .then(function(response){
         const json = typeof response.data === "object" ? response.data : JSON.parse(response.data + "}")
-        setAppointments(json.appointments)
-        console.log(json.appointments)
+        let approved = []
+        let pending = []
+        for (const appointment of json.appointments){
+            appointment.status === 1 ? approved.push(appointment) : pending.push(appointment)
+        }
+        setApprovedAppointments(approved)
+        setPendingAppointments(pending)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);

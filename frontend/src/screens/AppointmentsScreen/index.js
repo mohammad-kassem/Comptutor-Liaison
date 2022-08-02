@@ -2,15 +2,19 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './styles'
 import RBSheet from "react-native-raw-bottom-sheet";
-import { deleteAppointment, filterAppointments, getAppointments, groupAppointments, isAppointmentTime, isCancelTime } from './controller';
+import { approveAppointment, deleteAppointment, filterAppointments, getAppointments, groupAppointments, isAppointmentTime, isCancelTime } from './controller';
 import { useUser } from '../../Context/User';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
 import DropdownComponent from '../../components/Dropdown';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import AppointmentCard from '../../components/AppointmentCard';
+import SegmenetdControl from '../../components/SegmentedControl';
 
 
 export default function AppointmentsScreen() {
-    let [appointments,setAppointments] = useState([])
+    let [approvedAppointments,setApprovedAppointments] = useState([])
+    let [pendingAppointments,setPendingAppointments] = useState([])
+    let [appointments, setAppointments] = useState(approvedAppointments)
     const refRBSheet  = useRef();
     const [date, setDate] = useState("")
     const [id, setId] = useState() 
@@ -24,7 +28,7 @@ export default function AppointmentsScreen() {
 
     useFocusEffect(
         React.useCallback(() => {
-            getAppointments(setAppointments, stackType)
+            getAppointments(setApprovedAppointments, setPendingAppointments, stackType)
         },[])
     )
 
