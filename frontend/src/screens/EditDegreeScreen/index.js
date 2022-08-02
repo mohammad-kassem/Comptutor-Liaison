@@ -13,6 +13,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 
 import { useUser } from '../../Context/User'
 import { Dropdown } from 'react-native-element-dropdown'
+import DegreeFields from '../../components/DegreeFields'
 
 export default function EditDegreeScreen( {route} ) {
 	const {user, setUser} = useUser()
@@ -33,22 +34,7 @@ export default function EditDegreeScreen( {route} ) {
 						<Text style={styles.title}>Add a Degree</Text>	
 					</View>
 					<Container>
-					<Text style={styles.fieldTitle}>University</Text>
-					<Dropdown
-					style={styles.dropdown}
-					selectedTextStyle={styles.selectedTextStyle}
-					data={universities}
-					maxHeight={300}
-					labelField="label"
-					valueField="value"
-					placeholder="Select a university"
-					value={university}
-					onChange={item => {
-						setUniversity(item.value);
-					}}
-					/>
-					<Text style={styles.fieldTitle}>Degree</Text>
-					<TextInput style={styles.field} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
+					<DegreeFields setDegree={setDegree} setUniversity={setUniversity} university={university} universities={universities}/>
 					<View style={styles.buttonsContainer}>
 						<FullWidthButton text="Save Changes" onHandlePress={()=>addDegree({university, degree}, user, setUser, navigation, setDegrees)}/>
 					</View>
