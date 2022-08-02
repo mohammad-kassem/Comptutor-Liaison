@@ -7,6 +7,7 @@ import { groupSchedules } from '../ScheduleScreen/controller'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import DropdownComponent from '../../components/Dropdown'
+import Schedules from '../../components/Schedules'
 
 
 export default function TutorSchedulesScreen() {
@@ -27,23 +28,10 @@ export default function TutorSchedulesScreen() {
         <>
             <Text style={styles.title}>Schedule</Text>
             <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedSchedules}/>
-            <FlatList numColumns={2} columnWrapperStyle={styles.timesContainer} data={groupedSchedules[date]} renderItem={(dateData) =>{
-                dateData.item.start_time = dateData.item.start_time.split(":")[0] + ":" + dateData.item.start_time.split(":")[1]
-                dateData.item.end_time = dateData.item.end_time.split(":")[0] + ":" + dateData.item.end_time.split(":")[1]
-                return(
-                    <>
-                    <TouchableOpacity style={styles.timeContainer}>
-                        <Text style={styles.time}>{dateData.item.start_time}</Text>
-                        <Text style={styles.time}>{dateData.item.end_time}</Text>
-                    </TouchableOpacity>
-                    </>
-                    
-                )}
-            }
-            />
-        <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}>
-            <Icon name="plus" size={40} color="#1877F2"/>
-        </TouchableOpacity>
+            <Schedules groupedSchedules={groupedSchedules} date={date}/>
+            <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}>
+                <Icon name="plus" size={40} color="#1877F2"/>
+            </TouchableOpacity>
         </>
     )
 }
