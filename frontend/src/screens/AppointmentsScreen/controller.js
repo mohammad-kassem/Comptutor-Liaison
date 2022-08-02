@@ -5,19 +5,28 @@ import axios from 'axios';
 import { localHostV1 } from "../../contsants/constants";
 
 
-export async function deleteAppointment(id, appointments,  setAppointments) {
+export async function deleteAppointment(id, type, approvedAppointments, pendingAppointments, setApprovedAppointments, setPendingAppointments) {
     const token = await getToken();
     axios({
         method: "delete",
         url: `${localHostV1}/appointment/delete/${id}`,
         headers: {
-        "Content-type": "application/json",
         "Accept": "application/json",
         "Authorization": `Bearer ${token}`}
     })
     .then(async function(response){
-        setAppointments(appointments.filter((appointment)=>
-        appointment.schedule_id !== id))
+        if (type === "approved")
+            setApprovedAppointments(approvedAppointments.filter((appointment)=>
+            appointment.schedule_id !== id))
+        else 
+            setPendingAppointments(pendingAppointments.filter((appointment)=>
+            appointment.schedule_id !== id))
+    })
+    .catch(function(error){
+        let message = Object.values(error.response.data);
+        ToastAndroid(message[0][0], ToastAndroid.SHORT) 
+    })
+};
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
