@@ -9,6 +9,7 @@ import { addDegree, getUniversities } from './controller'
 import { useNavigation } from '@react-navigation/native'
 import Container from '../../components/Container'
 import { Dropdown } from 'react-native-element-dropdown'
+import DegreeFields from '../../components/DegreeFields'
 
 export default function AddDegreeScreen( {route} ) {
     const user = route.params.user
@@ -21,6 +22,8 @@ export default function AddDegreeScreen( {route} ) {
         getUniversities(setUniversities);
       }, []);
 
+	console.log(universities)
+
 	return (
 		<KeyboardAvoidingView keyboardVerticalOffset={-250} behavior="padding">
 			<ScrollView>
@@ -28,22 +31,7 @@ export default function AddDegreeScreen( {route} ) {
 					<OnBoardingTitle/>
 					<OnBoardingPrompt message="Complete your info"/>
 					<Text style={styles.sectionPrompt}>Add your degree to improve your opportunities</Text>
-					<Text style={styles.fieldTitle}>University</Text>
-					<Dropdown
-					style={styles.dropdown}
-					selectedTextStyle={styles.selectedTextStyle}
-					data={universities}
-					maxHeight={300}
-					labelField="label"
-					valueField="value"
-					placeholder="Select a university"
-					value={university}
-					onChange={item => {
-						setUniversity(item.value);
-					}}
-					/>					
-					<Text style={styles.fieldTitle}>Degree</Text>
-					<TextInput style={styles.field} placeholder="Degree" onChangeText={(enteredText)=>{setDegree(enteredText)}}/>
+					<DegreeFields setDegree={setDegree} setUniversity={setUniversity} university={university} universities={universities}/>
 					<View style={styles.buttonsContainer}>
 						<FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, user, navigation)}/> 
 					</View>
