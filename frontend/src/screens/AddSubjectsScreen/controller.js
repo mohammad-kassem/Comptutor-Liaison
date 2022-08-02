@@ -49,7 +49,7 @@ export function isSelected(id, selectedSubjects){
     return found
 }
 
-export async function addSelectedSubjects(selectedSubjects, navigation, user, setUser){
+export async function addSelectedSubjects(selectedSubjects, navigation, userOnBoarding, setUserOnBoarding, setUser){
     const token = await getToken()
     axios({
         method: "post",
@@ -62,8 +62,12 @@ export async function addSelectedSubjects(selectedSubjects, navigation, user, se
         })
     .then(function(response){
         const newSubjects = response.data.subjects
-        user = {...user, "subjects": newSubjects}
-        user.role_id === 1 ? setUser(user) : navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen",  params: { user: user },})
+        userOnBoarding = {...userOnBoarding, "subjects": newSubjects}
+        if (userOnBoarding.role_id === 1) setUser(userOnBoarding) 
+        else 
+            {navigation.navigate("OnBoardingStackTutor", { screen: "AddDegreeScreen"}); 
+            setUserOnBoarding(userOnBoarding)
+        }
     })
     .catch(function(error){
         let message = Object.values(error.response.data);

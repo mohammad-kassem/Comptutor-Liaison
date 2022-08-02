@@ -11,14 +11,14 @@ import AbsolutePositionButtonContainer from '../../components/AbsolutePositionBu
 import { useUser } from '../../Context/User'
 import Container from '../../components/Container'
 import Subjcets from '../../components/Subjects'
+import { useUserOnBoarding } from '../../Context/UserOnBoarding'
 
-export default function AddSubjectsScreen( {route} ){
-    let user = route.params.user
+export default function AddSubjectsScreen(){
     const [subjects, setSubjects] = useState([])
     const [selectedSubjects, setSelectedSubjects] = useState([])
     const {setUser} = useUser()
     const navigation = useNavigation()
-    console.log(selectedSubjects)
+    const {userOnBoarding, setUserOnBoarding} = useUserOnBoarding()
 
     useEffect(function(){
         getSubjects(setSubjects);
@@ -33,7 +33,7 @@ export default function AddSubjectsScreen( {route} ){
             </Container>
             <>
             <AbsolutePositionButtonContainer>
-                <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, user, setUser)}/>
+                <FullWidthButton text="Next" onHandlePress={()=>addSelectedSubjects(selectedSubjects, navigation, userOnBoarding, setUserOnBoarding, setUser)}/>
             </AbsolutePositionButtonContainer>
             </>
             </>
