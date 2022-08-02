@@ -4,7 +4,7 @@ import { getToken } from '../../components/utility/Token'
 import axios from 'axios'
 import { localHostV1 } from '../../contsants/constants'
 
-export async function verifyEmail(code, user, navigation) {
+export async function verifyEmail(code, setUserOnBoarding, navigation) {
     if (code.length !== 4) return 
     const token = await getToken()
     axios({
@@ -17,11 +17,10 @@ export async function verifyEmail(code, user, navigation) {
         data: JSON.stringify({code}) 
     })
     .then(function(response){
-        user = response.data.user
-        navigation.navigate('AddSubjectsScreen', {user: response.data.user})
+        setUserOnBoarding(response.data.user)
+        navigation.navigate('AddSubjectsScreen')
     })
     .catch(function(error){
-        console.log(error)
         let message = Object.values(error.response.data);
         ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })

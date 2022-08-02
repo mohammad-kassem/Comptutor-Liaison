@@ -7,9 +7,10 @@ import { useUser } from '../../Context/User';
 import { sendEmail, verifyEmail } from './controller';
 import { useNavigation } from '@react-navigation/native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useUserOnBoarding } from '../../Context/UserOnBoarding';
 
-export default function VerificationScreen({ route }) {
-    const user = route.params.user
+export default function VerificationScreen() {
+    const {userOnBoarding, setUserOnBoarding} = useUserOnBoarding()
     const [value, setValue] = useState("");
     const ref = useBlurOnFulfill({value, cellCount: 4});
     const [props, getCellOnLayoutHandler] = useClearByFocusCell({value,setValue});
@@ -24,12 +25,12 @@ export default function VerificationScreen({ route }) {
             <Image style={styles.logo} source={require('../../../assets/mail.png')} resizeMode="cover"/>
         </View>
         <Text style={styles.title}>Email Verification</Text>
-        <Text style={styles.message}>Please verify your email by entering the verification code sent to {user.email}</Text>
+        <Text style={styles.message}>Please verify your email by entering the verification code sent to {userOnBoarding.email}</Text>
         <CodeField
             ref={ref}
             {...props}
             value={value}
-            onChangeText={(enteredText) => {setValue(enteredText); verifyEmail(enteredText, user, navigation)}}
+            onChangeText={(enteredText) => {setValue(enteredText); verifyEmail(enteredText, setUserOnBoarding, navigation)}}
             cellCount={4}
             rootStyle={styles.codeFieldRoot}
             keyboardType="number-pad"
