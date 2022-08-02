@@ -3,7 +3,7 @@ import { ToastAndroid } from "react-native";
 import { getToken } from "../../components/utility/Token";
 import { localHostV1 } from "../../contsants/constants";
 
-export async function addDegree(inputDegree, user, navigation){
+export async function addDegree(inputDegree, userOnBoarding, setUserOnBoarding, navigation){
     const token = await getToken()
     axios({
         method: "post",
@@ -16,9 +16,9 @@ export async function addDegree(inputDegree, user, navigation){
         })
     .then(function(response){
         const newDegrees = [response.data.degree]
-        user = {...user, "degrees": newDegrees}
+        setUserOnBoarding({...userOnBoarding, "degrees": newDegrees})
 
-        navigation.navigate("UpdateInfoScreen", {user: user})
+        navigation.navigate("UpdateInfoScreen")
     })
     .catch(function(error){
         let message = Object.values(error.response.data);

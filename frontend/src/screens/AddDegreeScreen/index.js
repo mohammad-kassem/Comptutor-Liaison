@@ -10,19 +10,19 @@ import { useNavigation } from '@react-navigation/native'
 import Container from '../../components/Container'
 import { Dropdown } from 'react-native-element-dropdown'
 import DegreeFields from '../../components/DegreeFields'
+import { useUserOnBoarding } from '../../Context/UserOnBoarding'
 
-export default function AddDegreeScreen( {route} ) {
-    const user = route.params.user
+export default function AddDegreeScreen() {
     const [university, setUniversity] = useState("")
     const [degree, setDegree] = useState("")
 	const [universities, setUniversities] = useState([])
     const navigation = useNavigation()
+	const {userOnBoarding, setUserOnBoarding} = useUserOnBoarding()
 
 	useEffect(function(){
         getUniversities(setUniversities);
       }, []);
 
-	console.log(universities)
 
 	return (
 		<KeyboardAvoidingView keyboardVerticalOffset={-250} behavior="padding">
@@ -33,7 +33,7 @@ export default function AddDegreeScreen( {route} ) {
 					<Text style={styles.sectionPrompt}>Add your degree to improve your opportunities</Text>
 					<DegreeFields setDegree={setDegree} setUniversity={setUniversity} university={university} universities={universities}/>
 					<View style={styles.buttonsContainer}>
-						<FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, user, navigation)}/> 
+						<FullWidthButton text="Next" onHandlePress={()=>addDegree({university, degree}, userOnBoarding, setUserOnBoarding, navigation)}/> 
 					</View>
 				</Container>
 			</ScrollView>
