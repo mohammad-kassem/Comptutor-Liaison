@@ -7,6 +7,7 @@ import AppointmentModal from '../../components/AppointmentModal'
 import { useFocusEffect } from '@react-navigation/native'
 import Container from '../../components/Container'
 import DropdownComponent from '../../components/Dropdown'
+import Schedules from '../../components/Schedules'
 
 
 
@@ -30,21 +31,7 @@ export default function ScheduleScreen({ route }) {
         <>
             <Text style={styles.title}>{tutor.fname} {tutor.lname}'s Schedule</Text>
             <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedSchedules}/>
-            <FlatList numColumns={2} columnWrapperStyle={styles.timesContainer} data={groupedSchedules[date]} renderItem={(dateData) =>{
-                dateData.item.start_time = dateData.item.start_time.split(":")[0] + ":" + dateData.item.start_time.split(":")[1]
-                dateData.item.end_time = dateData.item.end_time.split(":")[0] + ":" + dateData.item.end_time.split(":")[1]
-                return(
-                    <>
-                    <TouchableOpacity style={styles.timeContainer} onPress={()=>{setModalIsVisable(true); setModalData([dateData.item, date])}}>
-                        <Text style={styles.time}>{dateData.item.start_time}</Text>
-                        <Text style={styles.time}>{dateData.item.end_time}</Text>
-                    </TouchableOpacity>
-                    </>
-                    
-                )}
-            }
-            />
-            
+            <Schedules groupedSchedules={groupedSchedules} date={date} setModalIsVisable={setModalIsVisable} setModalData={setModalData}/>
             <AppointmentModal modalIsVisable={modalIsVisable} setModalIsVisable={setModalIsVisable} time={modalData[0]} date={modalData[1]} tutor={tutor}
                 schedules={schedules} setSchedules={setSchedules}/>
         </>
