@@ -6,9 +6,8 @@ import { localHostV1 } from "../../contsants/constants";
 
 
 
-export async function addInfo(input, user, setUser){
+export async function addInfo(input, userOnBoarding, setUserOnBoarding, setUser){
     const token = await getToken()
-    console.log(typeof input.rate)
     axios({
         method: "put",
         url: `${localHostV1}/tutor/update`,
@@ -16,13 +15,12 @@ export async function addInfo(input, user, setUser){
             "Content-type": "application/json",
             "Authorization": `Bearer ${token}`
             },
-        data: JSON.stringify({"id": user.id, "fname": user.fname, "lname": user.lname, ...input}) 
+        data: JSON.stringify({"id": userOnBoarding.id, "fname": userOnBoarding.fname, "lname": userOnBoarding.lname, ...input}) 
     })
     .then(function(response){
-        user = {...user, ...response.data.tutor}
-        console.log(user)
-        setUser(user)
-        getFCM(user)
+        userOnBoarding = {...userOnBoarding, ...response.data.tutor}
+        setUser(userOnBoarding)
+        getFCM(userOnBoarding)
     })
     .catch(function(error){
         let message = Object.values(error.response.data);
