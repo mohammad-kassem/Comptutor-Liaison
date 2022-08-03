@@ -4,6 +4,8 @@ import axios from 'axios'
 import { localHostV1 } from '../../contsants/constants'
 import { getToken } from '../../components/utility/Token'
 import * as ImagePicker from 'expo-image-picker';
+import database from '@react-native-firebase/database';
+
 
 export async function updateImage(image, user) {
     const token = await getToken()
@@ -38,5 +40,37 @@ export async function pickImage(setImage, user){
     if (!result.cancelled) {
         setImage(`data:image/jpg;base64,${result.base64}`);
         updateImage(`data:image/jpg;base64,${result.base64}`, user)
-      }
-    };
+        if (user.role_id === 1){
+            database()
+            .ref(`rooms`)
+            .orderByChild("studentId")
+            .equalTo(user.id)
+            .once("value").then(snapshot=>{
+                console.log(snapshot._snapshot.childKeys)
+                snapshot._snapshot.childKeys.forEach(element => {
+                    database()
+                    .ref(`rooms/${element}`)
+                    .update({
+                        studentImage: `data:image/jpg;base64,${result.base64}` 
+                    })
+                });
+            })
+        }
+        else {
+            database()
+            .ref(`rooms`)
+            .orderByChild("tutorId")
+            .equalTo(user.id)
+            .once("value").then(snapshot=>{
+                console.log(snapshot._snapshot.childKeys)
+                snapshot._snapshot.childKeys.forEach(element => {
+                    database()
+                    .ref(`rooms/${element}`)
+                    .update({
+                        tutorImage: `data:image/jpg;base64,${result.base64}` 
+                    })
+                });
+            })
+        }
+    }
+}
