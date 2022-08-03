@@ -9,6 +9,7 @@ import FullWidthButton from '../FullWidthButton';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import * as ImagePicker from 'expo-image-picker';
 import { useUserOnBoarding } from '../../Context/UserOnBoarding';
+import { pickImage } from './controller';
 
 
 
@@ -25,20 +26,6 @@ export default function CridentialsFrom({type, onPressHandler }) {
     let size = "80%"
 
     size = type === 'register' ? "75%" : "90%"
-
-    async function pickImage(){
-        let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
-          allowsEditing: true,
-          base64: true,
-          aspect: [4, 4],
-          quality: 1,
-        });
-        
-        if (!result.cancelled) {
-            setImage(`data:image/jpg;base64,${result.base64}`);
-          }
-        };
 
     return (
     <>  
@@ -59,7 +46,7 @@ export default function CridentialsFrom({type, onPressHandler }) {
         </>
         :
         <>
-            <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
+            <TouchableOpacity style={styles.imageContainer} onPress={()=>pickImage(setImage)}>
             {image ? 
                 (<Image style={styles.profile} source={{uri: image}}/>
                 ) : (
