@@ -55,6 +55,8 @@ export default function ChatScreen( {route} ) {
 			.update({
 				studentName: `${user.fname} ${user.lname}`,
 				tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
+				studentId: user.id,
+				tutorId: route.params.reciever.id,
 				studentImage: avatar,
 				tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
 			})
