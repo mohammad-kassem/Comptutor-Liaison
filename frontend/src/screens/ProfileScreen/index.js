@@ -5,9 +5,7 @@ import { useUser } from '../../Context/User'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { useNavigation } from '@react-navigation/native'
 import { setToken } from '../../components/utility/Token'
-import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
-import * as ImagePicker from 'expo-image-picker';
-import { updateImage } from './controller'
+import { pickImage } from './controller'
 
 
 
@@ -17,25 +15,10 @@ export default function ProfileScreen() {
     const [image, setImage] = useState(user.profile_image);
 
     const navigation = useNavigation()
-    async function pickImage(){
-        let result = await ImagePicker.launchImageLibraryAsync({
-          mediaTypes: ImagePicker.MediaTypeOptions.All,
-          allowsEditing: true,
-          base64: true,
-          aspect: [4, 4],
-          quality: 1,
-        });
-        
-        if (!result.cancelled) {
-            setImage(`data:image/jpg;base64,${result.base64}`);
-            updateImage(`data:image/jpg;base64,${result.base64}`, user)
-          }
-        };
-
 
     return (
         <View style={styles.container}>
-            <TouchableOpacity style={styles.imageContainer} onPress={pickImage}>
+            <TouchableOpacity style={styles.imageContainer} onPress={()=>pickImage(setImage, user)}>
                 {image ? 
                 (<Image style={styles.profile} source={{uri: image}}/>
                 ) : (
