@@ -21,41 +21,44 @@ export async function addInfo(input, user, setUser, navigation, setFname, setLna
         user = {...user, ...response.data[role]}
         setUser(user)
         navigation.goBack()
-        if (user.role_id === 1){
-            database()
-            .ref(`rooms`)
-            .orderByChild("studentId")
-            .equalTo(user.id)
-            .once("value").then(snapshot=>{
-                snapshot._snapshot.childKeys.forEach(element => {
-                    database()
-                    .ref(`rooms/${element}`)
-                    .update({
-                        studentName: `${user.fname} ${user.lname}` 
-                    })
-                });
-            })
-        }
-        else {
-            database()
-            .ref(`rooms`)
-            .orderByChild("tutorId")
-            .equalTo(user.id)
-            .once("value").then(snapshot=>{
-                console.log(snapshot._snapshot.childKeys)
-                snapshot._snapshot.childKeys.forEach(element => {
-                    database()
-                    .ref(`rooms/${element}`)
-                    .update({
-                        tutorName: `${user.fname} ${user.lname}` 
-                    })
-                });
-            })
-        }
+        updateRoom(user)
     })
     .catch(function(error){
         console.log(error)
         let message = Object.values(error.response.data);
         ToastAndroid.show(message[0][0], ToastAndroid.SHORT)
     })
+}
+
+function updateRoom(user){
+    if (user.role_id === 1){
+        database()
+        .ref(`rooms`)
+        .orderByChild("studentId")
+        .equalTo(user.id)
+        .once("value").then(snapshot=>{
+            snapshot._snapshot.childKeys.forEach(room => {
+                database()
+                .ref(`rooms/${room}`)
+                .update({
+                    studentName: `${user.fname} ${user.lname}` 
+                })
+            });
+        })
+    }
+    else {
+        database()
+        .ref(`rooms`)
+        .orderByChild("tutorId")
+        .equalTo(user.id)
+        .once("value").then(snapshot=>{
+            snapshot._snapshot.childKeys.forEach(room => {
+                database()
+                .ref(`rooms/${room}`)
+                .update({
+                    tutorName: `${user.fname} ${user.lname}` 
+                })
+            });
+        })
+    }
 }
