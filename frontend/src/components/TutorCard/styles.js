@@ -63,7 +63,7 @@ export default StyleSheet.create({
         flexWrap: "wrap",
         alignItems: "center",
         marginLeft: "27%",
-        marginTop: 15
+        marginTop: 10
     },
 
     subjectContainer: {
@@ -71,7 +71,8 @@ export default StyleSheet.create({
         backgroundColor: "#C7E9F1",
         borderRadius: 20,
         width: "30%",
-        alignSelf: "center"
+        alignSelf: "center",
+        marginTop: 5
     },
 
     subjectName:{

@@ -2,9 +2,11 @@ import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useUser } from '../../Context/User'
 import styles from './styles'
+import { useNavigation } from '@react-navigation/native'
 
 export default function ChatRoom({roomData}) {
     const {user} = useUser()
+    const navigation = useNavigation()
     const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "June",
 	"July", "Aug", "Sept", "Oct", "Nov", "Dec"];
 
@@ -24,7 +26,7 @@ export default function ChatRoom({roomData}) {
                 <View style={styles.header}>
                 <Text style={styles.contact}>{roomData.item[1].tutorName}</Text>
                 </View>
-                <Text style={styles.message}>{roomData.item[1].lastMessage.substring(0, 25)}{roomData.item[1].lastMessage.length > 20 && "..."}</Text>
+                <Text style={styles.message}>{roomData.item[1].lastMessage && roomData.item[1].lastMessage.substring(0, 25)}{roomData.item[1].lastMessage && roomData.item[1].lastMessage.length > 20 && "..."}</Text>
             </View>
             </>
             :

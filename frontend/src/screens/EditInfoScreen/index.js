@@ -28,7 +28,7 @@ export default function EditInfoScreen() {
             <Container>
             <InfoFields type="editinfo" setFname={setFname} setLname={setLname} setRate={setRate} setYears={setYears} setAbout={setAbout} user={user}/>
             <View style={[styles.buttonsContainer, user.role_id === 1 && styles.studentButton]}>
-                <FullWidthButton text="Save Changes" onHandlePress={()=>addInfo({"fname": fname, "lname": lname, "years": parseInt(years), "rate": parseInt(rate),"about_me": about}, user, setUser, navigation)}/>
+                <FullWidthButton text="Save Changes" onHandlePress={()=>addInfo({"fname": fname, "lname": lname, "years": parseInt(years), "rate": parseInt(rate),"about": about}, user, setUser, navigation)}/>
             </View>
             </Container>
         </ScrollView>
