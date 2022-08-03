@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
-import { isAppointmentTime, isCancelTime } from '../../screens/AppointmentsScreen/controller';
+import { isAppointmentTime, isCancelTime } from './controller';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useUser } from '../../Context/User';
