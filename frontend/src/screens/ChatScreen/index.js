@@ -4,7 +4,7 @@ import React, { useState, useCallback, useEffect } from 'react'
 import { GiftedChat } from 'react-native-gifted-chat'
 import database from '@react-native-firebase/database';
 import { useUser } from '../../Context/User';
-import { renderBubble, renderSend } from './controller';
+import { onSend, renderBubble, renderSend } from './controller';
 
 
 export default function ChatScreen( {route} ) {
@@ -44,44 +44,12 @@ export default function ChatScreen( {route} ) {
 			if (user.role_id === 2) return false
 		  });
 	})
-
-	function onSend(messages = []) {
-		const createdAt = messages[0].createdAt
-		messages[0] = {...messages[0], createdAt: createdAt.toString(), }
-		messages[0].user = {_id: user.id, name: `${user.fname} ${user.lname}`, avatar: avatar}
-		if(route.params.reciever.fname) {
-			database()
-			.ref(`rooms/${roomId}`)
-			.update({
-				studentName: `${user.fname} ${user.lname}`,
-				tutorName: `${route.params.reciever.fname} ${route.params.reciever.lname}`,
-				studentId: user.id,
-				tutorId: route.params.reciever.id,
-				studentImage: avatar,
-				tutorImage: route.params.reciever.profile_image || require('../../../assets/logo.png')
-			})
-		}
-		database()
-			.ref(`rooms/${roomId}/messages/${createdAt.getTime()}`)
-			.set(
-			messages[0]
-			)
-		database()
-		.ref(`rooms/${roomId}`)
-		.update({
-			lastMessage: messages[0].text,
-			lastSent: createdAt.getTime(),
-			studentUnread: user.role_id === 1 ? false : true,
-			tutorUnread: user.role_id === 2 ? false : true
-		}
-		)
-	}
 	
 	return (
 		<>
 		<GiftedChat
 			messages={messages}
-			onSend={messages => onSend(messages)}
+			onSend={messages => onSend(messages, user, route, avatar, roomId)}
 			user={{
 			_id: user.id,
 			}}
