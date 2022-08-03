@@ -7,6 +7,8 @@ import EditDegreeScreen from "../screens/EditDegreeScreen";
 import EditInfoScreen from "../screens/EditInfoScreen";
 import EditProfileScreen from "../screens/EditProfileScreen";
 import EditSubjectsScreen from "../screens/EditSubjectsScreen";
+import { StyleSheet } from "react-native";
+
 
 export default function EditProfileStack() {
     const RootStackNav = createStackNavigator();
@@ -16,14 +18,10 @@ export default function EditProfileStack() {
         <DegreesProvider>
         <RootStackNav.Navigator
         screenOptions={{
-          headerStyle: {
-            backgroundColor: '#4FC7E6',
-          },
-          title: 'Go Back',
-          headerTintColor: 'white',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
+          headerStyle: styles.header,
+          title: "Go Back",
+          headerTintColor: "white",
+          headerTitleStyle: styles.headerTitle,
         }}>
             <RootStackNav.Screen
             name="EditProfileScreen"
@@ -48,3 +46,13 @@ export default function EditProfileStack() {
       </UserSubjectsProvider>
     )
 }
+
+const styles = StyleSheet.create({
+	header: {
+		backgroundColor: "#4FC7E6",
+	},
+
+	headerTitle: {
+    fontWeight: "bold",
+	}
+})

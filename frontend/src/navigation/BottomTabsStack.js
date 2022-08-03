@@ -6,8 +6,7 @@ import AppointmentsScreen from '../screens/AppointmentsScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import ChatRoomsScreen from '../screens/ChatRoomsScreen';
 import { useRooms } from '../Context/Rooms';
-
-
+import { StyleSheet } from "react-native";
 
 
 export default function BottomTabsStack() {
@@ -17,48 +16,47 @@ export default function BottomTabsStack() {
 		<Tab.Navigator
 		screenOptions={{
 			tabBarActiveTintColor: '#4FC7E6',
+			tabBarShowLabel: false,
+			tabBarStyle: styles.tabBar,
+			headerShown: false
 		  }}>
 			<Tab.Screen options={{
 			tabBarIcon: ({ color }) => {
 				return <Icon name="home" size={24} color={color}/>;
 			},
-			tabBarShowLabel: false,
-			tabBarStyle: { height: 56 },
-			headerShown: false
 			}} name="Home" component={HomeScreen} />
 			<Tab.Screen options={{
 			tabBarIcon: ({ color }) => {
 				return <Icon name="calendar" size={24} color={color}/>;
 			},
-			tabBarShowLabel: false,
-			tabBarStyle: { height: 56 },
-			headerShown: false
 			}} name="Appointments" component={AppointmentsScreen} />
 			<Tab.Screen options={{
 			tabBarIcon: ({ color }) => {
 				return <Icon name="chat" size={24} color={color}/>;
 			},
 			tabBarBadge: unreadRooms ? unreadRooms : undefined,
-			tabBarBadgeStyle: {
-				minWidth: 14,
-            	maxHeight: 14,
-            	borderRadius: 7,
-            	fontSize: 10,
-           	 	lineHeight: 13,
-            	alignSelf: undefined,
-		   },
-			tabBarShowLabel: false,
-			tabBarStyle: { height: 56 },
-			headerShown: false
+			tabBarBadgeStyle: styles.tabBarBadge,
 			}} name="Chat" component={ChatRoomsScreen} />
 			<Tab.Screen options={{
 			tabBarIcon: ({ color }) => {
 				return <Icon name="account" size={24} color={color}/>;
 			},
-			tabBarShowLabel: false,
-			tabBarStyle: { height: 56 },
-			headerShown: false
 			}} name="Profile" component={ProfileScreen} />
 		</Tab.Navigator>
       );
 }
+
+const styles = StyleSheet.create({
+	tabBar: {
+		height: 56
+	},
+
+	tabBarBadge: {
+		minWidth: 14,
+		maxHeight: 14,
+		borderRadius: 7,
+		fontSize: 10,
+		lineHeight: 13,
+		alignSelf: undefined,
+	}
+})
