@@ -18,9 +18,14 @@ export default StyleSheet.create({
         borderRadius: 20
     },
 
-    icon: {
+    iconContainer: {
         position: "absolute",
         top: "5%",
         right: "5%",
     },
+
+    icon: {
+        fontSize: 24,
+        color: "#1877F2"
+    }
 })

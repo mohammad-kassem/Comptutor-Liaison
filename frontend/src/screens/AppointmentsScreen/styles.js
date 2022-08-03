@@ -48,7 +48,7 @@ export default StyleSheet.create({
         fontSize: 24,
         fontWeight: "700",
         lineHeight: 29,
-        marginVertical: 25,
+        marginTop: 25,
         alignSelf: "center"
     },
 
@@ -97,6 +97,16 @@ export default StyleSheet.create({
         fontWeight: "500",
         lineHeight: 22,
         textAlign: "center"
+    },
+
+    sheetContainer:{
+        borderTopStartRadius: 35,
+        borderTopEndRadius: 35,
+        justifyContent: "space-between"
+    },
+
+    draggableIcon:{
+        backgroundColor: "#919090"
     },
 
     sheetText:{

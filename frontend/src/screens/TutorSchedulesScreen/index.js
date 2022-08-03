@@ -30,7 +30,7 @@ export default function TutorSchedulesScreen() {
             <DropdownComponent date={date} setDate={setDate} groupedSchedules={groupedSchedules}/>
             <Schedules groupedSchedules={groupedSchedules} date={date}/>
             <TouchableOpacity style={styles.addButton} onPress={()=>{navigation.navigate("HomeStackTutor", { screen: "AddScheduleScreen",  params: { schedules: schedules, setSchedules: setSchedules },}); console.log("hello")}}>
-                <Icon name="plus" size={40} color="#1877F2"/>
+                <Icon name="plus" style={styles.icon}/>
             </TouchableOpacity>
         </>
     )

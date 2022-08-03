@@ -46,4 +46,9 @@ export default StyleSheet.create({
         borderRadius: 15,
     },
 
+    icon: {
+        fontSize: 40, 
+        color: "#1877F2"
+    }
+
 })

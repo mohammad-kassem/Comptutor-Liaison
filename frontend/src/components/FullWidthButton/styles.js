@@ -28,5 +28,10 @@ export default StyleSheet.create({
 
     white: {
         color: "white"
+    },
+
+    icon:{
+        fontSize: 24,
+        color: "#1877F2"
     }
 })

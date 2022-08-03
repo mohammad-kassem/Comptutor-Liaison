@@ -26,7 +26,7 @@ export default function EditProfileScreen() {
                     <Text style={styles.category}>Personal Info</Text>
                     <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditProfileStack", { screen: "EditInfoScreen"},)}>
                         <Text style={styles.editText}>Edit</Text>
-                        <Icon name="pen" size={24} color="#4FC7E6"/>
+                        <Icon name="pen" style={styles.penIcon}/>
                     </TouchableOpacity>
                 </View>
                 <Text style={styles.fieldTitle}>First name</Text>
@@ -45,14 +45,14 @@ export default function EditProfileScreen() {
                     <Text style={styles.category}>Degrees</Text>
                     <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate( "EditDegreeScreen", {stackType: "EditProfile" })}>
                         <Text style={styles.editText}>Edit</Text>
-                        <Icon name="pen" size={24} color="#4FC7E6"/>
+                        <Icon name="pen" style={styles.penIcon}/>
                     </TouchableOpacity>
                 </View>
                     {degrees.map((degree)=>{return(
                         <View style={styles.infoContainer}>
                         <Text style={styles.degree}>{degree.university} - {degree.degree}</Text>
                         <TouchableOpacity onPress={()=>deleteDegree(degree.id, degrees, setDegrees, user, setUser)}>
-                            <Icon name="delete" size={20} color="#e0474c" style={styles.icon}/>
+                            <Icon name="delete" size={20} color="#e0474c" style={styles.deleteIcon}/>
                         </TouchableOpacity>
                         </View>
                     )}
@@ -63,7 +63,7 @@ export default function EditProfileScreen() {
                     <Text style={styles.category}>Subjects</Text>
                     <TouchableOpacity style={styles.edit} onPress={()=>navigation.navigate("EditSubjectsScreen", {stackType: "EditProfile"})}>
                         <Text style={styles.editText}>Edit</Text>
-                        <Icon name="pen" size={24} color="#4FC7E6"/>
+                        <Icon name="pen" style={styles.penIcon}/>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.subjectsContainer}>

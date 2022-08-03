@@ -33,6 +33,10 @@ export default StyleSheet.create({
         color: "#4FC7E6"
     },
 
+    penIcon: {
+        fontSize: 24, 
+        color: "#4FC7E6"
+    },
 
     fieldTitle: {
         fontSize: 16,
@@ -66,10 +70,10 @@ export default StyleSheet.create({
         fontSize: 15,
     },
 
-    icon: {
+
+    deleteIcon: {
         alignSelf: "stretch",
         textAlignVertical: "center",
-        // marginTop: 10,
     },
 
     subjectsContainer: {

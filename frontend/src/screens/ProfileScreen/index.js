@@ -24,7 +24,7 @@ export default function ProfileScreen() {
                 ) : (
                     <Image style={styles.profile} source={require('../../../assets/logo.png')}/>
                 )}
-                <Icon name="camera" style={styles.icon}/>
+                <Icon name="camera" style={styles.cameraIcon}/>
             </TouchableOpacity>
             <Text style={styles.name}>{user.fname} {user.lname}</Text>
             {/* {user.role_id === 1 && <View style={styles.balanceContainer}>
@@ -34,11 +34,11 @@ export default function ProfileScreen() {
             <View style={styles.buttonContainer}>
                 <TouchableOpacity style={styles.editButton} onPress={()=>navigation.navigate("EditProfileStack")}>
                     <Text style={styles.editButonText}>Edit</Text>
-                    <Icon name="account-edit" size={24} color="#1877F2"/>
+                    <Icon name="account-edit" style={styles.editIcon}/>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.logoutButton} onPress={async ()=>{setUser({}); await setToken("")}}>
                     <Text style={styles.logoutButonText}>Logout</Text>
-                    <Icon name="logout" size={24} color="white"/>
+                    <Icon name="logout" style={styles.logoutIcon}/>
                 </TouchableOpacity>
             </View>
         </View>

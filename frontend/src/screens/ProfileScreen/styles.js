@@ -22,7 +22,7 @@ export default StyleSheet.create({
         borderRadius: 150
     },
 
-    icon: {
+    cameraIcon: {
         fontSize: 26,
         color:"#4FC7E6",
         position: "absolute",
@@ -74,6 +74,11 @@ export default StyleSheet.create({
         aspectRatio: 3,
     },
 
+    editIcon: {
+        fontSize: 24, 
+        color: "#1877F2"
+    },
+
     logoutButton :{
         flex: 1,
         flexDirection: "row",
@@ -83,6 +88,11 @@ export default StyleSheet.create({
         borderRadius: 20,
         paddingHorizontal: 15,
         aspectRatio: 3,
+    },
+
+    logoutIcon: {
+        fontSize: 24,
+        color: "white"
     },
 
     editButonText: {

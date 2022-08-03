@@ -22,17 +22,14 @@ export default function CridentialsFrom({type, onPressHandler }) {
     const [isTutor, setIsTutor] = useState(false)
     const [image, setImage] = useState()
     const {user, setUser} = useUser()
-    const {setUserOnBoarding} = useUserOnBoarding()
-    let size = "80%"
-
-    size = type === 'register' ? "75%" : "90%"
+    const {setUserOnBoarding} = useUserOnBoarding() 
 
     return (
     <>  
         <View style={styles.container}>
         <KeyboardAvoidingView keyboardVerticalOffset={-250} behavior='padding'>
         <ScrollView>
-        <ImageBackground source={require('../../../assets/background.png')} style={{width: '100%', height: size}} resizeMode="cover">
+        <ImageBackground source={require('../../../assets/background.png')} style={type === 'register' ? styles.background : [styles.background, styles.backgroundLogin]}>
         {type === 'login' ? 
         <>
         <View style={styles.imageContainer}>

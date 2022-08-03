@@ -48,14 +48,8 @@ export default function AppointmentsScreen() {
           closeOnDragDown={true}
           closeOnPressMask={false}
           customStyles={{
-            container:{
-                borderTopStartRadius: 35,
-                borderTopEndRadius: 35,
-                justifyContent: "space-between"
-            },
-            draggableIcon: {
-              backgroundColor: "#919090"
-            }
+            container: styles.sheetContainer,
+            draggableIcon: styles.draggableIcon
           }}>
         <Text style={styles.sheetText}>Appointment Action</Text>
         

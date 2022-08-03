@@ -12,8 +12,8 @@ export default function Subjcets({subjects, selectedSubjects, setSelectedSubject
             <TouchableOpacity style={styles.imageContainer} onPress={()=>handleSelect(subjectData.item.id, subjectData.item.subject, subjectData.item.image, selectedSubjects, setSelectedSubjects)}>
                 <Image  style={styles.subjectImage} source={{uri:subjectData.item.image,}}/>
                 {isSelected(subjectData.item.id, selectedSubjects) &&
-                <View style={styles.icon}>
-                    <Icon name="checkbox-marked-circle" size={24} color="#1877F2"/>
+                <View style={styles.iconContainer}>
+                    <Icon name="checkbox-marked-circle" style={styles.icon}/>
                 </View>}
             </TouchableOpacity>
         )}

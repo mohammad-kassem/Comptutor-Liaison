@@ -1,6 +1,17 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+    background:{
+        width: '100%', 
+        height: "75%",
+        resizeMode:"cover"
+    },
+
+    backgroundLogin:{
+        height: "90%",
+
+    },
+
     imageContainer: {
         width: 130,
         height: 130, 
