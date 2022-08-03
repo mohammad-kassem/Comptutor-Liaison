@@ -31,12 +31,18 @@ export default function ChatScreen( {route} ) {
 	, [])
 
 	useEffect(function(){
-		database()
-		.ref(`rooms/${roomId}`)
-		.update({
-			studentUnread: user.role_id === 1 && false,
-			tutorUnread: user.role_id === 2 && false
-		})
+		const refrenceStudent = database().ref(`rooms/${roomId}/studentUnread`);
+		const refrenceTutor = database().ref(`rooms/${roomId}/tutorUnread`);
+
+		refrenceStudent.transaction((studentUnread) => {
+			if (studentUnread === null) return;
+			if (user.role_id === 1) return false
+		  });
+
+		  refrenceTutor.transaction((tutorUnread) => {
+			if (tutorUnread === null) return;
+			if (user.role_id === 2) return false
+		  });
 	})
 
 	function onSend(messages = []) {
