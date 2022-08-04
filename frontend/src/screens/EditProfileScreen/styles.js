@@ -1,117 +1,113 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
+  title: {
+    fontSize: 24,
+    fontWeight: "700",
+    lineHeight: 29,
+    marginTop: 25,
+    alignSelf: "center",
+  },
 
-    title: {
-        fontSize: 24,
-        fontWeight: "700",
-        lineHeight: 29,
-        marginTop: 25,
-        alignSelf: "center"
-    },
+  infoContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
 
-    
-    infoContainer: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-    },
+  category: {
+    fontSize: 20,
+    fontWeight: "500",
+    marginBottom: 15,
+  },
 
-    category: {
-        fontSize: 20,
-        fontWeight: "500",
-        marginBottom: 15,
-    },
+  edit: {
+    flexDirection: "row",
+    alignItems: "center",
+  },
 
-    edit: {
-        flexDirection: "row",
-        alignItems: "center"
-    },
+  editText: {
+    marginRight: 5,
+    color: "#4FC7E6",
+  },
 
-    editText:{
-        marginRight: 5,
-        color: "#4FC7E6"
-    },
+  penIcon: {
+    fontSize: 24,
+    color: "#4FC7E6",
+  },
 
-    penIcon: {
-        fontSize: 24, 
-        color: "#4FC7E6"
-    },
+  fieldTitle: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: "#919090",
+    fontWeight: "500",
+  },
 
-    fieldTitle: {
-        fontSize: 16,
-        marginBottom: 5,
-        color: "#919090",
-        fontWeight: "500"
-    },
+  field: {
+    marginBottom: 20,
+    paddingBottom: 5,
+    textAlignVertical: "bottom",
+    alignItems: "flex-start",
+    fontSize: 18,
+  },
 
-    field: {
-        marginBottom: 20,
-        paddingBottom: 5,
-        textAlignVertical: 'bottom',
-        alignItems:"flex-start",
-        fontSize: 18,
-    },
+  about: {
+    marginBottom: 20,
+    paddingBottom: 5,
+    textAlignVertical: "top",
+    alignItems: "flex-start",
+    fontSize: 18,
+    height: 60,
+  },
 
-    about: {
-        marginBottom: 20,
-        paddingBottom: 5,
-        textAlignVertical: 'top',
-        alignItems:"flex-start",
-        fontSize: 18,
-        height: 60,
-    },
+  degree: {
+    marginBottom: 20,
+    paddingBottom: 5,
+    textAlignVertical: "bottom",
+    alignItems: "flex-start",
+    fontSize: 15,
+  },
 
-    degree: {
-        marginBottom: 20,
-        paddingBottom: 5,
-        textAlignVertical: 'bottom',
-        alignItems:"flex-start",
-        fontSize: 15,
-    },
+  deleteIcon: {
+    alignSelf: "stretch",
+    textAlignVertical: "center",
+  },
 
+  subjectsContainer: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    marginTop: 5,
+  },
 
-    deleteIcon: {
-        alignSelf: "stretch",
-        textAlignVertical: "center",
-    },
+  subjectContainer: {
+    width: 120,
+  },
 
-    subjectsContainer: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        marginTop: 5
-    },
+  imageContainer: {
+    width: 120,
+    height: 120,
+    marginRight: 15,
+  },
 
-    subjectContainer:{
-        width: 120,
-    },
+  subjectImage: {
+    flex: 1,
+    width: undefined,
+    height: undefined,
+    borderRadius: 20,
+  },
 
-    imageContainer: {
-        width: 120,
-        height: 120, 
-        marginRight: 15,
-    },
+  deleteButton: {
+    backgroundColor: "#e0474c",
+    padding: 5,
+    borderRadius: 20,
+    marginVertical: 15,
+  },
 
-    subjectImage: {
-        flex: 1,
-        width: undefined,
-        height: undefined,
-        borderRadius: 20
-    },
-
-    deleteButton:{
-        backgroundColor: "#e0474c",
-        padding: 5,
-        borderRadius: 20,
-        marginVertical: 15
-    },
-
-    deleteText:{
-        color: "white",
-        textAlign: "center",
-        fontWeight: "500",
-        fontSize: 16
-    },
-
-})
+  deleteText: {
+    color: "white",
+    textAlign: "center",
+    fontWeight: "500",
+    fontSize: 16,
+  },
+});
