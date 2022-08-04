@@ -3,6 +3,7 @@ import React from 'react'
 import axios from 'axios';
 import { getToken } from '../utility/Token';
 import { localHostV1 } from "../../contsants/constants";
+import database from "@react-native-firebase/database";
 
 
 export async function addAppointment(scheduleId, schedules, setSchedules, tutorId) {
@@ -18,8 +19,13 @@ export async function addAppointment(scheduleId, schedules, setSchedules, tutorI
 		data: data,
 	})
 	.then(async function(response){
+    const x = Math.floor(Math.random() * 100)
 		refreshAvailableTimes(scheduleId, schedules, setSchedules)
-		// ToastAndroid.show(response.data.message, ToastAndroid.SHORT)
+    database()
+    .ref(`appointments/${tutorId}`)
+    .update({
+      appointment: true
+    });
 	})
 	.catch(function(error){
 		let message = Object.values(error.response.data);
