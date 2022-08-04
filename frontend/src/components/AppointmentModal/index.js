@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
 import Modal from "react-native-modal";
-
 import styles from './styles'
 import { addAppointment } from './controller';
 
