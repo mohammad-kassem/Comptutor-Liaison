@@ -1,6 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-
-import React from 'react'
+import React from "react";
 import DegreesProvider from "../Context/Degrees";
 import UserSubjectsProvider from "../Context/UserSubjects";
 import EditDegreeScreen from "../screens/EditDegreeScreen";
@@ -9,50 +8,51 @@ import EditProfileScreen from "../screens/EditProfileScreen";
 import EditSubjectsScreen from "../screens/EditSubjectsScreen";
 import { StyleSheet } from "react-native";
 
-
 export default function EditProfileStack() {
-    const RootStackNav = createStackNavigator();
+  const RootStackNav = createStackNavigator();
 
-    return (
-      <UserSubjectsProvider>
-        <DegreesProvider>
+  return (
+    <UserSubjectsProvider>
+      <DegreesProvider>
         <RootStackNav.Navigator
-        screenOptions={{
-          headerStyle: styles.header,
-          title: "Go Back",
-          headerTintColor: "white",
-          headerTitleStyle: styles.headerTitle,
-        }}>
-            <RootStackNav.Screen
+          screenOptions={{
+            headerStyle: styles.header,
+            title: "Go Back",
+            headerTintColor: "white",
+            headerTitleStyle: styles.headerTitle,
+          }}
+        >
+          <RootStackNav.Screen
             name="EditProfileScreen"
             component={EditProfileScreen}
             options={{
-                headerShown: true
-              }}/>
-            <RootStackNav.Screen
+              headerShown: true,
+            }}
+          />
+          <RootStackNav.Screen
             name="EditInfoScreen"
             component={EditInfoScreen}
-            />
-            <RootStackNav.Screen 
+          />
+          <RootStackNav.Screen
             name="EditDegreeScreen"
             component={EditDegreeScreen}
-            />
-            <RootStackNav.Screen 
+          />
+          <RootStackNav.Screen
             name="EditSubjectsScreen"
             component={EditSubjectsScreen}
-            />
+          />
         </RootStackNav.Navigator>
-        </DegreesProvider>
-      </UserSubjectsProvider>
-    )
+      </DegreesProvider>
+    </UserSubjectsProvider>
+  );
 }
 
 const styles = StyleSheet.create({
-	header: {
-		backgroundColor: "#4FC7E6",
-	},
+  header: {
+    backgroundColor: "#4FC7E6",
+  },
 
-	headerTitle: {
+  headerTitle: {
     fontWeight: "bold",
-	}
-})
+  },
+});
