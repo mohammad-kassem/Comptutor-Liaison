@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\General;
 
-use Auth;
 use Validator;
-use DateTime;
 use App\Models\User;
 use App\Models\Schedule;
 use App\Models\Appointment;
@@ -35,6 +33,15 @@ class AppointmentController extends Controller{
     public function add(Request $request){
         $student = auth()->user();
         
+        $validator = Validator::make($request->all(), [
+            'schedule_id' => 'required|integer',
+            'tutor_id' => 'required|integer',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $appointment = Appointment::create([
             'schedule_id' => $request->schedule_id,
             'student_id' => $student->id,
@@ -43,7 +50,7 @@ class AppointmentController extends Controller{
         
         $FCM_token = User::where('id', $request->tutor_id)->first();
         $schedule = Schedule::where('id', $request->schedule_id)->first();
-        $this -> sendRequestNotification($FCM_token->FCM_token, $schedule);
+        $this -> sendNotification($FCM_token->FCM_token, $schedule, 'request');
 
         return response()->json([
             'message' => 'Appointment successfully added',
@@ -64,8 +71,10 @@ class AppointmentController extends Controller{
         $start_time = strtotime($schedule->date." ".$schedule->start_time);
         $diff = ($start_time - $current_time )/ 60;
 
-        if ($diff < 15) return response()->json(['message' => 'The appointment cancel time is over', 409]);
-
+        if ($diff < 15){ 
+            return response()->json(['message' => 'The appointment cancel time is over', 409]);
+        }
+        
         if ($user->id == $appointment->student_id){
             $FCM_token = User::where('id', $appointment->tutor_id)->first();
         }
