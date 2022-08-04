@@ -1,70 +1,69 @@
-    import { StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 
-    export default StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        },
-        
-    modal: {
-        alignItems: 'center',
-        backgroundColor: 'white',
-        justifyContent: 'center',
-        borderRadius: 20,
-    },
+export default StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
 
-    title: {
-        marginTop: 30,
-        fontWeight: "bold",
-        fontSize: 20,
-        lineHeight: 24,
-    },
+  modal: {
+    alignItems: "center",
+    backgroundColor: "white",
+    justifyContent: "center",
+    borderRadius: 20,
+  },
 
-    content: {
-        marginTop: 15,
-        fontWeight: "500",
-        fontSize: 16,
-        lineHeight: 19,
-    },
+  title: {
+    marginTop: 30,
+    fontWeight: "bold",
+    fontSize: 20,
+    lineHeight: 24,
+  },
 
-    buttonsContainer: {
-        marginTop: 15,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-    },
+  content: {
+    marginTop: 15,
+    fontWeight: "500",
+    fontSize: 16,
+    lineHeight: 19,
+  },
 
-    leftButton:{
-        flexDirection: "row",
-        flex: 1,
-        height: 46,
-    },
+  buttonsContainer: {
+    marginTop: 15,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
+  },
 
-    confirmButton:{
-        backgroundColor: "#C7E9F1",
-        flex: 1,
-        borderBottomLeftRadius: 20,
-        textAlign: "center",
-        textAlignVertical: "center",
-        color: "#1877F2",
-        fontSize: 16,
-        fontWeight: "500"
-    },
+  leftButton: {
+    flexDirection: "row",
+    flex: 1,
+    height: 46,
+  },
 
-    rightButton:{
-        flexDirection: "row",
-        flex: 1,
-    },
+  confirmButton: {
+    backgroundColor: "#C7E9F1",
+    flex: 1,
+    borderBottomLeftRadius: 20,
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "#1877F2",
+    fontSize: 16,
+    fontWeight: "500",
+  },
 
-    cancelButton:{
-        flex: 1,
-        height: 46,
-        textAlign: "center",
-        textAlignVertical: "center",
-        color: "#919090",
-        fontSize: 16,
-        fontWeight: "500"
-    },
+  rightButton: {
+    flexDirection: "row",
+    flex: 1,
+  },
 
+  cancelButton: {
+    flex: 1,
+    height: 46,
+    textAlign: "center",
+    textAlignVertical: "center",
+    color: "#919090",
+    fontSize: 16,
+    fontWeight: "500",
+  },
 });
