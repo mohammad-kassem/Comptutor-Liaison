@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\General;
 
 use Auth;
-use Validator;
 use App\Models\User;
 use App\Models\Subject;
 use App\Http\Controllers\Controller;
@@ -52,7 +51,9 @@ class SubjectController extends Controller{
         
         $subject = $user->subjects()->where('subject_id', $id)->first();
 
-        if ($subject === null) return response()->json(['message' => 'User subject does not exist'], 204);
+        if ($subject === null){ 
+            return response()->json(['message' => 'User subject does not exist'], 204);
+        }
         
         $user->subjects()->detach($id);
 
