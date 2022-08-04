@@ -9,15 +9,11 @@ use App\Models\Role;
 use App\Models\Subjects;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use App\HTTP\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
-use App\Mail\VerificationMail;
-use Illuminate\Support\Facades\Mail;
 
 
 
 
-class JWTController extends EmailVerification{
+class JWTController extends EmailVerificationController{
         public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'fname' => 'required|string|min:2|max:255',
@@ -51,7 +47,6 @@ class JWTController extends EmailVerification{
                 'password' => Hash::make($request->password),
                 'role_id' => 1,
                 'rate' => 0,
-                'since' => (int)date('Y'),
                 'profile_image' => $request->image,
                 'is_verified' => 0
             ]);
@@ -92,6 +87,7 @@ class JWTController extends EmailVerification{
         $user->degrees;
 
         return response()->json([
+            'message' => 'Login successful',
             'access_token' => $token,
             'user' => $user,
         ], 200);
