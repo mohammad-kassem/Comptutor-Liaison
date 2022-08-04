@@ -11,15 +11,15 @@ use Illuminate\Http\Request;
 class StudentController extends Controller{
     public function update(Request $request){   
         $validator = Validator::make($request->all(), [
-            'fname' => 'required|string',
-            'lname' => 'required|string',
+            'fname' => 'required|string|min:2|max:255',
+            'lname' => 'required|string|min:2|max:255',
         ]);
 
         if($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        $student = User::find($request->id);
+        $student = auth()->user();
 
         $student->update([
             'fname' => $request->fname,
@@ -27,6 +27,7 @@ class StudentController extends Controller{
         ]);
 
         return response()->json([
+            'message' => 'Account info successfully updated',
             'student' => $student,
         ], 200);
     }
