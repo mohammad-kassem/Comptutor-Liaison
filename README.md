@@ -32,12 +32,17 @@
 > This design was planned before on paper, then moved to Figma app for the fine details.
 Note that i didn't use any styling library or theme, all from scratch and using pure css modules
 
-| Home  | Tutor  | Appointments | Profile
+| Login  | Register  | Subjects  | Degrees  |
 | -----------------| -----------------| -----------------| -----------------|
-| <img src="./readme/Android-home.png" height="400" width="180"/> | <img src="./readme/Android-tutor.jpg" height="400"/> | <img src="./readme/appointment.jpeg" height="400" width="180"/> | <img src="./readme/Android-profile.png" height="400" width="180"/>
+| <img src="./readme/login.png" height="400"/> | <img src="./readme/register.png" height="400"/> | <img src="./readme/subjects.png" height="400"/> | <img src="./readme/degrees.png" height="400"/>
 
+| Home  | Tutor  | Profile  | Edit  |
+| -----------------| -----------------| -----------------| -----------------|
+| <img src="./readme/home.png" height="400"/> | <img src="./readme/tutor.jpg" height="400" width="180"/> | <img src="./readme/profile.png" height="400"/> | <img src="./readme/edit.png" height="400" width="180"/>
 
-<br><br>
+| Schedules  | Appointments Tutor  | Appointments Student  |
+| -----------------| -----------------| -----------------|
+| <img src="./readme/schedules.png" height="400"/> | <img src="./readme/app-tutors.png" height="400"/> | <img src="./readme/app-students.png" height="400"/> |
 
 <img src="./readme/title4.svg"/>
 
@@ -55,10 +60,55 @@ Here's a brief high-level overview of the tech stack the Well app uses:
 
 > Using the above mentioned tech stacks and the wireframes build with figma from the user stories we have, the implementation of the app is shown as below, these are screenshots from the real app
 
-| Home  | Tutor  | Appointments | Profile
-| -----------------| -----------------| -----------------| -----------------|
-| <img src="./readme/home.jpeg" height="400"/> | <img src="./readme/tutor.jpeg" height="400"/> | <img src="./readme/appointment.jpeg" height="400" width="180"/> | <img src="./readme/profile.jpeg" height="400" width="180"/>
+| Splash  | Login  |
+| -----------------| -----------------|
+| <img src="./readme/splash.gif" height="400"/> | <img src="./readme/login-student.gif" height="400"/>
 
+| Register  | Email Verification  |
+| -----------------| -----------------|
+| <img src="./readme/register-tutor.gif" height="400"/> | <img src="./readme/emailverifiy.gif" height="400"/>
+
+| Subjects  | Degree  |  Info   |
+| -----------------| -----------------| -----------------|
+| <img src="./readme/addsubjects.gif" height="400"/> | <img src="./readme/degree.gif" height="400"/> | <img src="./readme/info.gif" height="400"/>
+
+| Tutor  | Search  |
+| -----------------| -----------------|
+| <img src="./readme/tutor.gif" height="400"/> | <img src="./readme/search.gif" height="400"/>
+
+| Tutor Unread  | Student Start Chat  |  Tutor Chat   |  Student Chat   |
+| -----------------| -----------------| -----------------| -----------------|
+| <img src="./readme/chattutor.gif" height="400"/> | <img src="./readme/chatstudent.gif" height="400"/> | <img src="./readme/chattutor2.gif" height="400"/>  | <img src="./readme/chatstudent2.gif" height="400"/>
+
+| Add Schedule  | Schedules Clashing  |  Display Schedules   |
+| -----------------| -----------------| -----------------|
+| <img src="./readme/schedule.gif" height="400"/> | <img src="./readme/schedule2.gif" height="400"/> | <img src="./readme/schedule3.gif" height="400"/>
+
+| Book Appointmnet Tutor  | Book Appointmnet Student  |
+| -----------------| -----------------|
+| <img src="./readme/notification1.gif" height="400"/> | <img src="./readme/notification2.gif" height="400"/> 
+
+| Approve Appointmnet Tutor  | Approve Appointmnet Student  |
+| -----------------| -----------------|
+| <img src="./readme/approve-tutor.gif" height="400"/> | <img src="./readme/approve-student.gif" height="400"/>
+
+| Cancel Appointmnet Tutor  | Cancel Appointmnet Student  |
+| -----------------| -----------------|
+| <img src="./readme/cancel-tutor.gif" height="400"/> | <img src="./readme/cancel-student.gif" height="400"/>
+
+| Video Call Start  | Video Call Responsiveness  | Video Call Camera Off  | Video Call Leave  |
+| -----------------| -----------------| -----------------| -----------------|
+| <img src="./readme/call1.gif" height="400"/> | <img src="./readme/call2.gif" height="400"/> | <img src="./readme/call3.gif" height="400"/> | <img src="./readme/call4.gif" height="400"/>
+
+| Edit Info  | Edit Degrees  | Edit Subjects|
+| -----------------| -----------------| -----------------|
+| <img src="./readme/edit-info.gif" height="400"/> | <img src="./readme/edit-degree.gif" height="400"/> | <img src="./readme/edit-subjects.gif" height="400"/>
+
+| Edit Image  | Image Update  | Info Update |
+| -----------------| -----------------| -----------------|
+| <img src="./readme/image.gif" height="400"/> | <img src="./readme/image-update.gif" height="400"/> | <img src="./readme/info-update.gif" height="400"/> |
+
+<br><br>
 
 <br><br>
 <img src="./readme/title6.svg"/>
