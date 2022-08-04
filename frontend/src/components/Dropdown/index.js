@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
-import { Dropdown } from 'react-native-element-dropdown';
-import { generateData } from './controller';
-import styles from './styles';
+import React, { useState } from "react";
+import { Dropdown } from "react-native-element-dropdown";
+import { generateData } from "./controller";
+import styles from "./styles";
 
-
-export default function DropdownComponent({date, setDate, groupedSchedules}) {
-    console.log(groupedSchedules)
-    const data = generateData(groupedSchedules)
+export default function DropdownComponent({ date, setDate, groupedSchedules }) {
+  const data = generateData(groupedSchedules);
 
   return (
     <Dropdown
@@ -16,11 +14,11 @@ export default function DropdownComponent({date, setDate, groupedSchedules}) {
       maxHeight={300}
       labelField="label"
       valueField="value"
-      placeholder="Select date"
+      placeholder="Select a date"
       value={date}
-      onChange={item => {
+      onChange={(item) => {
         setDate(item.value);
       }}
     />
   );
-};
+}
