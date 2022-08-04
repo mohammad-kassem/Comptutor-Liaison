@@ -1,31 +1,31 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-    fieldTitle: {
+  fieldTitle: {
     fontSize: 16,
     marginBottom: 5,
     color: "#919090",
-    fontWeight: "500"
-    },
+    fontWeight: "500",
+  },
 
-    field: {
+  field: {
     marginBottom: 20,
     paddingBottom: 5,
-    textAlignVertical: 'bottom',
-    alignItems:"flex-start",
+    textAlignVertical: "bottom",
+    alignItems: "flex-start",
     fontSize: 18,
     borderBottomWidth: 1,
-    borderColor: "#919090"
-    },
+    borderColor: "#919090",
+  },
 
-    about: {
+  about: {
     marginBottom: 20,
     paddingBottom: 5,
-    textAlignVertical: 'top',
-    alignItems:"flex-start",
+    textAlignVertical: "top",
+    alignItems: "flex-start",
     fontSize: 18,
     height: 60,
     borderBottomWidth: 1,
-    borderColor: "#919090"
-    },
-})
+    borderColor: "#919090",
+  },
+});
