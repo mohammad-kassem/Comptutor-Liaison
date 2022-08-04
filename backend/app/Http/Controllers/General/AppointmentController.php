@@ -73,7 +73,7 @@ class AppointmentController extends Controller{
             $FCM_token = User::where('id',  $appointment->student_id)->first();
         }
 
-        $this -> sendCancelNotification($FCM_token->FCM_token, $schedule);
+        $this -> sendNotification($FCM_token->FCM_token, $schedule, 'cancel');
         $appointment->delete();
 
         return response()->json([
@@ -88,7 +88,7 @@ class AppointmentController extends Controller{
 
         $FCM_token = User::where('id', $appointment->student_id)->first();
         $schedule = Schedule::where('id', $request->schedule_id)->first();
-        $this -> sendApproveNotification($FCM_token->FCM_token, $schedule);
+        $this -> sendNotification($FCM_token->FCM_token, $schedule, 'approve');
 
         $appointment->update([
             'status' => 1
@@ -106,17 +106,40 @@ class AppointmentController extends Controller{
     }
 
     
-    public function sendRequestNotification($FCM_token, $schedule){
+    public function sendNotification($FCM_token, $schedule, $type){
         $user = auth()->user();
         $url = 'https://fcm.googleapis.com/fcm/send';
-        $api_key='AAAAyUzFkbY:APA91bHi9O4P9J7zIlSi5L5ein8OxVcVI40aEFNn8bATBruombexZOC9a0uaP5y6sYndPJ9dthvu5JHfCzgpfcYj_EhfKQP8CUxaYUOuVIJ59voHNETiXRoiScFoNgZiXT4fz7l9MLkd';
-        $fields =([
-        'to' => $FCM_token,
-        'notification' => array (
-            "title" => "Appointment requested",
-            "body" => $user->fname." ".$user->lname." requested an appointment at ".$schedule->date." ".$schedule->start_time
-        )
-        ]);  
+        $api_key=env('push');
+        
+        if ($type === 'request'){
+            $fields =([
+            'to' => $FCM_token,
+            'notification' => ([
+                "title" => "Appointment requested",
+                "body" => $user->fname." ".$user->lname." requested an appointment at ".$schedule->date." ".$schedule->start_time
+                ])
+            ]);  
+        }
+        else if($type === 'cancel'){
+            $fields =([
+                'to' => $FCM_token,
+                'notification' => ([
+                    "title" => "Appointment canceled",
+                    "body" => $user->fname." ".$user->lname." canceled their appointment at ".$schedule->date." ".$schedule->start_time
+                    ])
+                ]);  
+        }
+
+        else{
+            $fields =([
+                'to' => $FCM_token,
+                'notification' => ([
+                    "title" => "Appointment booked",
+                    "body" => $user->fname." ".$user->lname." accepted the appointment at ".$schedule->date." ".$schedule->start_time
+                    ])
+                ]);  
+        }
+
         $headers = array(
             'Content-Type:application/json',
             'Authorization:key='.$api_key
@@ -134,75 +157,6 @@ class AppointmentController extends Controller{
         if ($result === FALSE) {
             die('FCM Send Error: ' . curl_error($ch));
         }
-        // echo($result);
-        curl_close($ch);
-        return ($result);
-
-    }
-
-    public function sendCancelNotification($FCM_token, $schedule){
-        $user = auth()->user();
-        $url = 'https://fcm.googleapis.com/fcm/send';
-        $api_key='AAAAyUzFkbY:APA91bHi9O4P9J7zIlSi5L5ein8OxVcVI40aEFNn8bATBruombexZOC9a0uaP5y6sYndPJ9dthvu5JHfCzgpfcYj_EhfKQP8CUxaYUOuVIJ59voHNETiXRoiScFoNgZiXT4fz7l9MLkd';
-        $fields =([
-        'to' => $FCM_token,
-        'notification' => array (
-            "title" => "Appointment canceled",
-            "body" => $user->fname." ".$user->lname." canceled their appointment at ".$schedule->date." ".$schedule->start_time
-        )
-        ]);  
-        $headers = array(
-            'Content-Type:application/json',
-            'Authorization:key='.$api_key
-        );
-            
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-        $result = curl_exec($ch);
-        if ($result === FALSE) {
-            die('FCM Send Error: ' . curl_error($ch));
-        }
-        // echo($result);
-        curl_close($ch);
-        return ($result);
-
-    }
-
-    public function sendApproveNotification($FCM_token, $schedule){
-        $user = auth()->user();
-        $url = 'https://fcm.googleapis.com/fcm/send';
-        $api_key='AAAAyUzFkbY:APA91bHi9O4P9J7zIlSi5L5ein8OxVcVI40aEFNn8bATBruombexZOC9a0uaP5y6sYndPJ9dthvu5JHfCzgpfcYj_EhfKQP8CUxaYUOuVIJ59voHNETiXRoiScFoNgZiXT4fz7l9MLkd';
-        $fields =([
-        'to' => $FCM_token,
-        'notification' => array (
-            "title" => "Appointment booked",
-            "body" => $user->fname." ".$user->lname." accepted the appointment at ".$schedule->date." ".$schedule->start_time
-        )
-        ]);  
-        $headers = array(
-            'Content-Type:application/json',
-            'Authorization:key='.$api_key
-        );
-            
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
-        $result = curl_exec($ch);
-        if ($result === FALSE) {
-            die('FCM Send Error: ' . curl_error($ch));
-        }
-        // echo($result);
         curl_close($ch);
         return ($result);
 
