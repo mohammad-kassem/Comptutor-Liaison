@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class UpdateUsersTable extends Migration{
     public function up(){
-        Schema::table('appointments', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {
             $table->string('activation_code')->after('since')->nullable();
             $table->tinyInteger('is_verified')->after('activation_code');
         });
