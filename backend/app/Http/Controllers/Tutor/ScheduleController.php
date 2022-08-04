@@ -25,7 +25,9 @@ class ScheduleController extends Controller{
 
         $available_times = [];
         foreach ($schedules as $schedule){
-            if (!$schedule->appointment) array_push($available_times, $schedule); 
+            if (!$schedule->appointment){ 
+              array_push($available_times, $schedule);
+            } 
         }
 
         return response()->json([
@@ -68,8 +70,10 @@ class ScheduleController extends Controller{
 
     public function delete($id){
         $schedule = $schedule = Schedule::find($id);
-        if ($schedule === null) return response()->json(['message' => 'Schedule does not exist'], 204);
-
+        if ($schedule === null){
+            return response()->json(['message' => 'Schedule does not exist'], 204);
+        }
+        
         $schedule->delete();
 
         return response()->json([
