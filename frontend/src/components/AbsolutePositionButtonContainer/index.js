@@ -3,9 +3,9 @@ import React from 'react'
 import styles from './styles'
 
 export default function AbsolutePositionButtonContainer({children}) {
-    return (
-        <View style={styles.buttonContainer}>
-        {children}
-        </View>
-  )
+  return (
+    <View style={styles.buttonContainer}>
+    {children}
+    </View>
+)
 }
