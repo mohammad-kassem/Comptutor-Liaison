@@ -46,8 +46,10 @@ class DegreeController extends Controller{
 
     public function delete($id){
         $degree = $degree = Degree::find($id);
-        if ($degree === null) return response()->json(['message' => 'User degree does not exist'], 204);
-        
+        if ($degree === null){
+            return response()->json(['message' => 'User degree does not exist'], 204);
+        }
+
         $degree->delete();
 
         return response()->json([
@@ -68,8 +70,10 @@ class DegreeController extends Controller{
         }
 
         $degree = Degree::find($id);
-        if ($degree === null) return response()->json(['error' => ['Not found']], 404);
-
+        if ($degree === null){ 
+            return response()->json(['error' => ['Not found']], 404);
+        }
+        
         $degree->update([
             'university' => $request->university,
             'degree' => $request->degree,
