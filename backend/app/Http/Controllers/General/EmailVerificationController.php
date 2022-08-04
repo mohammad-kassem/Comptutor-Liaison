@@ -9,7 +9,7 @@ use App\Mail\VerificationMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
-class EmailVerification extends Controller{
+class EmailVerificationController extends Controller{
     public function verifyEmail(Request $request){
         $user = auth()->user();
 
