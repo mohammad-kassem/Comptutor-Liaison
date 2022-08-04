@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers\General;
 
-use Auth;
 use Validator;
-use App\Models\User;
 use App\Models\Appointment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,6 +10,14 @@ use Illuminate\Http\Request;
 
 class SessionController extends Controller{
     public function create(Request $request){
+        $validator = Validator::make($request->all(), [
+            'url' => 'required|string',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
         $appointment = Appointment::where('schedule_id', $request->id)->first();
 
         $appointment->update([
@@ -20,7 +26,7 @@ class SessionController extends Controller{
         
         return response()->json([
             'message' => 'Session successfully created'
-        ], 201);
+        ], 200);
 
     }
 
