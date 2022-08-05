@@ -4,7 +4,7 @@
 
 > Hello world! This is the project’s summary that describes the project plain and simple, limited to the space available.  
 
-**[PROJECT PHILOSOPHY](https://github.com/mohammad-kassem/comptutor-final-project.git#project-philosophy) • [WIREFRAMES](https://github.com/mohammad-kassem/comptutor-final-project.git#wireframes) • [TECH STACK](https://github.com/mohammad-kassem/comptutor-final-project.git#tech-stack) • [IMPLEMENTATION](https://github.com/mohammad-kassem/comptutor-final-project.git#implementation) • [HOW TO RUN?](https://github.com/mohammad-kassem/comptutor-final-project.git#run)**
+**[PROJECT PHILOSOPHY](https://github.com/mohammad-kassem/comptutor-final-project#project-philosophy) • [WIREFRAMES](https://github.com/mohammad-kassem/comptutor-final-project#wireframes) • [TECH STACK](https://github.com/mohammad-kassem/comptutor-final-project#tech-stack) • [IMPLEMENTATION](https://github.com/mohammad-kassem/comptutor-final-project#implementation) • [HOW TO RUN?](https://github.com/mohammad-kassem/comptutor-final-project#run)**
 
 </div>
 
@@ -120,7 +120,6 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 | -----------------| -----------------| -----------------|
 | <img src="./readme/image.gif" height="600"/> | <img src="./readme/image-update.gif" height="600"/> | <img src="./readme/info-update.gif" height="600"/> |
 
-<br><br>
 
 <br><br>
 <img src="./readme/title6.svg" id="run"/>
