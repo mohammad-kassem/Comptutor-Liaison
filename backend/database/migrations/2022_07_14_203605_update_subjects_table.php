@@ -4,10 +4,12 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateSubjectsTable extends Migration{
-    public function up(){
-        Schema::table('subjects', function (Blueprint $table) {
-            $table->string('image')->after('subject');
-        });
-    }
+class UpdateSubjectsTable extends Migration
+{
+  public function up()
+  {
+    Schema::table('subjects', function (Blueprint $table) {
+      $table->string('image')->after('subject');
+    });
+  }
 }
