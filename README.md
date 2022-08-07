@@ -13,14 +13,14 @@
 
 <img src="./readme/title2.svg" id="project-philosophy"/>
 
-> Comptutor is a mobile application that connects students with tutors. It is a fully digital online tutoring experinece where appointments are managed between students and tutors for live sessions. Tutors and students are connected based on their subjects of choice. Tutors and students are connected through a chatting system. Students and tutors are notifed with appointment updates through push notifications.
+> Comptutor is a mobile application that connects students with tutors. It is a fully digital online tutoring experience where appointments are managed between students and tutors for live sessions. Tutors and students are connected based on their subjects of choice. Tutors and students are connected through a chat system. Students and tutors are notified of appointment updates through push notifications.
 
 > Comptutor, your tutor on your computer.
 
 ### Student Stories
-- As a student, I want to be able to see tutors that teach the subjects I am intrested in learning.
+-As a student, I want to be able to see tutors that teach the subjects I am interested in learning.
 - As a student, I want to be able to search for the tutor I have in mind.
-- As a student, I want to be able to search tutors by subjects.
+- As a student, I want to be able to search for tutors by subject.
 - As a student, I want to be able to view a tutor's available times to book a live session.
 - As a student, I want to be notified when my appointment with the tutor is approved.
 - As a student, I want the freedom to cancel an appointment.
@@ -29,15 +29,16 @@
 - As a student, I want to have the option to update my information and the subjects I want to learn. 
 
 
+
 ### Tutor Stories
 - As a tutor, I want to be contacted only by students concerning my subjects.
 - As a tutor, I want appointments to be booked according to my available times.
 - As a tutor, I want to be notified when someone requests an appointment.
-- As a tutor, I want to be able to accept or reject appointments requests.
+- As a tutor, I want to be able to accept or reject appointment requests.
 - As a tutor, I want the freedom to cancel an appointment.
 - As a tutor, I want there to be a specific cutoff period after which the other party cannot cancel the appointment.
 - As a tutor, I want students to be able to connect with me easily.
-- As a tutor, I want to have the option to update my information, add my education, and the subjects I teach. 
+- As a tutor, I want to have the option to update my information, add my education, and the subjects I teach.  
 
 
 <br><br>
@@ -64,8 +65,8 @@
 Here's a brief high-level overview of the tech stack that Comptutor uses:
 
 - This project uses the [React Native app development framework](https://reactnative.dev/). React Native is an open-source UI software framework created by Meta Platforms, Inc. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use the React library along with native platform capabilities.
-- This project uses the [Laravel web application framework](https://laravel.com/). Laravel is a free and open-source PHP web framework intended for the development of web applications following the model–view–controller architectural pattern.
-- For persistent storage (database), the app uses [MySQL](https://www.mysql.com/) which is an open-source relational database management system that uses the Structured Query Language.
+- This project uses the [Laravel web application framework](https://laravel.com/). Laravel is a free and open-source PHP web framework intended for the development of web applications following the model–view–controller design pattern.
+- For the database the app uses [MySQL](https://www.mysql.com/) which is an open-source relational database management system (RDBMS) based on the Structured Query Language (SQL).
 - This project uses Google Firebase services for real-time events [Firebase](https://firebase.google.com/). Firebase is a platform developed by Google for creating mobile and web applications.
 
 
@@ -73,7 +74,7 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 <br><br>
 <img src="./readme/title5.svg" id="implementation"/>
 
-> As a showcase of the app's successful implementation using the above mentioned tech stacks, the animations of the main functionalities of the app are shown below:
+> As a showcase of the app's successful implementation using the above-mentioned tech stacks, the animations of the main functionalities of the app are shown below:
 
 | Splash Screen | Login  | Login Validation  |
 | -----------------| -----------------| -----------------|
