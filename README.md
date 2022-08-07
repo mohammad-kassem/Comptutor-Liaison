@@ -18,7 +18,7 @@
 > Comptutor, your tutor on your computer.
 
 ### Student Stories
--As a student, I want to be able to see tutors that teach the subjects I am interested in learning.
+- As a student, I want to be able to see tutors that teach the subjects I am interested in learning.
 - As a student, I want to be able to search for the tutor I have in mind.
 - As a student, I want to be able to search for tutors by subject.
 - As a student, I want to be able to view a tutor's available times to book a live session.
