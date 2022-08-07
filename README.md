@@ -63,7 +63,7 @@
 
 Here's a brief high-level overview of the tech stack that Comptutor uses:
 
-- This project uses the [React Native app development framework](https://reactnative.dev/). React Native is an open-source UI software framework created by Meta Platforms, Inc. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use the React framework along with native platform capabilities.
+- This project uses the [React Native app development framework](https://reactnative.dev/). React Native is an open-source UI software framework created by Meta Platforms, Inc. It is used to develop applications for Android, Android TV, iOS, macOS, tvOS, Web, Windows and UWP by enabling developers to use the React library along with native platform capabilities.
 - This project uses the [Laravel web application framework](https://laravel.com/). Laravel is a free and open-source PHP web framework intended for the development of web applications following the model–view–controller architectural pattern.
 - For persistent storage (database), the app uses [MySQL](https://www.mysql.com/) which is an open-source relational database management system that uses the Structured Query Language.
 - This project uses Google Firebase services for real-time events [Firebase](https://firebase.google.com/). Firebase is a platform developed by Google for creating mobile and web applications.
@@ -169,7 +169,7 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 5. Scan the QR code generated through the Expo Go app(Android) or your phone's camera(iOS)
 
 #### To Run The Laravel Server Locally
-6. ⚠️ If you want to deploy this app locally change the value of the localHostV1 in the constants folder on the frontend
+6. Change the value of the localHostV1 in the constants folder on the frontend
    ```sh
     cd frontend/constants 
     localHostV1=YOUR IP ADDRESS
