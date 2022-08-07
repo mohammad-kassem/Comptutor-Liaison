@@ -45,7 +45,7 @@
 
 <img src="./readme/title3.svg" id="wireframes"/>
 
-> This design was planned on the Figma app.
+> This design was planned on the Figma app:
 
 | Login  | Register  | Add Subjects  | Add Degrees  |
 | -----------------| -----------------| -----------------| -----------------|
