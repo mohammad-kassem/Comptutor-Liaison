@@ -173,7 +173,7 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 6. Change the value of the localHostV1 in the constants folder on the frontend
    ```sh
     cd frontend/constants 
-    localHostV1=YOUR IP ADDRESS
+    localHostV1=Your IP Address
    ```
 
 7. Navigate to the backend folder
