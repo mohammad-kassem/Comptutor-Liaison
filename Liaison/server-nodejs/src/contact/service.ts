@@ -19,3 +19,7 @@ export const addContact = async (body: any, userID: string | undefined) => {
 
   return await contact.save();
 };
+
+export const getById = async (id: string | undefined) => {
+  return await Contact.findById(id).populate("user");
+};
