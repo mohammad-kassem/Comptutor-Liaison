@@ -87,3 +87,34 @@ export const handleErrors = (res: Response, err: any) => {
   if (err.name === "ValidationError") handleValidationError(res, err);
   else handleUnexpectedError(res, err);
 };
+
+export const handleDuplicateFields = async (
+  req: Request,
+  res: Response,
+  limit: number,
+  userID: string
+): Promise<boolean> => {
+  let isFound: boolean = false;
+  let output: string = "";
+  let contacts = await getContacts(userID);
+  const userContacts = <string[]>contacts?.contacts;
+  const foundEmail: number = userContacts.filter(
+    (contact: any) => contact.email === req.body.email
+  ).length;
+  if (foundEmail > limit) {
+    output = "Contact with this email is already registered";
+    isFound = true;
+  }
+  const foundPhone = userContacts.filter(
+    (contact: any) => contact.phone === req.body.phone
+  ).length;
+  if (foundPhone > limit) {
+    output += output && ", ";
+    output += "Contact with this phone is already registered";
+    isFound = true;
+  }
+  if (isFound) {
+    res.status(400).json({ message: output });
+  }
+  return isFound;
+};
