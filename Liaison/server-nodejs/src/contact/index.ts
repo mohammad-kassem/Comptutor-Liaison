@@ -20,4 +20,5 @@ contactRouter.put("/update", userMiddleware(), userPermissionsContact(), update)
 contactRouter.delete("/remove", userMiddleware(), userPermissionsContact(), remove);
 contactRouter.put("/like", userMiddleware(), userPermissionsContact(), like);
 contactRouter.put("/unlike", userMiddleware(), userPermissionsContact(), unlike);
+contactRouter.get("/like", userMiddleware(), getLiked);
 export default contactRouter;

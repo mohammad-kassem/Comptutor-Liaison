@@ -133,3 +133,18 @@ export const unlike = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const getLiked = async (req: Request, res: Response) => {
+  try {
+    const userId = jwt.decode(req.headers.authorization)._id;
+    const contacts = await getContacts(userId);
+    const likedContacts = contacts?.contacts.filter(
+      (contact: any) => contact.liker
+    );
+    return res.status(200).json({
+      liked: likedContacts,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
