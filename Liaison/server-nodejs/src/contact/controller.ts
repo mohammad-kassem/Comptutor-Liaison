@@ -118,3 +118,18 @@ export const like = async (req: Request, res: Response) => {
   }
 };
 
+export const unlike = async (req: Request, res: Response) => {
+  try {
+    const id = <string>req.query.id;
+    let unlikedContact = await getById(id);
+
+    unlikedContact = await unlikeContact(unlikedContact);
+
+    return res.status(200).json({
+      message: "Contact unliked successfully",
+      unliked: unlikedContact,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
