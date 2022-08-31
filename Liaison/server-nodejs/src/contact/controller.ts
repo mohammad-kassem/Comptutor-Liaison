@@ -85,3 +85,21 @@ export const update = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const remove = async (req: Request, res: Response) => {
+  try {
+    const id = req.query.id as string;
+    let deletedContact = await getById(id);
+    deletedContact = await removeContact(id);
+    await User.updateOne(
+      { _id: deletedContact?.user },
+      { $pull: { contacts: deletedContact?._id } }
+    );
+    return res.status(200).send({
+      message: "Contact removed successfully",
+      deleted: deletedContact,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
