@@ -1,6 +1,7 @@
 import { Response } from "express";
 import mongoose from "mongoose";
 import { handleValidationError } from "../../error-handeling/dataValidation";
+import { handleEmailError } from "../../error-handeling/emailError";
 import { handleUnexpectedError } from "../../error-handeling/unexcpectedError";
 import Contact from "../../model/contact";
 import Message from "../../model/message";
@@ -73,4 +74,10 @@ export const getMessagesByContactId = async (contactId: string) => {
 
 export const getMessagesByContactEmail = async (email: string) => {
   return await Contact.findOne({ email }).populate("messages");
+};
+
+export const handleErrors = (res: Response, err: any) => {
+  if (err.name === "ValidationError") handleValidationError(res, err);
+  else if (err.name === "EmailError") handleEmailError(res, err);
+  else handleUnexpectedError(res, err);
 };
