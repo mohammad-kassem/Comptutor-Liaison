@@ -14,7 +14,7 @@ const messageSchema = new mongoose.Schema({
     required: [true, "Reciever is required"],
   },
 
-  subjcet: {
+  subject: {
     type: String,
     required: [true, "Subject is required"],
     minLength: [4, "Subject must be at least 4 characters long"],

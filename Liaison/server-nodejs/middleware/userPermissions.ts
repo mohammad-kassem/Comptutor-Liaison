@@ -8,7 +8,6 @@ import User from "../model/user";
 const jwt = require("jsonwebtoken");
 const TOKEN_SECRET: string = process.env.TOKEN_SECRET || "";
 
-console.log(TOKEN_SECRET);
 export const userPermissionsContact = () => {
   return async (req: Request, res: Response, next: NextFunction) => {
     try {
