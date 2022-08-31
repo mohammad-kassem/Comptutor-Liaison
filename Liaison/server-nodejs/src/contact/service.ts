@@ -71,3 +71,14 @@ export const likeContact = async (likedContact: any) => {
   );
 };
 
+export const unlikeContact = async (unlikedContact: any) => {
+  await User.updateOne(
+    { _id: unlikedContact.user },
+    { $pull: { likes: unlikedContact._id } }
+  );
+  return await Contact.findByIdAndUpdate(
+    { _id: unlikedContact._id },
+    { $unset: { liker: unlikedContact.user } },
+    { new: true, runValidators: true }
+  );
+};
