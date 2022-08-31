@@ -82,3 +82,8 @@ export const unlikeContact = async (unlikedContact: any) => {
     { new: true, runValidators: true }
   );
 };
+
+export const handleErrors = (res: Response, err: any) => {
+  if (err.name === "ValidationError") handleValidationError(res, err);
+  else handleUnexpectedError(res, err);
+};
