@@ -27,3 +27,23 @@ export const getById = async (id: string | undefined) => {
 export const getContacts = async (userID: string | undefined) => {
   return await User.findById(userID).populate("contacts");
 };
+
+export const updateContact = async (body: any, id: string | undefined) => {
+  const { name, email, phone, relationship, location, country } = body;
+  const contact = await Contact.findByIdAndUpdate(
+    { _id: id },
+    {
+      $set: {
+        name,
+        email,
+        phone,
+        relationship,
+        location,
+        country,
+      },
+    },
+    { new: true, runValidators: true }
+  );
+
+  return contact;
+};
