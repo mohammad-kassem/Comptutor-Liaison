@@ -47,3 +47,8 @@ export const updateContact = async (body: any, id: string | undefined) => {
 
   return contact;
 };
+
+export const removeContact = async (id: string | undefined) => {
+  const contact = await Contact.findByIdAndDelete({ _id: id });
+  return contact;
+};
