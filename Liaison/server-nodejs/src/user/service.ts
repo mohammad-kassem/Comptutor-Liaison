@@ -31,3 +31,9 @@ const getByEmail = async (email: string) => {
     .select("+password")
     .populate("role");
 };
+
+export const handleErrors = async (res: Response, err: any) => {
+  if (err.code === 11000) handleDuplicateFieldsError(res);
+  else if (err.name === "ValidationError") handleValidationError(res, err);
+  else handleUnexpectedError(res, err);
+};
