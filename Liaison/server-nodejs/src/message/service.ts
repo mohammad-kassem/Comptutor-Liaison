@@ -70,3 +70,7 @@ export const getMessagesByUser = async (userId: string) => {
 export const getMessagesByContactId = async (contactId: string) => {
   return await Contact.findById(contactId).populate("messages");
 };
+
+export const getMessagesByContactEmail = async (email: string) => {
+  return await Contact.findOne({ email }).populate("messages");
+};
