@@ -11,4 +11,5 @@ import {
 const messageRouter: Router = Router();
 
 messageRouter.post("/send", userMiddleware(), send);
+messageRouter.get("/user", userMiddleware(), getByUser);
 export default messageRouter;

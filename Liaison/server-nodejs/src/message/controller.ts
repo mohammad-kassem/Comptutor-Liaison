@@ -36,3 +36,13 @@ export const send = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const getByUser = async (req: Request, res: Response) => {
+  try {
+    const userId: string = jwt.decode(req.headers.authorization)._id;
+    const messages = await getMessagesByUser(userId);
+    return res.status(200).json({ messages: messages?.messages });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
