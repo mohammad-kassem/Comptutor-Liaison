@@ -52,3 +52,9 @@ export const removeContact = async (id: string | undefined) => {
   const contact = await Contact.findByIdAndDelete({ _id: id });
   return contact;
 };
+
+export const getByEmail = async (email: string) => {
+  return await User.findOne({
+    email,
+  });
+};
