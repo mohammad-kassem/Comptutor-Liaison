@@ -42,3 +42,23 @@ export const add = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const get = async (req: Request, res: Response) => {
+  try {
+    let result;
+    if (req.query.id) {
+      const id = req.query.id as string;
+      result = await getById(id);
+      return res.status(200).json({
+        contact: result,
+      });
+    }
+    const userId = jwt.decode(req.headers.authorization)._id;
+    result = await getContacts(userId);
+    return res.status(200).json({
+      contacts: result?.contacts,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
