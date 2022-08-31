@@ -57,3 +57,12 @@ export const getByContactId = async (req: Request, res: Response) => {
   }
 };
 
+export const getByContactEmail = async (req: Request, res: Response) => {
+  try {
+    const email = <string>req.body.email;
+    const messages = await getMessagesByContactEmail(email);
+    return res.status(200).json({ messages: messages?.messages });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
