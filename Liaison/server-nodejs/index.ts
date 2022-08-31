@@ -1,6 +1,7 @@
 require("dotenv").config();
 import express, { Application } from "express";
 import cors from "cors";
+import contactRouter from "./src/contact";
 import userRouter from "./src/user";
 import { connectDB } from "./config/db";
 
