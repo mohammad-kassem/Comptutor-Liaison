@@ -21,4 +21,6 @@ contactRouter.delete("/remove", userMiddleware(), userPermissionsContact(), remo
 contactRouter.put("/like", userMiddleware(), userPermissionsContact(), like);
 contactRouter.put("/unlike", userMiddleware(), userPermissionsContact(), unlike);
 contactRouter.get("/like", userMiddleware(), getLiked);
+contactRouter.get("/unlike", userMiddleware(), getUnliked);
+
 export default contactRouter;
