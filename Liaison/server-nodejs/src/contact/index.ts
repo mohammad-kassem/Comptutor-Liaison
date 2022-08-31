@@ -14,4 +14,7 @@ import {
 
 const contactRouter: Router = Router();
 
+contactRouter.post("/add", userMiddleware(), add);
+contactRouter.get("/", userPermissionsContact(), get);
+contactRouter.put("/update", userMiddleware(), userPermissionsContact(), update);
 export default contactRouter;

@@ -62,3 +62,26 @@ export const get = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const update = async (req: Request, res: Response) => {
+  try {
+    const id = req.query.id as string;
+    let updatedContact = await getById(id);
+    const isFound = await handleDuplicateFields(
+      req,
+      res,
+      1,
+      updatedContact?.user
+    );
+    if (isFound) {
+      return;
+    }
+    updatedContact = await updateContact(req.body, id);
+    return res.status(200).send({
+      message: "Contact updated successfully",
+      updated: updatedContact,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
