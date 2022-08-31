@@ -27,3 +27,38 @@ export const addMessage = async (body: any, userId: string) => {
 
   return await newMessage.save();
 };
+
+export const sendEmail = async (
+  body: any,
+  Sib: any,
+  emailDomain: string,
+  siteDomain: string,
+  fromEmail: string,
+  fromName: string
+) => {
+  const { to, subject, content } = body;
+
+  const tranEmailApi = new Sib.TransactionalEmailsApi();
+  const sender = {
+    email: emailDomain,
+    name: "Liaison",
+  };
+
+  const receivers = [{ email: to }];
+  try {
+    await tranEmailApi.sendTransacEmail({
+      sender,
+      to: receivers,
+      subject: `${subject} from ${fromEmail}`,
+      htmlContent: `
+        <p>Hello this is your friend ${fromName}<p>
+        <p style="padding-vertical: 10px">${content}</p>
+        <a href=${siteDomain}>Start using Liaison</a>
+        `,
+    });
+  } catch (err) {
+    const e = new Error("Could not send email");
+    e.name = "EmailError";
+    throw e;
+  }
+};
