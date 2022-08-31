@@ -23,3 +23,11 @@ export const addUser = async (body: any, hashPassword: string) => {
   
   return await user.save();
 };
+
+const getByEmail = async (email: string) => {
+  return await User.findOne({
+    email,
+  })
+    .select("+password")
+    .populate("role");
+};
