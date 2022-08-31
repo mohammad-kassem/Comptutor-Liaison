@@ -58,3 +58,16 @@ export const getByEmail = async (email: string) => {
     email,
   });
 };
+
+export const likeContact = async (likedContact: any) => {
+  await User.updateOne(
+    { _id: likedContact.user },
+    { $push: { likes: likedContact._id } }
+  );
+  return await Contact.findByIdAndUpdate(
+    { _id: likedContact._id },
+    { $set: { liker: likedContact.user } },
+    { new: true, runValidators: true }
+  );
+};
+
