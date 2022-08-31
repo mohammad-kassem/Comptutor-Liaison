@@ -37,3 +37,16 @@ export const handleErrors = async (res: Response, err: any) => {
   else if (err.name === "ValidationError") handleValidationError(res, err);
   else handleUnexpectedError(res, err);
 };
+
+export const handleInvalidCridentials = async (body: any, res: Response) => {
+  const user = await getByEmail(body.email);
+  const validPassword = await compareHash(body.password, user?.password || "");
+  if (!user) {
+    res.status(400).json({ message: "Invalid credentials" });
+    return;
+  } else if (!validPassword) {
+    res.status(400).json({ message: "Invalid credentials" });
+    return;
+  }
+  return user;
+};
