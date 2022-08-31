@@ -10,4 +10,5 @@ import {
 
 const messageRouter: Router = Router();
 
+messageRouter.post("/send", userMiddleware(), send);
 export default messageRouter;
