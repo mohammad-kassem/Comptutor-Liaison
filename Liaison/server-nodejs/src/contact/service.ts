@@ -23,3 +23,7 @@ export const addContact = async (body: any, userID: string | undefined) => {
 export const getById = async (id: string | undefined) => {
   return await Contact.findById(id).populate("user");
 };
+
+export const getContacts = async (userID: string | undefined) => {
+  return await User.findById(userID).populate("contacts");
+};
