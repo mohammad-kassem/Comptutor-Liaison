@@ -12,4 +12,5 @@ const messageRouter: Router = Router();
 
 messageRouter.post("/send", userMiddleware(), send);
 messageRouter.get("/user", userMiddleware(), getByUser);
+messageRouter.get("/contact", userPermissionsMessage(), getByContactId);
 export default messageRouter;

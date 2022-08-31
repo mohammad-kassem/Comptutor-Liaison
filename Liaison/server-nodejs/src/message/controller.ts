@@ -46,3 +46,14 @@ export const getByUser = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const getByContactId = async (req: Request, res: Response) => {
+  try {
+    const id = <string>req.query.id;
+    const messages = await getMessagesByContactId(id);
+    return res.status(200).json({ messages: messages?.messages });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
+
