@@ -18,4 +18,5 @@ contactRouter.post("/add", userMiddleware(), add);
 contactRouter.get("/", userPermissionsContact(), get);
 contactRouter.put("/update", userMiddleware(), userPermissionsContact(), update);
 contactRouter.delete("/remove", userMiddleware(), userPermissionsContact(), remove);
+contactRouter.put("/like", userMiddleware(), userPermissionsContact(), like);
 export default contactRouter;

@@ -103,3 +103,18 @@ export const remove = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const like = async (req: Request, res: Response) => {
+  try {
+    const id = <string>req.query.id;
+    let likedContact = await getById(id);
+    likedContact = await likeContact(likedContact);
+    return res.status(200).json({
+      message: "Contact liked successfully",
+      liked: likedContact,
+    });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
+
