@@ -1,0 +1,19 @@
+@use './colors';
+
+.link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  a {
+    color: colors.$primaryColor;
+    text-decoration: none;
+    &:hover {
+      color: colors.$secondaryColor;
+    }
+    &:active {
+      color: colors.$quaternaryColor;
+    }
+  }
+}
+
