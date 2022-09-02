@@ -1,0 +1,17 @@
+@use './colors';
+
+.btn {
+  border: 0;
+  font-weight: 700;
+  padding: 14px 3vw;
+  border-radius: 10px;
+  color: colors.$primaryColor;
+  background-color: colors.$secondaryColor;
+  cursor: pointer;
+  &:hover {
+    background-color: colors.$tertiaryColor;
+  }
+  &:active{
+    background-color: colors.$quaternaryColor;
+  }
+}
