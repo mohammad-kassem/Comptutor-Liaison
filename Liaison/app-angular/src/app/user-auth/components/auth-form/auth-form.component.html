@@ -1,1 +1,18 @@
-<p>auth-form works!</p>
+<div class="centerContainer">
+  <form class="form" (ngSubmit)="onSubmit()">
+    <div class="form-content">
+        <h1>{{type === 'register' ? 'Register' : 'LogIn'}}</h1>
+        <div *ngIf="type === 'register'">
+          <input type="text" name="fname" id="fname" placeholder="First name" [(ngModel)]="fname"/>
+          <input type="text" name="lname" id="lname" placeholder="Last name" [(ngModel)]="lname"/>
+        </div>
+        <input type="email" name="email" id="email"  class="form-control" placeholder="Email address" [(ngModel)]="email"/>
+        <input type="password" name="password" id="password" placeholder="Password" placeholder="Password" [(ngModel)]="password"/>
+        <button type="submit" name="submit" id="submit"  class="btn btn-large">{{type === 'register' ? 'Register' : 'Log In'}}</button>
+        <div class="link">
+          <p>{{type === 'register' ? 'Not a Memeber?&nbsp;' : 'Already Have An Account?&nbsp;'}}</p>
+          <a routerLink="{{type === 'register' ? '/' : '/register'}}">{{type === 'register' ? ' Login' : ' Register'}}</a>
+        </div>
+    </div>
+  </form>
+</div>
