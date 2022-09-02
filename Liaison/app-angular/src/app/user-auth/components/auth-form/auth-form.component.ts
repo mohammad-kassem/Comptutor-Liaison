@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-auth-form',
@@ -10,7 +10,9 @@ export class AuthFormComponent implements OnInit {
   lname: string;
   email: string;
   password: string;
-  type: string = "register";
+  @Input() type: string ;
+  @Output() handleSubmit: EventEmitter<any> = new EventEmitter();
+
 
   constructor() { }
 
@@ -25,7 +27,7 @@ export class AuthFormComponent implements OnInit {
       password: this.password,
     }
 
-    console.log(this.email);
+    this.handleSubmit.emit(cridential);
 
     this.fname = '';
     this.lname = '';
