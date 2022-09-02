@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { UserAuthRoutingModule } from './user-auth-routing.module';
 import { AuthFormComponent } from './components/auth-form/auth-form.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './pages/login/login.component';
 
 
 @NgModule({
   declarations: [
-    AuthFormComponent
+    AuthFormComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule,
