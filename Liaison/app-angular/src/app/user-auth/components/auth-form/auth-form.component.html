@@ -11,7 +11,7 @@
         <button type="submit" name="submit" id="submit"  class="btn btn-large">{{type === 'register' ? 'Register' : 'Log In'}}</button>
         <div class="link">
           <p>{{type === 'register' ? 'Not a Memeber?&nbsp;' : 'Already Have An Account?&nbsp;'}}</p>
-          <a routerLink="{{type === 'register' ? '/' : '/register'}}">{{type === 'register' ? ' Login' : ' Register'}}</a>
+          <a routerLink="{{type === 'register' ? '/login' : '/register'}}">{{type === 'register' ? ' Login' : ' Register'}}</a>
         </div>
     </div>
   </form>
