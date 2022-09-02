@@ -1,0 +1,9 @@
+@use './colors';
+
+.centerContainer {
+  background-color: colors.$primaryBG;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
