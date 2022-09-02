@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { ICridentials } from '../../models/cridentials';
+import { handleErrors } from 'src/app/utils/error-handling';
+
 
 @Component({
   selector: 'app-login',
@@ -19,14 +21,10 @@ export class LoginComponent implements OnInit {
     console.log("successfully")
   }
 
-  handleErrors(err: any): void {
-    alert(err.error.mesasage)
-  }
-
   login(cridential: ICridentials): void {
     this.authService.login(cridential).subscribe({
-      complete: ()=>console.log("successfully"), 
-      error: (error) => alert(error.error.message)
+      complete: this.handleSuccess, 
+      error: (error) => handleErrors(error)
     })
   }
 }
