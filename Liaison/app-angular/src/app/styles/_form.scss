@@ -1,0 +1,13 @@
+@use './colors';
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid colors.$red;
+}
+
+.form-control.ng-touched.ng-valid {
+  border: 2px solid colors.$green;
+}
+
+.textDanger{
+  color: colors.$red;
+}
