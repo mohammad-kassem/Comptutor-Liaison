@@ -1,7 +1,8 @@
+import { ErrorHandelingService } from './../../../utils/error-handling/error-handeling.service';
 import { ICridentials } from './../../models/cridentials';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
-import { handleErrors } from 'src/app/utils/error-handling';
+
 
 @Component({
   selector: 'app-register',
@@ -11,20 +12,15 @@ import { handleErrors } from 'src/app/utils/error-handling';
 export class RegisterComponent implements OnInit {
   type: string = 'register';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private errorService: ErrorHandelingService) { }
 
   ngOnInit(): void {
   }
 
-  handleSuccess(): void {
-    console.log("successfully")
-  }
-
-
   register(cridential: ICridentials): void {
     this.authService.register(cridential).subscribe({
-      complete: this.handleSuccess, 
-      error: (error) => handleErrors(error)
+      next: (response) => this.authService.handleRegister(response), 
+      error: (error) => this.errorService.handleErrors(error)
     })
   }
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../auth.service';
 import { ICridentials } from '../../models/cridentials';
-import { handleErrors } from 'src/app/utils/error-handling';
+import { ErrorHandelingService } from 'src/app/utils/error-handling/error-handeling.service';
 
 
 @Component({
@@ -12,19 +12,15 @@ import { handleErrors } from 'src/app/utils/error-handling';
 export class LoginComponent implements OnInit {
   type: string = 'login';
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private errorService: ErrorHandelingService) { }
 
   ngOnInit(): void {
   }
 
-  handleSuccess(): void {
-    console.log("successfully")
-  }
-
   login(cridential: ICridentials): void {
     this.authService.login(cridential).subscribe({
-      complete: this.handleSuccess, 
-      error: (error) => handleErrors(error)
+      next: (response) => this.authService.handleLogin(response), 
+      error: (error) => this.errorService.handleErrors(error)
     })
   }
 }
