@@ -8,10 +8,13 @@
   color: colors.$primaryColor;
   background-color: colors.$secondaryColor;
   cursor: pointer;
-  &:hover {
+  &:hover:enabled {
     background-color: colors.$tertiaryColor;
   }
-  &:active{
+  &:active:enabled {
     background-color: colors.$quaternaryColor;
+  }
+  &:disabled {
+    background-color: colors.$disabled;
   }
 }
