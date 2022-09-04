@@ -9,6 +9,6 @@ export class ErrorHandelingService {
   constructor(private toastr: ToastrService) { }
 
   handleErrors = (err: any): void => {
-    this.toastr.error(err.message, 'Error')
+    this.toastr.error(err.error.message, 'Error')
   }
 }
