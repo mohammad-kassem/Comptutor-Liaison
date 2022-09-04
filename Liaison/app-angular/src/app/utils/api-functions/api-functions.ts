@@ -11,7 +11,7 @@ export const generateHttpOptions = (authToken: string = '') => {
   return {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
+      'Authorization': authToken
     })
   }
 }
