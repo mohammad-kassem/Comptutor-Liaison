@@ -1,0 +1,28 @@
+<div class="header">
+  <h1>Contacts List</h1>
+  <button class="btn">Add</button>
+  </div>
+  <div class="rowContainer">
+     <div class="name">Full name</div>
+     <div class="email">Email</div>
+     <div class="phone">Phone number</div>
+     <div class="relationship">Relationship</div>
+     <div class="location">Location</div>
+     <div class="btnContainer">
+     <button class="btn">Filter</button>
+    </div>
+  </div>
+  <div *ngFor="let contact of contacts">
+    <div class="rowContainer">
+      <div class="name">{{contact.name}}</div>
+      <div class="email">{{contact.email}}</div>
+      <div class="phone">{{contact.phone}}</div>
+      <div class="relationship">{{contact.relationship}}</div>
+      <div class="location">{{contact.country}}</div>
+      <div class="iconsContainer">
+        <fa-icon class="edit" [icon]="faPen"></fa-icon>
+        <fa-icon class="delete" [icon]="faTimes"></fa-icon>
+        <fa-icon class="like" [icon]="contact.liker ? faStar : faStarRegular"></fa-icon>
+    </div>
+  </div>
+</div>
