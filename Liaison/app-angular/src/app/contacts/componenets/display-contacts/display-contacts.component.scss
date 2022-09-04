@@ -1,0 +1,74 @@
+@use '../../../styles/colors';
+@use '../../../styles/btn';
+@use '../../../styles/display-flex';
+@use '../../../styles/fonts';
+
+.header{
+  @include display-flex.flexSpaceBetween();
+  padding: 20px 1%;
+}
+
+.rowContainer{
+  @include display-flex.flexCenter();
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: colors.$primaryBG solid;
+}
+
+.name{
+  @extend .responsiveDetails;
+  width: 15%;
+}
+
+.email{
+  @extend .responsiveDetails;
+  width: 25%;
+}
+
+.phone{
+  @extend .responsiveDetails;
+  width: 25%;
+}
+
+.relationship{
+  @extend .responsiveDetails;
+  width: 20%;
+}
+
+.location{
+  @extend .responsiveDetails;
+  width: 10%;
+}
+
+.iconsContainer{
+  @include display-flex.flexCenter();
+  width: 10%;
+  gap: 10%;
+}
+
+.delete{
+  @extend .responsiveDetails;
+  color: colors.$red;
+  cursor: pointer;
+}
+
+.edit{
+  @extend .responsiveDetails;
+  color: colors.$primaryColor;
+  cursor: pointer;
+}
+
+.like{
+  @extend .responsiveDetails;
+  color: colors.$gold;
+  cursor: pointer;
+}
+
+.btn {
+  font-size: calc((1.6 - 1) * 1vw + 0.4em);
+}
+
+.btnContainer{
+  width: 10%;
+  padding: 0 0.1vw;
+}
