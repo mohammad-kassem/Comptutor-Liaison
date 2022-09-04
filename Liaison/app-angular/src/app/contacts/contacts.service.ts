@@ -11,11 +11,17 @@ const httpOptions = generateHttpOptions(authToken);
   providedIn: 'root'
 })
 export class ContactsService {
-  getCintactsApiUrl: string = generateApiUrl('contacts');
   
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private toastr: ToastrService) { }
 
   getContacts(): Observable<{message: string, contacts: IContact[]}> {
-    return this.http.get<{message: string, contacts: IContact[]}>(this.getCintactsApiUrl,  httpOptions);
+    const getContactsApiUrl: string = generateApiUrl('contacts');
+    return this.http.get<{message: string, contacts: IContact[]}>(getContactsApiUrl,  httpOptions);
+  }
+
+  removeContact(contact: IContact): Observable<{message: string, deleted: IContact}> {
+    const removeContactApiUrl: string = generateApiUrl('contacts', 'remove', contact._id);
+    return this.http.delete<{message: string, deleted: IContact}>(removeContactApiUrl, httpOptions);
+  }
   }
 }
