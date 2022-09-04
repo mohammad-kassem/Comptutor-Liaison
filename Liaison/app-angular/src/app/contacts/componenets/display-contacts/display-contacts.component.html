@@ -21,7 +21,7 @@
       <div class="location">{{contact.country}}</div>
       <div class="iconsContainer">
         <fa-icon class="edit" [icon]="faPen"></fa-icon>
-        <fa-icon class="delete" [icon]="faTimes"></fa-icon>
+        <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
         <fa-icon class="like" [icon]="contact.liker ? faStar : faStarRegular"></fa-icon>
     </div>
   </div>
