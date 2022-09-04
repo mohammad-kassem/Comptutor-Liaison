@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -23,5 +24,9 @@ export class ContactsService {
     const removeContactApiUrl: string = generateApiUrl('contacts', 'remove', contact._id);
     return this.http.delete<{message: string, deleted: IContact}>(removeContactApiUrl, httpOptions);
   }
+
+  handleRemove(response: {message: string, deleted: IContact}, contacts: IContact[]): IContact[]  {
+    this.toastr.success(response.message, 'Contact Deleted')
+    return contacts.filter((contact: IContact) => contact._id !== response.deleted._id)
   }
 }
