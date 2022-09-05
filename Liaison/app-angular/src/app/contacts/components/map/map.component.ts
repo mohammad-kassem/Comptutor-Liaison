@@ -1,5 +1,6 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import * as L from 'leaflet';
+import { IContact } from '../../models/contact';
 
 @Component({
   selector: 'app-map',
@@ -9,11 +10,12 @@ import * as L from 'leaflet';
 export class MapComponent implements AfterViewInit {
   map: any;
   marker: any;
+  @Input() location: IContact["location"];
 
 
   private initMap(): void {
     this.map = L.map('map', {
-      center: [33.89539, 35.481902],
+      center: [this.location.lat, this.location.long],
       zoom: 13
     });
 
@@ -25,15 +27,17 @@ export class MapComponent implements AfterViewInit {
 
     tiles.addTo(this.map);
 
-    
+    this.marker = !this.marker && new L.Marker([this.location.lat, this.location.long]).addTo(this.map);
 
     this.map.on('click', (event: any) => {
-      this.marker && this.map.removeLayer(this.marker);
+      this.map.removeLayer(this.marker);
       var coord = event.latlng;
       var lat = coord.lat;
       var lng = coord.lng;
 
       this.marker = new L.Marker([lat, lng]).addTo(this.map);
+      this.location.lat = lat;
+      this.location.long = lng;
     });
   }
 
