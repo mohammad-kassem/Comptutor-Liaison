@@ -4,9 +4,9 @@ export interface IContact {
   email: string;
   phone: string;
   relationship: string;
-  location: any;
+  location: {lat: number, long: number};
   country: string;
-  user: any;
-  liker?: any;
-  messages?: any[];
+  user: string;
+  liker?: string;
+  messages?: string[];
 }
