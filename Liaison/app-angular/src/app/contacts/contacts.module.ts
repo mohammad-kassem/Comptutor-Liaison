@@ -7,6 +7,8 @@ import { ContactsRoutingModule } from './contacts-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { DisplayContactsComponent } from './components/display-contacts/display-contacts.component';
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MapComponent } from './components/map/map.component';
 
 
 @NgModule({
@@ -15,11 +17,14 @@ import { AddContactComponent } from './pages/add-contact/add-contact.component';
     DisplayContactsComponent,
     AddContactComponent,
     ContactFormComponent,
+    MapComponent,
   ],
   imports: [
     CommonModule,
     ContactsRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class ContactsModule { }

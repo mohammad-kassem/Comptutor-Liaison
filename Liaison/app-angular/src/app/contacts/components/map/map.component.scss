@@ -1,0 +1,16 @@
+@use '../../../styles/colors';
+
+.map-container {
+  width: 100%;
+  height: calc(10vw + 20vh);
+  margin-top: 20px;
+}
+
+.map-frame {
+  border: colors.$boxBorder;
+  height: 100%;
+}
+
+#map {
+  height: 100%;
+}
