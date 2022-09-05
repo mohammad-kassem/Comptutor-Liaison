@@ -18,3 +18,14 @@
     background-color: colors.$disabled;
   }
 }
+
+.btnCancel {
+  color: colors.$white;
+  background-color: colors.$red;
+  &:hover:enabled {
+    background-color: colors.$brightRed;
+  }
+  &:active:enabled {
+    background-color: colors.$darkRed;
+  }
+}
