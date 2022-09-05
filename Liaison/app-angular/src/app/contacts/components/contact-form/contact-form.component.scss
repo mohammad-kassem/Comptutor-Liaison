@@ -1,0 +1,60 @@
+@use '../../../styles/colors';
+@use '../../../styles/center-container';
+@use '../../../styles/display-flex';
+@use '../../../styles/btn';
+@use '../../../styles/form';
+@use '../../../styles/fonts';
+
+.inputContainer{
+  @include display-flex.flexSpaceBetween();
+}
+
+.centerContainer{
+  height: 120vh;
+}
+
+.form{
+  width: calc(320px + 35vw);
+  @extend .form;
+  margin: 5vw 0;
+}
+
+.header{
+  background-color: colors.$primaryColor;
+  padding: 4%;
+  height: 50%;
+  border-radius: 10px 10px 0 0;
+}
+
+label {
+  font-size: fonts.$default;
+  font-weight: fonts.$bold;
+}
+
+input {
+  @extend .input;
+  width: 50%;
+  padding: 0 2%;
+}
+
+input[type="radio"]{
+  width: 20px;
+  height: 20px;
+  margin: 20px 0;
+}
+
+
+.content{
+  margin: 0 3%;
+  margin-top: 1%;
+}
+
+small {
+  @include display-flex.flexEnd();
+}
+
+.btnContainer{
+  @include display-flex.flexEnd('row', 5%);
+  margin: 20px 0;
+}
+
