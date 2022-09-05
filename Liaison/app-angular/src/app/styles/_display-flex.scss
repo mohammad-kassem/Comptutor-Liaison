@@ -1,13 +1,23 @@
-@mixin flexCenter($direction: row) {
+@mixin flexCenter($direction: row, $gap: 0) {
   display: flex;
   flex-direction: $direction;
   justify-content: center;
   align-items: center;
+  gap: $gap;
 }
 
-@mixin flexSpaceBetween($direction: 'row') {
+@mixin flexSpaceBetween($direction: 'row', $gap: 0) {
   display: flex;
   flex-direction: $direction;
   justify-content: space-between;
   align-items: center;
+  gap: $gap;
+}
+
+@mixin flexEnd($direction: 'row', $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: flex-end;
+  align-items: center;
+  gap: $gap;
 }
