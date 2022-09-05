@@ -1,4 +1,5 @@
 @use './colors';
+@use './fonts';
 
 .form-control.ng-touched.ng-invalid {
   border: 2px solid colors.$red;
@@ -10,4 +11,18 @@
 
 .textDanger{
   color: colors.$red;
+}
+
+.form {
+  background-color: colors.$white;
+  box-shadow: colors.$boxShadow;
+  border-radius: 10px;
+}
+
+.input {
+  height: 50px;
+  border: colors.$boxBorder;
+  border-radius: 10px;
+  font-size: fonts.$default;
+  margin: 10px 0;
 }

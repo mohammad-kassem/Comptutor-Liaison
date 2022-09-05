@@ -6,9 +6,7 @@
 
 .form{
   width: 450px;
-  background-color: colors.$white;
-  box-shadow: colors.$boxShadow;
-  border-radius: 10px;
+  @extend .form;
 }
 
 .form-content{
@@ -25,13 +23,9 @@ h1 {
 
 
 input {
+  @extend .input;
   width: 100%;
-  height: 50px;
-  border: colors.$boxBorder;
-  border-radius: 10px;
-  font-size: 16px;
   padding: 0 3%;
-  margin: 10px 0;
 }
 
 .link {
