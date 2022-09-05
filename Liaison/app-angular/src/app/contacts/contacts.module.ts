@@ -5,7 +5,7 @@ import { CommonModule } from '@angular/common';
 
 import { ContactsRoutingModule } from './contacts-routing.module';
 import { HomePageComponent } from './pages/home-page/home-page.component';
-import { DisplayContactsComponent } from './componenets/display-contacts/display-contacts.component';
+import { DisplayContactsComponent } from './components/display-contacts/display-contacts.component';
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 
 
