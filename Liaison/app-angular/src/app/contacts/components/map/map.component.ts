@@ -25,6 +25,17 @@ export class MapComponent implements AfterViewInit {
 
     tiles.addTo(this.map);
 
+    
+
+    this.map.on('click', (event: any) => {
+      this.marker && this.map.removeLayer(this.marker);
+      var coord = event.latlng;
+      var lat = coord.lat;
+      var lng = coord.lng;
+
+      this.marker = new L.Marker([lat, lng]).addTo(this.map);
+    });
+  }
 
   constructor() { }
 
