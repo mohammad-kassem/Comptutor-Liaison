@@ -9,6 +9,7 @@ import { DisplayContactsComponent } from './components/display-contacts/display-
 import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
+import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { MapComponent } from './components/map/map.component';
     AddContactComponent,
     ContactFormComponent,
     MapComponent,
+    EditContactComponent,
   ],
   imports: [
     CommonModule,

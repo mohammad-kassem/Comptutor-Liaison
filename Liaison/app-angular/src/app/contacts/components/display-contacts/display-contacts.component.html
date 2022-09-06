@@ -20,7 +20,7 @@
       <div class="relationship">{{contact.relationship}}</div>
       <div class="location">{{contact.country}}</div>
       <div class="iconsContainer">
-        <fa-icon class="edit" [icon]="faPen"></fa-icon>
+        <fa-icon class="edit" [icon]="faPen" (click)="onEdit(contact._id)"></fa-icon>
         <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
         <fa-icon class="like" [icon]="contact.liker ? faStar : faStarRegular"></fa-icon>
     </div>

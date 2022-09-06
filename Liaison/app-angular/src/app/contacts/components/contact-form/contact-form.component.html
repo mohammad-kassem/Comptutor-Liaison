@@ -1,43 +1,42 @@
 <div class="centerContainer">
-
-<form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-  <div class="header">
-      <h1>Contact details</h1>
-  </div>
-  <div class="content">
-      <div class="inputContainer">
-        <label>Full name</label>
-        <input type="text" name="name" id="name" placeholder="Mhmd Kassem" class="form-control" [(ngModel)]="name" formControlName="name"/>
-      </div>
-      <small class="textDanger" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Please enter a valid contact name (Mininmum length is 6)</small>
-      <div class="inputContainer">
-        <label>Email address</label>
-        <input type="email" name="email" placeholder="mhmd.kassem.eng@gmail.com" id="email" class="form-control" [(ngModel)]="email" formControlName="email"/>
-      </div>
-      <small class="textDanger" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">Please enter a valid email address (Mininmum length is 6)</small>
-      <div class="inputContainer">
-        <label>Phone number</label>
-        <input type="text" name="phone" id="phone" placeholder="96101839960" class="form-control" [(ngModel)]="phone" formControlName="phone"/>
-      </div>
-      <small class="textDanger" *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">Please enter a valid phone number (Length is between 6 and 15)</small>
-      <div class="inputContainer">
-        <input type="radio" name="relationship" value="Single" [(ngModel)]="relationship" formControlName="relationship"/>
-        <label>Single</label>
-        <input type="radio" name="relationship" value="Married" [(ngModel)]="relationship" formControlName="relationship"/>
-        <label>Married</label>
-        <input type="radio" name="relationship" value="Divorced" [(ngModel)]="relationship" formControlName="relationship"/>
-        <label>Divorced</label>
-        <input type="radio" name="relationship" value="Widowed" [(ngModel)]="relationship" formControlName="relationship"/>
-        <label>Widowed</label>
-        <input type="radio" name="relationship" value="Other" [(ngModel)]="relationship" formControlName="relationship"/>
-        <label>Other</label>
-      </div>
-      <label>Location</label>
-      <app-map [location]="location"></app-map>
-      <div class="btnContainer">
-        <button type="submit" class="btn" [disabled]="contactForm.invalid">Save changes</button>
-        <button class="btn btnCancel" (click)="onCancel()">Cancel</button>
-      </div>
-  </div>
-</form>
+  <form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <div class="header">
+        <h1>Contact details</h1>
+    </div>
+    <div class="content">
+        <div class="inputContainer">
+          <label>Full name</label>
+          <input type="text" name="name" id="name" placeholder="Mhmd Kassem" class="form-control" [(ngModel)]="name" formControlName="name"/>
+        </div>
+        <small class="textDanger" *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">Please enter a valid contact name (Mininmum length is 6)</small>
+        <div class="inputContainer">
+          <label>Email address</label>
+          <input type="email" name="email" placeholder="mhmd.kassem.eng@gmail.com" id="email" class="form-control" [(ngModel)]="email" formControlName="email"/>
+        </div>
+        <small class="textDanger" *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">Please enter a valid email address (Mininmum length is 6)</small>
+        <div class="inputContainer">
+          <label>Phone number</label>
+          <input type="text" name="phone" id="phone" placeholder="96101839960" class="form-control" [(ngModel)]="phone" formControlName="phone"/>
+        </div>
+        <small class="textDanger" *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched">Please enter a valid phone number (Length is between 6 and 15)</small>
+        <div class="inputContainer">
+          <input type="radio" name="relationship" value="Single" [(ngModel)]="relationship" formControlName="relationship"/>
+          <label>Single</label>
+          <input type="radio" name="relationship" value="Married" [(ngModel)]="relationship" formControlName="relationship"/>
+          <label>Married</label>
+          <input type="radio" name="relationship" value="Divorced" [(ngModel)]="relationship" formControlName="relationship"/>
+          <label>Divorced</label>
+          <input type="radio" name="relationship" value="Widowed" [(ngModel)]="relationship" formControlName="relationship"/>
+          <label>Widowed</label>
+          <input type="radio" name="relationship" value="Other" [(ngModel)]="relationship" formControlName="relationship"/>
+          <label>Other</label>
+        </div>
+        <label>Location</label>
+        <app-map *ngIf="location" [location]="location"></app-map>
+        <div class="btnContainer">
+          <button type="submit" class="btn" [disabled]="contactForm.invalid">Save changes</button>
+          <button class="btn btnCancel" (click)="onCancel()">Cancel</button>
+        </div>
+    </div>
+  </form>
 </div>
