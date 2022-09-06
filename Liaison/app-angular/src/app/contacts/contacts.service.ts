@@ -50,4 +50,9 @@ export class ContactsService {
     this.toastr.success(response.message, 'Contact Added');
     this.router.navigate(['/']);
   }
+
+  updateContact(contact: IContact, contactId: string): Observable<{message: string, updated: IContact}> {
+    const updateContactApiUrl: string = generateApiUrl('contacts', 'update', contactId);
+    return this.http.put<{message: string, updated: IContact}>(updateContactApiUrl, contact, httpOptions);
+  }
 }
