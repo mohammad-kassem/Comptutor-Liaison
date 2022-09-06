@@ -34,4 +34,9 @@ export class ContactsService {
     const geoCoderApiURl: string =`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.long}&accept-language=en`;
     return this.http.get<any>(geoCoderApiURl, httpOptions);
   }
+
+  addContact(contact: IContact): Observable<{message: string, new: IContact}> {
+    const removeContactApiUrl: string = generateApiUrl('contacts', 'add');
+    return this.http.post<{message: string, new: IContact}>(removeContactApiUrl, contact, httpOptions);
+  }
 }
