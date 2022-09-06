@@ -1,6 +1,6 @@
 <div class="centerContainer">
 
-<form class="form" [formGroup]="contactForm">
+<form class="form" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
   <div class="header">
       <h1>Contact details</h1>
   </div>
