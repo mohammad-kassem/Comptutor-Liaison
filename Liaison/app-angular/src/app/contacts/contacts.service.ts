@@ -21,6 +21,11 @@ export class ContactsService {
     return this.http.get<{message: string, contacts: IContact[]}>(getContactsApiUrl,  httpOptions);
   }
 
+  getContact(id: string): Observable<{contact: IContact}> {
+    const getContactApiUrl: string = generateApiUrl('contacts', '', id);
+    return this.http.get<{contact: IContact}>(getContactApiUrl,  httpOptions);
+  }
+
   removeContact(contact: IContact): Observable<{message: string, deleted: IContact}> {
     const removeContactApiUrl: string = generateApiUrl('contacts', 'remove', contact._id);
     return this.http.delete<{message: string, deleted: IContact}>(removeContactApiUrl, httpOptions);
