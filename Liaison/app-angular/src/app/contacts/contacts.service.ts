@@ -55,4 +55,9 @@ export class ContactsService {
     const updateContactApiUrl: string = generateApiUrl('contacts', 'update', contactId);
     return this.http.put<{message: string, updated: IContact}>(updateContactApiUrl, contact, httpOptions);
   }
+
+  handleUpdate(response: {message: string, updated: IContact})  {
+    this.toastr.success(response.message, 'Contact Deleted')
+    this.router.navigate(['/']);
+  }
 }
