@@ -29,4 +29,9 @@ export class ContactsService {
     this.toastr.success(response.message, 'Contact Deleted')
     return contacts.filter((contact: IContact) => contact._id !== response.deleted._id)
   }
+
+  getCountry(location: IContact["location"]): Observable<any> {
+    const geoCoderApiURl: string =`https://nominatim.openstreetmap.org/reverse?format=json&lat=${location.lat}&lon=${location.long}&accept-language=en`;
+    return this.http.get<any>(geoCoderApiURl, httpOptions);
+  }
 }
