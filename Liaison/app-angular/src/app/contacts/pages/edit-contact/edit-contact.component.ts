@@ -15,11 +15,12 @@ export class EditContactComponent implements OnInit {
   phone: string;
   relationship: string;
   location: IContact["location"];
-  
+  contactId : string = this.route.snapshot.paramMap.get('id') || "";
+
   constructor(private contactsService: ContactsService, private route: ActivatedRoute, private errorService: ErrorHandelingService) { }
 
   ngOnInit(): void {
-    this.contactsService.getContact(this.route.snapshot.paramMap.get('id') || "").subscribe({
+    this.contactsService.getContact(this.contactId).subscribe({
       next: (response) => this.onGet(response.contact),
       error: (error) => this.errorService.handleErrors(error)
     })
@@ -31,5 +32,12 @@ export class EditContactComponent implements OnInit {
     this.phone = contact.phone;
     this.relationship = contact.relationship;
     this.location = contact.location;
+  }
+
+  updateContact(contact: IContact): void {
+    this.contactsService.updateContact(contact, this.contactId).subscribe({
+      next: (response) => this.contactsService.handleUpdate(response), 
+      error: (error) => this.errorService.handleErrors(error)
+    })
   }
 }
