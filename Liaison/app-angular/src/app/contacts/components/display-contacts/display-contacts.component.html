@@ -14,7 +14,7 @@
   </div>
   <app-contacts-filter *ngIf="showFilter" [DBContacts]="DBContacts"></app-contacts-filter>
   <div *ngFor="let contact of filteredContacts">
-    <div class="rowContainer">
+    <div class="rowContainer" [ngClass]="{'like': contact.liker}" (dblclick)="onToggleLike(contact)">
       <div class="name">{{contact.name}}</div>
       <div class="email">{{contact.email}}</div>
       <div class="phone">{{contact.phone}}</div>

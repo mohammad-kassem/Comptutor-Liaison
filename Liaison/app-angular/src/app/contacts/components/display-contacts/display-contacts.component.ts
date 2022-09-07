@@ -17,6 +17,7 @@ export class DisplayContactsComponent implements OnInit {
   @Input() filteredContacts: IContact[];
   @Input() DBContacts: IContact[];
   @Output() handleRemove: EventEmitter<any> = new EventEmitter();
+  @Output() handleToggleLike: EventEmitter<any> = new EventEmitter();
 
   constructor(private contactsService: ContactsService, private router: Router) { }
 
@@ -41,4 +42,7 @@ export class DisplayContactsComponent implements OnInit {
     this.router.navigate(['/contact/add']);
   }
   
+  onToggleLike(contact: IContact): void {
+    this.handleToggleLike.emit(contact);
+  }
 }

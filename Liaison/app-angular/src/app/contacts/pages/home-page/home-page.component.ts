@@ -28,4 +28,11 @@ export class HomePageComponent implements OnInit {
       error: (error) => this.errorService.handleErrors(error)
     }) 
   }
+
+  toggleLikeContact(contact: IContact): void {
+    this.contactsService.toggleLikeContact(contact).subscribe({
+      next: (response) => [this.DBContacts, this.filteredContacts] = this.contactsService.handleToggleLike(response, this.DBContacts, this.filteredContacts),
+      error: (error) => this.errorService.handleErrors(error)
+    }) 
+  }
 }
