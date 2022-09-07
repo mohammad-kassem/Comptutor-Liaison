@@ -22,15 +22,9 @@ export class ContactsFilterComponent implements OnInit {
 
   unsorted() { return 0 }
 
-  onChange(e: any, i: Number, j: number){
-    Object.values(this.filters).map((filter, index)=>{
-        if (i === index){
-          filter[j] = e;
-        }
-        return filter;
-      })
+  onChange(event: any, key: FilterKey, j: number){
+    this.filters[key][j] = event;
     this.filteredContacts = (this.DBContacts.filter((contact: IContact)=> {
-    let key: FilterKey
     for (key in this.filters) {
       if (!contact[key].toUpperCase().startsWith(this.filters[key][0].toUpperCase()) || !contact[key].toUpperCase().includes(this.filters[key][1].toUpperCase()) || !contact[key].toUpperCase().endsWith(this.filters[key][2].toUpperCase()))
         return false;
