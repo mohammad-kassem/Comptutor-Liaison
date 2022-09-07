@@ -24,7 +24,7 @@ export class HomePageComponent implements OnInit {
 
   removeContact(contact: IContact): void {
     this.contactsService.removeContact(contact).subscribe({
-      next: (response) => this.filteredContacts = this.DBContacts = this.contactsService.handleRemove(response, this.filteredContacts),
+      next: (response) => [this.DBContacts, this.filteredContacts] =  this.contactsService.handleRemove(response, this.DBContacts, this.filteredContacts),
       error: (error) => this.errorService.handleErrors(error)
     }) 
   }

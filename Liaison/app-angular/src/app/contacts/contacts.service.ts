@@ -34,9 +34,11 @@ export class ContactsService {
     return this.http.delete<{message: string, deleted: IContact}>(removeContactApiUrl, httpOptions);
   }
 
-  handleRemove(response: {message: string, deleted: IContact}, contacts: IContact[]): IContact[]  {
+  handleRemove(response: {message: string, deleted: IContact}, DBContacts: IContact[], filteredContacts: IContact[]): [IContact[], IContact[]]  {
     this.toastr.success(response.message, 'Contact Deleted')
-    return contacts.filter((contact: IContact) => contact._id !== response.deleted._id)
+    filteredContacts = filteredContacts.filter((contact: IContact) => contact._id !== response.deleted._id)
+    DBContacts = DBContacts.filter((contact: IContact) => contact._id !== response.deleted._id)
+    return [DBContacts, filteredContacts]
   }
 
   getCountry(location: IContact["location"]): Observable<any> {
