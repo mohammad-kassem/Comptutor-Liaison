@@ -22,9 +22,9 @@
 }
 
 .like{
-  @extend .responsiveDetails;
-  color: colors.$gold;
-  cursor: pointer;
+  border-left: 10px solid colors.$gold;
+  border-block: 10px;
+  border-radius: 0;
 }
 
 .btn {
