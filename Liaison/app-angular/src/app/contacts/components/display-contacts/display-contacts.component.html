@@ -1,6 +1,6 @@
 <div class="header">
   <h1>Contacts List</h1>
-  <a routerLink="/contact/add" class="btn">Add</a>
+  <button class="btn" (click)="onAdd()"><fa-icon [icon]="faPlus"></fa-icon></button>
   </div>
   <div class="rowContainer">
      <div class="name">Full name</div>
@@ -23,7 +23,6 @@
       <div class="lastContainer">
         <fa-icon class="edit" [icon]="faPen" (click)="onEdit(contact._id)"></fa-icon>
         <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
-        <fa-icon class="like" [icon]="contact.liker ? faStar : faStarRegular"></fa-icon>
     </div>
   </div>
 </div>

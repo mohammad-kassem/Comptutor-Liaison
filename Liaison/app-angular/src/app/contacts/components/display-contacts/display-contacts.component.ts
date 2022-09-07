@@ -1,7 +1,6 @@
 import { ContactsService } from './../../contacts.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faTimes, faStar, faPen } from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarRegular} from '@fortawesome/free-regular-svg-icons';
+import { faTimes, faPen, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { IContact } from '../../models/contact';
 import { Router } from '@angular/router';
 
@@ -12,9 +11,8 @@ import { Router } from '@angular/router';
 })
 export class DisplayContactsComponent implements OnInit {
   faTimes = faTimes;
-  faStar = faStar;
-  faStarRegular = faStarRegular;
   faPen = faPen;
+  faPlus = faPlus;
   showFilter: boolean = false;
   @Input() filteredContacts: IContact[];
   @Input() DBContacts: IContact[];
@@ -37,6 +35,10 @@ export class DisplayContactsComponent implements OnInit {
   toggleFilter(): void {
     this.showFilter = !this.showFilter;
     this.contactsService.onFilter(this.DBContacts)
+  }
+
+  onAdd(): void {
+    this.router.navigate(['/contact/add']);
   }
   
 }
