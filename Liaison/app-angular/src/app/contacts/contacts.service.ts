@@ -45,8 +45,8 @@ export class ContactsService {
   }
 
   addContact(contact: IContact): Observable<{message: string, new: IContact}> {
-    const removeContactApiUrl: string = generateApiUrl('contacts', 'add');
-    return this.http.post<{message: string, new: IContact}>(removeContactApiUrl, contact, httpOptions);
+    const addContactApiUrl: string = generateApiUrl('contacts', 'add');
+    return this.http.post<{message: string, new: IContact}>(addContactApiUrl, contact, httpOptions);
   }
 
   handleAdd(response: {message: string, new: IContact}){
