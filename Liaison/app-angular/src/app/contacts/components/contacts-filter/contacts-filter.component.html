@@ -1,0 +1,11 @@
+<div class="rowContainer">
+  <div class="{{filter.key}} 'filterContainer'" *ngFor="let filter of filters | keyvalue:unsorted; index as i">
+      <label>Starts with</label>
+      <input type="text" [ngModel]="filter.value[0]" (ngModelChange)="onChange($event, i, 0)"/>
+      <label>Includes</label>
+      <input type="text" [(ngModel)]="filter.value[1]" (ngModelChange)="onChange($event, i, 1)"/>
+      <label>Ends with</label>
+      <input type="text" [(ngModel)]="filter.value[2]" (ngModelChange)="onChange($event, i, 2)"/>
+  </div>
+  <div class="lastContainer"></div>
+</div>

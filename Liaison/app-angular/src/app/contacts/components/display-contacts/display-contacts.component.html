@@ -8,18 +8,19 @@
      <div class="phone">Phone number</div>
      <div class="relationship">Relationship</div>
      <div class="location">Location</div>
-     <div class="btnContainer">
+     <div class="lastContainer">
      <button class="btn">Filter</button>
     </div>
   </div>
-  <div *ngFor="let contact of contacts">
+  <app-contacts-filter [DBContacts]="DBContacts"></app-contacts-filter>
+  <div *ngFor="let contact of filteredContacts">
     <div class="rowContainer">
       <div class="name">{{contact.name}}</div>
       <div class="email">{{contact.email}}</div>
       <div class="phone">{{contact.phone}}</div>
       <div class="relationship">{{contact.relationship}}</div>
       <div class="location">{{contact.country}}</div>
-      <div class="iconsContainer">
+      <div class="lastContainer">
         <fa-icon class="edit" [icon]="faPen" (click)="onEdit(contact._id)"></fa-icon>
         <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
         <fa-icon class="like" [icon]="contact.liker ? faStar : faStarRegular"></fa-icon>

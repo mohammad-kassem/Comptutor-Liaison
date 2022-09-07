@@ -10,6 +10,7 @@ import { AddContactComponent } from './pages/add-contact/add-contact.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
+import { ContactsFilterComponent } from './components/contacts-filter/contacts-filter.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { EditContactComponent } from './pages/edit-contact/edit-contact.componen
     ContactFormComponent,
     MapComponent,
     EditContactComponent,
+    ContactsFilterComponent,
   ],
   imports: [
     CommonModule,
