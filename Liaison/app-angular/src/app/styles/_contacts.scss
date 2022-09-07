@@ -1,0 +1,46 @@
+@use './display-flex';
+@use './fonts';
+@use './colors';
+
+.rowContainer{
+  @include display-flex.flexCenter();
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: colors.$primaryBG solid;
+}
+
+.name{
+  @extend .responsiveDetails;
+  width: 17.5%;
+}
+
+.email{
+  @extend .responsiveDetails;
+  width: 22.5%;
+  overflow-wrap: break-word;
+}
+
+.phone{
+  @extend .responsiveDetails;
+  width: 20%;
+  overflow-wrap: break-word;
+}
+
+.relationship{
+  @extend .responsiveDetails;
+  width: 15%;
+  overflow-wrap: break-word;
+}
+
+.location{
+  @extend .responsiveDetails;
+  width: 15%;
+  overflow-wrap: break-word;
+}
+
+.lastContainer{
+  @include display-flex.flexCenter();
+  width: 10%;
+  gap: 10%;
+  margin: 0 2.5%;
+}
