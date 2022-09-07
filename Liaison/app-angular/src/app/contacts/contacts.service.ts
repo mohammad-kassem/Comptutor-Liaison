@@ -1,7 +1,7 @@
 import { ToastrService } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { generateApiUrl, generateHttpOptions } from '../utils/api-functions/api-functions';
 import { IContact } from './models/contact';
 import { Router } from '@angular/router';
@@ -13,7 +13,10 @@ const httpOptions = generateHttpOptions(authToken);
   providedIn: 'root'
 })
 export class ContactsService {
-  
+  filteredContactsSubject = new Subject<any>();
+  filteredContacts = this.filteredContactsSubject.asObservable();
+
+
   constructor(private http:HttpClient, private toastr: ToastrService, private router: Router) { }
 
   getContacts(): Observable<{message: string, contacts: IContact[]}> {
@@ -59,5 +62,9 @@ export class ContactsService {
   handleUpdate(response: {message: string, updated: IContact})  {
     this.toastr.success(response.message, 'Contact Deleted')
     this.router.navigate(['/']);
+  }
+
+  onFilter(contacts: IContact[]): void {
+    this.filteredContactsSubject.next(contacts);
   }
 }
