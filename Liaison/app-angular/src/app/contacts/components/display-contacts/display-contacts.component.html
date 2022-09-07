@@ -9,10 +9,10 @@
      <div class="relationship">Relationship</div>
      <div class="location">Location</div>
      <div class="lastContainer">
-     <button class="btn">Filter</button>
+     <button [ngClass]="showFilter ? 'btn btnCancel' : 'btn'" (click)="toggleFilter()">{{showFilter ? 'Clear' : 'Filter'}}</button>
     </div>
   </div>
-  <app-contacts-filter [DBContacts]="DBContacts"></app-contacts-filter>
+  <app-contacts-filter *ngIf="showFilter" [DBContacts]="DBContacts"></app-contacts-filter>
   <div *ngFor="let contact of filteredContacts">
     <div class="rowContainer">
       <div class="name">{{contact.name}}</div>

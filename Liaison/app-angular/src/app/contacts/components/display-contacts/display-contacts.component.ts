@@ -15,6 +15,7 @@ export class DisplayContactsComponent implements OnInit {
   faStar = faStar;
   faStarRegular = faStarRegular;
   faPen = faPen;
+  showFilter: boolean = false;
   @Input() filteredContacts: IContact[];
   @Input() DBContacts: IContact[];
   @Output() handleRemove: EventEmitter<any> = new EventEmitter();
@@ -31,6 +32,11 @@ export class DisplayContactsComponent implements OnInit {
 
   onEdit(id: string): void {
     this.router.navigate(['/contact', id]);
+  }
+
+  toggleFilter(): void {
+    this.showFilter = !this.showFilter;
+    this.contactsService.onFilter(this.DBContacts)
   }
   
 }
