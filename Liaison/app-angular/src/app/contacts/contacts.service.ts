@@ -67,4 +67,21 @@ export class ContactsService {
   onFilter(contacts: IContact[]): void {
     this.filteredContactsSubject.next(contacts);
   }
+
+  toggleLikeContact(contact: IContact): Observable<{message: string, liked?: IContact, unliked?: IContact}> {
+    const likeContactApiUrl: string = generateApiUrl('contacts', contact.liker ? 'unlike' : 'like', contact._id);
+    return this.http.put<{message: string, liked?: IContact, unliked?: IContact}>(likeContactApiUrl,'', httpOptions);
+  }
+
+  handleToggleLike(response: {message: string, liked?: IContact, unliked?: IContact}, DBContacts: IContact[], filteredContacts: IContact[]): [IContact[], IContact[]] {
+    DBContacts = DBContacts.map((contact: IContact) => {
+      if (response.liked) return contact._id === response.liked?._id ? response.liked : contact
+      else return contact._id === response.unliked?._id ? response.unliked : contact
+    })
+    filteredContacts = filteredContacts.map((contact: IContact) => {
+      if (response.liked) return contact._id === response.liked?._id ? response.liked : contact
+      else return contact._id === response.unliked?._id ? response.unliked : contact
+    })
+    return [DBContacts, filteredContacts]
+  }
 }
