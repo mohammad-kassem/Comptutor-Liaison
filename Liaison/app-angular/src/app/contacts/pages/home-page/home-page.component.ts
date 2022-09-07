@@ -9,20 +9,22 @@ import { IContact } from '../../models/contact';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  contacts: IContact[]
+  filteredContacts: IContact[]
+  DBContacts: IContact[];
 
   constructor(private contactsService: ContactsService, private errorService: ErrorHandelingService) { }
 
   ngOnInit(): void {
     this.contactsService.getContacts().subscribe({
-      next: (contacts) => this.contacts = contacts.contacts,
+      next: (response) => this.filteredContacts = this.DBContacts = response.contacts,
       error: (error) => this.errorService.handleErrors(error)
     })
+    this.contactsService.filteredContacts.subscribe((contacts) => this.filteredContacts = contacts);
   }
 
   removeContact(contact: IContact): void {
     this.contactsService.removeContact(contact).subscribe({
-      next: (response) => this.contacts = this.contactsService.handleRemove(response, this.contacts),
+      next: (response) => this.filteredContacts = this.DBContacts = this.contactsService.handleRemove(response, this.filteredContacts),
       error: (error) => this.errorService.handleErrors(error)
     }) 
   }

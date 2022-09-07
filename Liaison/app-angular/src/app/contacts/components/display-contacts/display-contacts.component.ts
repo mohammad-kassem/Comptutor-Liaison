@@ -1,3 +1,4 @@
+import { ContactsService } from './../../contacts.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faTimes, faStar, faPen } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStarRegular} from '@fortawesome/free-regular-svg-icons';
@@ -14,12 +15,14 @@ export class DisplayContactsComponent implements OnInit {
   faStar = faStar;
   faStarRegular = faStarRegular;
   faPen = faPen;
-  @Input() contacts: IContact[];
+  @Input() filteredContacts: IContact[];
+  @Input() DBContacts: IContact[];
   @Output() handleRemove: EventEmitter<any> = new EventEmitter();
 
-  constructor(private router: Router) { }
+  constructor(private contactsService: ContactsService, private router: Router) { }
 
   ngOnInit(): void {
+    this.contactsService.filteredContacts.subscribe((contacts) => this.filteredContacts = contacts);
   }
   
   onRemove(removedContact: IContact): void {
