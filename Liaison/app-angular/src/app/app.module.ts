@@ -8,6 +8,7 @@ import { UserAuthModule } from './user-auth/user-auth.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MessagesModule } from './messages/messages.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     UserAuthModule,
     ContactsModule,
+    MessagesModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),

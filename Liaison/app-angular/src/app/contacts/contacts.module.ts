@@ -11,6 +11,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MapComponent } from './components/map/map.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { ContactsFilterComponent } from './components/contacts-filter/contacts-filter.component';
+import { MessagesModule } from '../messages/messages.module';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { ContactsFilterComponent } from './components/contacts-filter/contacts-f
     ContactsRoutingModule,
     FontAwesomeModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MessagesModule
   ]
 })
 export class ContactsModule { }
