@@ -9,6 +9,7 @@ import {
   handleErrors,
   sendEmail,
   getById,
+  search,
 } from "./service";
 
 const Sib = require("sib-api-v3-sdk");
@@ -50,9 +51,16 @@ export const get = async (req: Request, res: Response) => {
 
 export const getByUser = async (req: Request, res: Response) => {
   try {
-    const userId: string = jwt.decode(req.headers.authorization)._id;
-    const messages = await getMessagesByUser(userId);
-    return res.status(200).json({ messages: messages?.messages });
+    const searchString = req.query.search;
+    const userId = jwt.decode(req.headers.authorization)._id;
+    if (searchString){
+      const messages = await search(<string>searchString, userId);
+      return res.status(200).json({ messages: messages });
+    }
+    else {
+      const messages = await getMessagesByUser(userId);
+      return res.status(200).json({ messages: messages?.messages });
+    }
   } catch (err) {
     handleErrors(res, err);
   }

@@ -80,6 +80,11 @@ export const getMessagesByContactEmail = async (email: string) => {
   return await Contact.findOne({ email }).populate("messages");
 };
 
+export const search = async (searchString: string, userId: string) => {
+  const re = new RegExp(searchString, 'i');
+  return await Message.find({$or: [{$text: {$search: searchString}}, {to: {$regex: re}}, {subject: {$regex: re}}, {content: {$regex: re}}]}).where('sender').equals(new mongoose.Types.ObjectId(userId));
+}
+
 export const handleErrors = (res: Response, err: any) => {
   if (err.name === "ValidationError") handleValidationError(res, err);
   else if (err.name === "EmailError") handleEmailError(res, err);
