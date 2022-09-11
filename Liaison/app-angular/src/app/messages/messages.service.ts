@@ -24,4 +24,8 @@ export class MessagesService {
     this.toastr.success(response.message, 'Message Sent')
   }
 
+  getMessages(): Observable<{messages: IMessage[]}> {
+    const getMessagesApiUrl = generateApiUrl('messages', 'user');
+    return this.http.get<{messages: IMessage[]}>(getMessagesApiUrl, httpOptions);
+  }
 }
