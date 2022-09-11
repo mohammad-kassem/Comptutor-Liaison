@@ -1,19 +1,22 @@
 @use './colors';
+@use './fonts';
 
 .link{
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  a {
-    color: colors.$primaryColor;
-    text-decoration: none;
-    &:hover {
-      color: colors.$secondaryColor;
-    }
-    &:active {
-      color: colors.$quaternaryColor;
-    }
+}
+
+a {
+  color: colors.$primaryColor;
+  font-weight: fonts.$bold;
+  text-decoration: none;
+  &:hover {
+    color: colors.$secondaryColor;
+  }
+  &:active {
+    color: colors.$quaternaryColor;
   }
 }
 
