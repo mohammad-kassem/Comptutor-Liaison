@@ -21,3 +21,11 @@
   align-items: center;
   gap: $gap;
 }
+
+@mixin flexStart($direction: 'row', $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: flex-start;
+  align-items: center;
+  gap: $gap;
+}
