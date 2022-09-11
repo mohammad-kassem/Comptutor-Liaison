@@ -44,5 +44,10 @@ const messageSchema = new mongoose.Schema({
   },
 });
 
+messageSchema.index({'$**': 'text'});
+messageSchema.index({to: 1});
+messageSchema.index({subject: 1});
+messageSchema.index({content: 1});
+
 const Message = mongoose.model<IMessage>("Message", messageSchema);
 export default Message;
