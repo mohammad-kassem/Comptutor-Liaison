@@ -1,0 +1,18 @@
+<div *ngIf="!isCleared" class="messageContainer">
+  <header class="header" [ngClass]="{'minimized': isMinimized}">
+  <div>{{subject ? subject : 'New message'}}</div>
+  <div class="lastContainer">
+    <fa-icon [icon]="isMinimized ? faCaretUp : faCaretDown" (click)="onMinimize()"></fa-icon>
+    <fa-icon [icon]="faTimes" (click)="onClear()"></fa-icon>
+  </div>
+  </header>
+  <form *ngIf="!isMinimized" class="form" [formGroup]="messageForm" (ngSubmit)="sendMessage()">
+    <input type="text" name="recipient" id="recipient" [readonly]="true" class="form-control" placeholder="Recipient" [(ngModel)]="recipient" formControlName="recipient"/>
+    <input type="text" name="subject" id="subject" class="form-control" placeholder="Subject" [(ngModel)]="subject" formControlName="subject"/>
+    <textarea #bleh name="content" id="content" class="form-control" placeholder="Type your message here..." [(ngModel)]="content" formControlName="content"></textarea>
+    <div class="btnContainer">
+      <button type="submit" class="btn">Send</button>
+    </div>
+  </form>
+</div>
+

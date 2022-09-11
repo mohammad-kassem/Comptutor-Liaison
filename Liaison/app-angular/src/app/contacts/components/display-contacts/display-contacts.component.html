@@ -21,8 +21,12 @@
       <div class="relationship">{{contact.relationship}}</div>
       <div class="location">{{contact.country}}</div>
       <div class="lastContainer">
+        <fa-icon class="edit" [icon]="faEnvelope" (click)="createComponent(contact)"></fa-icon>
         <fa-icon class="edit" [icon]="faPen" (click)="onEdit(contact._id)"></fa-icon>
         <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
     </div>
-  </div>
+  </div>  
+</div>
+<div class="composeContainer">
+  <div #composeContainer></div>
 </div>

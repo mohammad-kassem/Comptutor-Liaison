@@ -1,0 +1,74 @@
+@use '../../../styles/colors';
+@use '../../../styles/btn';
+@use '../../../styles/display-flex';
+@use '../../../styles/fonts';
+@use '../../../styles/contacts';
+
+.messageContainer {
+  border: colors.$boxBorder;
+}
+
+.header {
+  @include display-flex.flexSpaceBetween();
+  width: 500px;
+  background-color: colors.$quinaryColor;
+  font-size: fonts.$bold;
+  height: 6vh;
+  padding: 0 5px;
+}
+
+fa-icon {
+  cursor: pointer;
+  color: colors.$primaryColor;
+}
+
+.form{
+  @include display-flex.flexCenter(column);
+}
+
+.minimized {
+  width: 320px;
+  height: 30px
+}
+
+
+input {
+  width: 500px;
+  height: 5.5vh;
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  border-bottom: colors.$boxBorder;
+}
+
+textarea {
+  width: 500px;
+  padding: 5px;
+  height: 260px;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 14px;
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: #f1f1f1;
+    }
+    
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #a9a9a9;
+  }
+}
+
+.btn {
+  float: right;
+  margin: 10px;
+  border-radius: 30px;
+  margin-right: 365px;
+  padding: 10px 2.5vw;
+}
+
+.btnContainer {
+  width: 500px;
+}

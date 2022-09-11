@@ -32,3 +32,16 @@
   margin: 0 3%
 }
 
+.composeContainer {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap; 
+  overflow: hidden; 
+  position: absolute; 
+  bottom: 0; 
+  left: 20vw; 
+  max-width: 1008px;
+  max-height: 60vh;
+  margin: 0 auto;
+}
+
