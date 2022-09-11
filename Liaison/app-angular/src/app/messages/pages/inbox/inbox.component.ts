@@ -27,6 +27,10 @@ export class InboxComponent implements OnInit {
     return output.length >= 80 ? output.slice(0, 80) + '...' : output;
   }
 
+  onClick(id: string): void {
+    this.router.navigate(['/message', id]);
+  }
+
   searchMessages(searchText: string): void {
     this.messagesService.filterMessages(searchText).subscribe({
       next: (response) => this.messages = response.messages,

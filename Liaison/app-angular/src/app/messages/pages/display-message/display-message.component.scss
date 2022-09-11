@@ -1,0 +1,72 @@
+@use '../../../styles/colors';
+@use '../../../styles/center-container';
+@use '../../../styles/btn';
+@use '../../../styles/link';
+@use '../../../styles/form';
+@use '../../../styles/display-flex';
+@use '../../../styles/fonts';
+
+
+.centerContainer {
+  @include display-flex.flexCenter(column);
+}
+
+.messagesContainer {
+  background-color: colors.$white;
+  width: 60%;
+  height: 100%;
+  box-shadow: colors.$boxShadow;
+  border-radius: 10px;
+  padding: 3%;
+}
+
+.messageContainer {
+  @include display-flex.flexStart(row, 3%);
+  @extend .responsiveDetails;
+  &:nth-child(odd) {
+    background-color: colors.$tertiaryColor;
+  }
+  &:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+  &:last-child {
+    border-radius: 0 0 10px 10px;
+  }
+  height: 60px;
+  cursor: pointer;
+  
+}
+
+.icon {
+  font-size: 18px;
+  font-weight: fonts.$bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 2%;
+  width: 40px;
+  height: 40px;
+  background-color: colors.$gray;
+  border-radius: 50px;
+}
+
+.titleContainer {
+  text-align: left;
+  width: 25%
+}
+
+.subject {
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 40px;
+}
+
+.reciever {
+  font-size: 14px;
+  font-weight: fonts.$bold;
+  margin-bottom: 20px;
+}
+
+.content {
+  font-size: fonts.$default;
+}
