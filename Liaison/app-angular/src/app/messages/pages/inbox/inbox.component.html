@@ -1,0 +1,18 @@
+<div class="centerContainer">
+  <div class="bodyContainer">
+    <div class="header">
+      <h1>Messages List</h1>
+    </div>
+    <app-search-bar (handleSearch)="searchMessages($event)"></app-search-bar>
+    <div class="messagesContainer">
+      <div class="messageContainer" *ngFor="let message of messages">
+          <div class="icon">{{message.to[0].toUpperCase()}}</div>
+          <div class="titleContainer">
+          <div class="reciever">{{message.to}}</div>
+          <div class="subject">Subject: {{message.subject}}</div>
+          </div>
+          <div class="content">{{refactorText(message.content)}}</div>
+      </div>
+    </div>
+  </div>
+</div>
