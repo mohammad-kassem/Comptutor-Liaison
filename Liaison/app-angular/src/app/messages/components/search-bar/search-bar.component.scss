@@ -1,0 +1,39 @@
+@use '../../../styles/colors';
+@use '../../../styles/center-container';
+@use '../../../styles/btn';
+@use '../../../styles/link';
+@use '../../../styles/form';
+@use '../../../styles/display-flex';
+@use '../../../styles/fonts';
+
+.searchBar {
+  width: 50%;
+  @include display-flex.flexStart();
+  background-color: colors.$quinaryColor;
+  align-self: flex-start;
+  border-radius: 10px;
+  margin: 20px 0;
+  padding: 0 10px;
+  &:focus-within {
+    background-color: colors.$white;
+  }
+}
+
+fa-icon {
+  font-size: 25px;
+  color: colors.$primaryColor;
+  width: 10%;
+  cursor: pointer;
+}
+
+input {
+  background-color: colors.$quinaryColor;
+  height: 50px;
+  width: 90%;
+  padding: 5px 0;
+  border: none;
+  outline: none;
+  &:focus {
+    background-color: colors.$white;
+  }
+}
