@@ -8,6 +8,7 @@ import {
   getMessagesByUser,
   handleErrors,
   sendEmail,
+  getById,
 } from "./service";
 
 const Sib = require("sib-api-v3-sdk");
@@ -36,6 +37,16 @@ export const send = async (req: Request, res: Response) => {
     handleErrors(res, err);
   }
 };
+
+export const get = async (req: Request, res: Response) => {
+  try {
+    const messageId = req.query.id;
+    const result = await getById(<string>messageId);
+    return res.status(200).json({ message: result });
+  } catch(err) {
+    handleErrors(res, err);
+  }
+}
 
 export const getByUser = async (req: Request, res: Response) => {
   try {
