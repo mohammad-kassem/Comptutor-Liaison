@@ -11,15 +11,17 @@ import { ErrorHandelingService } from 'src/app/utils/error-handling/error-handel
 })
 export class LoginComponent implements OnInit {
   type: string = 'login';
+  user: ICridentials;
 
   constructor(private authService: AuthService, private errorService: ErrorHandelingService) { }
 
   ngOnInit(): void {
+    this.authService.user.subscribe((user) => this.user = user)
   }
 
   login(cridential: ICridentials): void {
     this.authService.login(cridential).subscribe({
-      next: (response) => this.authService.handleLogin(response), 
+      next: (response) => this.authService.handleLogin(response),  
       error: (error) => this.errorService.handleErrors(error)
     })
   }
