@@ -29,6 +29,11 @@ export class MessagesService {
     return this.http.get<{messages: IMessage[]}>(getMessagesApiUrl, httpOptions);
   }
 
+  getMessage(id: string): Observable<{message: IMessage}> {
+    const getMessageApiUrl = generateApiUrl('messages', '', id);
+    return this.http.get<{message: IMessage}>(getMessageApiUrl, httpOptions);
+  }
+
   filterMessages(searchString: string): Observable<{messages: IMessage[]}> {
     const filterMessagesApiUrl = generateApiUrl('messages', 'user', searchString, 'search');
     return this.http.get<{messages: IMessage[]}>(filterMessagesApiUrl, httpOptions);
