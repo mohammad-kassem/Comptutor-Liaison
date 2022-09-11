@@ -12,6 +12,7 @@ import { MapComponent } from './components/map/map.component';
 import { EditContactComponent } from './pages/edit-contact/edit-contact.component';
 import { ContactsFilterComponent } from './components/contacts-filter/contacts-filter.component';
 import { MessagesModule } from '../messages/messages.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { MessagesModule } from '../messages/messages.module';
     FontAwesomeModule,
     FormsModule,
     ReactiveFormsModule,
-    MessagesModule
+    MessagesModule,
+    SharedModule
   ]
 })
 export class ContactsModule { }

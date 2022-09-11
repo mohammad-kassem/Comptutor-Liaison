@@ -1,0 +1,56 @@
+@use '../../../styles/colors';
+@use '../../../styles/display-flex';
+@use '../../../styles/link';
+@use '../../../styles/fonts';
+@use '../../../styles/btn';
+
+nav {
+  @include display-flex.flexSpaceBetween();
+  height: 60px;
+  padding: 20px 3%;
+  background-color: black;
+}
+
+h1{
+  font-size: 18px;
+  color: colors.$white;
+  font-weight: fonts.$bold;
+  margin: 0;
+}
+
+fa-icon {
+  color: colors.$white;
+  font-size: 35px;
+}
+
+.sidebar{
+  @include display-flex.flexSpaceBetween();
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 100%;
+  padding: 20px 0 20px 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.notVisible {
+  width: 0;
+}
+
+.profileContainer {
+  @include display-flex.flexSpaceBetween();
+}
+
+a {
+  font-size: 16px;
+}
+
+.logout {
+  color: colors.$red;
+  &:hover:enabled {
+    color: colors.$brightRed;
+  }
+  &:active:enabled {
+    color: colors.$darkRed;
+  }
+}
