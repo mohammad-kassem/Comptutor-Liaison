@@ -35,4 +35,15 @@ export class AdminService {
     const getMessagesApiUrl: string = generateApiUrl('messages', 'admin', userId);
     return this.http.get<{count: number, messages: IMessage[]}>(getMessagesApiUrl, httpOptions);
   }
+
+  refactorByDate(data: IContact[] | IMessage[]) {
+    const series = [{name: 'Jan', value: 0}, {name: 'Feb', value: 0}, {name: 'Mar', value: 0}, {name: 'Apr', value: 0}, {name: 'May', value: 0}, {name: 'Jun', value: 0}, {name: 'Jul', value: 0}, {name: 'Aug', value: 0}, {name: 'Sep', value: 0}, {name: 'Oct', value: 0}, {name: 'Nov', value: 0}, {name: 'Dec', value: 0}]
+    for (let dataItem of data){
+      const date = new Date(dataItem.createdAt);
+      const month = date.toLocaleString('default', {month: 'short'});
+      for (let seriesItem of series) month === seriesItem.name && seriesItem.value ++; 
+    }
+    return series;
+  }
+
 }
