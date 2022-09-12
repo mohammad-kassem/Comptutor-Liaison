@@ -46,4 +46,21 @@ export class AdminService {
     return series;
   }
 
+  refactorByCountry(data: IContact[]) {
+    let series: {name: string, value: number}[] = [];
+    let notFound: boolean = true;
+    for (let dataItem of data){
+      const country = dataItem.country;
+      console.log(country);
+      for (let seriesItem of series){
+        if (country === seriesItem.name){ 
+          seriesItem.value++;
+          notFound = false;
+          break;
+        }
+      }
+      notFound && series.push({name: country, value: 1});
+    }
+    return series;
+  }
 }
