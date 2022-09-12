@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import User from "../../model/user";
 import {
   addContact,
+  getAll,
   getById,
   getContacts,
   handleDuplicateFields,
@@ -24,7 +25,7 @@ export const add = async (req: Request, res: Response) => {
 
     const newContact = await addContact(req.body, userId);
 
-    const updateUser = await User.updateOne(
+    await User.updateOne(
       {
         _id: newContact.user,
       },
@@ -58,6 +59,22 @@ export const get = async (req: Request, res: Response) => {
     return res.status(200).json({
       contacts: result?.contacts,
     });
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
+
+export const getByUserId = async (req: Request, res: Response) => {
+  try {
+    const userId = req.query.id;
+    if (userId){
+      const contacts = await getContacts(<string>userId);
+      return res.status(200).json({count: contacts?.contacts.length, contacts: contacts?.contacts });
+    }
+    else {
+      const contacts = await getAll();
+      return res.status(200).json({ count: contacts.length, contacts: contacts });
+    }
   } catch (err) {
     handleErrors(res, err);
   }

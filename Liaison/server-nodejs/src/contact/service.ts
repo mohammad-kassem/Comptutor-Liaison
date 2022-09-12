@@ -20,12 +20,16 @@ export const addContact = async (body: any, userID: string | undefined) => {
   return await contact.save();
 };
 
+export const getAll = async () => {
+  return await Contact.find();
+}
+
 export const getById = async (id: string | undefined) => {
   return await Contact.findById(id).populate("user");
 };
 
-export const getContacts = async (userID: string | undefined) => {
-  return await User.findById(userID).populate("contacts");
+export const getContacts = async (userId: string | undefined) => {
+  return await User.findById(userId).populate("contacts");
 };
 
 export const updateContact = async (body: any, id: string | undefined) => {

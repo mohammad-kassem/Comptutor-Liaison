@@ -1,9 +1,11 @@
 import { Router } from "express";
+import { adminMiddleware } from "../../middleware/adminMid";
 import { userMiddleware } from "../../middleware/userMid";
 import { userPermissionsContact } from "../../middleware/userPermissions";
 import {
   add,
   get,
+  getByUserId,
   getLiked,
   getUnliked,
   like,
@@ -22,5 +24,6 @@ contactRouter.put("/like", userMiddleware(), userPermissionsContact(), like);
 contactRouter.put("/unlike", userMiddleware(), userPermissionsContact(), unlike);
 contactRouter.get("/like", userMiddleware(), getLiked);
 contactRouter.get("/unlike", userMiddleware(), getUnliked);
+contactRouter.get("/admin", adminMiddleware(), getByUserId);
 
 export default contactRouter;
