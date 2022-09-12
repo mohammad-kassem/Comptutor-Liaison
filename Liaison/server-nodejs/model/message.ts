@@ -42,7 +42,7 @@ const messageSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Contact",
   },
-});
+}, {timestamps: true});
 
 messageSchema.index({'$**': 'text'});
 messageSchema.index({to: 1});

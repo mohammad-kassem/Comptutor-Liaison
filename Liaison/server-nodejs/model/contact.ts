@@ -74,7 +74,7 @@ const contactSchema = new mongoose.Schema({
       ref: "Message",
     },
   ],
-});
+}, {timestamps: true});
 
 const Contact = mongoose.model<IContact>("Contact", contactSchema);
 export default Contact;

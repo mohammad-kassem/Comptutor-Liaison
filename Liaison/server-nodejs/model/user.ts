@@ -72,7 +72,12 @@ const userSchema = new mongoose.Schema({
       ref: "Contact",
     },
   ],
-});
+}, {timestamps: true});
+
+userSchema.index({'$**': 'text'});
+userSchema.index({fname: 1});
+userSchema.index({lname: 1});
+userSchema.index({email: 1});
 
 const User = mongoose.model<IUser>("User", userSchema);
 export default User;
