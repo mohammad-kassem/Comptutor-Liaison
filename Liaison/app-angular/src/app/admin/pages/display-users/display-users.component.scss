@@ -1,0 +1,91 @@
+@use '../../../styles/colors';
+@use '../../../styles/btn';
+@use '../../../styles/display-flex';
+@use '../../../styles/fonts';
+@use '../../../styles/center-container';
+
+.centerContainer {
+  height: 100vh;
+}
+
+.nav {
+  @include display-flex.flexSpaceBetween();
+  height: 80px;
+  padding: 20px 3%;
+  margin: 0;
+  background-color: black;
+}
+
+h1{
+  font-size: 18px;
+  color: colors.$white;
+  font-weight: fonts.$bold;
+  margin: 0;
+}
+
+fa-icon {
+  color: colors.$white;
+  font-size: 35px;
+}
+
+.bodyContainer {
+  height: 100%;
+  background-color: colors.$white;
+}
+
+.usersContainer {
+  background-color: colors.$white;
+  width: 70vw;
+  height: 70.5%;
+  box-shadow: colors.$boxShadow;
+  border-radius: 10px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: #f1f1f1;
+    }
+    
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #a9a9a9;
+  }
+}
+
+.tableHeader {
+  border: colors.$boxBorder;
+}
+
+.rowContainer{
+  @include display-flex.flexCenter();
+  width: 100%;
+  padding: 15px 0;
+  border-bottom: colors.$primaryBG solid;
+  &:nth-child(3){
+    background-color: colors.$primaryBG;
+    border: colors.$boxBorder;
+  }
+  cursor: pointer;
+}
+
+.name{
+  @extend .responsiveDetails;
+  width: 20%;
+}
+
+.email{
+  @extend .responsiveDetails;
+  width: 30%;
+  overflow-wrap: break-word;
+}
+
+.contacts{
+  @extend .responsiveDetails;
+  width: 17.5%;
+  overflow-wrap: break-word;
+}
+
+.messages{
+  @extend .responsiveDetails;
+  width: 17.5%;
+  overflow-wrap: break-word;
+}

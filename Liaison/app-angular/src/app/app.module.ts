@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MessagesModule } from './messages/messages.module';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MessagesModule } from './messages/messages.module';
     UserAuthModule,
     ContactsModule,
     MessagesModule,
+    AdminModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
