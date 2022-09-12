@@ -9,4 +9,6 @@ export interface IContact {
   user: string;
   liker?: string;
   messages?: string[];
+  createdAt: string;
+  updatedAt: string;
 }

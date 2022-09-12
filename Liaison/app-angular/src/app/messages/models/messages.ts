@@ -5,6 +5,8 @@ export interface IMessage {
   content: string;
   sender: any;
   reciever: any;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface IMessageBody {
