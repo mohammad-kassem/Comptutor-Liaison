@@ -26,4 +26,13 @@ export class AdminService {
     return this.http.get<{count: number, users: IUser[]}>(filterUsersApiUrl, httpOptions)
   }
 
+  getContacts(userId: string): Observable<{count: number, contacts: IContact[]}>{
+    const getContactsApiUrl: string = generateApiUrl('contacts', 'admin', userId);
+    return this.http.get<{count: number, contacts: IContact[]}>(getContactsApiUrl, httpOptions);
+  }
+
+  getMessages(userId: string): Observable<{count: number, messages: IMessage[]}>{
+    const getMessagesApiUrl: string = generateApiUrl('messages', 'admin', userId);
+    return this.http.get<{count: number, messages: IMessage[]}>(getMessagesApiUrl, httpOptions);
+  }
 }
