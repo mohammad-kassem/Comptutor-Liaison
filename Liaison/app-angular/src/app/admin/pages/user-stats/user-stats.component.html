@@ -1,0 +1,57 @@
+<div class="centerContainer">
+  <div class="bodyContainer">
+    <div class="nav">
+      <h1>Welcome {{user.fname}}</h1>
+      <fa-icon class="edit" [icon]="faUserCircle"></fa-icon>
+    </div>
+  <div class="graphs">
+    <ngx-charts-line-chart *ngIf="messagesGraphData.series"
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="[contactsGraphData]"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+    >
+  </ngx-charts-line-chart>
+  <ngx-charts-line-chart *ngIf="messagesGraphData.series"
+    [view]="view"
+    [scheme]="colorScheme"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [xAxisLabel]="xAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    [timeline]="timeline"
+    [results]="[messagesGraphData]"
+    (select)="onSelect($event)"
+    (activate)="onActivate($event)"
+    (deactivate)="onDeactivate($event)"
+    >
+  </ngx-charts-line-chart>
+  <ngx-charts-bar-vertical *ngIf="contactsBarData"
+    [view]="view"
+    [scheme]="colorScheme"
+    [results]="contactsBarData"
+    [gradient]="gradient"
+    [xAxis]="xAxis"
+    [yAxis]="yAxis"
+    [legend]="legend"
+    [showXAxisLabel]="showXAxisLabel"
+    [showYAxisLabel]="showYAxisLabel"
+    [xAxisLabel]="xAxisLabelBar"
+    [yAxisLabel]="yAxisLabel"
+    (select)="onSelect($event)">
+  </ngx-charts-bar-vertical>
+  </div>
+</div>
