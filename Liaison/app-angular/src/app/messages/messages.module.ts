@@ -7,14 +7,13 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ComposeBoxComponent } from './components/compose-box/compose-box.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
 import { DisplayMessageComponent } from './pages/display-message/display-message.component';
-import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
     ComposeBoxComponent,
     InboxComponent,
-    DisplayMessageComponent,
-    SearchBarComponent
+    DisplayMessageComponent
   ],
   imports: [
     CommonModule,
@@ -22,6 +21,7 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
     FormsModule,
     ReactiveFormsModule,
     FontAwesomeModule,
+    SharedModule,
   ],
   exports: [ComposeBoxComponent]
 })

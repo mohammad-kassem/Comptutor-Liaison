@@ -4,7 +4,7 @@
   </div>
   <div class="messagesContainer">
     <div class="subject">{{message.subject}}</div>
-    <div class="message">{{user.fname}} {{user.lname}} <{{user.email}}></div>
+    <div class="message">{{user.fname ? user.fname : message.sender.fname}} {{user.lname ? user.lname : message.sender.lname}} <{{user.email ? user.email : message.sender.email}}></div>
     <div class="reciever">To:  {{message.to}}</div>
     <div class="content" [innerHTML]="message.content"></div>
   </div>
