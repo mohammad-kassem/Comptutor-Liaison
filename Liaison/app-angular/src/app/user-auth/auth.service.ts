@@ -15,8 +15,8 @@ const httpOptions = generateHttpOptions();
   providedIn: 'root',
 })
 export class AuthService {
-  loginApiUrl: string = generateApiUrl('user', 'login');
-  registerApiUrl: string = generateApiUrl('user', 'register');
+  loginApiUrl: string = generateApiUrl('auth', 'login');
+  registerApiUrl: string = generateApiUrl('auth', 'register');
   userSubject = new BehaviorSubject<any>({});
   user = this.userSubject.asObservable();
 
@@ -41,7 +41,7 @@ export class AuthService {
   handleLogin(response: { auth_token: string; message: string; user: any }) {
     localStorage.setItem('auth_token', response.auth_token);
     this.onUser(response.user);
-    this.router.navigate(['/']);
+    response.user.role.role === 'user' ? this.router.navigate(['/']): this.router.navigate(['/admin']);
   }
 
   handleRegister(response: { id: string; message: string }) {
