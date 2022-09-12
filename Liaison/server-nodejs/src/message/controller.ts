@@ -10,6 +10,7 @@ import {
   sendEmail,
   getById,
   search,
+  getAll,
 } from "./service";
 
 const Sib = require("sib-api-v3-sdk");
@@ -60,6 +61,22 @@ export const getByUser = async (req: Request, res: Response) => {
     else {
       const messages = await getMessagesByUser(userId);
       return res.status(200).json({ messages: messages?.messages });
+    }
+  } catch (err) {
+    handleErrors(res, err);
+  }
+};
+
+export const getByUserId = async (req: Request, res: Response) => {
+  try {
+    const userId = req.query.id;
+    if (userId){
+      const messages = await getMessagesByUser(<string>userId);
+      return res.status(200).json({count: messages?.messages.length, messages: messages?.messages });
+    }
+    else {
+      const messages = await getAll();
+      return res.status(200).json({ messages: messages });
     }
   } catch (err) {
     handleErrors(res, err);

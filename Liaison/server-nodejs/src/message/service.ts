@@ -64,8 +64,12 @@ export const sendEmail = async (
   }
 };
 
+export const getAll = async () => {
+  return await Message.find();
+}
+
 export const getById = async (id: string) => {
-  return await Message.findById(id);
+  return await Message.findById(id).populate('sender');
 }
 
 export const getMessagesByUser = async (userId: string) => {
