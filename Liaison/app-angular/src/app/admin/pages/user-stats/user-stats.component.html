@@ -11,12 +11,9 @@
     [xAxis]="xAxis"
     [yAxis]="yAxis"
     [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
+    [yAxisLabel]="yAxisLabelContacts"
     [timeline]="timeline"
     [results]="[contactsGraphData]"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)"
     >
   </ngx-charts-line-chart>
   <ngx-charts-line-chart *ngIf="messagesGraphData.series"
@@ -28,12 +25,9 @@
     [xAxis]="xAxis"
     [yAxis]="yAxis"
     [xAxisLabel]="xAxisLabel"
-    [yAxisLabel]="yAxisLabel"
+    [yAxisLabel]="yAxisLabelMessages"
     [timeline]="timeline"
     [results]="[messagesGraphData]"
-    (select)="onSelect($event)"
-    (activate)="onActivate($event)"
-    (deactivate)="onDeactivate($event)"
     >
   </ngx-charts-line-chart>
   <ngx-charts-bar-vertical *ngIf="contactsBarData"
@@ -47,8 +41,8 @@
     [showXAxisLabel]="showXAxisLabel"
     [showYAxisLabel]="showYAxisLabel"
     [xAxisLabel]="xAxisLabelBar"
-    [yAxisLabel]="yAxisLabel"
-    (select)="onSelect($event)">
+    [yAxisLabel]="yAxisLabelContacts"
+    >
   </ngx-charts-bar-vertical>
   </div>
 </div>

@@ -10,17 +10,23 @@ import { Color, ScaleType } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-user-stats',
   templateUrl: './user-stats.component.html',
-  styleUrls: ['./user-stats.component.scss']
+  styleUrls: ['./user-stats.component.scss'],
 })
 export class UserStatsComponent implements OnInit {
   user: IUser;
   faUserCircle = faUserCircle;
   userId: string = this.route.snapshot.paramMap.get('id') || '';
-  constactsSeries: {name: string, value: number}[];
-  messagessSeries: {name: string, value: number}[];
-  contactsGraphData: {name: 'contacts', series: {name: string, value: number}[]};
-  contactsBarData: {name: string, value: number}[];
-  messagesGraphData: {name: 'messages', series: {name: string, value: number}[]};
+  constactsSeries: { name: string; value: number }[];
+  messagessSeries: { name: string; value: number }[];
+  contactsGraphData: {
+    name: 'contacts';
+    series: { name: string; value: number }[];
+  };
+  contactsBarData: { name: string; value: number }[];
+  messagesGraphData: {
+    name: 'messages';
+    series: { name: string; value: number }[];
+  };
 
   view: [number, number] = [600, 400];
   legend: boolean = true;
@@ -32,7 +38,8 @@ export class UserStatsComponent implements OnInit {
   showXAxisLabel: boolean = true;
   xAxisLabel: string = 'Months';
   xAxisLabelBar: string = 'Countries';
-  yAxisLabel: string = 'Count';
+  yAxisLabelContacts: string = 'Contacts';
+  yAxisLabelMessages: string = 'Messages';
   timeline: boolean = true;
   gradient = false;
 
@@ -43,7 +50,12 @@ export class UserStatsComponent implements OnInit {
     domain: ['#1877F2', '#8be6fd', '#a5edfd', '#1954a1', '#e3edff'],
   };
 
-  constructor(private authService: AuthService, private adminService: AdminService, private route: ActivatedRoute, private errorService: ErrorHandelingService) { }
+  constructor(
+    private authService: AuthService,
+    private adminService: AdminService,
+    private route: ActivatedRoute,
+    private errorService: ErrorHandelingService
+  ) {}
 
   ngOnInit(): void {
     this.adminService.getContacts(this.userId).subscribe({
@@ -51,26 +63,23 @@ export class UserStatsComponent implements OnInit {
       error: (error) => this.errorService.handleErrors(error),
     });
     this.adminService.getMessages(this.userId).subscribe({
-      next: (response) => this.messagesGraphData = {name: 'messages', series: this.adminService.refactorByDate(response.messages)},
+      next: (response) =>
+        (this.messagesGraphData = {
+          name: 'messages',
+          series: this.adminService.refactorByDate(response.messages),
+        }),
       error: (error) => this.errorService.handleErrors(error),
     });
-    this.authService.user.subscribe((user) => this.user = user);
-  }
-
-  onSelect(data: any): void {
-    console.log('Item clicked', JSON.parse(JSON.stringify(data)));
-  }
-
-  onActivate(data: any): void {
-    console.log('Activate', JSON.parse(JSON.stringify(data)));
-  }
-
-  onDeactivate(data: any): void {
-    console.log('Deactivate', JSON.parse(JSON.stringify(data)));
+    this.authService.user.subscribe((user) => (this.user = user));
   }
 
   OnInit(response: any): void {
-    this.contactsGraphData = {name: 'contacts', series: this.adminService.refactorByDate(response.contacts)};
-    this.contactsBarData = this.adminService.refactorByCountry(response.contacts);
+    this.contactsGraphData = {
+      name: 'contacts',
+      series: this.adminService.refactorByDate(response.contacts),
+    };
+    this.contactsBarData = this.adminService.refactorByCountry(
+      response.contacts
+    );
   }
 }
