@@ -2,11 +2,15 @@
 @use '../../../styles/btn';
 @use '../../../styles/display-flex';
 @use '../../../styles/fonts';
-@use '../../../styles/contacts';
+@use '../../../styles/table';
 
 .header{
   @include display-flex.flexSpaceBetween();
   padding: 20px 1%;
+}
+
+.tableContainer {
+  height: 68.6%;
 }
 
 .delete{
@@ -23,7 +27,6 @@
 
 .like{
   border-left: 10px solid colors.$gold;
-  border-block: 10px;
   border-radius: 0;
 }
 

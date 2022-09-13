@@ -13,6 +13,7 @@
     </div>
   </div>
   <app-contacts-filter *ngIf="showFilter" [DBContacts]="DBContacts"></app-contacts-filter>
+  <div class="tableContainer">
   <div *ngFor="let contact of filteredContacts">
     <div class="rowContainer" [ngClass]="{'like': contact.liker}" (dblclick)="onToggleLike(contact)">
       <div class="name">{{contact.name}}</div>
@@ -24,6 +25,7 @@
         <fa-icon class="edit" [icon]="faEnvelope" (click)="createComponent(contact)"></fa-icon>
         <fa-icon class="edit" [icon]="faPen" (click)="onEdit(contact._id)"></fa-icon>
         <fa-icon class="delete" [icon]="faTimes" (click)="onRemove(contact)"></fa-icon>
+      </div>
     </div>
   </div>  
 </div>

@@ -5,6 +5,7 @@
 @use '../../../styles/form';
 @use '../../../styles/display-flex';
 @use '../../../styles/fonts';
+@use '../../../styles/table';
 
 .bodyContainer {
   height: 100%;
@@ -15,22 +16,9 @@
   align-items: flex-start;
 }
 
-.messagesContainer {
-  background-color: colors.$white;
+.tableContainer {
   width: 80vw;
-  height: 85%;
-  box-shadow: colors.$boxShadow;
-  border-radius: 10px;
-  overflow-y: auto;
-  &::-webkit-scrollbar {
-    width: 8px;
-    background: #f1f1f1;
-    }
-    
-  &::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #a9a9a9;
-  }
+  height: 85.5%;
 }
 
 .messageContainer {
@@ -38,12 +26,6 @@
   @extend .responsiveDetails;
   &:nth-child(odd) {
     background-color: colors.$quinaryColor;
-  }
-  &:first-child {
-    border-radius: 10px 10px 0 0;
-  }
-  &:last-child {
-    border-radius: 0 0 10px 10px;
   }
   height: 60px;
   cursor: pointer;

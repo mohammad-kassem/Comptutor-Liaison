@@ -4,7 +4,7 @@
       <h1>Messages List</h1>
     </div>
     <app-search-bar (handleSearch)="searchMessages($event)"></app-search-bar>
-    <div class="messagesContainer">
+    <div class="tableContainer">
       <div class="messageContainer" *ngFor="let message of messages" (click)= "onClick(message._id)">
           <div class="icon">{{message.to[0].toUpperCase()}}</div>
           <div class="titleContainer">

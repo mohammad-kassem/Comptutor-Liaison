@@ -13,9 +13,25 @@
   cursor: pointer;
 }
 
+.tableContainer {
+  background-color: colors.$white;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 8px;
+    background: #f1f1f1;
+    }
+    
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #a9a9a9;
+  }
+}
+
+
 .name{
   @extend .responsiveDetails;
   width: 17.5%;
+  overflow-wrap: break-word;
 }
 
 .email{
@@ -47,4 +63,9 @@
   width: 10%;
   gap: 20%;
   margin: 0 2.5%;
+}
+
+.count{
+  @extend .responsiveDetails;
+  width: 17.5%;
 }

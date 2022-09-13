@@ -7,18 +7,18 @@
         <div class="name">First name</div>
         <div class="name">Last name</div>
         <div class="email">Email</div>
-        <div class="contacts">Contacts count</div>
-        <div class="messages">Messages count</div>
+        <div class="count">Contacts count</div>
+        <div class="count">Messages count</div>
     </div>
   </div>
-  <div class="usersContainer">
+  <div class="tableContainer">
     <div *ngFor="let user of users" (click)="onClick(user._id)">
       <div class="rowContainer">
         <div class="name">{{user.fname}}</div>
         <div class="name">{{user.lname}}</div>
         <div class="email">{{user.email}}</div>
-        <div class="contacts">{{user.contacts.length}}</div>
-        <div class="messages">{{user.messages.length}}</div>
+        <div class="count">{{user.contacts.length}}</div>
+        <div class="count">{{user.messages.length}}</div>
       </div>  
     </div>
   </div>
