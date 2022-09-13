@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
@@ -9,6 +9,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 export class SearchBarComponent implements OnInit {
   faSearch = faSearch;
   searchText: string;
+  @Input() type: string;
   @Output() handleSearch: EventEmitter<any> = new EventEmitter;
 
   constructor() { }

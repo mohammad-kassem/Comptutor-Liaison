@@ -19,6 +19,10 @@
   }
 }
 
+.admin:focus-within {
+  background-color: colors.$primaryBG;
+}
+
 fa-icon {
   font-size: 25px;
   color: colors.$primaryColor;

@@ -1,4 +1,4 @@
-<div class="searchBar">
+<div [ngClass]="{admin: type === 'admin'}" class="searchBar">
   <fa-icon class="icon" [icon]="faSearch"  (click)="onSearch()"></fa-icon>
-  <input type="text" name="search" id="search" placeholder="Search in mail" [(ngModel)]="searchText" (keyup.enter)="onSearch()"/>
+  <input [ngClass]="{admin: type === 'admin'}" type="text" name="search" id="search" placeholder="Search in mail" [(ngModel)]="searchText" (keyup.enter)="onSearch()"/>
 </div>
