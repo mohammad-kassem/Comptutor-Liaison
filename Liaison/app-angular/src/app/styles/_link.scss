@@ -20,3 +20,16 @@ a {
   }
 }
 
+.logout {
+  color: colors.$red;
+  font-weight: fonts.$bold;
+  text-decoration: none;
+  &:hover {
+    color: colors.$brightRed;
+  }
+  &:active {
+    color: colors.$darkRed;
+  }
+
+}
+

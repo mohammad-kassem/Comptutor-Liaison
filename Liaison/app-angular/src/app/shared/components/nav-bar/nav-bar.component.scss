@@ -45,12 +45,3 @@ a {
   font-size: 16px;
 }
 
-.logout {
-  color: colors.$red;
-  &:hover:enabled {
-    color: colors.$brightRed;
-  }
-  &:active:enabled {
-    color: colors.$darkRed;
-  }
-}
