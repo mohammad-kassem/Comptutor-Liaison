@@ -1,9 +1,6 @@
 <div class="centerContainer">
   <div class="bodyContainer">
-    <div class="nav">
-      <h1>Welcome {{user.fname}}</h1>
-      <fa-icon class="edit" [icon]="faUserCircle"></fa-icon>
-    </div>
+    <app-nav-bar type="admin"></app-nav-bar>
   <div class="graphs">
     <ngx-charts-line-chart *ngIf="messagesGraphData.series"
     [view]="view"

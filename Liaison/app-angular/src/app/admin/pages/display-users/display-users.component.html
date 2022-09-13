@@ -1,9 +1,6 @@
 <div class="centerContainer">
   <div class="bodyContainer">
-    <div class="nav">
-      <h1>Welcome {{user.fname}}</h1>
-      <fa-icon class="edit" [icon]="faUserCircle"></fa-icon>
-    </div>
+    <app-nav-bar type="admin"></app-nav-bar>
   <div class="tableHeader">
   <app-search-bar (handleSearch)="searchUsers($event)"></app-search-bar>
     <div class="rowContainer">

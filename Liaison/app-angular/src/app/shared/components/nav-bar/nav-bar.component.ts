@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/user-auth/auth.service';
 import { ICridentials } from 'src/app/user-auth/models/cridentials';
@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
   faUserCircle = faUserCircle;
   sideBarIsVisible = false;
   user: ICridentials;
+  @Input() type: string;
 
   constructor(private authService: AuthService) { }
 

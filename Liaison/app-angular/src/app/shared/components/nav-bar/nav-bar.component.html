@@ -3,8 +3,8 @@
   <div class="profileContainer">
     <fa-icon class="edit" [icon]="faUserCircle" (click)="showSideBar()"></fa-icon>
     <div [ngClass]="{notVisible: !sideBarIsVisible}" class="sidebar">
-      <a *ngIf="sideBarIsVisible" routerLink="inbox">Inbox</a>
-      <a *ngIf="sideBarIsVisible" class="logout" routerLink="login">Logout</a>
+      <a *ngIf="type === 'user'&& sideBarIsVisible" routerLink="inbox">Inbox</a>
+      <a class="logout" *ngIf="sideBarIsVisible" class="logout" routerLink="/login">Logout</a>
     </div>
   </div>
 </nav>

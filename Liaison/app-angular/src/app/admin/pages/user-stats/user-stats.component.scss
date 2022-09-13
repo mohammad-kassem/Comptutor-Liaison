@@ -8,27 +8,6 @@
   height: 180vh;
 }
 
-.nav {
-  @include display-flex.flexSpaceBetween();
-  height: 80px;
-  padding: 20px 3%;
-  margin: 0;
-  background-color: black;
-}
-
-
-h1{
-  font-size: 18px;
-  color: colors.$white;
-  font-weight: fonts.$bold;
-  margin: 0;
-}
-
-fa-icon {
-  color: colors.$white;
-  font-size: 35px;
-}
-
 .bodyContainer {
   height: 100%;
   width: 70vw;
