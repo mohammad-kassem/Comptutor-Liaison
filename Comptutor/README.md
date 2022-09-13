@@ -150,14 +150,14 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/mohammad-kassem/comptutor-final-project.git
+   git clone https://github.com/mohammad-kassem/SEF-Final-Projects-Comptutor-Liaison.git
    ```
 
 #### To Run The App
 
 2. Navigate to the frontend folder
    ```sh
-   cd frontend
+   cd app-recat-native
    ```
 3. Install npm dependencies
    ```sh
@@ -178,7 +178,7 @@ Here's a brief high-level overview of the tech stack that Comptutor uses:
 
 7. Navigate to the backend folder
    ```sh
-   cd backend
+   cd server-laravel
    ```
 8. Install dependencies
    ```sh

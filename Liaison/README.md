@@ -13,24 +13,24 @@
 
 <img src="./readme/title2.svg" id="project-philosophy"/>
 
-> Liaison is a website for contacts management to record the names, emails, phone numbers and addresses through a live map selector of friends and acquaintances. It comes with a thorough filtering system. It also includes mesaghing services.
+> Liaison is a website for contact management to record the names, emails, phone numbers, and addresses through a live map selector of friends and acquaintances. It comes with a thorough filtering system. It also includes messaging services.
 
 > Liaison is your book mate.
 
 ### User Stories
 - As a user, I want to be able to add any contact.
 - As a user, I want to be able to edit my contacts.
-- As a user, I want to be able to select my contacts' location easily.
+- As a user, I want to be able to select my contacts' locations easily.
 - As a user, I want to be able to filter through my contacts.
 - As a user, I want to be able to like and unlike my contacts.
 - As a user, I want to be able to send messages to my contacts.
-- As a user, I want to be able to serach through my messages sent. 
+- As a user, I want to be able to search through my messages sent. 
 
 ### Admin Stories
-- As a admin, I want to be able to view all the users.
-- as a admin, I want to be able to view the user's stats.
-- As a admin, I want to be able to serach throygfh the users.
-- As a admin, I want to be able to visulaize how anually active each user is. 
+- As an admin, I want to be able to view all the users.
+- as an admin, I want to be able to view the user's stats.
+- As an admin, I want to be able to search through the users.
+- As an admin, I want to be able to visualize how anually active each user is.  
 
 
 <br><br>
@@ -58,7 +58,7 @@
 <br><br>
 <img src="./readme/title4.svg" id="tech-stack"/>
 
-Here's a brief high-level overview of the tech stack that Comptutor uses:
+Here's a brief high-level overview of the tech stack that Liaison uses:
 
 - This project uses the [Angular Typescript-based web app framework](https://angular.io/).Angular is a component-based framework for building scalable web applications, built on TypeScript, as a development platform. Angular includes.
 - This project uses the [Node.js Javascript runtime enviroment](https://nodejs.org/en/) and the [Express.js web application framework](https://expressjs.com/). Express.js is designed for building web applications and APIs. It has been called the de facto standard server framework for Node.js. 
