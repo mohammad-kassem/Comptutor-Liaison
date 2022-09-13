@@ -1,3 +1,4 @@
+import { IData } from './../../models/data';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
@@ -16,16 +17,14 @@ export class UserStatsComponent implements OnInit {
   user: IUser;
   faUserCircle = faUserCircle;
   userId: string = this.route.snapshot.paramMap.get('id') || '';
-  constactsSeries: { name: string; value: number }[];
-  messagessSeries: { name: string; value: number }[];
   contactsGraphData: {
     name: 'contacts';
-    series: { name: string; value: number }[];
+    series: IData[];
   };
-  contactsBarData: { name: string; value: number }[];
+  contactsBarData: IData[];
   messagesGraphData: {
     name: 'messages';
-    series: { name: string; value: number }[];
+    series: IData[];
   };
 
   view: [number, number] = [600, 400];
