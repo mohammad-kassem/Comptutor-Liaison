@@ -2,7 +2,7 @@
 
 <div align="center">
 
-> Hello world! This repo contains two projects each implemented with different stacks. TEach ahs their own readme files. Click on the project named button below to navigate to teh respective project.  
+> Hello world! This repo contains two projects each implemented with different stacks. Each has their own readme files. Click on the project named button below to navigate to the respective project.  
 
 
 <br><br>
